@@ -3,7 +3,7 @@ Embedded SW Contest 2024
 
 ## Team Bermudar
 
-|이름|역할|담당|
+|이름|직책|담당|
 |---|---|----------------------|
 |염 훈|팀  장|Adaptive AUTOSAR (Application Design, Service Instance Manifest)|
 |강시형|팀  원|LiDAR (2D Live Map, Make Data Map), Camera Pipeline Stream|
