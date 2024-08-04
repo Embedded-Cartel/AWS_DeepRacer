@@ -1,5 +1,5 @@
 # AWS_DeepRacer
-Embedded SW Contest 2024
+Embedded SW Contest 2024 - Autonomous Driving Racing
 
 ## Team Bermudar
 
