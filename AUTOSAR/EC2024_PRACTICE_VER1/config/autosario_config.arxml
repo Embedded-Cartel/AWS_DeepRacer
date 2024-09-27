@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00049.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="05d666d7-916e-4c32-bfa2-3ac2e49bd655">
+      <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="ae5050e6-57ee-4024-a40c-c74847f48f01">
+          <SHORT-NAME>DeterministicClient</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DeterministicClient"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="915b021c-ca36-4130-a7ce-07ffe6037be0">
+          <SHORT-NAME>DltConfig</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DltLogChannelToProcessMapping"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="424561ab-5bb2-4ca7-8bdc-cfef3167e6f6">
+          <SHORT-NAME>Executable</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="Executable"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="8766cce9-0201-410c-b85c-e3e6c6be8614">
+          <SHORT-NAME>Manifest</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="CryptoCertificateToPortPrototypeMapping"/>
+              <SDG GID="CryptoKeySlotToPortPrototypeMapping"/>
+              <SDG GID="CryptoProviderToPortPrototypeMapping"/>
+              <SDG GID="DiagnosticClearConditionPortMapping"/>
+              <SDG GID="DiagnosticEnableConditionPortMapping"/>
+              <SDG GID="DiagnosticEventPortMapping"/>
+              <SDG GID="DiagnosticIndicatorPortMapping"/>
+              <SDG GID="DiagnosticMemoryDestinationPortMapping"/>
+              <SDG GID="DiagnosticOperationCyclePortMapping"/>
+              <SDG GID="DiagnosticSecurityLevelPortMapping"/>
+              <SDG GID="DiagnosticServiceDataIdentifierPortMapping"/>
+              <SDG GID="DiagnosticServiceGenericMapping"/>
+              <SDG GID="EthernetRawDataStreamMapping"/>
+              <SDG GID="PersistencyPortPrototypeToFileStorageMapping"/>
+              <SDG GID="PersistencyPortPrototypeToKeyValueStorageMapping"/>
+              <SDG GID="RecoveryNotificationToPPortPrototypeMapping"/>
+              <SDG GID="RestHttpPortPrototypeMapping"/>
+              <SDG GID="SecurityEventMapping"/>
+              <SDG GID="ServiceInstanceToPortPrototypeMapping"/>
+              <SDG GID="TimeSyncPortPrototypeToTimeBaseMapping"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="716467b8-fa44-4d0d-b8f9-9a81d18a5f70">
+          <SHORT-NAME>Process</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="Process"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="40ca05c5-b64f-4b28-a115-3fc77e8f5d32">
+          <SHORT-NAME>StartupConfig</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="StartupConfigSet"/>
+            </SDGS>
+          </ADMIN-DATA>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="abb0ea99-cfbd-47ce-828e-f43c735abc86">
+              <SHORT-NAME>ExecutionError</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ProcessExecutionError"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="c72d78f9-f2e7-49c5-bb36-9995ad5f99c4">
+      <SHORT-NAME>DataType</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="d279305d-960e-4b58-9529-8965fede6ffc">
+          <SHORT-NAME>Application</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ApplicationPrimitiveDataType"/>
+              <SDG GID="ApplicationArrayDataType"/>
+              <SDG GID="ApplicationRecordDataType"/>
+              <SDG GID="ApplicationAssocMapDataType"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="8e53422c-a1bf-4b4b-a09d-5b128d921be5">
+          <SHORT-NAME>Implementation</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="a694bf24-950f-4964-b59a-c7fdd117fcd8">
+              <SHORT-NAME>C</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ImplementationDataType"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="b3ef99b7-12c5-44d7-9656-374d8d958d2d">
+              <SHORT-NAME>CPP</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CustomCppImplementationDataType"/>
+                  <SDG GID="StdCppImplementationDataType"/>
+                </SDGS>
+              </ADMIN-DATA>
+              <AR-PACKAGES>
+                <AR-PACKAGE UUID="d8924f1b-0c09-4ff9-91a3-c782579a0a62">
+                  <SHORT-NAME>Allocator</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="Allocator"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="b66f0443-6ff7-445d-ac8f-60a920990e0c">
+          <SHORT-NAME>Mapping</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DataTypeMappingSet"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="905be999-8bfd-46c6-9433-1c3d9bf19954">
+          <SHORT-NAME>Semantics</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="fdff182c-d718-45ce-9159-f4a2eaa7140a">
+              <SHORT-NAME>CompuMethod</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CompuMethod"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="bb6537b0-7153-431b-80db-d5d5697b21ae">
+              <SHORT-NAME>Constant</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ConstantSpecification"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="215add44-135c-4eea-804c-35f1cbcdbef0">
+              <SHORT-NAME>DataConstr</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DataConstr"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="bf64fcb8-a40a-4dbd-beb6-d5400a84bf66">
+              <SHORT-NAME>PhysicalDimension</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PhysicalDimension"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="4b00d786-c448-4ef7-afa0-f100d7371f08">
+              <SHORT-NAME>Unit</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="Unit"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="4ab30f7d-8b9c-498e-bdd7-e31656e94eba">
+          <SHORT-NAME>SwBase</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SwBaseType"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="e45f5a6a-15f9-4188-9fd8-2d60a1ec9421">
+      <SHORT-NAME>DEXT</SHORT-NAME>
+      <ADMIN-DATA>
+        <SDGS>
+          <SDG GID="DiagnosticContributionSet"/>
+        </SDGS>
+      </ADMIN-DATA>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="905aeb43-aeb8-450a-a39a-26d168c5e43a">
+          <SHORT-NAME>Dcm</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="7775b003-b0ee-485d-b4d3-8c4dfe8db21f">
+              <SHORT-NAME>AccessPermission</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticAccessPermission"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="eda99e02-5fa4-429a-84ec-0ec7e315e2e8">
+              <SHORT-NAME>DataIdentifier</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticDataIdentifier"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="41bcaa28-6532-45a3-a7fa-f0873fbf92cd">
+              <SHORT-NAME>MemoryIdentifier</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticMemoryIdentifier"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="3c8058a8-0fec-4a74-965b-8f9fd0ff0751">
+              <SHORT-NAME>Routine</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticRoutine"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="acf34889-27b2-4817-9e8d-c318caac3e37">
+              <SHORT-NAME>SecurityLevel</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticSecurityLevel"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="44e79d53-93dc-4178-b48e-b911c93a3c53">
+              <SHORT-NAME>ServiceInstance</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticClearDiagnosticInformation"/>
+                  <SDG GID="DiagnosticComControl"/>
+                  <SDG GID="DiagnosticControlDTCSetting"/>
+                  <SDG GID="DiagnosticCustomServiceInstance"/>
+                  <SDG GID="DiagnosticDataTransfer"/>
+                  <SDG GID="DiagnosticEcuReset"/>
+                  <SDG GID="DiagnosticReadDataByIdentifier"/>
+                  <SDG GID="DiagnosticReadDTCInformation"/>
+                  <SDG GID="DiagnosticRequestDownload"/>
+                  <SDG GID="DiagnosticRequestUpload"/>
+                  <SDG GID="DiagnosticResponseOnEvent"/>
+                  <SDG GID="DiagnosticRoutineControl"/>
+                  <SDG GID="DiagnosticSecurityAccess"/>
+                  <SDG GID="DiagnosticSessionControl"/>
+                  <SDG GID="DiagnosticTransferExit"/>
+                  <SDG GID="DiagnosticWriteDataByIdentifier"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="ab7aa840-6a9c-433e-aa21-4f85f7b4535f">
+              <SHORT-NAME>Session</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticSession"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="29c66af1-58b0-4ae8-ac82-4fce3d7bf57c">
+          <SHORT-NAME>Dem</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="004980e9-8190-455c-a394-e0cb095bf5a7">
+              <SHORT-NAME>Aging</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticAging"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="28bd184f-1b67-4e0d-a556-81c1c3bfd46e">
+              <SHORT-NAME>Condition</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticEnableCondition"/>
+                  <SDG GID="DiagnosticStorageCondition"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="6bb5bd67-9f6a-4501-8dda-58a631a98022">
+              <SHORT-NAME>ConditionGroup</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticEnableConditionGroup"/>
+                  <SDG GID="DiagnosticStorageConditionGroup"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="ec833771-e725-4ea2-8167-10f4528dc901">
+              <SHORT-NAME>DiagnosticEvent</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticEvent"/>
+                </SDGS>
+              </ADMIN-DATA>
+              <AR-PACKAGES>
+                <AR-PACKAGE UUID="4c3035dd-b1da-4695-b186-f53643973611">
+                  <SHORT-NAME>EventToConditionGroup</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticEventToEnableConditionGroupMapping"/>
+                      <SDG GID="DiagnosticEventToStorageConditionGroupMapping"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="e4a5607f-cf00-4c0c-94b8-3e6ec4915250">
+                  <SHORT-NAME>EventToDebounceAlgorithm</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticEventToDebounceAlgorithmMapping"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="4b01479b-8906-4b6e-80f1-769f787626ef">
+                  <SHORT-NAME>EventToOperationCycle</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticEventToOperationCycleMapping"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="cba1f3a0-661e-4896-a855-38c9f4ebc539">
+                  <SHORT-NAME>EventToTroubeCodeUds</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticEventToTroubleCodeUdsMapping"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="5a04e48e-d854-40bf-a922-aae19aa38ed8">
+              <SHORT-NAME>DiagnosticTroubleCode</SHORT-NAME>
+              <ADMIN-DATA/>
+              <AR-PACKAGES>
+                <AR-PACKAGE UUID="2792bd4b-e8b2-418a-b09e-797c710c85b9">
+                  <SHORT-NAME>DemProvidedData</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticDemProvidedDataMapping"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="f307dfc5-b522-46d6-b2ca-ee7f1d6e456d">
+                  <SHORT-NAME>ExtendedDataRecord</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticExtendedDataRecord"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="faffd4c6-0ae7-458e-a7e4-1a2904993a6f">
+                  <SHORT-NAME>FreezeFrame</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticFreezeFrame"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="3aee9dd9-aaeb-4e6f-82c3-2e5ab5008389">
+                  <SHORT-NAME>MemoryDestination</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticMemoryDestinationMirror"/>
+                      <SDG GID="DiagnosticMemoryDestinationPrimary"/>
+                      <SDG GID="DiagnosticMemoryDestinationUserDefined"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="021b83e7-297a-4c52-9940-9e736471e91d">
+                  <SHORT-NAME>Props</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticTroubleCodeProps"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="9b9e7132-f011-41f3-89fa-07fe76d4d650">
+                  <SHORT-NAME>SnapshotRecord</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticDataIdentifierSet"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="be79aff3-e9a0-4c06-ad46-2048581d61ee">
+                  <SHORT-NAME>TroubleCodeUds</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DiagnosticTroubleCodeUds"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="c8b3bad1-9ec1-4bb5-9821-edec0a9393b8">
+              <SHORT-NAME>Indicator</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticIndicator"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="7f88f833-1cb2-4d9b-87c8-c43a8adf8012">
+              <SHORT-NAME>OperationCycle</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DiagnosticOperationCycle"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="c3b08785-8124-479e-ad5e-2784f0d1bbcc">
+          <SHORT-NAME>ServiceClass</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DiagnosticClearDiagnosticInformationClass"/>
+              <SDG GID="DiagnosticComControlClass"/>
+              <SDG GID="DiagnosticControlDTCSettingClass"/>
+              <SDG GID="DiagnosticCustomServiceClass"/>
+              <SDG GID="DiagnosticSessionControlClass"/>
+              <SDG GID="DiagnosticEcuResetClass"/>
+              <SDG GID="DiagnosticReadDataByIdentifierClass"/>
+              <SDG GID="DiagnosticReadDTCInformationClass"/>
+              <SDG GID="DiagnosticRequestDownloadClass"/>
+              <SDG GID="DiagnosticTransferExitClass"/>
+              <SDG GID="DiagnosticRequestUploadClass"/>
+              <SDG GID="DiagnosticResponseOnEventClass"/>
+              <SDG GID="DiagnosticRoutineControlClass"/>
+              <SDG GID="DiagnosticSecurityAccessClass"/>
+              <SDG GID="DiagnosticDataTransferClass"/>
+              <SDG GID="DiagnosticWriteDataByIdentifierClass"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="b1744de2-1b41-4dd7-a789-fdb4bf5dd0f6">
+      <SHORT-NAME>Distribution</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="40099ccf-1358-4011-807b-0299958105bc">
+          <SHORT-NAME>SwCluster</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SoftwareCluster"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="c456b85e-a3a7-4d09-ae11-4c6ff8070bca">
+          <SHORT-NAME>SwPackage</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SoftwarePackage"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="32a40061-1922-4b97-827b-b16f9929b2e1">
+          <SHORT-NAME>VehiclePackage</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="VehiclePackage"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="5857118f-3d16-4536-a345-543f18ed44e2">
+      <SHORT-NAME>ECUC</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="feca4db0-5f7b-44f3-a206-4bfdf778eb48">
+          <SHORT-NAME>Configuration</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="EcucModuleConfigurationValues"/>
+              <SDG GID="EcucValueCollection"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="48c981d2-66e9-4895-a873-730ebc2d5cb6">
+          <SHORT-NAME>Definition</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="EcucDefinitionCollection"/>
+              <SDG GID="EcucModuleDef"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="13d5adb7-934e-4d0f-8be1-aff5c97988c7">
+      <SHORT-NAME>EcuResource</SHORT-NAME>
+      <ADMIN-DATA>
+        <SDGS>
+          <SDG GID="CpSoftwareClusterMappingSet"/>
+        </SDGS>
+      </ADMIN-DATA>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="ff2ca304-a1c4-4008-b30c-307df49ed948">
+          <SHORT-NAME>HwCategory</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="HwCategory"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="783c26e3-6559-4b24-a3a7-2d3c310a5d82">
+          <SHORT-NAME>HwElement</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="HwElement"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="8df49f7c-ef1e-4baf-8903-74929f0e0913">
+          <SHORT-NAME>HwType</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="HwType"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="96db99ff-722e-4001-b034-ac6c835b4cff">
+      <SHORT-NAME>Persistency</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="644bd268-2658-43cf-a448-203dea489ef1">
+          <SHORT-NAME>FileStorage</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PersistencyFileStorage"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="96bc3dd1-02e9-49f9-b0c7-2bfb0ac4ba32">
+          <SHORT-NAME>KeyValueStorage</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PersistencyKeyValueStorage"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="d9b2fc56-ffdb-4dc1-85fa-bdc642b55dfb">
+      <SHORT-NAME>Platform</SHORT-NAME>
+      <ADMIN-DATA>
+        <SDGS>
+          <SDG GID="Machine"/>
+        </SDGS>
+      </ADMIN-DATA>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="0d45c683-6cdd-45f2-bc8b-4840d7372eb8">
+          <SHORT-NAME>EthernetEndpoint</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PlatformModuleEthernetEndpointConfiguration"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="69aae223-7490-4eaf-8c2f-f4d3a181c5c0">
+          <SHORT-NAME>FunctionGroup</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="FunctionGroupSet"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="17f1e268-e18e-4ecd-b51a-eb802248aae0">
+          <SHORT-NAME>FunctionalClusterInteraction</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ComCertificateToCryptoCertificateMapping"/>
+              <SDG GID="ComKeyToCryptoKeySlotMapping"/>
+              <SDG GID="ComSecOcToCryptoKeySlotMapping"/>
+              <SDG GID="PersistencyDeploymentElementToCryptoKeySlotMapping"/>
+              <SDG GID="PersistencyDeploymentToCryptoKeySlotMapping"/>
+              <SDG GID="PersistencyDeploymentToDltLogChannelMapping"/>
+              <SDG GID="TimeBaseProviderToPersistencyMapping"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="752b04d8-956e-4773-8ce2-c4300ec33a6b">
+          <SHORT-NAME>IdentityAccess</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ComEventGrant"/>
+              <SDG GID="ComFieldGrant"/>
+              <SDG GID="ComFindServiceGrant"/>
+              <SDG GID="ComMethodGrant"/>
+              <SDG GID="ComOfferServiceGrant"/>
+              <SDG GID="EthernetRawDataStreamGrant"/>
+            </SDGS>
+          </ADMIN-DATA>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="fe100cf5-0a20-49be-890e-fdf19c56af1f">
+              <SHORT-NAME>RemoteSubject</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="IpIamRemoteSubject"/>
+                  <SDG GID="IPSecIamRemoteSubject"/>
+                  <SDG GID="TlsIamRemoteSubject"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="97a9f9ce-6a99-422d-8c5f-0dc0d861fd9c">
+          <SHORT-NAME>PlatformHealth</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PhmContributionToMachineMapping"/>
+              <SDG GID="PlatformHealthManagementContribution"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="d16c7eea-8608-4e5d-9f42-d7877ef44615">
+          <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ProcessToMachineMappingSet"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="dc480cd5-3863-44ca-a4c7-9bf5ef9052ea">
+          <SHORT-NAME>RawDataStream</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="RawDataStreamDeployment"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="052fe625-6672-42b3-b415-1355dbb37d9b">
+      <SHORT-NAME>PortInterface</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="f437ca07-b564-4d71-ab59-37ef8bc64bdd">
+          <SHORT-NAME>ClientServer</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ClientServerInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="13daf21d-16f2-4e20-9cec-f8140ce30540">
+          <SHORT-NAME>Composite</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="CompositeInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ad388160-40a1-4372-847c-92667f977116">
+          <SHORT-NAME>CryptoGraphy</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="CryptoCertificateInterface"/>
+              <SDG GID="CryptoKeySlotInterface"/>
+              <SDG GID="CryptoProviderInterface"/>
+              <SDG GID="CryptoTrustMasterInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="d0d13775-3f14-44fc-a738-6f14673949d5">
+          <SHORT-NAME>Diagnostic</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="DiagnosticConditionInterface"/>
+              <SDG GID="DiagnosticDataElementInterface"/>
+              <SDG GID="DiagnosticDataIdentifierGenericInterface"/>
+              <SDG GID="DiagnosticDataIdentifierInterface"/>
+              <SDG GID="DiagnosticDoIPActivationLineInterface"/>
+              <SDG GID="DiagnosticDoIPGroupIdentificationInterface"/>
+              <SDG GID="DiagnosticDoIPPowerModeInterface"/>
+              <SDG GID="DiagnosticDoIPTriggerVehicleAnnouncementInterface"/>
+              <SDG GID="DiagnosticDownloadInterface"/>
+              <SDG GID="DiagnosticDTCInformationInterface"/>
+              <SDG GID="DiagnosticEcuResetInterface"/>
+              <SDG GID="DiagnosticEventInterface"/>
+              <SDG GID="DiagnosticGenericUdsInterface"/>
+              <SDG GID="DiagnosticIndicatorInterface"/>
+              <SDG GID="DiagnosticMonitorInterface"/>
+              <SDG GID="DiagnosticOperationCycleInterface"/>
+              <SDG GID="DiagnosticRoutineGenericInterface"/>
+              <SDG GID="DiagnosticRoutineInterface"/>
+              <SDG GID="DiagnosticSecurityLevelInterface"/>
+              <SDG GID="DiagnosticServiceValidationInterface"/>
+              <SDG GID="DiagnosticUploadInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="233b5fc6-89a4-4dc5-8328-0c32d470aa65">
+          <SHORT-NAME>InterfaceMapping</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="InterfaceMappingSet"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="540c09a4-fe3a-456f-a556-eaee1c8a7bca">
+          <SHORT-NAME>ModeSwitch</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ModeSwitchInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="b2f41010-1e7e-4157-8a7b-b20fed4ee935">
+          <SHORT-NAME>NvData</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="NvDataInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="fbca30f7-9cda-4709-83f6-3fba840b4f6b">
+          <SHORT-NAME>Persistency</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PersistencyFileStorageInterface"/>
+              <SDG GID="PersistencyKeyValueStorageInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="33bb2049-0234-4f38-826c-b115bbcefded">
+          <SHORT-NAME>PlatformHealth</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PhmHealthChannelInterface"/>
+              <SDG GID="PhmHealthChannelRecoveryNotificationInterface"/>
+              <SDG GID="PhmSupervisedEntityInterface"/>
+              <SDG GID="PhmSupervisionRecoveryNotificationInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="d5786965-41f4-472b-81d9-1c8df7ef4f7c">
+          <SHORT-NAME>RawDataStream</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="RawDataStreamClientInterface"/>
+              <SDG GID="RawDataStreamServerInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="c3ce48ea-3f4b-4a85-94cb-87f7578d87a9">
+          <SHORT-NAME>Rest</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="RestServiceInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="a02140bb-b81e-4037-8d63-2d9014026b7a">
+          <SHORT-NAME>SecurityEvent</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SecurityEventReportInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="8bfc43cb-4e0c-4126-8a64-41b6ebdf82b5">
+          <SHORT-NAME>SenderReceiver</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SenderReceiverInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="0707d618-075e-4b5b-bf36-a016ffcdef48">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ServiceInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="1ded5b70-d399-44b7-9d17-20bb33e6e531">
+              <SHORT-NAME>ContractVersion</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ServiceInterfacePedigree"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="7bd01629-ee2f-42f3-9456-9911f778b45a">
+              <SHORT-NAME>ErrorDomain</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ApApplicationError"/>
+                  <SDG GID="ApApplicationErrorDomain"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="06e50384-0598-4aba-be67-de2f698f83d6">
+              <SHORT-NAME>ErrorSet</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ApApplicationErrorSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="a1aea83c-e196-42ae-b8ea-38c600386e18">
+              <SHORT-NAME>Serialization</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="TransformationPropsToServiceInterfaceElementMappingSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="84d35895-249c-4362-975a-bbf07a6541c1">
+          <SHORT-NAME>TimeSynchronization</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SynchronizedTimeBaseConsumerInterface"/>
+              <SDG GID="SynchronizedTimeBaseProviderInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="a8765860-50e9-4adb-9cf1-0af173573ef7">
+          <SHORT-NAME>ToDataTypeMapping</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="PortInterfaceToDataTypeMapping"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="02247c77-bf5f-4ec3-8b91-a77962fb70c6">
+          <SHORT-NAME>Trigger</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="TriggerInterface"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="ee581940-434b-4882-a312-e592321269cd">
+      <SHORT-NAME>SECXT</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="994f4a43-0d6d-4509-a80e-61625203b92e">
+          <SHORT-NAME>FilterChain</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SecurityEventFilterChain"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="776c1850-3bad-4a5a-be88-5c58846b041e">
+          <SHORT-NAME>IdsDesign</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="IdsDesign"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="4ad7769b-46a4-4c49-a9ad-993da3b3eee2">
+          <SHORT-NAME>IdsmInstance</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="IdsmInstance"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="37704a87-a0e3-496f-b590-8ef38c4ba075">
+          <SHORT-NAME>IdsmProperty</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="IdsmProperties"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="8bfb5660-a090-480c-a9c8-975364762415">
+          <SHORT-NAME>SecurityEvent</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SecurityEventDefinition"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ff6d65f6-cf2e-4f57-8162-7e620efe9b02">
+          <SHORT-NAME>SecurityEventContextMapping</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SecurityEventContextMappingApplication"/>
+              <SDG GID="SecurityEventContextMappingBswModule"/>
+              <SDG GID="SecurityEventContextMappingCommConnector"/>
+              <SDG GID="SecurityEventContextMappingFunctionalCluster"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="bf2a46ee-e4d5-452e-8ec2-651296b0682e">
+      <SHORT-NAME>StateMachine</SHORT-NAME>
+      <ADMIN-DATA>
+        <SDGS>
+          <SDG GID="ModeDeclarationGroup"/>
+        </SDGS>
+      </ADMIN-DATA>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="b942aa2a-bc71-41be-a771-a840ef87c929">
+      <SHORT-NAME>SwcImplementation</SHORT-NAME>
+      <ADMIN-DATA>
+        <SDGS>
+          <SDG GID="SwcImplementation"/>
+        </SDGS>
+      </ADMIN-DATA>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="a423aa08-df18-4d3b-84d3-f61bb3cb7bc0">
+      <SHORT-NAME>SwComponent</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="b4f4b60a-82ee-48f1-8e0a-c53a59998a35">
+          <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="AdaptiveApplicationSwComponentType"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="3511cecf-42b8-44ef-abe5-fa461b959a76">
+          <SHORT-NAME>Atomic</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ApplicationSwComponentType"/>
+              <SDG GID="ComplexDeviceDriverSwComponentType"/>
+              <SDG GID="EcuAbstractionSwComponentType"/>
+              <SDG GID="SensorActuatorSwComponentType"/>
+              <SDG GID="ServiceProxySwComponentType"/>
+              <SDG GID="ServiceSwComponentType"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="45a03e54-485a-483a-ad52-ea2a7288960f">
+          <SHORT-NAME>Composition</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="CompositionSwComponentType"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="ec3b0e39-8d8f-4737-9ce9-8b773df6acfc">
+      <SHORT-NAME>System</SHORT-NAME>
+      <ADMIN-DATA>
+        <SDGS>
+          <SDG GID="System"/>
+        </SDGS>
+      </ADMIN-DATA>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="c17b5a99-0a2b-4e99-aa3e-04e4373c1c1c">
+          <SHORT-NAME>ApplicationPartition</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ApplicationPartition"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="d73b5efd-c086-4218-8ad4-3c8c62d3a707">
+          <SHORT-NAME>ClientIdDefinition</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="ClientIdDefinitionSet"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="9b2751dc-204c-4d8c-a421-2c9454d4b05a">
+          <SHORT-NAME>Communication</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="61d85bd3-dd45-469e-af92-a7cfd8ab3fd5">
+              <SHORT-NAME>DataTransformation</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DataTransformationSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="82ebe75e-e0ff-47e6-9b32-7bdd0d4531b4">
+              <SHORT-NAME>DltConfig</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DltMessageCollectionSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="d1851fa0-a931-41e5-8d25-23bb8935ad32">
+              <SHORT-NAME>E2E</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="E2EProfileCompatibilityProps"/>
+                  <SDG GID="EndToEndProtectionSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="955f01c1-e860-434c-99b4-b0ad48a8cb94">
+              <SHORT-NAME>EthernetProps</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE UUID="fb58353f-3c1c-4f82-8d86-c4c006a18929">
+                  <SHORT-NAME>IPSecConfig</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPSecConfigProps"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="281f8a01-0729-4ea8-a6fc-91b062594fc8">
+                  <SHORT-NAME>IPv6ExtHeaderFilter</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPv6ExtHeaderFilterSet"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="11355179-761a-4d5a-b103-75780d5940c4">
+                  <SHORT-NAME>IpProps</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="EthIpProps"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="ce21b71d-ef28-4de6-8b6b-c8bfb94a5e6c">
+                  <SHORT-NAME>SoConIPduIdentifier</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="SocketConnectionIpduIdentifierSet"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="78c1ec81-6da3-403b-8e0e-adbc9ae9ce8f">
+                  <SHORT-NAME>TcpIpIcmpProps</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="EthTcpIpIcmpProps"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="b6d6b09a-f111-4c52-b623-823a7e5b1f75">
+                  <SHORT-NAME>TcpIpProps</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="EthTcpIpProps"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="9bb2b849-076a-4a2f-b861-1dd85e3f2223">
+                  <SHORT-NAME>TcpOptionFilter</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="TcpOptionFilterSet"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="b9c07912-c27e-4839-8402-4617aade8735">
+                  <SHORT-NAME>WakeupSleepOnDataline</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="EthernetWakeupSleepOnDatalineConfigSet"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="22ce0937-5c00-4e8c-871b-786e68ac2a53">
+              <SHORT-NAME>Frame</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CanFrame"/>
+                  <SDG GID="FlexrayFrame"/>
+                  <SDG GID="GenericEthernetFrame"/>
+                  <SDG GID="Ieee1722TpEthernetFrame"/>
+                  <SDG GID="LinEventTriggeredFrame"/>
+                  <SDG GID="LinSporadicFrame"/>
+                  <SDG GID="LinUnconditionalFrame"/>
+                  <SDG GID="UserDefinedEthernetFrame"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="437c8cda-96e1-4150-a6ce-0ab2c599a284">
+              <SHORT-NAME>GlobalTimeDomain</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="GlobalTimeDomain"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="aa5cc66d-9509-433d-ac45-c98fe4fbb935">
+              <SHORT-NAME>ISignal</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ISignal"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="7d42fec0-3757-4a5e-8276-8f13b5d3dcaf">
+              <SHORT-NAME>ISignalGroup</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ISignalGroup"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="6b864ed0-6e7d-4084-a1df-515cbe1db9f1">
+              <SHORT-NAME>ISignalIPduGroup</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ISignalIPduGroup"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="e590f9cc-aa16-4c7c-881c-dbd765e00ec2">
+              <SHORT-NAME>NmConfig</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="NmConfig"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="244e49e9-3972-40e1-9d66-164c2cb38e68">
+              <SHORT-NAME>Pdu</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ContainerIPdu"/>
+                  <SDG GID="DcmIPdu"/>
+                  <SDG GID="GeneralPurposeIPdu"/>
+                  <SDG GID="GeneralPurposePdu"/>
+                  <SDG GID="ISignalIPdu"/>
+                  <SDG GID="MultiplexedIPdu"/>
+                  <SDG GID="NmPdu"/>
+                  <SDG GID="NPdu"/>
+                  <SDG GID="SecuredIPdu"/>
+                  <SDG GID="UserDefinedIPdu"/>
+                  <SDG GID="UserDefinedPdu"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="b416bb59-0817-43f5-b9ae-196f607d7cfe">
+              <SHORT-NAME>PdurIPduGroup</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PdurIPduGroup"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="d8d1c8e2-151e-4c93-89a3-5d592776d5c2">
+              <SHORT-NAME>SecureCom</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="SecureCommunicationPropsSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="33ffa07d-5312-4a4f-9c47-7a8e710fb928">
+              <SHORT-NAME>TpConfig</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CanTpConfig"/>
+                  <SDG GID="DoIpTpConfig"/>
+                  <SDG GID="EthTpConfig"/>
+                  <SDG GID="FlexrayArTpConfig"/>
+                  <SDG GID="FlexrayTpConfig"/>
+                  <SDG GID="LinTpConfig"/>
+                  <SDG GID="SomeipTpConfig"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="674e41c8-cf7d-4437-bb56-bafda0753ea2">
+          <SHORT-NAME>CryptoGraphy</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="590f9c42-9886-4727-b378-341672214ad9">
+              <SHORT-NAME>Certificate</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CryptoServiceCertificate"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="ddc4723b-cb96-451b-9e91-6a262f994d35">
+              <SHORT-NAME>Key</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CryptoServiceKey"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="198c7590-d36b-4b24-9024-b4296c7ec030">
+              <SHORT-NAME>Primitive</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CryptoServicePrimitive"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="1046d4f9-3439-4f97-b2ec-917188298a8a">
+              <SHORT-NAME>Queue</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CryptoServiceQueue"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="250fcec2-8ae8-4073-9291-f5db5dd6665e">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="0af1f55b-f7d8-4ce6-867c-76168660ab40">
+              <SHORT-NAME>Deployment</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DdsServiceInterfaceDeployment"/>
+                  <SDG GID="SomeipServiceInterfaceDeployment"/>
+                  <SDG GID="UserDefinedServiceInterfaceDeployment"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="c3b31951-1a19-4d50-b9fc-1f9a959a5c3c">
+              <SHORT-NAME>E2E</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="E2EProfileConfigurationSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="1b86af0f-de9b-48c8-a00e-f61c388c8f16">
+              <SHORT-NAME>Endpoint</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DdsServiceInstanceToMachineMapping"/>
+                  <SDG GID="SomeipServiceInstanceToMachineMapping"/>
+                  <SDG GID="UserDefinedServiceInstanceToMachineMapping"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="9a5c29af-1a5e-414a-9e46-b1cfb504dfd0">
+              <SHORT-NAME>Instance</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="DdsRequiredServiceInstance"/>
+                  <SDG GID="DdsProvidedServiceInstance"/>
+                  <SDG GID="RequiredUserDefinedServiceInstance"/>
+                  <SDG GID="ProvidedUserDefinedServiceInstance"/>
+                  <SDG GID="RequiredSomeipServiceInstance"/>
+                  <SDG GID="ProvidedSomeipServiceInstance"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="9f45d33b-a6c0-4f73-8205-e4245a94b794">
+              <SHORT-NAME>InstanceCollection</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ServiceInstanceCollectionSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="41d71014-c581-4c48-b39f-784e65a5b95b">
+              <SHORT-NAME>InstanceGroup</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ConsumedProvidedServiceInstanceGroup"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="652bef88-8fb0-4211-a7cd-eac7960b5d8f">
+              <SHORT-NAME>S2S</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="ServiceInstanceToSignalMappingSet"/>
+                  <SDG GID="SignalServiceTranslationPropsSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="480be1b9-21ee-46bc-afbc-9f39fc8b1328">
+              <SHORT-NAME>SecureCom</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="SecureComPropsSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="df807660-9e10-4528-b117-41c7e302ac41">
+              <SHORT-NAME>TimingConfig</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="SomeipSdClientEventGroupTimingConfig"/>
+                  <SDG GID="SomeipSdClientServiceInstanceConfig"/>
+                  <SDG GID="SomeipSdServerEventGroupTimingConfig"/>
+                  <SDG GID="SomeipSdServerServiceInstanceConfig"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="4e758188-5146-4b73-89f7-ed8ce45248e9">
+              <SHORT-NAME>Tlv</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="TlvDataIdDefinitionSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="7bbd995c-020e-48af-b953-41808cd452e4">
+              <SHORT-NAME>TransformationProp</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="TransformationPropsSet"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="35eb34b0-8a6c-40f7-acf3-4aec2b41c0db">
+          <SHORT-NAME>Signal</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SystemSignal"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="c5bb9670-e5a2-4599-a2d7-ed355f699e21">
+          <SHORT-NAME>SignalGroup</SHORT-NAME>
+          <ADMIN-DATA>
+            <SDGS>
+              <SDG GID="SystemSignalGroup"/>
+            </SDGS>
+          </ADMIN-DATA>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="2cbb2c8a-df71-4054-ba3e-223d0a70f76f">
+          <SHORT-NAME>SubSystem</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="6615235b-8850-4c5e-ae3b-d2ef1320b2a5">
+              <SHORT-NAME>Adaptive</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE UUID="e882ab9a-a8e6-4cee-b864-1179611eb44c">
+                  <SHORT-NAME>DltLogChannel</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="DltLogChannelDesign"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="17f87dce-14b4-49ba-bf94-03e1e397598a">
+                  <SHORT-NAME>Grant</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="ComFieldGrantDesign"/>
+                      <SDG GID="ComEventGrantDesign"/>
+                      <SDG GID="ComFindServiceGrantDesign"/>
+                      <SDG GID="ComMethodGrantDesign"/>
+                      <SDG GID="ComOfferServiceGrantDesign"/>
+                      <SDG GID="RawDataStreamGrantDesign"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="af7bba60-8903-47c5-a7ad-af4ba4754f0a">
+                  <SHORT-NAME>Process</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="ProcessDesign"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE UUID="5f306a67-1b58-497a-aad8-3bad6101be45">
+                      <SHORT-NAME>DltConfig</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="DltLogChannelDesignToProcessDesignMapping"/>
+                        </SDGS>
+                      </ADMIN-DATA>
+                    </AR-PACKAGE>
+                    <AR-PACKAGE UUID="282e1663-5fb6-4053-8f9d-8fa4f77090b3">
+                      <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="ProcessDesignToMachineDesignMappingSet"/>
+                        </SDGS>
+                      </ADMIN-DATA>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="9c8f6a75-9a24-4b9f-9043-a643076a1cfa">
+                  <SHORT-NAME>SwCluster</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="SoftwareClusterDesign"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE UUID="8b9fd528-b554-4aaa-bb66-15df33871625">
+                      <SHORT-NAME>Mapping</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="CompositionRPortToExecutableRPortMapping"/>
+                          <SDG GID="ProvidedServiceInstanceToSwClusterDesignPPortPrototypeMapping"/>
+                          <SDG GID="RequiredServiceInstanceToSwClusterDesignRPortPrototypeMapping"/>
+                        </SDGS>
+                      </ADMIN-DATA>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="c731a809-a443-4a4f-ba68-05ec9a067fb6">
+              <SHORT-NAME>Classic</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE UUID="85971524-b57d-4e98-ac11-dba36d37ad4f">
+                  <SHORT-NAME>BinaryManifestDescriptor</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="CpSoftwareClusterBinaryManifestDescriptor"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="0a3a3b83-243d-4b7b-b45c-3975fc4c5c0b">
+                  <SHORT-NAME>ResourcePool</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="CpSoftwareClusterResourcePool"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                </AR-PACKAGE>
+                <AR-PACKAGE UUID="df303386-e406-4082-9657-c36a08b9e12a">
+                  <SHORT-NAME>SwCluster</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="CpSoftwareCluster"/>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE UUID="39f0f221-804c-4e16-bcab-ec0b82c90dd6">
+                      <SHORT-NAME>Mapping</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="CompositionPPortToExecutablePPortMapping"/>
+                          <SDG GID="CpSoftwareClusterMappingSet"/>
+                        </SDGS>
+                      </ADMIN-DATA>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="4d479c37-3a23-4b7c-95b0-0f4f6801c619">
+          <SHORT-NAME>VehicleTopology</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="6e16b5fb-3a09-427c-ab89-79f9f5670dde">
+              <SHORT-NAME>Cluster</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CanCluster"/>
+                  <SDG GID="EthernetCluster"/>
+                  <SDG GID="FlexrayCluster"/>
+                  <SDG GID="LinCluster"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="fe4d3bf1-a2c1-4c69-aa4a-ec354bb72487">
+              <SHORT-NAME>Ecu</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="CouplingElement"/>
+                  <SDG GID="EcuInstance"/>
+                  <SDG GID="Gateway"/>
+                  <SDG GID="MachineDesign"/>
+                </SDGS>
+              </ADMIN-DATA>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
