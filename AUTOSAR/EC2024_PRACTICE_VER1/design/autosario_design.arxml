@@ -113,6 +113,114 @@
                     <MINOR-VERSION>0</MINOR-VERSION>
                   </SERVICE-INTERFACE-VERSION>
                 </SOMEIP-SERVICE-INTERFACE-DEPLOYMENT>
+                <USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT UUID="66fe6e6e-a7a5-447b-b4b5-f676323f321b">
+                  <SHORT-NAME>TriggerInOut_DeepRacerFG</SHORT-NAME>
+                  <CATEGORY>SERVICE_INTERFACE_DEPLOYMENT_IPC</CATEGORY>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-DEPLOYMENT">
+                        <SD GID="SERVICE-INTERFACE-ID">12</SD>
+                        <SD GID="MAJOR-VERSION">1</SD>
+                        <SD GID="MINOR-VERSION">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <FIELD-DEPLOYMENTS>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="a3817e00-3c8a-4959-8990-14554dd0a1aa">
+                      <SHORT-NAME>Notifier</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_DeepRacerFG/Notifier</FIELD-REF>
+                      <GET UUID="75e8bfb5-2728-4b2b-8921-8c93aa22871e">
+                        <SHORT-NAME>Get_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">1</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </GET>
+                      <NOTIFIER UUID="c72915a9-a9b4-4c1a-b0fc-14103660c83a">
+                        <SHORT-NAME>Notification_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-EVENT-DEPLOYMENT">
+                              <SD GID="EVENT-ID">2</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </NOTIFIER>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="ef83f934-f525-4d76-b522-f29a5da972f6">
+                      <SHORT-NAME>Trigger</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_DeepRacerFG/Trigger</FIELD-REF>
+                      <SET UUID="9592c4b4-8739-4cc0-a5b9-22b370c7e051">
+                        <SHORT-NAME>Set_Trigger</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">3</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </SET>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                  </FIELD-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_DeepRacerFG</SERVICE-INTERFACE-REF>
+                </USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT>
+                <USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT UUID="1ca44805-6255-46c3-9f66-53d6e84320b3">
+                  <SHORT-NAME>TriggerInOut_MachineFG</SHORT-NAME>
+                  <CATEGORY>SERVICE_INTERFACE_DEPLOYMENT_IPC</CATEGORY>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-DEPLOYMENT">
+                        <SD GID="SERVICE-INTERFACE-ID">11</SD>
+                        <SD GID="MAJOR-VERSION">1</SD>
+                        <SD GID="MINOR-VERSION">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <FIELD-DEPLOYMENTS>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="8c0d0bde-ae0f-43e1-9d69-ad31fda639f7">
+                      <SHORT-NAME>Notifier</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_MachineFG/Notifier</FIELD-REF>
+                      <GET UUID="532ead0f-0058-4c04-9dd3-ced28c4cf895">
+                        <SHORT-NAME>Get_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">1</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </GET>
+                      <NOTIFIER UUID="ca9011fc-39f6-4f43-b293-4445dd2bd988">
+                        <SHORT-NAME>Notification_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-EVENT-DEPLOYMENT">
+                              <SD GID="EVENT-ID">2</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </NOTIFIER>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="b1216188-3d0a-431b-96d0-6be5baf68616">
+                      <SHORT-NAME>Trigger</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_MachineFG/Trigger</FIELD-REF>
+                      <SET UUID="89fd8f0a-9589-4cd9-b59b-df1b44d60e85">
+                        <SHORT-NAME>Set_Trigger</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">3</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </SET>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                  </FIELD-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_MachineFG</SERVICE-INTERFACE-REF>
+                </USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT>
               </ELEMENTS>
             </AR-PACKAGE>
             <AR-PACKAGE UUID="79dab130-edc4-46ed-bf2c-af9316ac8bda">
