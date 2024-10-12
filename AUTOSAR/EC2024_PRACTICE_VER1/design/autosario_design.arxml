@@ -724,8 +724,12 @@
                   </SW-DATA-DEF-PROPS>
                   <NAMESPACES>
                     <SYMBOL-PROPS>
-                      <SHORT-NAME>ara:sm</SHORT-NAME>
-                      <SYMBOL>ara:sm</SYMBOL>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>sm</SHORT-NAME>
+                      <SYMBOL>sm</SYMBOL>
                     </SYMBOL-PROPS>
                   </NAMESPACES>
                   <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
@@ -769,8 +773,12 @@
                   </SW-DATA-DEF-PROPS>
                   <NAMESPACES>
                     <SYMBOL-PROPS>
-                      <SHORT-NAME>ara:sm</SHORT-NAME>
-                      <SYMBOL>ara:sm</SYMBOL>
+                      <SHORT-NAME>ara</SHORT-NAME>
+                      <SYMBOL>ara</SYMBOL>
+                    </SYMBOL-PROPS>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>sm</SHORT-NAME>
+                      <SYMBOL>sm</SYMBOL>
                     </SYMBOL-PROPS>
                   </NAMESPACES>
                   <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
@@ -1151,6 +1159,72 @@
                   <FIRE-AND-FORGET>false</FIRE-AND-FORGET>
                 </CLIENT-SERVER-OPERATION>
               </METHODS>
+            </SERVICE-INTERFACE>
+            <SERVICE-INTERFACE UUID="753368a7-4489-4528-bce7-837189bb9b26">
+              <SHORT-NAME>TriggerInOut_DeepRacerFG</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>sm</SHORT-NAME>
+                  <SYMBOL>sm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>deepracerfg</SHORT-NAME>
+                  <SYMBOL>deepracerfg</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <FIELDS>
+                <FIELD UUID="0913e208-f6d8-4afe-bdd8-fa918430f785">
+                  <SHORT-NAME>Notifier</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/DeepRacerStateType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="58e98711-759d-4d5f-9269-1b353be64e01">
+                  <SHORT-NAME>Trigger</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/DeepRacerStateType</TYPE-TREF>
+                  <HAS-GETTER>false</HAS-GETTER>
+                  <HAS-NOTIFIER>false</HAS-NOTIFIER>
+                  <HAS-SETTER>true</HAS-SETTER>
+                </FIELD>
+              </FIELDS>
+            </SERVICE-INTERFACE>
+            <SERVICE-INTERFACE UUID="d47341ef-1d1e-4c95-bd2d-1349740f99a7">
+              <SHORT-NAME>TriggerInOut_MachineFG</SHORT-NAME>
+              <NAMESPACES>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>ara</SHORT-NAME>
+                  <SYMBOL>ara</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>sm</SHORT-NAME>
+                  <SYMBOL>sm</SYMBOL>
+                </SYMBOL-PROPS>
+                <SYMBOL-PROPS>
+                  <SHORT-NAME>machinefg</SHORT-NAME>
+                  <SYMBOL>machinefg</SYMBOL>
+                </SYMBOL-PROPS>
+              </NAMESPACES>
+              <FIELDS>
+                <FIELD UUID="b8dfe443-b186-4dd0-ae49-31d20a800273">
+                  <SHORT-NAME>Notifier</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/MachineStateType</TYPE-TREF>
+                  <HAS-GETTER>true</HAS-GETTER>
+                  <HAS-NOTIFIER>true</HAS-NOTIFIER>
+                  <HAS-SETTER>false</HAS-SETTER>
+                </FIELD>
+                <FIELD UUID="2f53fef2-e3b2-489e-80e7-b37ef27396ab">
+                  <SHORT-NAME>Trigger</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/MachineStateType</TYPE-TREF>
+                  <HAS-GETTER>false</HAS-GETTER>
+                  <HAS-NOTIFIER>false</HAS-NOTIFIER>
+                  <HAS-SETTER>true</HAS-SETTER>
+                </FIELD>
+              </FIELDS>
             </SERVICE-INTERFACE>
           </ELEMENTS>
         </AR-PACKAGE>
