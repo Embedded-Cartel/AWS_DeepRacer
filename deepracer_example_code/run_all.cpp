@@ -2,6 +2,49 @@
 #include "servo/led_mgr.hpp"
 #include <opencv2/opencv.hpp>
 
+struct AgentParams {
+    bool all_wheels_on_track;
+    float x;
+    float y;
+    int closest_objects[2];
+    int closest_waypoints[2];
+    float distance_from_center;
+    bool is_crashed;
+    bool is_left_of_center;
+    bool is_offtrack;
+    bool is_reversed;
+    float heading;
+    float objects_distance[10]; // Find object
+    float objects_heading[10];
+    bool objects_left_of_center[10];
+    std::pair<float, float> objects_location[10];
+    float objects_speed[10];
+    float progress;
+    float speed;
+    float steering_angle;
+    int steps;
+    float track_length;
+    float track_width;
+    std::vector<std::pair<float, float>> waypoints;
+};
+
+// Get agent status for reward function
+float calculateReward(const AgentParams& params) {
+    // Reward function example
+    if (!params.all_wheels_on_track || params.is_crashed || params.is_offtrack) {
+        return 0.0f; 
+        // If vehicle get out track or crashed, No reward
+    }
+
+    // If neard to center, more reward
+    float reward = 1.0f - (params.distance_from_center / (params.track_width / 2.0f));
+
+    // Additional reward factor : progress status
+    reward += params.progress / 100.0f;
+
+    return reward;
+}
+
 int main() {
     cv::VideoCapture cap(0); 
     if (!cap.isOpened()) {
