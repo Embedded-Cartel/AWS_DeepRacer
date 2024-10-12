@@ -715,6 +715,72 @@
                   </SDG>
                 </SDGS>
               </ADMIN-DATA>
+              <DLT-ECU-ID>ECU</DLT-ECU-ID>
+              <DLT-LOG-CHANNELS>
+                <DLT-LOG-CHANNEL UUID="cfd1aefd-76b3-40a8-9a0c-9592a1e51df5">
+                  <SHORT-NAME>Actuator</SHORT-NAME>
+                  <APPLICATION-ID>ACTR</APPLICATION-ID>
+                  <CONTEXT-ID>ACTR</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="d216cda3-83d2-4ab7-8e5a-55f0dbd68789">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <APPLICATION-ID>CM</APPLICATION-ID>
+                  <CONTEXT-ID>CM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="bd945e34-bb95-4671-941c-bc656887484a">
+                  <SHORT-NAME>Calc</SHORT-NAME>
+                  <APPLICATION-ID>CALC</APPLICATION-ID>
+                  <CONTEXT-ID>CALC</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="cc4e5694-6923-446a-aa1b-3f8f5ab74563">
+                  <SHORT-NAME>EM</SHORT-NAME>
+                  <APPLICATION-ID>EM</APPLICATION-ID>
+                  <CONTEXT-ID>EM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="15bd69af-6e63-4044-ab5f-8111f558b2c0">
+                  <SHORT-NAME>SM</SHORT-NAME>
+                  <APPLICATION-ID>SM</APPLICATION-ID>
+                  <CONTEXT-ID>SM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="7efe4fdb-f58f-4d70-9a13-2f7b01e325d0">
+                  <SHORT-NAME>Sensor</SHORT-NAME>
+                  <APPLICATION-ID>SENS</APPLICATION-ID>
+                  <CONTEXT-ID>SENS</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="826ecc29-8e56-4c09-9862-3d804d3971b5">
+                  <SHORT-NAME>SimActuator</SHORT-NAME>
+                  <APPLICATION-ID>SACT</APPLICATION-ID>
+                  <CONTEXT-ID>SACT</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+              </DLT-LOG-CHANNELS>
             </LOG-AND-TRACE-INSTANTIATION>
             <OS-MODULE-INSTANTIATION UUID="5e1f0058-986a-4dbf-a0cf-94ff624a540d">
               <SHORT-NAME>OsModuleInstantiation</SHORT-NAME>
@@ -1382,6 +1448,46 @@
     <AR-PACKAGE UUID="eb1c212d-4b11-4ef0-ba38-9f08bd263782">
       <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
       <AR-PACKAGES>
+        <AR-PACKAGE UUID="1bb20b3d-1c59-4913-bf9c-7f52e72b8ea7">
+          <SHORT-NAME>DltConfig</SHORT-NAME>
+          <ELEMENTS>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="1be1358e-4f3b-4d3c-95a7-84c8dd7a324d">
+              <SHORT-NAME>DltLogChannelToProcessMapping_Actuator_TO_Actuator</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Actuator</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Actuator</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="3673d9e9-8b38-4832-9115-b53ed1956c44">
+              <SHORT-NAME>DltLogChannelToProcessMapping_CM_TO_CM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/CM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="f3144d1c-2eb0-4f19-9561-82c7faa01262">
+              <SHORT-NAME>DltLogChannelToProcessMapping_Calc_TO_Calc</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Calc</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Calc</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="c40f4d13-a3c5-4c87-8bd8-009e0b2bf91e">
+              <SHORT-NAME>DltLogChannelToProcessMapping_EM_TO_EM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/EM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="100efcc2-664f-4b05-8ae7-ceec45f4d519">
+              <SHORT-NAME>DltLogChannelToProcessMapping_SM_TO_SM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/SM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="956795ff-f3f2-4186-8243-84f7c577d201">
+              <SHORT-NAME>DltLogChannelToProcessMapping_Sensor_TO_Sensor</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Sensor</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Sensor</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="e89e6557-152a-497a-99b6-2023aa164d53">
+              <SHORT-NAME>DltLogChannelToProcessMapping_SimActuator_TO_SimActuator</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/SimActuator</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SimActuator</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
         <AR-PACKAGE UUID="6e698c8e-3c1c-466b-8e8f-ffb1547814a9">
           <SHORT-NAME>Executable</SHORT-NAME>
           <ELEMENTS>
