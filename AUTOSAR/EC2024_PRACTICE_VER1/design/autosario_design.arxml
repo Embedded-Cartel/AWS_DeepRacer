@@ -271,6 +271,20 @@
                   <TCP-PORT>21001</TCP-PORT>
                   <UDP-PORT>21001</UDP-PORT>
                 </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="8757ad93-0e74-4443-95ff-a586619d0138">
+                  <SHORT-NAME>Mapping_Provider_TriggerInOut_DeepRacerFG_SM</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="USER-DEFINED-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/IPC</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_DeepRacerFG_SM</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                </USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="5e0b566e-1588-404f-94b8-c5c4119fde3e">
+                  <SHORT-NAME>Mapping_Provider_TriggerInOut_MachineFG_SM</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="USER-DEFINED-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/IPC</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_MachineFG_SM</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                </USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
               </ELEMENTS>
             </AR-PACKAGE>
             <AR-PACKAGE UUID="8675bbdc-a150-460e-9b01-c2dbde55ae13">
@@ -413,6 +427,28 @@
                   <SD-SERVER-CONFIG-REF DEST="SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdServerConfig</SD-SERVER-CONFIG-REF>
                   <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
                 </PROVIDED-SOMEIP-SERVICE-INSTANCE>
+                <PROVIDED-USER-DEFINED-SERVICE-INSTANCE UUID="c2e95e9a-065e-46ca-a92c-d74202b99954">
+                  <SHORT-NAME>Provider_TriggerInOut_DeepRacerFG_SM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-INSTANCE">
+                        <SD GID="SERVICE-INSTANCE-ID">1</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/TriggerInOut_DeepRacerFG</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                </PROVIDED-USER-DEFINED-SERVICE-INSTANCE>
+                <PROVIDED-USER-DEFINED-SERVICE-INSTANCE UUID="70917d0d-1a85-4ada-8c33-f800d129ed7e">
+                  <SHORT-NAME>Provider_TriggerInOut_MachineFG_SM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-INSTANCE">
+                        <SD GID="SERVICE-INSTANCE-ID">1</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/TriggerInOut_MachineFG</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                </PROVIDED-USER-DEFINED-SERVICE-INSTANCE>
               </ELEMENTS>
             </AR-PACKAGE>
             <AR-PACKAGE UUID="8516a406-efab-4a69-92cb-ad81556daebf">
