@@ -1115,6 +1115,56 @@
             </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
           </ELEMENTS>
         </AR-PACKAGE>
+        <AR-PACKAGE UUID="a1364ad6-c7bf-45c9-b322-3e097bdc2787">
+          <SHORT-NAME>StartupConfig</SHORT-NAME>
+          <ELEMENTS>
+            <STARTUP-CONFIG-SET UUID="6d1bed11-f89e-494b-92c4-4aaf93e87103">
+              <SHORT-NAME>StartupConfigSet</SHORT-NAME>
+              <STARTUP-CONFIGS>
+                <STARTUP-CONFIG UUID="5364eb19-ea78-4947-8274-6dd23d66890e">
+                  <SHORT-NAME>Actuator</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="d88593d7-4683-45c2-ae53-7864189ccea4">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="f34deeb8-5ab2-4350-a054-6654b90e674a">
+                  <SHORT-NAME>Calc</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="4d05aef1-fa55-4986-b818-c411dea2db58">
+                  <SHORT-NAME>Sensor</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="a3304188-3174-4604-a3a7-24f46806b7c3">
+                  <SHORT-NAME>SimActuator</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+              </STARTUP-CONFIGS>
+            </STARTUP-CONFIG-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
       </AR-PACKAGES>
     </AR-PACKAGE>
     <AR-PACKAGE UUID="2c70cba2-ebb8-40d0-bd31-03c1b366b3cb">
