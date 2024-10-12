@@ -242,6 +242,7 @@
                     <SOMEIP-REQUIRED-EVENT-GROUP>
                       <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
                       <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_REvent</EVENT-GROUP-REF>
+                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
                     </SOMEIP-REQUIRED-EVENT-GROUP>
                   </REQUIRED-EVENT-GROUPS>
                   <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
@@ -611,6 +612,46 @@
                 </MODE-DECLARATION-GROUP-PROTOTYPE>
               </FUNCTION-GROUPS>
             </FUNCTION-GROUP-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ebcd5b63-0cae-4992-b70d-de4276dc06f9">
+          <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS-TO-MACHINE-MAPPING-SET UUID="99fc1305-9045-4b76-83a0-196e66fd4c6e">
+              <SHORT-NAME>ProcessToMachineMappingSet</SHORT-NAME>
+              <PROCESS-TO-MACHINE-MAPPINGS>
+                <PROCESS-TO-MACHINE-MAPPING UUID="1ccb6625-ccd0-4d19-ba06-99ec857f05ef">
+                  <SHORT-NAME>ProcessToMachineMapping_Actuator_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Actuator</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="6cf05379-20a3-4697-a2ed-962d835a0474">
+                  <SHORT-NAME>ProcessToMachineMapping_CM_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="a83dfda4-668c-4357-a7a9-16c9e2aba7fe">
+                  <SHORT-NAME>ProcessToMachineMapping_Calc_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Calc</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="02d3a418-0ccc-4508-9180-060136dcfb35">
+                  <SHORT-NAME>ProcessToMachineMapping_EM_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="54fb70ed-61df-4195-9a09-253ef2b40376">
+                  <SHORT-NAME>ProcessToMachineMapping_Sensor_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Sensor</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="b50bc4e6-78e6-4529-a9d4-3701b746d910">
+                  <SHORT-NAME>ProcessToMachineMapping_SimActuator_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SimActuator</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+              </PROCESS-TO-MACHINE-MAPPINGS>
+            </PROCESS-TO-MACHINE-MAPPING-SET>
           </ELEMENTS>
         </AR-PACKAGE>
       </AR-PACKAGES>
