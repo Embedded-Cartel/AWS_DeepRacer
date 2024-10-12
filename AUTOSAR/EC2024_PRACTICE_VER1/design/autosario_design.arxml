@@ -712,6 +712,24 @@
                     </CPP-TEMPLATE-ARGUMENT>
                   </TEMPLATE-ARGUMENTS>
                 </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="c04e6dfb-e3d5-4277-9d61-aab911f1732d">
+                  <SHORT-NAME>DeepRacerStateType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/DeepRacerStateType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara:sm</SHORT-NAME>
+                      <SYMBOL>ara:sm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
                 <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="e47945a4-7862-4ef0-b691-5ae556674ef5">
                   <SHORT-NAME>DistanceMap</SHORT-NAME>
                   <CATEGORY>ASSOCIATIVE_MAP</CATEGORY>
@@ -738,6 +756,24 @@
                       <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/double</TEMPLATE-TYPE-REF>
                     </CPP-TEMPLATE-ARGUMENT>
                   </TEMPLATE-ARGUMENTS>
+                </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+                <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="068e40bb-0631-4588-866a-0f2de1c09bf1">
+                  <SHORT-NAME>MachineStateType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CompuMethod/MachineStateType</COMPU-METHOD-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  <NAMESPACES>
+                    <SYMBOL-PROPS>
+                      <SHORT-NAME>ara:sm</SHORT-NAME>
+                      <SYMBOL>ara:sm</SYMBOL>
+                    </SYMBOL-PROPS>
+                  </NAMESPACES>
+                  <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TYPE-REFERENCE-REF>
                 </STD-CPP-IMPLEMENTATION-DATA-TYPE>
                 <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="b1076555-6854-4466-aca4-4dd0782ad432">
                   <SHORT-NAME>Message</SHORT-NAME>
@@ -937,6 +973,85 @@
                         <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
                         <COMPU-CONST>
                           <VT>kDiv</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="894631e2-0347-47f6-aad0-007faa0df231">
+                  <SHORT-NAME>DeepRacerStateType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kOff</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kDevice</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kSimulation</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVerify</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                    </COMPU-SCALES>
+                  </COMPU-INTERNAL-TO-PHYS>
+                </COMPU-METHOD>
+                <COMPU-METHOD UUID="dbfff083-0d83-46a2-8a0e-3b66bd6ab7f6">
+                  <SHORT-NAME>MachineStateType</SHORT-NAME>
+                  <CATEGORY>TEXTTABLE</CATEGORY>
+                  <COMPU-INTERNAL-TO-PHYS>
+                    <COMPU-SCALES>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kOff</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kStartup</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kShutdown</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kRestart</VT>
+                        </COMPU-CONST>
+                      </COMPU-SCALE>
+                      <COMPU-SCALE>
+                        <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x04</LOWER-LIMIT>
+                        <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x04</UPPER-LIMIT>
+                        <COMPU-CONST>
+                          <VT>kVerifyy</VT>
                         </COMPU-CONST>
                       </COMPU-SCALE>
                     </COMPU-SCALES>
