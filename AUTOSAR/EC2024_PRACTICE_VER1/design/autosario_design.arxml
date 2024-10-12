@@ -1687,6 +1687,19 @@
                     <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="84673136-a08b-4323-a6e4-d122d3734014">
+                  <SHORT-NAME>SM</SHORT-NAME>
+                  <PROCESS-ARGUMENTS>
+                    <PROCESS-ARGUMENT>
+                      <ARGUMENT>simulation</ARGUMENT>
+                    </PROCESS-ARGUMENT>
+                  </PROCESS-ARGUMENTS>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="4d05aef1-fa55-4986-b818-c411dea2db58">
                   <SHORT-NAME>Sensor</SHORT-NAME>
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
