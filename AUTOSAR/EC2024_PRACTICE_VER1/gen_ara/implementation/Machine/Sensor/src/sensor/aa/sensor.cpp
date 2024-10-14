@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : sensor.cpp
 /// SOFTWARE COMPONENT NAME           : Sensor
-/// GENERATED DATE                    : 2024-10-12 01:33:36
+/// GENERATED DATE                    : 2024-10-14 15:58:22
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ namespace aa
 {
  
 Sensor::Sensor()
-    : m_logger(ara::log::CreateLogger("DFLT", "SWC", ara::log::LogLevel::kVerbose))
+    : m_logger(ara::log::CreateLogger("SENS", "SWC", ara::log::LogLevel::kVerbose))
     , m_workers(2)
 {
 }

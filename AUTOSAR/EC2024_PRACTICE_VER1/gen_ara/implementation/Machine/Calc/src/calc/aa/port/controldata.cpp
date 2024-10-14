@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : controldata.cpp
 /// SOFTWARE COMPONENT NAME           : ControlData
-/// GENERATED DATE                    : 2024-10-12 01:33:36
+/// GENERATED DATE                    : 2024-10-14 15:58:22
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/controldata.h"
  
@@ -25,7 +25,7 @@ namespace skeleton
  
 SvControlDataSkeletonImpl::SvControlDataSkeletonImpl(ara::core::InstanceSpecifier instanceSpec, ara::com::MethodCallProcessingMode mode)
     : SvControlDataSkeleton(instanceSpec, mode)
-    , m_logger(ara::log::CreateLogger("DFLT", "PORT", ara::log::LogLevel::kVerbose))
+    , m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
 {
 }
  
@@ -42,7 +42,7 @@ namespace port
 {
  
 ControlData::ControlData()
-    : m_logger(ara::log::CreateLogger("DFLT", "PORT", ara::log::LogLevel::kVerbose))
+    : m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
     , m_CEventData{0U}
 {

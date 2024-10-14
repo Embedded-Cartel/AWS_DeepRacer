@@ -27,12 +27,13 @@
     "execution-dependencies" : [
     ],
     "log-trace-configuration" : {
-    	"default-log-level" : "none",
+    	"default-log-level" : "error",
     	"log-modes" : [
+    	    "console"
     	],
-    	"application-id" : "undefined",
+    	"application-id" : "EM",
     	"application-description" : "undefined",
-    	"context-id" : "undefined",
+    	"context-id" : "EM",
     	"file-path" : "undefined"
     },
     "core-affinity" : [

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-12 01:33:36
+/// GENERATED DATE                    : 2024-10-14 15:58:22
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sensor/aa/port/rawdata.h"
  
@@ -25,7 +25,7 @@ namespace skeleton
  
 SvRawDataSkeletonImpl::SvRawDataSkeletonImpl(ara::core::InstanceSpecifier instanceSpec, ara::com::MethodCallProcessingMode mode)
     : SvRawDataSkeleton(instanceSpec, mode)
-    , m_logger(ara::log::CreateLogger("DFLT", "PORT", ara::log::LogLevel::kVerbose))
+    , m_logger(ara::log::CreateLogger("SENS", "PORT", ara::log::LogLevel::kVerbose))
     , m_RField{0U}
 {
     // regist get handler, RField
@@ -108,7 +108,7 @@ namespace port
 {
  
 RawData::RawData()
-    : m_logger(ara::log::CreateLogger("DFLT", "PORT", ara::log::LogLevel::kVerbose))
+    : m_logger(ara::log::CreateLogger("SENS", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
     , m_REventData{0U}
 {

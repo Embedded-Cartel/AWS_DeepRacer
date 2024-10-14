@@ -31,12 +31,13 @@
     "execution-dependencies" : [
     ],
     "log-trace-configuration" : {
-    	"default-log-level" : "none",
+    	"default-log-level" : "verbose",
     	"log-modes" : [
+    	    "console"
     	],
-    	"application-id" : "undefined",
+    	"application-id" : "ACTR",
     	"application-description" : "undefined",
-    	"context-id" : "undefined",
+    	"context-id" : "ACTR",
     	"file-path" : "undefined"
     },
     "core-affinity" : [

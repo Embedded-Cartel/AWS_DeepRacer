@@ -35,12 +35,13 @@
         }
     ],
     "log-trace-configuration" : {
-    	"default-log-level" : "none",
+    	"default-log-level" : "verbose",
     	"log-modes" : [
+    	    "console"
     	],
-    	"application-id" : "undefined",
+    	"application-id" : "CALC",
     	"application-description" : "undefined",
-    	"context-id" : "undefined",
+    	"context-id" : "CALC",
     	"file-path" : "undefined"
     },
     "core-affinity" : [

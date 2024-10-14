@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : main.cpp
 /// EXECUTABLE NAME                   : Actuator
-/// GENERATED DATE                    : 2024-10-12 01:33:36
+/// GENERATED DATE                    : 2024-10-14 15:58:22
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ int main(int argc, char *argv[], char* envp[])
     
     if (araInitialized)
     {
-        ara::log::Logger& appLogger{ara::log::CreateLogger("DFLT", "Actuator's main function")};
+        ara::log::Logger& appLogger{ara::log::CreateLogger("ACTR", "Actuator's main function")};
         
         // regist signals
         std::signal(SIGTERM, SignalHandler);

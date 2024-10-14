@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-12 01:33:36
+/// GENERATED DATE                    : 2024-10-14 15:58:22
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/rawdata.h"
  
@@ -22,7 +22,7 @@ namespace port
 {
  
 RawData::RawData()
-    : m_logger(ara::log::CreateLogger("DFLT", "PORT", ara::log::LogLevel::kVerbose))
+    : m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
     , m_found{false}
 {

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : actuator.cpp
 /// SOFTWARE COMPONENT NAME           : Actuator
-/// GENERATED DATE                    : 2024-10-12 01:33:36
+/// GENERATED DATE                    : 2024-10-14 15:58:22
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ namespace aa
 {
  
 Actuator::Actuator()
-    : m_logger(ara::log::CreateLogger("DFLT", "SWC", ara::log::LogLevel::kVerbose))
+    : m_logger(ara::log::CreateLogger("ACTR", "SWC", ara::log::LogLevel::kVerbose))
     , m_workers(1)
 {
 }
