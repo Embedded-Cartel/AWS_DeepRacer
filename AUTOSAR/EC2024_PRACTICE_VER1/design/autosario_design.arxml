@@ -1754,6 +1754,7 @@
                       <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
                     </FUNCTION-GROUP-STATE-IREF>
                   </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
                   <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/SM</STARTUP-CONFIG-REF>
                 </STATE-DEPENDENT-STARTUP-CONFIG>
               </STATE-DEPENDENT-STARTUP-CONFIGS>
