@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find simulation)/launch/gazebo.launch">
+    <arg name="world_name" value="$(find simulation)/worlds/reinvent_base.world"/>
+  </include>
+
+  <!-- path chase -->
+  <!-- <arg name="csv_file_path" default="/root/deep_ws/src/simulation/scripts/checkpoint/iteration.csv"/>
+  <node pkg="simulation" type="publish_path.py" name="path_publisher" output="screen">
+    <param name="csv_file_path" value="$(arg csv_file_path)"/>
+  </node> -->
+</launch>
