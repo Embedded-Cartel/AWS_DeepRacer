@@ -16,5 +16,6 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 1. EC2024_PRACTICE_VER1 : PopcornSAR Youtube 강의 연습용
 2. EC2024_SAMPLE : PopcornSAR 제공 (1번 디렉토리와 로그 레벨 제외하고 차이 없음)
 
-### work
+### sdk
+a.k.a PARA_SDK
 ARXML 기반 Generate 이후 build 진행 시 실행파일 생성되는 경로 (cd $PARA_SDK)
