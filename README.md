@@ -19,3 +19,7 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 ### sdk
 a.k.a PARA_SDK
 ARXML 기반 Generate 이후 build 진행 시 실행파일 생성되는 경로 (cd $PARA_SDK)
+
+### deepracercode
+DeepRacer 샘플 코드
+Camera, LiDAR, Servo
