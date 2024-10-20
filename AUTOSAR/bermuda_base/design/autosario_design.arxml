@@ -4,6 +4,115 @@
     <AR-PACKAGE UUID="01350721-1627-4c2b-8aa1-2f0c1ade9ae2">
       <SHORT-NAME>UnsetARElements</SHORT-NAME>
       <ELEMENTS>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="69650dd3-6077-4dfd-b8bf-f306f56fd60e">
+          <SHORT-NAME>Arithmetic</SHORT-NAME>
+          <CATEGORY>TYPE_REFERENCE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                <COMPU-METHOD-REF DEST="COMPU-METHOD">/UnsetARElements/CompuMethod1</COMPU-METHOD-REF>
+              </SW-DATA-DEF-PROPS-CONDITIONAL>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint8_t</TYPE-REFERENCE-REF>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="31ae18f7-a044-41de-9520-f734b097567b">
+          <SHORT-NAME>ByteArray</SHORT-NAME>
+          <CATEGORY>ARRAY</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <ARRAY-SIZE>10</ARRAY-SIZE>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint8_t</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <COMPU-METHOD UUID="52ecacd9-2a05-4532-af1a-76e4f81c444e">
+          <SHORT-NAME>CompuMethod1</SHORT-NAME>
+          <CATEGORY>TEXTTABLE</CATEGORY>
+          <COMPU-INTERNAL-TO-PHYS>
+            <COMPU-SCALES>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kAdd</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kSub</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kMul</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kDiv</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+            </COMPU-SCALES>
+          </COMPU-INTERNAL-TO-PHYS>
+        </COMPU-METHOD>
+        <SYSTEM UUID="e241d71c-3959-4a48-9c6c-8fdfeaebbafb">
+          <SHORT-NAME>DeepRacer</SHORT-NAME>
+          <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
+          <FIBEX-ELEMENTS>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="MACHINE-DESIGN">/UnsetARElements/Ecu</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="ETHERNET-CLUSTER">/UnsetARElements/EthernetCluster</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+          </FIBEX-ELEMENTS>
+          <SYSTEM-VERSION>1.0.0</SYSTEM-VERSION>
+        </SYSTEM>
+        <SYSTEM UUID="e241d71c-3959-4a48-9c6c-8fdfeaebbafb">
+          <SHORT-NAME>DeepRacer</SHORT-NAME>
+          <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
+          <FIBEX-ELEMENTS>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="MACHINE-DESIGN">/UnsetARElements/Ecu</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="ETHERNET-CLUSTER">/UnsetARElements/EthernetCluster</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+          </FIBEX-ELEMENTS>
+          <SYSTEM-VERSION>1.0.0</SYSTEM-VERSION>
+        </SYSTEM>
         <SYSTEM UUID="e241d71c-3959-4a48-9c6c-8fdfeaebbafb">
           <SHORT-NAME>DeepRacer</SHORT-NAME>
           <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
@@ -35,6 +144,105 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="4d2523c3-ba51-4967-8f2d-4da5555a2cdc">
+          <SHORT-NAME>DeepRacerState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/DeepRacerState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="b315c5d0-5b1e-4d3c-8bb1-07ec21342e64">
+              <SHORT-NAME>Device</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="46f720ff-55e8-4bdc-bb1e-1a1a81f89168">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="a2649530-a9b2-4f94-a29c-3ac8793a5f42">
+              <SHORT-NAME>Simulation</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="887e92fd-8530-463e-a678-30f73cad5ba5">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="4d2523c3-ba51-4967-8f2d-4da5555a2cdc">
+          <SHORT-NAME>DeepRacerState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/DeepRacerState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="b315c5d0-5b1e-4d3c-8bb1-07ec21342e64">
+              <SHORT-NAME>Device</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="46f720ff-55e8-4bdc-bb1e-1a1a81f89168">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="a2649530-a9b2-4f94-a29c-3ac8793a5f42">
+              <SHORT-NAME>Simulation</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="887e92fd-8530-463e-a678-30f73cad5ba5">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="832d26ba-00c9-473b-85b7-9a3ce47ab72e">
+          <SHORT-NAME>DistanceMap</SHORT-NAME>
+          <CATEGORY>ASSOCIATIVE_MAP</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/Message</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/double</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <MACHINE-DESIGN UUID="c6af139e-ec04-48cb-9032-32acc31a96fd">
+          <SHORT-NAME>Ecu</SHORT-NAME>
+          <COMMUNICATION-CONNECTORS>
+            <USER-DEFINED-COMMUNICATION-CONNECTOR UUID="c2df1b7b-bcb6-4990-8328-7c835b3b6c8d">
+              <SHORT-NAME>IPC</SHORT-NAME>
+            </USER-DEFINED-COMMUNICATION-CONNECTOR>
+            <ETHERNET-COMMUNICATION-CONNECTOR UUID="2c7c38ad-e04d-45bf-8066-52e75d2b287c">
+              <SHORT-NAME>ens5</SHORT-NAME>
+              <UNICAST-NETWORK-ENDPOINT-REF DEST="NETWORK-ENDPOINT">/UnsetARElements/EthernetCluster/PhysicalChannel/EcuEndpont</UNICAST-NETWORK-ENDPOINT-REF>
+            </ETHERNET-COMMUNICATION-CONNECTOR>
+          </COMMUNICATION-CONNECTORS>
+          <SERVICE-DISCOVER-CONFIGS>
+            <SOMEIP-SERVICE-DISCOVERY>
+              <MULTICAST-SD-IP-ADDRESS-REF DEST="NETWORK-ENDPOINT">/UnsetARElements/EthernetCluster/PhysicalChannel/SdEndpoint</MULTICAST-SD-IP-ADDRESS-REF>
+              <SOMEIP-SERVICE-DISCOVERY-PORT>30490</SOMEIP-SERVICE-DISCOVERY-PORT>
+            </SOMEIP-SERVICE-DISCOVERY>
+          </SERVICE-DISCOVER-CONFIGS>
+        </MACHINE-DESIGN>
+        <MACHINE-DESIGN UUID="c6af139e-ec04-48cb-9032-32acc31a96fd">
+          <SHORT-NAME>Ecu</SHORT-NAME>
+          <COMMUNICATION-CONNECTORS>
+            <USER-DEFINED-COMMUNICATION-CONNECTOR UUID="c2df1b7b-bcb6-4990-8328-7c835b3b6c8d">
+              <SHORT-NAME>IPC</SHORT-NAME>
+            </USER-DEFINED-COMMUNICATION-CONNECTOR>
+            <ETHERNET-COMMUNICATION-CONNECTOR UUID="2c7c38ad-e04d-45bf-8066-52e75d2b287c">
+              <SHORT-NAME>ens5</SHORT-NAME>
+              <UNICAST-NETWORK-ENDPOINT-REF DEST="NETWORK-ENDPOINT">/UnsetARElements/EthernetCluster/PhysicalChannel/EcuEndpont</UNICAST-NETWORK-ENDPOINT-REF>
+            </ETHERNET-COMMUNICATION-CONNECTOR>
+          </COMMUNICATION-CONNECTORS>
+          <SERVICE-DISCOVER-CONFIGS>
+            <SOMEIP-SERVICE-DISCOVERY>
+              <MULTICAST-SD-IP-ADDRESS-REF DEST="NETWORK-ENDPOINT">/UnsetARElements/EthernetCluster/PhysicalChannel/SdEndpoint</MULTICAST-SD-IP-ADDRESS-REF>
+              <SOMEIP-SERVICE-DISCOVERY-PORT>30490</SOMEIP-SERVICE-DISCOVERY-PORT>
+            </SOMEIP-SERVICE-DISCOVERY>
+          </SERVICE-DISCOVER-CONFIGS>
+        </MACHINE-DESIGN>
         <MACHINE-DESIGN UUID="c6af139e-ec04-48cb-9032-32acc31a96fd">
           <SHORT-NAME>Ecu</SHORT-NAME>
           <COMMUNICATION-CONNECTORS>
@@ -91,6 +299,82 @@
             </ETHERNET-CLUSTER-CONDITIONAL>
           </ETHERNET-CLUSTER-VARIANTS>
         </ETHERNET-CLUSTER>
+        <ETHERNET-CLUSTER UUID="e31f522b-14dc-4545-bee2-b03346f83664">
+          <SHORT-NAME>EthernetCluster</SHORT-NAME>
+          <ETHERNET-CLUSTER-VARIANTS>
+            <ETHERNET-CLUSTER-CONDITIONAL>
+              <PHYSICAL-CHANNELS>
+                <ETHERNET-PHYSICAL-CHANNEL UUID="e5db222a-7992-4e12-981b-1283e6bd15b7">
+                  <SHORT-NAME>PhysicalChannel</SHORT-NAME>
+                  <CATEGORY>WIRED</CATEGORY>
+                  <COMM-CONNECTORS>
+                    <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                      <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/UnsetARElements/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                    </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                  </COMM-CONNECTORS>
+                  <NETWORK-ENDPOINTS>
+                    <NETWORK-ENDPOINT UUID="088d59ca-a06f-4640-aa0d-cd8bf4653d5a">
+                      <SHORT-NAME>EcuEndpont</SHORT-NAME>
+                      <NETWORK-ENDPOINT-ADDRESSES>
+                        <IPV-4-CONFIGURATION>
+                          <IPV-4-ADDRESS>172.31.16.137</IPV-4-ADDRESS>
+                          <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                        </IPV-4-CONFIGURATION>
+                      </NETWORK-ENDPOINT-ADDRESSES>
+                    </NETWORK-ENDPOINT>
+                    <NETWORK-ENDPOINT UUID="ace4a956-c3ed-42b2-a134-57c190945587">
+                      <SHORT-NAME>SdEndpoint</SHORT-NAME>
+                      <NETWORK-ENDPOINT-ADDRESSES>
+                        <IPV-4-CONFIGURATION>
+                          <IPV-4-ADDRESS>224.0.0.1</IPV-4-ADDRESS>
+                          <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                        </IPV-4-CONFIGURATION>
+                      </NETWORK-ENDPOINT-ADDRESSES>
+                    </NETWORK-ENDPOINT>
+                  </NETWORK-ENDPOINTS>
+                </ETHERNET-PHYSICAL-CHANNEL>
+              </PHYSICAL-CHANNELS>
+            </ETHERNET-CLUSTER-CONDITIONAL>
+          </ETHERNET-CLUSTER-VARIANTS>
+        </ETHERNET-CLUSTER>
+        <ETHERNET-CLUSTER UUID="e31f522b-14dc-4545-bee2-b03346f83664">
+          <SHORT-NAME>EthernetCluster</SHORT-NAME>
+          <ETHERNET-CLUSTER-VARIANTS>
+            <ETHERNET-CLUSTER-CONDITIONAL>
+              <PHYSICAL-CHANNELS>
+                <ETHERNET-PHYSICAL-CHANNEL UUID="e5db222a-7992-4e12-981b-1283e6bd15b7">
+                  <SHORT-NAME>PhysicalChannel</SHORT-NAME>
+                  <CATEGORY>WIRED</CATEGORY>
+                  <COMM-CONNECTORS>
+                    <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                      <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/UnsetARElements/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                    </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                  </COMM-CONNECTORS>
+                  <NETWORK-ENDPOINTS>
+                    <NETWORK-ENDPOINT UUID="088d59ca-a06f-4640-aa0d-cd8bf4653d5a">
+                      <SHORT-NAME>EcuEndpont</SHORT-NAME>
+                      <NETWORK-ENDPOINT-ADDRESSES>
+                        <IPV-4-CONFIGURATION>
+                          <IPV-4-ADDRESS>172.31.16.137</IPV-4-ADDRESS>
+                          <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                        </IPV-4-CONFIGURATION>
+                      </NETWORK-ENDPOINT-ADDRESSES>
+                    </NETWORK-ENDPOINT>
+                    <NETWORK-ENDPOINT UUID="ace4a956-c3ed-42b2-a134-57c190945587">
+                      <SHORT-NAME>SdEndpoint</SHORT-NAME>
+                      <NETWORK-ENDPOINT-ADDRESSES>
+                        <IPV-4-CONFIGURATION>
+                          <IPV-4-ADDRESS>224.0.0.1</IPV-4-ADDRESS>
+                          <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                        </IPV-4-CONFIGURATION>
+                      </NETWORK-ENDPOINT-ADDRESSES>
+                    </NETWORK-ENDPOINT>
+                  </NETWORK-ENDPOINTS>
+                </ETHERNET-PHYSICAL-CHANNEL>
+              </PHYSICAL-CHANNELS>
+            </ETHERNET-CLUSTER-CONDITIONAL>
+          </ETHERNET-CLUSTER-VARIANTS>
+        </ETHERNET-CLUSTER>
         <FUNCTION-GROUP-SET UUID="daa9b0c9-ecb6-46f5-ba66-1f09d94fd454">
           <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
           <FUNCTION-GROUPS>
@@ -104,6 +388,248 @@
             </MODE-DECLARATION-GROUP-PROTOTYPE>
           </FUNCTION-GROUPS>
         </FUNCTION-GROUP-SET>
+        <FUNCTION-GROUP-SET UUID="daa9b0c9-ecb6-46f5-ba66-1f09d94fd454">
+          <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+          <FUNCTION-GROUPS>
+            <MODE-DECLARATION-GROUP-PROTOTYPE UUID="036e6510-9c87-4203-91b4-16245eb20aa5">
+              <SHORT-NAME>DeepRacerFG</SHORT-NAME>
+              <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/UnsetARElements/DeepRacerState</TYPE-TREF>
+            </MODE-DECLARATION-GROUP-PROTOTYPE>
+            <MODE-DECLARATION-GROUP-PROTOTYPE UUID="485a3c59-16ee-4e3d-b586-cb94b01af544">
+              <SHORT-NAME>MachineFG</SHORT-NAME>
+              <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/UnsetARElements/MachineState</TYPE-TREF>
+            </MODE-DECLARATION-GROUP-PROTOTYPE>
+          </FUNCTION-GROUPS>
+        </FUNCTION-GROUP-SET>
+        <FUNCTION-GROUP-SET UUID="daa9b0c9-ecb6-46f5-ba66-1f09d94fd454">
+          <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+          <FUNCTION-GROUPS>
+            <MODE-DECLARATION-GROUP-PROTOTYPE UUID="036e6510-9c87-4203-91b4-16245eb20aa5">
+              <SHORT-NAME>DeepRacerFG</SHORT-NAME>
+              <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/UnsetARElements/DeepRacerState</TYPE-TREF>
+            </MODE-DECLARATION-GROUP-PROTOTYPE>
+            <MODE-DECLARATION-GROUP-PROTOTYPE UUID="485a3c59-16ee-4e3d-b586-cb94b01af544">
+              <SHORT-NAME>MachineFG</SHORT-NAME>
+              <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/UnsetARElements/MachineState</TYPE-TREF>
+            </MODE-DECLARATION-GROUP-PROTOTYPE>
+          </FUNCTION-GROUPS>
+        </FUNCTION-GROUP-SET>
+        <MACHINE UUID="68249e2d-c7cc-4da3-9fbf-e8901e61d725">
+          <SHORT-NAME>Machine</SHORT-NAME>
+          <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/UnsetARElements/Ecu</MACHINE-DESIGN-REF>
+          <MODULE-INSTANTIATIONS>
+            <LOG-AND-TRACE-INSTANTIATION UUID="af812f37-e674-4c94-a325-15a4bc50740e">
+              <SHORT-NAME>LogAndTraceInstantiation</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-DLT-CONF">
+                    <SDG GID="GENERAL-CONFIGURATION">
+                      <SD GID="VERBOSE">ON</SD>
+                      <SD GID="DAEMONIZE">ON</SD>
+                      <SD GID="SEND-SERIAL-HEADER">ON</SD>
+                      <SD GID="SEND-CONTEXT-REGISTRATION">ON</SD>
+                      <SD GID="SEND-MESSAGE-TIME">0</SD>
+                      <SD GID="SHAED-MEMORY-SIZE">100000</SD>
+                      <SD GID="PERSISTENCE-STORAGE-PATH">/tmp</SD>
+                      <SD GID="LOGGING-MODE">LOG-TO-STDOUT</SD>
+                      <SD GID="LOGGING-LEVEL">LOG-INFO</SD>
+                      <SD GID="LOGGING-FILE-NAME">/tmp/dlt.log</SD>
+                      <SD GID="TIME-OUT-ON-SEND">4</SD>
+                      <SD GID="RING-BUFFER-MIN-SIZE">500000</SD>
+                      <SD GID="RING-BUFFER-MAX-SIZE">10000000</SD>
+                      <SD GID="RING-BUFFER-STEP-SIZE">500000</SD>
+                      <SD GID="DAEMON-FIFO-SIZE">65536</SD>
+                      <SD GID="CONTEXT-LOG-LEVEL">DLT-LOG-INFO</SD>
+                      <SD GID="CONTEXT-TRACE-STATUS">DLT-TRACE-STATUS-OFF</SD>
+                      <SD GID="FORCE-CONTEXT-LOG-LEVEL-AND-TRACE-STATUS">OFF</SD>
+                      <SD GID="INJECTION-MODE">ON</SD>
+                    </SDG>
+                    <SDG GID="GATEWAY-CONFIGURATION">
+                      <SD GID="GATEWAY-MODE">OFF</SD>
+                      <SD GID="GATEWAY-CONFIG-FILE">/etc/dlt_gateway.conf</SD>
+                    </SDG>
+                    <SDG GID="PERMISSION-CONFIGURATION">
+                      <SD GID="DAEMON-FIFO-GROUP">/tmp/dlt</SD>
+                    </SDG>
+                    <SDG GID="CONTROL-APPLICATION">
+                      <SD GID="CONTROL-SOCKET-PATH">/tmp/dlt-ctrl.sock</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-TRACE-MEMORY">
+                      <SD GID="OFFLINE-TRACE-DIRECTORY">/tmp</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-SIZE">1000000</SD>
+                      <SD GID="OFFLINE-TRACE-MAX-SIZE">4000000</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-NAME-TIMESTAMP-BASED">TIMESTAMP-BASED</SD>
+                    </SDG>
+                    <SDG GID="LOCAL-CONSOLE-OUTPUT-CONFIGURATION">
+                      <SD GID="PRINT-ASCII">DISABLE</SD>
+                      <SD GID="PRINT-HEX">DISABLE</SD>
+                      <SD GID="PRINT-HEADERS-ONLY">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="CLIENT-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="RS232-DEVICE-NAME">/dev/ttyS0</SD>
+                      <SD GID="RS232-BAUDRATE">115200</SD>
+                      <SD GID="RS232-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="TCP-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="TCP-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="ECU-SOFTWARE-VERSION-INFO">
+                      <SD GID="SEND-ECU-SOFTWARE-VERSION">DISABLE</SD>
+                      <SD GID="PATH-TO-ECU-SOFTWARE-VERSION"/>
+                    </SDG>
+                    <SDG GID="TIMEZONE-INFO">
+                      <SD GID="SEND-TIMEZONE">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-LOGSTORAGE">
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-DEVICES">0</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DIR-PATH">/opt</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-TIMESTAMP">DISABLE</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DELIMITER">_</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-COUNTER">999</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-CACHE-SIZE">30000</SD>
+                    </SDG>
+                    <SDG GID="UDP-MULTICAST-CONFIGURATION">
+                      <SD GID="UDP-CONNECTION-SETUP">ENABLE</SD>
+                      <SD GID="UDP-MULTICAST-IP-ADDRESS">255.0.0.37</SD>
+                      <SD GID="UDP-MULTICAST-IP-PORT">3491</SD>
+                    </SDG>
+                    <SDG GID="BINDADDRESS-LIMITATION">
+                      <SD GID="BIND-ADDRESS">0.0.0.0</SD>
+                    </SDG>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+            </LOG-AND-TRACE-INSTANTIATION>
+            <OS-MODULE-INSTANTIATION UUID="c735b935-e855-4944-8f58-87687efba724">
+              <SHORT-NAME>OsModuleInstantiation</SHORT-NAME>
+              <RESOURCE-GROUPS>
+                <RESOURCE-GROUP UUID="2c083159-3b48-4a77-a5a0-927c8a142680">
+                  <SHORT-NAME>ResourceGroup</SHORT-NAME>
+                </RESOURCE-GROUP>
+              </RESOURCE-GROUPS>
+            </OS-MODULE-INSTANTIATION>
+          </MODULE-INSTANTIATIONS>
+          <PROCESSORS>
+            <PROCESSOR UUID="10e70753-cb1c-4b3c-9b59-f90f2e57f575">
+              <SHORT-NAME>Core</SHORT-NAME>
+              <CORES>
+                <PROCESSOR-CORE UUID="796959b3-5476-4fb3-b167-5b67e7e6c633">
+                  <SHORT-NAME>Core</SHORT-NAME>
+                  <CORE-ID>0</CORE-ID>
+                </PROCESSOR-CORE>
+              </CORES>
+            </PROCESSOR>
+          </PROCESSORS>
+          <TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>NO-TRUSTED-PLATFORM-SUPPORT</TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>
+        </MACHINE>
+        <MACHINE UUID="68249e2d-c7cc-4da3-9fbf-e8901e61d725">
+          <SHORT-NAME>Machine</SHORT-NAME>
+          <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/UnsetARElements/Ecu</MACHINE-DESIGN-REF>
+          <MODULE-INSTANTIATIONS>
+            <LOG-AND-TRACE-INSTANTIATION UUID="af812f37-e674-4c94-a325-15a4bc50740e">
+              <SHORT-NAME>LogAndTraceInstantiation</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-DLT-CONF">
+                    <SDG GID="GENERAL-CONFIGURATION">
+                      <SD GID="VERBOSE">ON</SD>
+                      <SD GID="DAEMONIZE">ON</SD>
+                      <SD GID="SEND-SERIAL-HEADER">ON</SD>
+                      <SD GID="SEND-CONTEXT-REGISTRATION">ON</SD>
+                      <SD GID="SEND-MESSAGE-TIME">0</SD>
+                      <SD GID="SHAED-MEMORY-SIZE">100000</SD>
+                      <SD GID="PERSISTENCE-STORAGE-PATH">/tmp</SD>
+                      <SD GID="LOGGING-MODE">LOG-TO-STDOUT</SD>
+                      <SD GID="LOGGING-LEVEL">LOG-INFO</SD>
+                      <SD GID="LOGGING-FILE-NAME">/tmp/dlt.log</SD>
+                      <SD GID="TIME-OUT-ON-SEND">4</SD>
+                      <SD GID="RING-BUFFER-MIN-SIZE">500000</SD>
+                      <SD GID="RING-BUFFER-MAX-SIZE">10000000</SD>
+                      <SD GID="RING-BUFFER-STEP-SIZE">500000</SD>
+                      <SD GID="DAEMON-FIFO-SIZE">65536</SD>
+                      <SD GID="CONTEXT-LOG-LEVEL">DLT-LOG-INFO</SD>
+                      <SD GID="CONTEXT-TRACE-STATUS">DLT-TRACE-STATUS-OFF</SD>
+                      <SD GID="FORCE-CONTEXT-LOG-LEVEL-AND-TRACE-STATUS">OFF</SD>
+                      <SD GID="INJECTION-MODE">ON</SD>
+                    </SDG>
+                    <SDG GID="GATEWAY-CONFIGURATION">
+                      <SD GID="GATEWAY-MODE">OFF</SD>
+                      <SD GID="GATEWAY-CONFIG-FILE">/etc/dlt_gateway.conf</SD>
+                    </SDG>
+                    <SDG GID="PERMISSION-CONFIGURATION">
+                      <SD GID="DAEMON-FIFO-GROUP">/tmp/dlt</SD>
+                    </SDG>
+                    <SDG GID="CONTROL-APPLICATION">
+                      <SD GID="CONTROL-SOCKET-PATH">/tmp/dlt-ctrl.sock</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-TRACE-MEMORY">
+                      <SD GID="OFFLINE-TRACE-DIRECTORY">/tmp</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-SIZE">1000000</SD>
+                      <SD GID="OFFLINE-TRACE-MAX-SIZE">4000000</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-NAME-TIMESTAMP-BASED">TIMESTAMP-BASED</SD>
+                    </SDG>
+                    <SDG GID="LOCAL-CONSOLE-OUTPUT-CONFIGURATION">
+                      <SD GID="PRINT-ASCII">DISABLE</SD>
+                      <SD GID="PRINT-HEX">DISABLE</SD>
+                      <SD GID="PRINT-HEADERS-ONLY">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="CLIENT-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="RS232-DEVICE-NAME">/dev/ttyS0</SD>
+                      <SD GID="RS232-BAUDRATE">115200</SD>
+                      <SD GID="RS232-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="TCP-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="TCP-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="ECU-SOFTWARE-VERSION-INFO">
+                      <SD GID="SEND-ECU-SOFTWARE-VERSION">DISABLE</SD>
+                      <SD GID="PATH-TO-ECU-SOFTWARE-VERSION"/>
+                    </SDG>
+                    <SDG GID="TIMEZONE-INFO">
+                      <SD GID="SEND-TIMEZONE">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-LOGSTORAGE">
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-DEVICES">0</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DIR-PATH">/opt</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-TIMESTAMP">DISABLE</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DELIMITER">_</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-COUNTER">999</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-CACHE-SIZE">30000</SD>
+                    </SDG>
+                    <SDG GID="UDP-MULTICAST-CONFIGURATION">
+                      <SD GID="UDP-CONNECTION-SETUP">ENABLE</SD>
+                      <SD GID="UDP-MULTICAST-IP-ADDRESS">255.0.0.37</SD>
+                      <SD GID="UDP-MULTICAST-IP-PORT">3491</SD>
+                    </SDG>
+                    <SDG GID="BINDADDRESS-LIMITATION">
+                      <SD GID="BIND-ADDRESS">0.0.0.0</SD>
+                    </SDG>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+            </LOG-AND-TRACE-INSTANTIATION>
+            <OS-MODULE-INSTANTIATION UUID="c735b935-e855-4944-8f58-87687efba724">
+              <SHORT-NAME>OsModuleInstantiation</SHORT-NAME>
+              <RESOURCE-GROUPS>
+                <RESOURCE-GROUP UUID="2c083159-3b48-4a77-a5a0-927c8a142680">
+                  <SHORT-NAME>ResourceGroup</SHORT-NAME>
+                </RESOURCE-GROUP>
+              </RESOURCE-GROUPS>
+            </OS-MODULE-INSTANTIATION>
+          </MODULE-INSTANTIATIONS>
+          <PROCESSORS>
+            <PROCESSOR UUID="10e70753-cb1c-4b3c-9b59-f90f2e57f575">
+              <SHORT-NAME>Core</SHORT-NAME>
+              <CORES>
+                <PROCESSOR-CORE UUID="796959b3-5476-4fb3-b167-5b67e7e6c633">
+                  <SHORT-NAME>Core</SHORT-NAME>
+                  <CORE-ID>0</CORE-ID>
+                </PROCESSOR-CORE>
+              </CORES>
+            </PROCESSOR>
+          </PROCESSORS>
+          <TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>NO-TRUSTED-PLATFORM-SUPPORT</TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>
+        </MACHINE>
         <MACHINE UUID="68249e2d-c7cc-4da3-9fbf-e8901e61d725">
           <SHORT-NAME>Machine</SHORT-NAME>
           <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/UnsetARElements/Ecu</MACHINE-DESIGN-REF>
@@ -233,6 +759,67 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="dcbfca9d-0c33-4864-babe-874277eba1cc">
+          <SHORT-NAME>MachineState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/MachineState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="c222ed27-e6bc-454b-8636-9edc6ddcec1b">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="41984ea0-75e0-46a5-9c81-f765e14b85ca">
+              <SHORT-NAME>Restart</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="e577817c-1c7c-467d-966b-eaba08e00976">
+              <SHORT-NAME>Shutdown</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="07a815ce-3beb-4e50-8c35-76c63f4e4bb9">
+              <SHORT-NAME>Startup</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="4b2470c8-4716-4c12-a103-e82564774bad">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="dcbfca9d-0c33-4864-babe-874277eba1cc">
+          <SHORT-NAME>MachineState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/MachineState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="c222ed27-e6bc-454b-8636-9edc6ddcec1b">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="41984ea0-75e0-46a5-9c81-f765e14b85ca">
+              <SHORT-NAME>Restart</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="e577817c-1c7c-467d-966b-eaba08e00976">
+              <SHORT-NAME>Shutdown</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="07a815ce-3beb-4e50-8c35-76c63f4e4bb9">
+              <SHORT-NAME>Startup</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="4b2470c8-4716-4c12-a103-e82564774bad">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="9ce5830f-5148-4014-85b7-e27dd5ff9d65">
+          <SHORT-NAME>Message</SHORT-NAME>
+          <CATEGORY>STRING</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
         <MODE-DECLARATION-GROUP UUID="a814844f-9665-4ed4-8cee-1c4735abc53b">
           <SHORT-NAME>ProcessState</SHORT-NAME>
           <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/ProcessState/Idle</INITIAL-MODE-REF>
@@ -251,6 +838,180 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="a814844f-9665-4ed4-8cee-1c4735abc53b">
+          <SHORT-NAME>ProcessState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/ProcessState/Idle</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="5beaeff3-8a62-45b4-93a9-a5df15d02d4d">
+              <SHORT-NAME>Idle</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="b823b79b-05c3-46c8-ba1a-7ec50a0a293a">
+              <SHORT-NAME>Running</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="39630f44-a196-4f72-8e5b-4135f0cb4dc4">
+              <SHORT-NAME>Starting</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="19d02cdf-ccad-47a0-8636-cfeb202fe830">
+              <SHORT-NAME>Terminated</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="a814844f-9665-4ed4-8cee-1c4735abc53b">
+          <SHORT-NAME>ProcessState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/ProcessState/Idle</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="5beaeff3-8a62-45b4-93a9-a5df15d02d4d">
+              <SHORT-NAME>Idle</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="b823b79b-05c3-46c8-ba1a-7ec50a0a293a">
+              <SHORT-NAME>Running</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="39630f44-a196-4f72-8e5b-4135f0cb4dc4">
+              <SHORT-NAME>Starting</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="19d02cdf-ccad-47a0-8636-cfeb202fe830">
+              <SHORT-NAME>Terminated</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="3901297c-6be9-4b9a-9103-91bc62129b9d">
+          <SHORT-NAME>Speed</SHORT-NAME>
+          <CATEGORY>TYPE_REFERENCE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/double</TYPE-REFERENCE-REF>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="b41b977a-9897-4f7f-b2ca-030124608e94">
+          <SHORT-NAME>Uint32Vector</SHORT-NAME>
+          <CATEGORY>VECTOR</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint32_t</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="fa130c82-fae6-4a7b-ad10-8b1144e58f76">
+          <SHORT-NAME>UserRecord</SHORT-NAME>
+          <CATEGORY>STRUCTURE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <SUB-ELEMENTS>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="9dbc54e4-428b-46ea-8cb1-f7687b1f738f">
+              <SHORT-NAME>id</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint32_t</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="abd73e31-6491-4242-be0d-33e92fd86853">
+              <SHORT-NAME>age</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint16_t</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="9d446ef0-057c-4cde-986f-949aacaf4ca1">
+              <SHORT-NAME>description</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/Message</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+          </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="6e9c1a88-14ba-468e-829c-8b449bafe715">
+          <SHORT-NAME>bool</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="4941d9a3-a035-4c78-a5e1-156ab8f799ce">
+          <SHORT-NAME>double</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="226be22e-8623-42ba-a6e6-3f7e94a10ce3">
+          <SHORT-NAME>float</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="f0272657-a0da-413c-ba1f-4638dfaef290">
+          <SHORT-NAME>int16_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="64a81a06-e8b4-492b-a324-54c5dfd697fc">
+          <SHORT-NAME>int32_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="2950775a-be5c-43e4-8e48-d4bf5f43fca3">
+          <SHORT-NAME>int64_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="ec5cd40e-add9-4539-a5f6-13258724f6cb">
+          <SHORT-NAME>int8_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="53a71d1d-d471-44cd-a1f1-a2794c089d44">
+          <SHORT-NAME>uint16_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="ebdc31cd-b7c3-42fe-a8a1-593a20e8633d">
+          <SHORT-NAME>uint32_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="12c11a07-738f-4966-8a25-8ddc85518792">
+          <SHORT-NAME>uint64_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="b5814720-60da-47be-a842-8fb71dace2d0">
+          <SHORT-NAME>uint8_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
       </ELEMENTS>
     </AR-PACKAGE>
   </AR-PACKAGES>
