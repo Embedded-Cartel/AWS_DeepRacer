@@ -4,6 +4,89 @@
     <AR-PACKAGE UUID="5c9e135c-ade5-47f5-9877-1b002b86fe18">
       <SHORT-NAME>UnsetARElements</SHORT-NAME>
       <ELEMENTS>
+        <COMPU-METHOD UUID="d52d2174-0a3d-4069-b06c-3e4fb2e58b02">
+          <SHORT-NAME>Arithmetic</SHORT-NAME>
+          <CATEGORY>TEXTTABLE</CATEGORY>
+          <COMPU-INTERNAL-TO-PHYS>
+            <COMPU-SCALES>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x00</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x00</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kAdd</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x01</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x01</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kSub</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x02</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x02</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kMul</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+              <COMPU-SCALE>
+                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0x03</LOWER-LIMIT>
+                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0x03</UPPER-LIMIT>
+                <COMPU-CONST>
+                  <VT>kDiv</VT>
+                </COMPU-CONST>
+              </COMPU-SCALE>
+            </COMPU-SCALES>
+          </COMPU-INTERNAL-TO-PHYS>
+        </COMPU-METHOD>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="298a4052-4069-40f9-ae0b-e3022901611f">
+          <SHORT-NAME>Arithmetic</SHORT-NAME>
+          <CATEGORY>TYPE_REFERENCE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL>
+                <COMPU-METHOD-REF DEST="COMPU-METHOD">/UnsetARElements/Arithmetic</COMPU-METHOD-REF>
+              </SW-DATA-DEF-PROPS-CONDITIONAL>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint8_t</TYPE-REFERENCE-REF>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="9393285e-7417-4664-91a4-81d1a5ac8648">
+          <SHORT-NAME>ByteArray</SHORT-NAME>
+          <CATEGORY>ARRAY</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <ARRAY-SIZE>10</ARRAY-SIZE>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint8_t</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
         <SYSTEM UUID="e241d71c-3959-4a48-9c6c-8fdfeaebbafb">
           <SHORT-NAME>DeepRacer</SHORT-NAME>
           <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
@@ -35,6 +118,33 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="11ba9877-6152-4e2a-9657-fea53a2f58ee">
+          <SHORT-NAME>DistanceMap</SHORT-NAME>
+          <CATEGORY>ASSOCIATIVE_MAP</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/Message</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/double</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
         <MACHINE-DESIGN UUID="c6af139e-ec04-48cb-9032-32acc31a96fd">
           <SHORT-NAME>Ecu</SHORT-NAME>
           <COMMUNICATION-CONNECTORS>
@@ -233,6 +343,25 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="c1603527-2867-44ad-aec2-3ebbc13b67b0">
+          <SHORT-NAME>Message</SHORT-NAME>
+          <CATEGORY>STRING</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
         <MODE-DECLARATION-GROUP UUID="a814844f-9665-4ed4-8cee-1c4735abc53b">
           <SHORT-NAME>ProcessState</SHORT-NAME>
           <INITIAL-MODE-REF DEST="MODE-DECLARATION">/UnsetARElements/ProcessState/Idle</INITIAL-MODE-REF>
@@ -251,6 +380,144 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="f239c13b-8b5a-4da4-a0bf-e1ec74b40b1f">
+          <SHORT-NAME>Speed</SHORT-NAME>
+          <CATEGORY>TYPE_REFERENCE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/double</TYPE-REFERENCE-REF>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="9448643f-0d2b-41a3-992f-1cf30e1d8191">
+          <SHORT-NAME>Uint32Vector</SHORT-NAME>
+          <CATEGORY>VECTOR</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint32_t</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="a8e9d037-43f9-40e8-beb4-ff14861198ea">
+          <SHORT-NAME>UserRecord</SHORT-NAME>
+          <CATEGORY>STRUCTURE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <SUB-ELEMENTS>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="8bcac397-7236-4b47-98e8-a23d2fc50c5f">
+              <SHORT-NAME>id</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint32_t</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="a9430199-8388-4bda-87fe-da72bce39b87">
+              <SHORT-NAME>age</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/uint16_t</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="8330b4e9-94bb-4739-acee-49b061f97bd1">
+              <SHORT-NAME>description</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/Message</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+          </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="364a82b6-635b-4345-834b-7fa1bee89db2">
+          <SHORT-NAME>bool</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="b1ae6368-b239-4ae7-9294-9c0c99ca3909">
+          <SHORT-NAME>double</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="51537519-82b0-4ff7-b617-72362c98edc7">
+          <SHORT-NAME>float</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <TYPE-EMITTER>FundamentalType</TYPE-EMITTER>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="2cd25e59-01e8-4134-b068-0a68f87be130">
+          <SHORT-NAME>int16_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="e7761252-aae8-481a-8518-78d13f2342d1">
+          <SHORT-NAME>int32_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="13d20e69-a224-438c-b544-1003040164ad">
+          <SHORT-NAME>int64_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="5b5448b6-124a-4969-a7fb-54e83a7d5aa4">
+          <SHORT-NAME>int8_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="59de9a5c-6ccc-46d6-b6bf-59af2574ecdd">
+          <SHORT-NAME>uint16_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="8f41b543-2ff2-4c8a-8846-1f8ee5fbee04">
+          <SHORT-NAME>uint32_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="9a9d387f-1253-48d9-9878-5e5306b8911c">
+          <SHORT-NAME>uint64_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="ab5c72c9-8c43-40fc-9ad4-1162bc5d3415">
+          <SHORT-NAME>uint8_t</SHORT-NAME>
+          <CATEGORY>VALUE</CATEGORY>
+          <HEADER-FILE>cstdint</HEADER-FILE>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
       </ELEMENTS>
     </AR-PACKAGE>
   </AR-PACKAGES>
