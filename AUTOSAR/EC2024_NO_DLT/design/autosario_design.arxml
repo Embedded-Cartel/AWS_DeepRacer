@@ -1,883 +1,516 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00049.xsd">
   <AR-PACKAGES>
-    <AR-PACKAGE UUID="f625c2b2-7222-4c46-a9a0-da568e7f0aa9">
-      <SHORT-NAME>System</SHORT-NAME>
-      <ELEMENTS>
-        <SYSTEM UUID="5a7ea391-3a67-441e-aa72-3c1d06181121">
-          <SHORT-NAME>DeepRacerVehicle</SHORT-NAME>
-          <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
-          <FIBEX-ELEMENTS>
-            <FIBEX-ELEMENT-REF-CONDITIONAL>
-              <FIBEX-ELEMENT-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/Ecu</FIBEX-ELEMENT-REF>
-            </FIBEX-ELEMENT-REF-CONDITIONAL>
-            <FIBEX-ELEMENT-REF-CONDITIONAL>
-              <FIBEX-ELEMENT-REF DEST="ETHERNET-CLUSTER">/System/VehicleTopology/Cluster/EthernetCluster</FIBEX-ELEMENT-REF>
-            </FIBEX-ELEMENT-REF-CONDITIONAL>
-          </FIBEX-ELEMENTS>
-          <SYSTEM-VERSION>1.0.0</SYSTEM-VERSION>
-        </SYSTEM>
-      </ELEMENTS>
+    <AR-PACKAGE UUID="82fe1625-0bea-429a-92bf-2adb8f109121">
+      <SHORT-NAME>SwComponent</SHORT-NAME>
       <AR-PACKAGES>
-        <AR-PACKAGE UUID="177f41be-f522-4dae-bacb-b34e06b96ee5">
-          <SHORT-NAME>Service</SHORT-NAME>
-          <AR-PACKAGES>
-            <AR-PACKAGE UUID="c192d4af-161e-4907-ab8f-4c898491587a">
-              <SHORT-NAME>Deployment</SHORT-NAME>
-              <ELEMENTS>
-                <SOMEIP-SERVICE-INTERFACE-DEPLOYMENT UUID="793ad22a-c6e2-4562-ae35-a3d4b7b27671">
-                  <SHORT-NAME>SvControlData</SHORT-NAME>
-                  <EVENT-DEPLOYMENTS>
-                    <SOMEIP-EVENT-DEPLOYMENT UUID="fa9000f8-6f0f-4ff8-b532-bb323056dcaf">
-                      <SHORT-NAME>CEvent</SHORT-NAME>
-                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/SvControlData/CEvent</EVENT-REF>
-                      <EVENT-ID>1</EVENT-ID>
-                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
-                    </SOMEIP-EVENT-DEPLOYMENT>
-                  </EVENT-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</SERVICE-INTERFACE-REF>
-                  <EVENT-GROUPS>
-                    <SOMEIP-EVENT-GROUP UUID="9b3f47a8-bb8c-40fc-9cf1-0f14492b8675">
-                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
-                      <EVENT-GROUP-ID>1</EVENT-GROUP-ID>
-                      <EVENT-REFS>
-                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvControlData/CEvent</EVENT-REF>
-                      </EVENT-REFS>
-                    </SOMEIP-EVENT-GROUP>
-                  </EVENT-GROUPS>
-                  <SERVICE-INTERFACE-ID>82</SERVICE-INTERFACE-ID>
-                  <SERVICE-INTERFACE-VERSION>
-                    <MAJOR-VERSION>1</MAJOR-VERSION>
-                    <MINOR-VERSION>0</MINOR-VERSION>
-                  </SERVICE-INTERFACE-VERSION>
-                </SOMEIP-SERVICE-INTERFACE-DEPLOYMENT>
-                <SOMEIP-SERVICE-INTERFACE-DEPLOYMENT UUID="16e68678-5103-4711-87b6-61a1a592d21c">
-                  <SHORT-NAME>SvRawData</SHORT-NAME>
-                  <EVENT-DEPLOYMENTS>
-                    <SOMEIP-EVENT-DEPLOYMENT UUID="92a7961b-619e-4b81-9b78-39fcc55a9313">
-                      <SHORT-NAME>REvent</SHORT-NAME>
-                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/SvRawData/REvent</EVENT-REF>
-                      <EVENT-ID>1</EVENT-ID>
-                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
-                    </SOMEIP-EVENT-DEPLOYMENT>
-                  </EVENT-DEPLOYMENTS>
-                  <FIELD-DEPLOYMENTS>
-                    <SOMEIP-FIELD-DEPLOYMENT UUID="adc7b69a-2188-4a15-8a9b-2472c602abc2">
-                      <SHORT-NAME>RField</SHORT-NAME>
-                      <FIELD-REF DEST="FIELD">/PortInterface/Service/SvRawData/RField</FIELD-REF>
-                      <GET UUID="0d2228f7-cfa7-4619-a393-6ff0736a1477">
-                        <SHORT-NAME>Get_RField</SHORT-NAME>
-                        <METHOD-ID>2</METHOD-ID>
-                        <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
-                      </GET>
-                      <NOTIFIER UUID="96c25842-ab27-4a67-8b95-933fb54cb9a5">
-                        <SHORT-NAME>Notification_RField</SHORT-NAME>
-                        <EVENT-ID>2</EVENT-ID>
-                        <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
-                      </NOTIFIER>
-                      <SET UUID="4747ef26-cea4-43b7-b052-ab80bf30a4db">
-                        <SHORT-NAME>Set_RField</SHORT-NAME>
-                        <METHOD-ID>3</METHOD-ID>
-                        <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
-                      </SET>
-                    </SOMEIP-FIELD-DEPLOYMENT>
-                  </FIELD-DEPLOYMENTS>
-                  <METHOD-DEPLOYMENTS>
-                    <SOMEIP-METHOD-DEPLOYMENT UUID="5f7c7d18-607f-4bbf-bdec-3d8e3a79a8c5">
-                      <SHORT-NAME>RMethod</SHORT-NAME>
-                      <METHOD-REF DEST="CLIENT-SERVER-OPERATION">/PortInterface/Service/SvRawData/RMethod</METHOD-REF>
-                      <METHOD-ID>1</METHOD-ID>
-                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
-                    </SOMEIP-METHOD-DEPLOYMENT>
-                  </METHOD-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvRawData</SERVICE-INTERFACE-REF>
-                  <EVENT-GROUPS>
-                    <SOMEIP-EVENT-GROUP UUID="553e406b-798e-4b14-a597-a7f4c159c211">
-                      <SHORT-NAME>Eventgroup_Notification_RField</SHORT-NAME>
-                      <EVENT-GROUP-ID>2</EVENT-GROUP-ID>
-                      <EVENT-REFS>
-                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Notification_RField</EVENT-REF>
-                      </EVENT-REFS>
-                    </SOMEIP-EVENT-GROUP>
-                    <SOMEIP-EVENT-GROUP UUID="17ae3a8e-f5d9-4819-b532-14796a31e511">
-                      <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
-                      <EVENT-GROUP-ID>1</EVENT-GROUP-ID>
-                      <EVENT-REFS>
-                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/REvent</EVENT-REF>
-                      </EVENT-REFS>
-                    </SOMEIP-EVENT-GROUP>
-                  </EVENT-GROUPS>
-                  <SERVICE-INTERFACE-ID>81</SERVICE-INTERFACE-ID>
-                  <SERVICE-INTERFACE-VERSION>
-                    <MAJOR-VERSION>1</MAJOR-VERSION>
-                    <MINOR-VERSION>0</MINOR-VERSION>
-                  </SERVICE-INTERFACE-VERSION>
-                </SOMEIP-SERVICE-INTERFACE-DEPLOYMENT>
-                <USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT UUID="66fe6e6e-a7a5-447b-b4b5-f676323f321b">
-                  <SHORT-NAME>TriggerInOut_DeepRacerFG</SHORT-NAME>
-                  <CATEGORY>SERVICE_INTERFACE_DEPLOYMENT_IPC</CATEGORY>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="IPC-SERVICE-DEPLOYMENT">
-                        <SD GID="SERVICE-INTERFACE-ID">12</SD>
-                        <SD GID="MAJOR-VERSION">1</SD>
-                        <SD GID="MINOR-VERSION">0</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <FIELD-DEPLOYMENTS>
-                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="a3817e00-3c8a-4959-8990-14554dd0a1aa">
-                      <SHORT-NAME>Notifier</SHORT-NAME>
-                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_DeepRacerFG/Notifier</FIELD-REF>
-                      <GET UUID="75e8bfb5-2728-4b2b-8921-8c93aa22871e">
-                        <SHORT-NAME>Get_Notifier</SHORT-NAME>
-                        <ADMIN-DATA>
-                          <SDGS>
-                            <SDG GID="IPC-METHOD-DEPLOYMENT">
-                              <SD GID="METHOD-ID">1</SD>
-                            </SDG>
-                          </SDGS>
-                        </ADMIN-DATA>
-                      </GET>
-                      <NOTIFIER UUID="c72915a9-a9b4-4c1a-b0fc-14103660c83a">
-                        <SHORT-NAME>Notification_Notifier</SHORT-NAME>
-                        <ADMIN-DATA>
-                          <SDGS>
-                            <SDG GID="IPC-EVENT-DEPLOYMENT">
-                              <SD GID="EVENT-ID">2</SD>
-                            </SDG>
-                          </SDGS>
-                        </ADMIN-DATA>
-                      </NOTIFIER>
-                    </USER-DEFINED-FIELD-DEPLOYMENT>
-                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="ef83f934-f525-4d76-b522-f29a5da972f6">
-                      <SHORT-NAME>Trigger</SHORT-NAME>
-                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_DeepRacerFG/Trigger</FIELD-REF>
-                      <SET UUID="9592c4b4-8739-4cc0-a5b9-22b370c7e051">
-                        <SHORT-NAME>Set_Trigger</SHORT-NAME>
-                        <ADMIN-DATA>
-                          <SDGS>
-                            <SDG GID="IPC-METHOD-DEPLOYMENT">
-                              <SD GID="METHOD-ID">3</SD>
-                            </SDG>
-                          </SDGS>
-                        </ADMIN-DATA>
-                      </SET>
-                    </USER-DEFINED-FIELD-DEPLOYMENT>
-                  </FIELD-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_DeepRacerFG</SERVICE-INTERFACE-REF>
-                </USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT>
-                <USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT UUID="1ca44805-6255-46c3-9f66-53d6e84320b3">
-                  <SHORT-NAME>TriggerInOut_MachineFG</SHORT-NAME>
-                  <CATEGORY>SERVICE_INTERFACE_DEPLOYMENT_IPC</CATEGORY>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="IPC-SERVICE-DEPLOYMENT">
-                        <SD GID="SERVICE-INTERFACE-ID">11</SD>
-                        <SD GID="MAJOR-VERSION">1</SD>
-                        <SD GID="MINOR-VERSION">0</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <FIELD-DEPLOYMENTS>
-                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="8c0d0bde-ae0f-43e1-9d69-ad31fda639f7">
-                      <SHORT-NAME>Notifier</SHORT-NAME>
-                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_MachineFG/Notifier</FIELD-REF>
-                      <GET UUID="532ead0f-0058-4c04-9dd3-ced28c4cf895">
-                        <SHORT-NAME>Get_Notifier</SHORT-NAME>
-                        <ADMIN-DATA>
-                          <SDGS>
-                            <SDG GID="IPC-METHOD-DEPLOYMENT">
-                              <SD GID="METHOD-ID">1</SD>
-                            </SDG>
-                          </SDGS>
-                        </ADMIN-DATA>
-                      </GET>
-                      <NOTIFIER UUID="ca9011fc-39f6-4f43-b293-4445dd2bd988">
-                        <SHORT-NAME>Notification_Notifier</SHORT-NAME>
-                        <ADMIN-DATA>
-                          <SDGS>
-                            <SDG GID="IPC-EVENT-DEPLOYMENT">
-                              <SD GID="EVENT-ID">2</SD>
-                            </SDG>
-                          </SDGS>
-                        </ADMIN-DATA>
-                      </NOTIFIER>
-                    </USER-DEFINED-FIELD-DEPLOYMENT>
-                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="b1216188-3d0a-431b-96d0-6be5baf68616">
-                      <SHORT-NAME>Trigger</SHORT-NAME>
-                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_MachineFG/Trigger</FIELD-REF>
-                      <SET UUID="89fd8f0a-9589-4cd9-b59b-df1b44d60e85">
-                        <SHORT-NAME>Set_Trigger</SHORT-NAME>
-                        <ADMIN-DATA>
-                          <SDGS>
-                            <SDG GID="IPC-METHOD-DEPLOYMENT">
-                              <SD GID="METHOD-ID">3</SD>
-                            </SDG>
-                          </SDGS>
-                        </ADMIN-DATA>
-                      </SET>
-                    </USER-DEFINED-FIELD-DEPLOYMENT>
-                  </FIELD-DEPLOYMENTS>
-                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_MachineFG</SERVICE-INTERFACE-REF>
-                </USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT>
-              </ELEMENTS>
-            </AR-PACKAGE>
-            <AR-PACKAGE UUID="79dab130-edc4-46ed-bf2c-af9316ac8bda">
-              <SHORT-NAME>Endpoint</SHORT-NAME>
-              <ELEMENTS>
-                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="1cf09504-a5a9-45e9-9284-87cbd9e2e539">
-                  <SHORT-NAME>Mapping_Consumer_SvControlData_AAActuator</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AAActuator</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                  <TCP-PORT>21012</TCP-PORT>
-                  <UDP-PORT>21012</UDP-PORT>
-                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="507dd233-6043-44af-9424-1f267a8ac277">
-                  <SHORT-NAME>Mapping_Consumer_SvControlData_AASimActuator</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AASimActuator</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                  <TCP-PORT>21013</TCP-PORT>
-                  <UDP-PORT>21013</UDP-PORT>
-                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="decaac7a-282e-4a19-b5a6-c915fddd95d9">
-                  <SHORT-NAME>Mapping_Consumer_SvRawData_AACalc</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvRawData_AACalc</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                  <TCP-PORT>21011</TCP-PORT>
-                  <UDP-PORT>21011</UDP-PORT>
-                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="8fe6f29f-6acb-4b2a-8269-0dc9b0e47a85">
-                  <SHORT-NAME>Mapping_Provider_SvControlData_AACalc</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvControlData_AACalc</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                  <TCP-PORT>21002</TCP-PORT>
-                  <UDP-PORT>21002</UDP-PORT>
-                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="273211b3-040f-49d9-8785-237cd04628c1">
-                  <SHORT-NAME>Mapping_Provider_SvRawData_AASensor</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvRawData_AASensor</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                  <TCP-PORT>21001</TCP-PORT>
-                  <UDP-PORT>21001</UDP-PORT>
-                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                <USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="8757ad93-0e74-4443-95ff-a586619d0138">
-                  <SHORT-NAME>Mapping_Provider_TriggerInOut_DeepRacerFG_SM</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="USER-DEFINED-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/IPC</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_DeepRacerFG_SM</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                </USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-                <USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="5e0b566e-1588-404f-94b8-c5c4119fde3e">
-                  <SHORT-NAME>Mapping_Provider_TriggerInOut_MachineFG_SM</SHORT-NAME>
-                  <COMMUNICATION-CONNECTOR-REF DEST="USER-DEFINED-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/IPC</COMMUNICATION-CONNECTOR-REF>
-                  <SERVICE-INSTANCE-REFS>
-                    <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_MachineFG_SM</SERVICE-INSTANCE-REF>
-                  </SERVICE-INSTANCE-REFS>
-                </USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
-              </ELEMENTS>
-            </AR-PACKAGE>
-            <AR-PACKAGE UUID="8675bbdc-a150-460e-9b01-c2dbde55ae13">
-              <SHORT-NAME>Instance</SHORT-NAME>
-              <ELEMENTS>
-                <REQUIRED-SOMEIP-SERVICE-INSTANCE UUID="23063676-9736-4f62-ba27-26395010cc8f">
-                  <SHORT-NAME>Consumer_SvControlData_AAActuator</SHORT-NAME>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="PARA-SOMEIP-CONFIGURATION">
-                        <SD GID="CLIENT-ID">2</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvControlData</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                  <REQUIRED-EVENT-GROUPS>
-                    <SOMEIP-REQUIRED-EVENT-GROUP>
-                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvControlData/Eventgroup_CEvent</EVENT-GROUP-REF>
-                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
-                    </SOMEIP-REQUIRED-EVENT-GROUP>
-                  </REQUIRED-EVENT-GROUPS>
-                  <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
-                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
-                  <SD-CLIENT-CONFIG-REF DEST="SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdClientConfig</SD-CLIENT-CONFIG-REF>
-                  <VERSION-DRIVEN-FIND-BEHAVIOR>EXACT-OR-ANY-MINOR-VERSION</VERSION-DRIVEN-FIND-BEHAVIOR>
-                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
-                <REQUIRED-SOMEIP-SERVICE-INSTANCE UUID="20078f1a-425e-4774-a176-bdad75c8b71b">
-                  <SHORT-NAME>Consumer_SvControlData_AASimActuator</SHORT-NAME>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="PARA-SOMEIP-CONFIGURATION">
-                        <SD GID="CLIENT-ID">3</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvControlData</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                  <REQUIRED-EVENT-GROUPS>
-                    <SOMEIP-REQUIRED-EVENT-GROUP>
-                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvControlData/Eventgroup_CEvent</EVENT-GROUP-REF>
-                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
-                    </SOMEIP-REQUIRED-EVENT-GROUP>
-                  </REQUIRED-EVENT-GROUPS>
-                  <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
-                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
-                  <SD-CLIENT-CONFIG-REF DEST="SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdClientConfig</SD-CLIENT-CONFIG-REF>
-                  <VERSION-DRIVEN-FIND-BEHAVIOR>EXACT-OR-ANY-MINOR-VERSION</VERSION-DRIVEN-FIND-BEHAVIOR>
-                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
-                <REQUIRED-SOMEIP-SERVICE-INSTANCE UUID="d55de778-b411-465e-8482-74a217bb4220">
-                  <SHORT-NAME>Consumer_SvRawData_AACalc</SHORT-NAME>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="PARA-SOMEIP-CONFIGURATION">
-                        <SD GID="CLIENT-ID">1</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvRawData</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                  <METHOD-REQUEST-PROPSS>
-                    <SOMEIP-METHOD-PROPS>
-                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Get_RField</METHOD-REF>
-                    </SOMEIP-METHOD-PROPS>
-                    <SOMEIP-METHOD-PROPS>
-                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Set_RField</METHOD-REF>
-                    </SOMEIP-METHOD-PROPS>
-                    <SOMEIP-METHOD-PROPS>
-                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RMethod</METHOD-REF>
-                    </SOMEIP-METHOD-PROPS>
-                  </METHOD-REQUEST-PROPSS>
-                  <REQUIRED-EVENT-GROUPS>
-                    <SOMEIP-REQUIRED-EVENT-GROUP>
-                      <SHORT-NAME>Eventgroup_Notification_RField</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_Notification_RField</EVENT-GROUP-REF>
-                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
-                    </SOMEIP-REQUIRED-EVENT-GROUP>
-                    <SOMEIP-REQUIRED-EVENT-GROUP>
-                      <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_REvent</EVENT-GROUP-REF>
-                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
-                    </SOMEIP-REQUIRED-EVENT-GROUP>
-                  </REQUIRED-EVENT-GROUPS>
-                  <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
-                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
-                  <SD-CLIENT-CONFIG-REF DEST="SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdClientConfig</SD-CLIENT-CONFIG-REF>
-                  <VERSION-DRIVEN-FIND-BEHAVIOR>EXACT-OR-ANY-MINOR-VERSION</VERSION-DRIVEN-FIND-BEHAVIOR>
-                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
-                <PROVIDED-SOMEIP-SERVICE-INSTANCE UUID="ae10c3f7-ca5e-4c3c-a91d-066285c9dbf4">
-                  <SHORT-NAME>Provider_SvControlData_AACalc</SHORT-NAME>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvControlData</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                  <EVENT-PROPSS>
-                    <SOMEIP-EVENT-PROPS>
-                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvControlData/CEvent</EVENT-REF>
-                    </SOMEIP-EVENT-PROPS>
-                  </EVENT-PROPSS>
-                  <PROVIDED-EVENT-GROUPS>
-                    <SOMEIP-PROVIDED-EVENT-GROUP UUID="3cf677fd-9ac6-4202-bb95-56bfefb1e89d">
-                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvControlData/Eventgroup_CEvent</EVENT-GROUP-REF>
-                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
-                    </SOMEIP-PROVIDED-EVENT-GROUP>
-                  </PROVIDED-EVENT-GROUPS>
-                  <SD-SERVER-CONFIG-REF DEST="SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdServerConfig</SD-SERVER-CONFIG-REF>
-                  <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
-                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
-                <PROVIDED-SOMEIP-SERVICE-INSTANCE UUID="219af1e1-69f2-47a7-9f1f-18ce0ef42ab8">
-                  <SHORT-NAME>Provider_SvRawData_AASensor</SHORT-NAME>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvRawData</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                  <EVENT-PROPSS>
-                    <SOMEIP-EVENT-PROPS>
-                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/REvent</EVENT-REF>
-                    </SOMEIP-EVENT-PROPS>
-                    <SOMEIP-EVENT-PROPS>
-                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Notification_RField</EVENT-REF>
-                    </SOMEIP-EVENT-PROPS>
-                  </EVENT-PROPSS>
-                  <METHOD-RESPONSE-PROPSS>
-                    <SOMEIP-METHOD-PROPS>
-                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Get_RField</METHOD-REF>
-                    </SOMEIP-METHOD-PROPS>
-                    <SOMEIP-METHOD-PROPS>
-                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Set_RField</METHOD-REF>
-                    </SOMEIP-METHOD-PROPS>
-                    <SOMEIP-METHOD-PROPS>
-                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RMethod</METHOD-REF>
-                    </SOMEIP-METHOD-PROPS>
-                  </METHOD-RESPONSE-PROPSS>
-                  <PROVIDED-EVENT-GROUPS>
-                    <SOMEIP-PROVIDED-EVENT-GROUP UUID="7091e31e-a87f-46e1-bfa1-b1a249d95b6c">
-                      <SHORT-NAME>Eventgroup_Notification_RField</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_Notification_RField</EVENT-GROUP-REF>
-                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
-                    </SOMEIP-PROVIDED-EVENT-GROUP>
-                    <SOMEIP-PROVIDED-EVENT-GROUP UUID="acf8bae6-834c-447b-9db6-cfcf39a65552">
-                      <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
-                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_REvent</EVENT-GROUP-REF>
-                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
-                    </SOMEIP-PROVIDED-EVENT-GROUP>
-                  </PROVIDED-EVENT-GROUPS>
-                  <SD-SERVER-CONFIG-REF DEST="SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdServerConfig</SD-SERVER-CONFIG-REF>
-                  <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
-                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
-                <PROVIDED-USER-DEFINED-SERVICE-INSTANCE UUID="c2e95e9a-065e-46ca-a92c-d74202b99954">
-                  <SHORT-NAME>Provider_TriggerInOut_DeepRacerFG_SM</SHORT-NAME>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="IPC-SERVICE-INSTANCE">
-                        <SD GID="SERVICE-INSTANCE-ID">1</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/TriggerInOut_DeepRacerFG</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                </PROVIDED-USER-DEFINED-SERVICE-INSTANCE>
-                <PROVIDED-USER-DEFINED-SERVICE-INSTANCE UUID="70917d0d-1a85-4ada-8c33-f800d129ed7e">
-                  <SHORT-NAME>Provider_TriggerInOut_MachineFG_SM</SHORT-NAME>
-                  <ADMIN-DATA>
-                    <SDGS>
-                      <SDG GID="IPC-SERVICE-INSTANCE">
-                        <SD GID="SERVICE-INSTANCE-ID">1</SD>
-                      </SDG>
-                    </SDGS>
-                  </ADMIN-DATA>
-                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/TriggerInOut_MachineFG</SERVICE-INTERFACE-DEPLOYMENT-REF>
-                </PROVIDED-USER-DEFINED-SERVICE-INSTANCE>
-              </ELEMENTS>
-            </AR-PACKAGE>
-            <AR-PACKAGE UUID="8516a406-efab-4a69-92cb-ad81556daebf">
-              <SHORT-NAME>TimingConfig</SHORT-NAME>
-              <ELEMENTS>
-                <SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG UUID="e12f6b31-b177-42bf-8c87-9cab7fc86c92">
-                  <SHORT-NAME>SdClientConfig</SHORT-NAME>
-                  <INITIAL-FIND-BEHAVIOR>
-                    <INITIAL-DELAY-MAX-VALUE>0.2</INITIAL-DELAY-MAX-VALUE>
-                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
-                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
-                    <INITIAL-REPETITIONS-MAX>4</INITIAL-REPETITIONS-MAX>
-                  </INITIAL-FIND-BEHAVIOR>
-                  <SERVICE-FIND-TIME-TO-LIVE>16777215</SERVICE-FIND-TIME-TO-LIVE>
-                </SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG>
-                <SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG UUID="5da236c1-a62b-4af4-a97b-f8722ca4783c">
-                  <SHORT-NAME>SdEventgroupConfig</SHORT-NAME>
-                  <REQUEST-RESPONSE-DELAY>
-                    <MAX-VALUE>0.0</MAX-VALUE>
-                    <MIN-VALUE>0.0</MIN-VALUE>
-                  </REQUEST-RESPONSE-DELAY>
-                  <TIME-TO-LIVE>16777215</TIME-TO-LIVE>
-                </SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG>
-                <SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG UUID="a5b36bb6-ae53-4ef4-82c4-7d96a3cb3fb0">
-                  <SHORT-NAME>SdServerConfig</SHORT-NAME>
-                  <INITIAL-OFFER-BEHAVIOR>
-                    <INITIAL-DELAY-MAX-VALUE>0.2</INITIAL-DELAY-MAX-VALUE>
-                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
-                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
-                    <INITIAL-REPETITIONS-MAX>3</INITIAL-REPETITIONS-MAX>
-                  </INITIAL-OFFER-BEHAVIOR>
-                  <OFFER-CYCLIC-DELAY>0.5</OFFER-CYCLIC-DELAY>
-                  <REQUEST-RESPONSE-DELAY>
-                    <MAX-VALUE>0.0</MAX-VALUE>
-                    <MIN-VALUE>0.0</MIN-VALUE>
-                  </REQUEST-RESPONSE-DELAY>
-                  <SERVICE-OFFER-TIME-TO-LIVE>16777215</SERVICE-OFFER-TIME-TO-LIVE>
-                </SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG>
-              </ELEMENTS>
-            </AR-PACKAGE>
-          </AR-PACKAGES>
-        </AR-PACKAGE>
-        <AR-PACKAGE UUID="7d7b6cfc-a638-4864-b302-a080844bfab2">
-          <SHORT-NAME>VehicleTopology</SHORT-NAME>
-          <AR-PACKAGES>
-            <AR-PACKAGE UUID="781e8530-c730-4851-9b62-5382fcbabe8d">
-              <SHORT-NAME>Cluster</SHORT-NAME>
-              <ELEMENTS>
-                <ETHERNET-CLUSTER UUID="45e357aa-a41f-47a9-b1ff-975dd0955913">
-                  <SHORT-NAME>EthernetCluster</SHORT-NAME>
-                  <ETHERNET-CLUSTER-VARIANTS>
-                    <ETHERNET-CLUSTER-CONDITIONAL>
-                      <PHYSICAL-CHANNELS>
-                        <ETHERNET-PHYSICAL-CHANNEL UUID="722ff756-7c26-441c-a41e-ac102933bb18">
-                          <SHORT-NAME>PhysicalChannel</SHORT-NAME>
-                          <CATEGORY>WIRED</CATEGORY>
-                          <COMM-CONNECTORS>
-                            <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
-                              <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
-                            </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
-                          </COMM-CONNECTORS>
-                          <NETWORK-ENDPOINTS>
-                            <NETWORK-ENDPOINT UUID="43abfd51-d2eb-4780-8c34-c40722969ca2">
-                              <SHORT-NAME>EcuEndpoint</SHORT-NAME>
-                              <NETWORK-ENDPOINT-ADDRESSES>
-                                <IPV-4-CONFIGURATION>
-                                  <IPV-4-ADDRESS>172.31.16.137</IPV-4-ADDRESS>
-                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
-                                </IPV-4-CONFIGURATION>
-                              </NETWORK-ENDPOINT-ADDRESSES>
-                            </NETWORK-ENDPOINT>
-                            <NETWORK-ENDPOINT UUID="b597dabd-d9cd-4d1c-a9e0-52444f9d890a">
-                              <SHORT-NAME>SdEndpoint</SHORT-NAME>
-                              <NETWORK-ENDPOINT-ADDRESSES>
-                                <IPV-4-CONFIGURATION>
-                                  <IPV-4-ADDRESS>224.0.0.1</IPV-4-ADDRESS>
-                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
-                                </IPV-4-CONFIGURATION>
-                              </NETWORK-ENDPOINT-ADDRESSES>
-                            </NETWORK-ENDPOINT>
-                          </NETWORK-ENDPOINTS>
-                        </ETHERNET-PHYSICAL-CHANNEL>
-                      </PHYSICAL-CHANNELS>
-                    </ETHERNET-CLUSTER-CONDITIONAL>
-                  </ETHERNET-CLUSTER-VARIANTS>
-                </ETHERNET-CLUSTER>
-              </ELEMENTS>
-            </AR-PACKAGE>
-            <AR-PACKAGE UUID="77e48897-784f-4a7b-8bef-3f16adcd9fa8">
-              <SHORT-NAME>Ecu</SHORT-NAME>
-              <ELEMENTS>
-                <MACHINE-DESIGN UUID="138a71a2-4451-423b-ac38-58758142e822">
-                  <SHORT-NAME>Ecu</SHORT-NAME>
-                  <COMMUNICATION-CONNECTORS>
-                    <USER-DEFINED-COMMUNICATION-CONNECTOR UUID="e9ec4cbd-a7f0-4f15-ace9-6ab9e31ffa0b">
-                      <SHORT-NAME>IPC</SHORT-NAME>
-                    </USER-DEFINED-COMMUNICATION-CONNECTOR>
-                    <ETHERNET-COMMUNICATION-CONNECTOR UUID="1a7e5bbb-f29c-4398-9f9e-a057280462b2">
-                      <SHORT-NAME>ens5</SHORT-NAME>
-                      <UNICAST-NETWORK-ENDPOINT-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster/PhysicalChannel/EcuEndpoint</UNICAST-NETWORK-ENDPOINT-REF>
-                    </ETHERNET-COMMUNICATION-CONNECTOR>
-                  </COMMUNICATION-CONNECTORS>
-                  <SERVICE-DISCOVER-CONFIGS>
-                    <SOMEIP-SERVICE-DISCOVERY>
-                      <MULTICAST-SD-IP-ADDRESS-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster/PhysicalChannel/SdEndpoint</MULTICAST-SD-IP-ADDRESS-REF>
-                      <SOMEIP-SERVICE-DISCOVERY-PORT>30490</SOMEIP-SERVICE-DISCOVERY-PORT>
-                    </SOMEIP-SERVICE-DISCOVERY>
-                  </SERVICE-DISCOVER-CONFIGS>
-                </MACHINE-DESIGN>
-              </ELEMENTS>
-            </AR-PACKAGE>
-          </AR-PACKAGES>
-        </AR-PACKAGE>
-      </AR-PACKAGES>
-    </AR-PACKAGE>
-    <AR-PACKAGE UUID="c95b09ed-9377-4530-b6c3-7b21b01b91f1">
-      <SHORT-NAME>StateMachine</SHORT-NAME>
-      <ELEMENTS>
-        <MODE-DECLARATION-GROUP UUID="ea5e78b3-ec5d-4936-a8ed-6c141a6febfb">
-          <SHORT-NAME>DeepRacerState</SHORT-NAME>
-          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/DeepRacerState/Off</INITIAL-MODE-REF>
-          <MODE-DECLARATIONS>
-            <MODE-DECLARATION UUID="81874f89-7374-40b7-85b0-59aab9dee9dd">
-              <SHORT-NAME>Device</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="1aff4a68-a8e9-4ff7-8d78-efb0f6b349ba">
-              <SHORT-NAME>Off</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="b8f698b5-fadb-44e4-a4b5-9fd727712bb5">
-              <SHORT-NAME>Simulation</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="c3fea1d1-6999-479e-95db-cc04a16bb99d">
-              <SHORT-NAME>Verify</SHORT-NAME>
-            </MODE-DECLARATION>
-          </MODE-DECLARATIONS>
-        </MODE-DECLARATION-GROUP>
-        <MODE-DECLARATION-GROUP UUID="f8a2f3a8-72db-4653-a0c5-615785c4b6df">
-          <SHORT-NAME>MachineState</SHORT-NAME>
-          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Off</INITIAL-MODE-REF>
-          <MODE-DECLARATIONS>
-            <MODE-DECLARATION UUID="1f9aeef3-16da-4626-983d-00b72a9a0643">
-              <SHORT-NAME>Off</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="37ca9fb4-e830-4d62-8dd2-ff71543885fa">
-              <SHORT-NAME>Restart</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="2c7ad0d7-aafc-4d47-873b-02740782275c">
-              <SHORT-NAME>Shutdown</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="463f6a9c-f001-456f-aaf9-7a4ed4d8b63c">
-              <SHORT-NAME>Startup</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="bf58d6a3-5f00-4e88-9401-9ae95cb13824">
-              <SHORT-NAME>Verify</SHORT-NAME>
-            </MODE-DECLARATION>
-          </MODE-DECLARATIONS>
-        </MODE-DECLARATION-GROUP>
-        <MODE-DECLARATION-GROUP UUID="83cbe417-6777-4444-b5d5-54c8700df01b">
-          <SHORT-NAME>ProcessState</SHORT-NAME>
-          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Idle</INITIAL-MODE-REF>
-          <MODE-DECLARATIONS>
-            <MODE-DECLARATION UUID="9fd63a28-1276-4630-8012-b0be77b17bb4">
-              <SHORT-NAME>Idle</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="b6a70bb3-df82-4458-baad-7394adcdf37b">
-              <SHORT-NAME>Running</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="cf187040-dd0c-4f17-9f0d-df07ed3facee">
-              <SHORT-NAME>Starting</SHORT-NAME>
-            </MODE-DECLARATION>
-            <MODE-DECLARATION UUID="0d4b5f05-c8d6-461d-b0dc-b51a34391266">
-              <SHORT-NAME>Terminated</SHORT-NAME>
-            </MODE-DECLARATION>
-          </MODE-DECLARATIONS>
-        </MODE-DECLARATION-GROUP>
-      </ELEMENTS>
-    </AR-PACKAGE>
-    <AR-PACKAGE UUID="bf474cf1-9333-4c1a-9c43-5795f479cc66">
-      <SHORT-NAME>Platform</SHORT-NAME>
-      <ELEMENTS>
-        <MACHINE UUID="264d93c3-f8be-4638-81ea-41f838647d48">
-          <SHORT-NAME>Machine</SHORT-NAME>
-          <DEFAULT-APPLICATION-TIMEOUT/>
-          <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/Ecu</MACHINE-DESIGN-REF>
-          <MODULE-INSTANTIATIONS>
-            <LOG-AND-TRACE-INSTANTIATION UUID="c3b90b2a-52c6-4804-ac60-411196c294e3">
-              <SHORT-NAME>LogAndTraceInstantiation</SHORT-NAME>
-              <ADMIN-DATA>
-                <SDGS>
-                  <SDG GID="PARA-DLT-CONF">
-                    <SDG GID="GENERAL-CONFIGURATION">
-                      <SD GID="VERBOSE">ON</SD>
-                      <SD GID="DAEMONIZE">ON</SD>
-                      <SD GID="SEND-SERIAL-HEADER">ON</SD>
-                      <SD GID="SEND-CONTEXT-REGISTRATION">ON</SD>
-                      <SD GID="SEND-MESSAGE-TIME">0</SD>
-                      <SD GID="SHAED-MEMORY-SIZE">100000</SD>
-                      <SD GID="PERSISTENCE-STORAGE-PATH">/tmp</SD>
-                      <SD GID="LOGGING-MODE">LOG-TO-STDOUT</SD>
-                      <SD GID="LOGGING-LEVEL">LOG-INFO</SD>
-                      <SD GID="LOGGING-FILE-NAME">/tmp/dlt.log</SD>
-                      <SD GID="TIME-OUT-ON-SEND">4</SD>
-                      <SD GID="RING-BUFFER-MIN-SIZE">500000</SD>
-                      <SD GID="RING-BUFFER-MAX-SIZE">10000000</SD>
-                      <SD GID="RING-BUFFER-STEP-SIZE">500000</SD>
-                      <SD GID="DAEMON-FIFO-SIZE">65536</SD>
-                      <SD GID="CONTEXT-LOG-LEVEL">DLT-LOG-INFO</SD>
-                      <SD GID="CONTEXT-TRACE-STATUS">DLT-TRACE-STATUS-OFF</SD>
-                      <SD GID="FORCE-CONTEXT-LOG-LEVEL-AND-TRACE-STATUS">OFF</SD>
-                      <SD GID="INJECTION-MODE">ON</SD>
-                    </SDG>
-                    <SDG GID="GATEWAY-CONFIGURATION">
-                      <SD GID="GATEWAY-MODE">OFF</SD>
-                      <SD GID="GATEWAY-CONFIG-FILE">/etc/dlt_gateway.conf</SD>
-                    </SDG>
-                    <SDG GID="PERMISSION-CONFIGURATION">
-                      <SD GID="DAEMON-FIFO-GROUP">/tmp/dlt</SD>
-                    </SDG>
-                    <SDG GID="CONTROL-APPLICATION">
-                      <SD GID="CONTROL-SOCKET-PATH">/tmp/dlt-ctrl.sock</SD>
-                    </SDG>
-                    <SDG GID="OFFLINE-TRACE-MEMORY">
-                      <SD GID="OFFLINE-TRACE-DIRECTORY">/tmp</SD>
-                      <SD GID="OFFLINE-TRACE-FILE-SIZE">1000000</SD>
-                      <SD GID="OFFLINE-TRACE-MAX-SIZE">4000000</SD>
-                      <SD GID="OFFLINE-TRACE-FILE-NAME-TIMESTAMP-BASED">TIMESTAMP-BASED</SD>
-                    </SDG>
-                    <SDG GID="LOCAL-CONSOLE-OUTPUT-CONFIGURATION">
-                      <SD GID="PRINT-ASCII">DISABLE</SD>
-                      <SD GID="PRINT-HEX">DISABLE</SD>
-                      <SD GID="PRINT-HEADERS-ONLY">DISABLE</SD>
-                    </SDG>
-                    <SDG GID="CLIENT-SERIAL-PORT-CONFIGURATION">
-                      <SD GID="RS232-DEVICE-NAME">/dev/ttyS0</SD>
-                      <SD GID="RS232-BAUDRATE">115200</SD>
-                      <SD GID="RS232-SYNC-SERIAL-HEADER">DISABLE</SD>
-                    </SDG>
-                    <SDG GID="TCP-SERIAL-PORT-CONFIGURATION">
-                      <SD GID="TCP-SYNC-SERIAL-HEADER">DISABLE</SD>
-                    </SDG>
-                    <SDG GID="ECU-SOFTWARE-VERSION-INFO">
-                      <SD GID="SEND-ECU-SOFTWARE-VERSION">DISABLE</SD>
-                      <SD GID="PATH-TO-ECU-SOFTWARE-VERSION"/>
-                    </SDG>
-                    <SDG GID="TIMEZONE-INFO">
-                      <SD GID="SEND-TIMEZONE">DISABLE</SD>
-                    </SDG>
-                    <SDG GID="OFFLINE-LOGSTORAGE">
-                      <SD GID="OFFLINE-LOGSTORAGE-MAX-DEVICES">0</SD>
-                      <SD GID="OFFLINE-LOGSTORAGE-DIR-PATH">/opt</SD>
-                      <SD GID="OFFLINE-LOGSTORAGE-TIMESTAMP">DISABLE</SD>
-                      <SD GID="OFFLINE-LOGSTORAGE-DELIMITER">_</SD>
-                      <SD GID="OFFLINE-LOGSTORAGE-MAX-COUNTER">999</SD>
-                      <SD GID="OFFLINE-LOGSTORAGE-CACHE-SIZE">30000</SD>
-                    </SDG>
-                    <SDG GID="UDP-MULTICAST-CONFIGURATION">
-                      <SD GID="UDP-CONNECTION-SETUP">ENABLE</SD>
-                      <SD GID="UDP-MULTICAST-IP-ADDRESS">255.0.0.37</SD>
-                      <SD GID="UDP-MULTICAST-IP-PORT">3491</SD>
-                    </SDG>
-                    <SDG GID="BINDADDRESS-LIMITATION">
-                      <SD GID="BIND-ADDRESS">0.0.0.0</SD>
-                    </SDG>
-                  </SDG>
-                </SDGS>
-              </ADMIN-DATA>
-              <DLT-ECU-ID>ECU</DLT-ECU-ID>
-              <DLT-LOG-CHANNELS>
-                <DLT-LOG-CHANNEL UUID="cfd1aefd-76b3-40a8-9a0c-9592a1e51df5">
-                  <SHORT-NAME>Actuator</SHORT-NAME>
-                  <APPLICATION-ID>ACTR</APPLICATION-ID>
-                  <CONTEXT-ID>ACTR</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-                <DLT-LOG-CHANNEL UUID="d216cda3-83d2-4ab7-8e5a-55f0dbd68789">
-                  <SHORT-NAME>CM</SHORT-NAME>
-                  <APPLICATION-ID>CM</APPLICATION-ID>
-                  <CONTEXT-ID>CM</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-                <DLT-LOG-CHANNEL UUID="bd945e34-bb95-4671-941c-bc656887484a">
-                  <SHORT-NAME>Calc</SHORT-NAME>
-                  <APPLICATION-ID>CALC</APPLICATION-ID>
-                  <CONTEXT-ID>CALC</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-                <DLT-LOG-CHANNEL UUID="cc4e5694-6923-446a-aa1b-3f8f5ab74563">
-                  <SHORT-NAME>EM</SHORT-NAME>
-                  <APPLICATION-ID>EM</APPLICATION-ID>
-                  <CONTEXT-ID>EM</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-                <DLT-LOG-CHANNEL UUID="15bd69af-6e63-4044-ab5f-8111f558b2c0">
-                  <SHORT-NAME>SM</SHORT-NAME>
-                  <APPLICATION-ID>SM</APPLICATION-ID>
-                  <CONTEXT-ID>SM</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-                <DLT-LOG-CHANNEL UUID="7efe4fdb-f58f-4d70-9a13-2f7b01e325d0">
-                  <SHORT-NAME>Sensor</SHORT-NAME>
-                  <APPLICATION-ID>SENS</APPLICATION-ID>
-                  <CONTEXT-ID>SENS</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-                <DLT-LOG-CHANNEL UUID="826ecc29-8e56-4c09-9862-3d804d3971b5">
-                  <SHORT-NAME>SimActuator</SHORT-NAME>
-                  <APPLICATION-ID>SACT</APPLICATION-ID>
-                  <CONTEXT-ID>SACT</CONTEXT-ID>
-                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
-                  <LOG-TRACE-LOG-MODES>
-                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
-                  </LOG-TRACE-LOG-MODES>
-                </DLT-LOG-CHANNEL>
-              </DLT-LOG-CHANNELS>
-            </LOG-AND-TRACE-INSTANTIATION>
-            <OS-MODULE-INSTANTIATION UUID="5e1f0058-986a-4dbf-a0cf-94ff624a540d">
-              <SHORT-NAME>OsModuleInstantiation</SHORT-NAME>
-              <RESOURCE-GROUPS>
-                <RESOURCE-GROUP UUID="6ed37087-87cf-4b2e-8429-33e0053753e2">
-                  <SHORT-NAME>ResourceGroup</SHORT-NAME>
-                </RESOURCE-GROUP>
-              </RESOURCE-GROUPS>
-            </OS-MODULE-INSTANTIATION>
-          </MODULE-INSTANTIATIONS>
-          <PROCESSORS>
-            <PROCESSOR UUID="8c509710-a048-4b17-9a7f-f7c7edc5bb15">
-              <SHORT-NAME>Core</SHORT-NAME>
-              <CORES>
-                <PROCESSOR-CORE UUID="32e44e14-8590-49ca-9ecc-b6ce542c7cbb">
-                  <SHORT-NAME>Core0</SHORT-NAME>
-                  <CORE-ID>0</CORE-ID>
-                </PROCESSOR-CORE>
-              </CORES>
-            </PROCESSOR>
-          </PROCESSORS>
-          <TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>NO-TRUSTED-PLATFORM-SUPPORT</TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>
-        </MACHINE>
-      </ELEMENTS>
-      <AR-PACKAGES>
-        <AR-PACKAGE UUID="0a9b1b29-0ae0-4c94-9e92-cbfd4214fb6d">
-          <SHORT-NAME>FunctionGroup</SHORT-NAME>
+        <AR-PACKAGE UUID="0809e356-b5fb-49f4-81fd-f34e2e8498a1">
+          <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
           <ELEMENTS>
-            <FUNCTION-GROUP-SET UUID="ebf2abcd-7d89-48ad-8b36-3b4e226035d6">
-              <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
-              <FUNCTION-GROUPS>
-                <MODE-DECLARATION-GROUP-PROTOTYPE UUID="47ae7614-b45a-49e8-b459-7ededf6db14a">
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="6e0c7ae0-daf3-4e71-8ffb-dbbc76f3a488">
+              <SHORT-NAME>Actuator</SHORT-NAME>
+              <PORTS>
+                <R-PORT-PROTOTYPE UUID="86d051a5-b333-4c67-9fb5-cd2b3f299c23">
+                  <SHORT-NAME>ControlData</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="1ec51311-244c-4a54-8016-792ab9f17d26">
+              <SHORT-NAME>CM</SHORT-NAME>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="3332f9c7-f5a5-4985-92b0-208067059761">
+              <SHORT-NAME>Calc</SHORT-NAME>
+              <PORTS>
+                <P-PORT-PROTOTYPE UUID="b13a2ba8-e0f0-4890-9b5f-f389764f40a4">
+                  <SHORT-NAME>ControlData</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="b0cff45e-c5a8-4e70-b499-fb5eafaedd6e">
+                  <SHORT-NAME>RawData</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvRawData</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="df240fb9-d47f-429d-9907-7bef3607c35f">
+              <SHORT-NAME>SM</SHORT-NAME>
+              <PORTS>
+                <P-PORT-PROTOTYPE UUID="87e1aa08-494b-4484-8c78-f6b30523b04e">
                   <SHORT-NAME>DeepRacerFG</SHORT-NAME>
-                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/DeepRacerState</TYPE-TREF>
-                </MODE-DECLARATION-GROUP-PROTOTYPE>
-                <MODE-DECLARATION-GROUP-PROTOTYPE UUID="e725cc0b-bb4e-46c2-8b50-bd4b6ee06fcb">
+                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_DeepRacerFG</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="77cc45d7-84f9-4d5d-8547-87261cf44217">
                   <SHORT-NAME>MachineFG</SHORT-NAME>
-                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/MachineState</TYPE-TREF>
-                </MODE-DECLARATION-GROUP-PROTOTYPE>
-              </FUNCTION-GROUPS>
-            </FUNCTION-GROUP-SET>
+                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_MachineFG</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="7371b5ff-469e-4fde-8a7f-d799e826f7c2">
+              <SHORT-NAME>Sensor</SHORT-NAME>
+              <PORTS>
+                <P-PORT-PROTOTYPE UUID="4ae3e756-ffbd-45c3-bced-df8065433481">
+                  <SHORT-NAME>RawData</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvRawData</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="1a7607e5-fd8a-44c0-a285-79a3d5ce1e4e">
+              <SHORT-NAME>SimActuator</SHORT-NAME>
+              <PORTS>
+                <R-PORT-PROTOTYPE UUID="0e92d8ed-b255-4c10-b9c0-ce3a6d56204f">
+                  <SHORT-NAME>ControlData</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              </PORTS>
+            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
           </ELEMENTS>
         </AR-PACKAGE>
-        <AR-PACKAGE UUID="ebcd5b63-0cae-4992-b70d-de4276dc06f9">
-          <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+        <AR-PACKAGE UUID="eb823d3e-f750-4ca6-a369-e44b76e352b5">
+          <SHORT-NAME>Composition</SHORT-NAME>
           <ELEMENTS>
-            <PROCESS-TO-MACHINE-MAPPING-SET UUID="99fc1305-9045-4b76-83a0-196e66fd4c6e">
-              <SHORT-NAME>ProcessToMachineMappingSet</SHORT-NAME>
-              <PROCESS-TO-MACHINE-MAPPINGS>
-                <PROCESS-TO-MACHINE-MAPPING UUID="1ccb6625-ccd0-4d19-ba06-99ec857f05ef">
-                  <SHORT-NAME>ProcessToMachineMapping_Actuator_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Actuator</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-                <PROCESS-TO-MACHINE-MAPPING UUID="6cf05379-20a3-4697-a2ed-962d835a0474">
-                  <SHORT-NAME>ProcessToMachineMapping_CM_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-                <PROCESS-TO-MACHINE-MAPPING UUID="a83dfda4-668c-4357-a7a9-16c9e2aba7fe">
-                  <SHORT-NAME>ProcessToMachineMapping_Calc_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Calc</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-                <PROCESS-TO-MACHINE-MAPPING UUID="02d3a418-0ccc-4508-9180-060136dcfb35">
-                  <SHORT-NAME>ProcessToMachineMapping_EM_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-                <PROCESS-TO-MACHINE-MAPPING UUID="18627088-321f-4983-a1f7-b0def22ee5f8">
-                  <SHORT-NAME>ProcessToMachineMapping_SM_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SM</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-                <PROCESS-TO-MACHINE-MAPPING UUID="54fb70ed-61df-4195-9a09-253ef2b40376">
-                  <SHORT-NAME>ProcessToMachineMapping_Sensor_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Sensor</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-                <PROCESS-TO-MACHINE-MAPPING UUID="b50bc4e6-78e6-4529-a9d4-3701b746d910">
-                  <SHORT-NAME>ProcessToMachineMapping_SimActuator_TO_Machine_TO_UnknownModule</SHORT-NAME>
-                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
-                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SimActuator</PROCESS-REF>
-                </PROCESS-TO-MACHINE-MAPPING>
-              </PROCESS-TO-MACHINE-MAPPINGS>
-            </PROCESS-TO-MACHINE-MAPPING-SET>
+            <COMPOSITION-SW-COMPONENT-TYPE UUID="5421556b-643e-4eda-89c3-70d2fbd467dc">
+              <SHORT-NAME>CM</SHORT-NAME>
+            </COMPOSITION-SW-COMPONENT-TYPE>
           </ELEMENTS>
         </AR-PACKAGE>
       </AR-PACKAGES>
     </AR-PACKAGE>
-    <AR-PACKAGE UUID="2b889f98-0d90-41ea-99db-d21cce673fa7">
+    <AR-PACKAGE UUID="befd1246-49d5-4ea6-bf70-df3f1887dc19">
+      <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="75d790a6-85d3-4b1f-a104-e65edfc3aaa0">
+          <SHORT-NAME>DltConfig</SHORT-NAME>
+          <ELEMENTS>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="1be1358e-4f3b-4d3c-95a7-84c8dd7a324d">
+              <SHORT-NAME>DltLogChannelToProcessMapping_Actuator_TO_Actuator</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Actuator</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Actuator</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="3673d9e9-8b38-4832-9115-b53ed1956c44">
+              <SHORT-NAME>DltLogChannelToProcessMapping_CM_TO_CM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/CM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="f3144d1c-2eb0-4f19-9561-82c7faa01262">
+              <SHORT-NAME>DltLogChannelToProcessMapping_Calc_TO_Calc</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Calc</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Calc</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="c40f4d13-a3c5-4c87-8bd8-009e0b2bf91e">
+              <SHORT-NAME>DltLogChannelToProcessMapping_EM_TO_EM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/EM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="100efcc2-664f-4b05-8ae7-ceec45f4d519">
+              <SHORT-NAME>DltLogChannelToProcessMapping_SM_TO_SM</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/SM</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SM</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="956795ff-f3f2-4186-8243-84f7c577d201">
+              <SHORT-NAME>DltLogChannelToProcessMapping_Sensor_TO_Sensor</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Sensor</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Sensor</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="e89e6557-152a-497a-99b6-2023aa164d53">
+              <SHORT-NAME>DltLogChannelToProcessMapping_SimActuator_TO_SimActuator</SHORT-NAME>
+              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/SimActuator</DLT-LOG-CHANNEL-REF>
+              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SimActuator</PROCESS-REF>
+            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="6e5ffa1e-603a-44db-90dc-307a1b731d34">
+          <SHORT-NAME>Executable</SHORT-NAME>
+          <ELEMENTS>
+            <EXECUTABLE UUID="f9741d96-330e-4b44-95e3-c0b813d94415">
+              <SHORT-NAME>Actuator</SHORT-NAME>
+              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="09c24914-9949-4a1a-bf06-978163add640">
+                <SHORT-NAME>AA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/Actuator</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="4204ebe9-27b5-45e3-986e-05975e35beed">
+              <SHORT-NAME>CM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="866db9ee-d34a-4825-83cb-f1c8d176529c">
+                <SHORT-NAME>PARA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/CM</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="626ea134-c53d-4a0e-a122-2bba5d2e38cb">
+              <SHORT-NAME>Calc</SHORT-NAME>
+              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="1428a339-8025-44df-9175-e15ece2eb5c8">
+                <SHORT-NAME>AA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/Calc</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="9e1ddd04-19be-4570-b0de-80c2b50baeb5">
+              <SHORT-NAME>EM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="b9ba1fa0-83a4-44a8-89db-e9524a2c27f7">
+              <SHORT-NAME>SM</SHORT-NAME>
+              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="c6288308-8f02-4685-8e34-5dc457458f91">
+                <SHORT-NAME>PARA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/SM</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="1f9a3070-3c37-4c53-8f94-a138bfe787f3">
+              <SHORT-NAME>Sensor</SHORT-NAME>
+              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="03980fbd-e3ec-4a99-ae0e-78b8e560bd8f">
+                <SHORT-NAME>AA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/Sensor</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+            <EXECUTABLE UUID="20535e09-8e71-431e-8270-60e4cd0a573f">
+              <SHORT-NAME>SimActuator</SHORT-NAME>
+              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
+              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
+              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+              <ROOT-SW-COMPONENT-PROTOTYPE UUID="a2d99e10-0402-44cc-9426-a2cbe60ea24e">
+                <SHORT-NAME>AA</SHORT-NAME>
+                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/SimActuator</APPLICATION-TYPE-TREF>
+              </ROOT-SW-COMPONENT-PROTOTYPE>
+              <VERSION>1.0.0</VERSION>
+            </EXECUTABLE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="a47df799-2e1c-4607-a84e-dc6f2fec113e">
+          <SHORT-NAME>Manifest</SHORT-NAME>
+          <ELEMENTS>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="70c540d3-3b40-4795-9d4e-e7ca424f2ce3">
+              <SHORT-NAME>Actuator_AA_ControlData</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Actuator/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Actuator/ControlData</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AAActuator</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="01607c20-de25-4331-8bca-bde4f7b7c257">
+              <SHORT-NAME>Calc_AA_ControlData</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Calc/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Calc/ControlData</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvControlData_AACalc</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="c8099498-90b6-4fad-8146-37fce81f7629">
+              <SHORT-NAME>Calc_AA_RawData</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Calc/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Calc/RawData</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvRawData_AACalc</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="cdfda533-4a9c-4af0-a750-596b2d90f127">
+              <SHORT-NAME>SM_PARA_DeepRacerFG</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/SM/PARA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/SM/DeepRacerFG</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_DeepRacerFG_SM</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="1e760117-a17f-4f99-a568-5b2ffa88bebe">
+              <SHORT-NAME>SM_PARA_MachineFG</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/SM/PARA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/SM/MachineFG</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_MachineFG_SM</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="bade4ae2-05e8-4fe9-bed4-50b815dfcc26">
+              <SHORT-NAME>Sensor_AA_RawData</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Sensor/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Sensor/RawData</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvRawData_AASensor</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="566ef1a0-c684-468b-bdd0-044d76bf9315">
+              <SHORT-NAME>SimActuator_AA_ControlData</SHORT-NAME>
+              <PORT-PROTOTYPE-IREF>
+                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/SimActuator/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/SimActuator/ControlData</TARGET-PORT-PROTOTYPE-REF>
+              </PORT-PROTOTYPE-IREF>
+              <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AASimActuator</SERVICE-INSTANCE-REF>
+            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="5f1de365-c39b-4c84-b44f-04309c00be9a">
+          <SHORT-NAME>Process</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS UUID="14a55838-2851-4bfc-8b32-c7b672aee45d">
+              <SHORT-NAME>Actuator</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/Actuator</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="4b2b5e4f-464f-45ee-b996-ef75ae6fdad2">
+                <SHORT-NAME>Actuator</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/DeepRacerFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/DeepRacerState/Device</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/Actuator</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="90726bbd-48e9-4a4c-a5fa-256ca97eca79">
+              <SHORT-NAME>CM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/CM</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="93302827-e915-4893-bbce-5a8af43a0325">
+                <SHORT-NAME>CM</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Restart</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Shutdown</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/CM</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="75e51c0d-0f9f-472d-9607-0b35697cca07">
+              <SHORT-NAME>Calc</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/Calc</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="6f4fe986-daa5-43d2-9485-dbb67d10c534">
+                <SHORT-NAME>Calc</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <EXECUTION-DEPENDENCYS>
+                    <EXECUTION-DEPENDENCY>
+                      <PROCESS-STATE-IREF>
+                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
+                      </PROCESS-STATE-IREF>
+                    </EXECUTION-DEPENDENCY>
+                  </EXECUTION-DEPENDENCYS>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/Calc</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="ebdace99-6768-4a9d-82d4-0f02abee01f7">
+              <SHORT-NAME>EM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/EM</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="f29fc26e-6c8e-4c23-876b-ed0a220dee34">
+                <SHORT-NAME>EM</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+            </PROCESS>
+            <PROCESS UUID="9588fd9e-dbb3-4ba7-ad83-c9a7990fdb6d">
+              <SHORT-NAME>SM</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/SM</EXECUTABLE-REF>
+              <FUNCTION-CLUSTER-AFFILIATION>STATE_MANAGEMENT</FUNCTION-CLUSTER-AFFILIATION>
+              <PROCESS-STATE-MACHINE UUID="57f4dd09-a9e2-4162-9f52-10200e4959cf">
+                <SHORT-NAME>SM</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <EXECUTION-DEPENDENCYS>
+                    <EXECUTION-DEPENDENCY>
+                      <PROCESS-STATE-IREF>
+                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
+                      </PROCESS-STATE-IREF>
+                    </EXECUTION-DEPENDENCY>
+                  </EXECUTION-DEPENDENCYS>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Restart</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Shutdown</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/SM</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="f85c5d43-671f-412e-9405-5bed218a2e98">
+              <SHORT-NAME>Sensor</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/Sensor</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="7131312f-37ab-400f-8431-e2918faeaf6d">
+                <SHORT-NAME>Sensor</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <EXECUTION-DEPENDENCYS>
+                    <EXECUTION-DEPENDENCY>
+                      <PROCESS-STATE-IREF>
+                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
+                      </PROCESS-STATE-IREF>
+                    </EXECUTION-DEPENDENCY>
+                  </EXECUTION-DEPENDENCYS>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/Sensor</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+            <PROCESS UUID="e440eaf6-f1fe-4b7f-ad74-8bd3f3848418">
+              <SHORT-NAME>SimActuator</SHORT-NAME>
+              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/SimActuator</EXECUTABLE-REF>
+              <PROCESS-STATE-MACHINE UUID="f9721d98-ef3d-4d15-8858-7878fd51151f">
+                <SHORT-NAME>SimActuator</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
+              </PROCESS-STATE-MACHINE>
+              <STATE-DEPENDENT-STARTUP-CONFIGS>
+                <STATE-DEPENDENT-STARTUP-CONFIG>
+                  <FUNCTION-GROUP-STATE-IREFS>
+                    <FUNCTION-GROUP-STATE-IREF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/DeepRacerFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/DeepRacerState/Simulation</TARGET-MODE-DECLARATION-REF>
+                    </FUNCTION-GROUP-STATE-IREF>
+                  </FUNCTION-GROUP-STATE-IREFS>
+                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
+                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/SimActuator</STARTUP-CONFIG-REF>
+                </STATE-DEPENDENT-STARTUP-CONFIG>
+              </STATE-DEPENDENT-STARTUP-CONFIGS>
+            </PROCESS>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="50ea9d2b-19a2-460d-8c28-6d893479f358">
+          <SHORT-NAME>StartupConfig</SHORT-NAME>
+          <ELEMENTS>
+            <STARTUP-CONFIG-SET UUID="6d1bed11-f89e-494b-92c4-4aaf93e87103">
+              <SHORT-NAME>StartupConfigSet</SHORT-NAME>
+              <STARTUP-CONFIGS>
+                <STARTUP-CONFIG UUID="5364eb19-ea78-4947-8274-6dd23d66890e">
+                  <SHORT-NAME>Actuator</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="d88593d7-4683-45c2-ae53-7864189ccea4">
+                  <SHORT-NAME>CM</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="f34deeb8-5ab2-4350-a054-6654b90e674a">
+                  <SHORT-NAME>Calc</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="84673136-a08b-4323-a6e4-d122d3734014">
+                  <SHORT-NAME>SM</SHORT-NAME>
+                  <PROCESS-ARGUMENTS>
+                    <PROCESS-ARGUMENT>
+                      <ARGUMENT>simulation</ARGUMENT>
+                    </PROCESS-ARGUMENT>
+                  </PROCESS-ARGUMENTS>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="4d05aef1-fa55-4986-b818-c411dea2db58">
+                  <SHORT-NAME>Sensor</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+                <STARTUP-CONFIG UUID="a3304188-3174-4604-a3a7-24f46806b7c3">
+                  <SHORT-NAME>SimActuator</SHORT-NAME>
+                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
+                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
+                  <TIMEOUT>
+                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                  </TIMEOUT>
+                </STARTUP-CONFIG>
+              </STARTUP-CONFIGS>
+            </STARTUP-CONFIG-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="a7bcd499-6f0e-4f26-8219-6fc7714f7b03">
       <SHORT-NAME>DataType</SHORT-NAME>
       <AR-PACKAGES>
-        <AR-PACKAGE UUID="8591bba5-b837-4c09-a720-caacaeb444d8">
+        <AR-PACKAGE UUID="b3976d84-99fb-41fe-9a32-90fa56c9d4af">
           <SHORT-NAME>Implementation</SHORT-NAME>
           <AR-PACKAGES>
-            <AR-PACKAGE UUID="d83ed5da-fe61-46e5-8154-bfed7f5bb598">
+            <AR-PACKAGE UUID="8192795a-f1be-4a45-965a-af8a3b4a66ec">
               <SHORT-NAME>CPP</SHORT-NAME>
               <ELEMENTS>
                 <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="e40e699f-578b-48e5-afe7-c782fa6e5e46">
@@ -1159,10 +792,10 @@
             </AR-PACKAGE>
           </AR-PACKAGES>
         </AR-PACKAGE>
-        <AR-PACKAGE UUID="fa6291df-4c77-4f04-894f-811bede867a9">
+        <AR-PACKAGE UUID="38acd6a1-ceb9-40ac-9977-7e35ae1fb0fb">
           <SHORT-NAME>Semantics</SHORT-NAME>
           <AR-PACKAGES>
-            <AR-PACKAGE UUID="6678d0d9-8c49-4405-948c-6f99021d2f00">
+            <AR-PACKAGE UUID="2a43f6dc-afe4-461f-9930-db7a6f5bf4df">
               <SHORT-NAME>CompuMethod</SHORT-NAME>
               <ELEMENTS>
                 <COMPU-METHOD UUID="4eb470aa-14b7-43b6-8d98-711b28b53381">
@@ -1286,10 +919,10 @@
         </AR-PACKAGE>
       </AR-PACKAGES>
     </AR-PACKAGE>
-    <AR-PACKAGE UUID="9d9a2b67-521b-4bd8-890b-0216cb9a1760">
+    <AR-PACKAGE UUID="8bf9b9d3-9800-47c1-ace6-0597ed0f4a5a">
       <SHORT-NAME>PortInterface</SHORT-NAME>
       <AR-PACKAGES>
-        <AR-PACKAGE UUID="5f8572d8-59ef-4847-a957-8f1604d53e75">
+        <AR-PACKAGE UUID="8510cf2f-cd08-4141-b83e-d29501549531">
           <SHORT-NAME>Service</SHORT-NAME>
           <ELEMENTS>
             <SERVICE-INTERFACE UUID="2245a2bd-2401-4d26-b678-d6006b6988e7">
@@ -1445,508 +1078,875 @@
         </AR-PACKAGE>
       </AR-PACKAGES>
     </AR-PACKAGE>
-    <AR-PACKAGE UUID="eb1c212d-4b11-4ef0-ba38-9f08bd263782">
-      <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
-      <AR-PACKAGES>
-        <AR-PACKAGE UUID="1bb20b3d-1c59-4913-bf9c-7f52e72b8ea7">
-          <SHORT-NAME>DltConfig</SHORT-NAME>
-          <ELEMENTS>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="1be1358e-4f3b-4d3c-95a7-84c8dd7a324d">
-              <SHORT-NAME>DltLogChannelToProcessMapping_Actuator_TO_Actuator</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Actuator</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Actuator</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="3673d9e9-8b38-4832-9115-b53ed1956c44">
-              <SHORT-NAME>DltLogChannelToProcessMapping_CM_TO_CM</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/CM</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="f3144d1c-2eb0-4f19-9561-82c7faa01262">
-              <SHORT-NAME>DltLogChannelToProcessMapping_Calc_TO_Calc</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Calc</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Calc</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="c40f4d13-a3c5-4c87-8bd8-009e0b2bf91e">
-              <SHORT-NAME>DltLogChannelToProcessMapping_EM_TO_EM</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/EM</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="100efcc2-664f-4b05-8ae7-ceec45f4d519">
-              <SHORT-NAME>DltLogChannelToProcessMapping_SM_TO_SM</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/SM</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SM</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="956795ff-f3f2-4186-8243-84f7c577d201">
-              <SHORT-NAME>DltLogChannelToProcessMapping_Sensor_TO_Sensor</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/Sensor</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Sensor</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-            <DLT-LOG-CHANNEL-TO-PROCESS-MAPPING UUID="e89e6557-152a-497a-99b6-2023aa164d53">
-              <SHORT-NAME>DltLogChannelToProcessMapping_SimActuator_TO_SimActuator</SHORT-NAME>
-              <DLT-LOG-CHANNEL-REF DEST="DLT-LOG-CHANNEL">/Platform/Machine/LogAndTraceInstantiation/SimActuator</DLT-LOG-CHANNEL-REF>
-              <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SimActuator</PROCESS-REF>
-            </DLT-LOG-CHANNEL-TO-PROCESS-MAPPING>
-          </ELEMENTS>
-        </AR-PACKAGE>
-        <AR-PACKAGE UUID="6e698c8e-3c1c-466b-8e8f-ffb1547814a9">
-          <SHORT-NAME>Executable</SHORT-NAME>
-          <ELEMENTS>
-            <EXECUTABLE UUID="f9741d96-330e-4b44-95e3-c0b813d94415">
-              <SHORT-NAME>Actuator</SHORT-NAME>
-              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <ROOT-SW-COMPONENT-PROTOTYPE UUID="09c24914-9949-4a1a-bf06-978163add640">
-                <SHORT-NAME>AA</SHORT-NAME>
-                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/Actuator</APPLICATION-TYPE-TREF>
-              </ROOT-SW-COMPONENT-PROTOTYPE>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-            <EXECUTABLE UUID="4204ebe9-27b5-45e3-986e-05975e35beed">
-              <SHORT-NAME>CM</SHORT-NAME>
-              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <ROOT-SW-COMPONENT-PROTOTYPE UUID="866db9ee-d34a-4825-83cb-f1c8d176529c">
-                <SHORT-NAME>PARA</SHORT-NAME>
-                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/CM</APPLICATION-TYPE-TREF>
-              </ROOT-SW-COMPONENT-PROTOTYPE>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-            <EXECUTABLE UUID="626ea134-c53d-4a0e-a122-2bba5d2e38cb">
-              <SHORT-NAME>Calc</SHORT-NAME>
-              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <ROOT-SW-COMPONENT-PROTOTYPE UUID="1428a339-8025-44df-9175-e15ece2eb5c8">
-                <SHORT-NAME>AA</SHORT-NAME>
-                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/Calc</APPLICATION-TYPE-TREF>
-              </ROOT-SW-COMPONENT-PROTOTYPE>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-            <EXECUTABLE UUID="9e1ddd04-19be-4570-b0de-80c2b50baeb5">
-              <SHORT-NAME>EM</SHORT-NAME>
-              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-            <EXECUTABLE UUID="b9ba1fa0-83a4-44a8-89db-e9524a2c27f7">
-              <SHORT-NAME>SM</SHORT-NAME>
-              <CATEGORY>PLATFORM_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <ROOT-SW-COMPONENT-PROTOTYPE UUID="c6288308-8f02-4685-8e34-5dc457458f91">
-                <SHORT-NAME>PARA</SHORT-NAME>
-                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/SM</APPLICATION-TYPE-TREF>
-              </ROOT-SW-COMPONENT-PROTOTYPE>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-            <EXECUTABLE UUID="1f9a3070-3c37-4c53-8f94-a138bfe787f3">
-              <SHORT-NAME>Sensor</SHORT-NAME>
-              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <ROOT-SW-COMPONENT-PROTOTYPE UUID="03980fbd-e3ec-4a99-ae0e-78b8e560bd8f">
-                <SHORT-NAME>AA</SHORT-NAME>
-                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/Sensor</APPLICATION-TYPE-TREF>
-              </ROOT-SW-COMPONENT-PROTOTYPE>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-            <EXECUTABLE UUID="20535e09-8e71-431e-8270-60e4cd0a573f">
-              <SHORT-NAME>SimActuator</SHORT-NAME>
-              <CATEGORY>APPLICATION_LEVEL</CATEGORY>
-              <LOGGING-BEHAVIOR>USES-LOGGING</LOGGING-BEHAVIOR>
-              <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
-              <ROOT-SW-COMPONENT-PROTOTYPE UUID="a2d99e10-0402-44cc-9426-a2cbe60ea24e">
-                <SHORT-NAME>AA</SHORT-NAME>
-                <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/SwComponent/AdaptiveApplication/SimActuator</APPLICATION-TYPE-TREF>
-              </ROOT-SW-COMPONENT-PROTOTYPE>
-              <VERSION>1.0.0</VERSION>
-            </EXECUTABLE>
-          </ELEMENTS>
-        </AR-PACKAGE>
-        <AR-PACKAGE UUID="c8993481-4a59-4e12-a748-7657029bb5ab">
-          <SHORT-NAME>Manifest</SHORT-NAME>
-          <ELEMENTS>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="70c540d3-3b40-4795-9d4e-e7ca424f2ce3">
-              <SHORT-NAME>Actuator_AA_ControlData</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Actuator/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Actuator/ControlData</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AAActuator</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="01607c20-de25-4331-8bca-bde4f7b7c257">
-              <SHORT-NAME>Calc_AA_ControlData</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Calc/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Calc/ControlData</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvControlData_AACalc</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="c8099498-90b6-4fad-8146-37fce81f7629">
-              <SHORT-NAME>Calc_AA_RawData</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Calc/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Calc/RawData</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvRawData_AACalc</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="cdfda533-4a9c-4af0-a750-596b2d90f127">
-              <SHORT-NAME>SM_PARA_DeepRacerFG</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/SM/PARA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/SM/DeepRacerFG</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_DeepRacerFG_SM</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="1e760117-a17f-4f99-a568-5b2ffa88bebe">
-              <SHORT-NAME>SM_PARA_MachineFG</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/SM/PARA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/SM/MachineFG</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_MachineFG_SM</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="bade4ae2-05e8-4fe9-bed4-50b815dfcc26">
-              <SHORT-NAME>Sensor_AA_RawData</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/Sensor/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/Sensor/RawData</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvRawData_AASensor</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-            <SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING UUID="566ef1a0-c684-468b-bdd0-044d76bf9315">
-              <SHORT-NAME>SimActuator_AA_ControlData</SHORT-NAME>
-              <PORT-PROTOTYPE-IREF>
-                <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/AdaptiveApplication/Executable/SimActuator/AA</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
-                <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/SwComponent/AdaptiveApplication/SimActuator/ControlData</TARGET-PORT-PROTOTYPE-REF>
-              </PORT-PROTOTYPE-IREF>
-              <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AASimActuator</SERVICE-INSTANCE-REF>
-            </SERVICE-INSTANCE-TO-PORT-PROTOTYPE-MAPPING>
-          </ELEMENTS>
-        </AR-PACKAGE>
-        <AR-PACKAGE UUID="c5c0256f-3aa8-4f69-898a-d1d5e846dcdc">
-          <SHORT-NAME>Process</SHORT-NAME>
-          <ELEMENTS>
-            <PROCESS UUID="14a55838-2851-4bfc-8b32-c7b672aee45d">
-              <SHORT-NAME>Actuator</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/Actuator</EXECUTABLE-REF>
-              <PROCESS-STATE-MACHINE UUID="4b2b5e4f-464f-45ee-b996-ef75ae6fdad2">
-                <SHORT-NAME>Actuator</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-              <STATE-DEPENDENT-STARTUP-CONFIGS>
-                <STATE-DEPENDENT-STARTUP-CONFIG>
-                  <FUNCTION-GROUP-STATE-IREFS>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/DeepRacerFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/DeepRacerState/Device</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                  </FUNCTION-GROUP-STATE-IREFS>
-                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
-                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/Actuator</STARTUP-CONFIG-REF>
-                </STATE-DEPENDENT-STARTUP-CONFIG>
-              </STATE-DEPENDENT-STARTUP-CONFIGS>
-            </PROCESS>
-            <PROCESS UUID="90726bbd-48e9-4a4c-a5fa-256ca97eca79">
-              <SHORT-NAME>CM</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/CM</EXECUTABLE-REF>
-              <PROCESS-STATE-MACHINE UUID="93302827-e915-4893-bbce-5a8af43a0325">
-                <SHORT-NAME>CM</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-              <STATE-DEPENDENT-STARTUP-CONFIGS>
-                <STATE-DEPENDENT-STARTUP-CONFIG>
-                  <FUNCTION-GROUP-STATE-IREFS>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Restart</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Shutdown</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                  </FUNCTION-GROUP-STATE-IREFS>
-                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
-                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/CM</STARTUP-CONFIG-REF>
-                </STATE-DEPENDENT-STARTUP-CONFIG>
-              </STATE-DEPENDENT-STARTUP-CONFIGS>
-            </PROCESS>
-            <PROCESS UUID="75e51c0d-0f9f-472d-9607-0b35697cca07">
-              <SHORT-NAME>Calc</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/Calc</EXECUTABLE-REF>
-              <PROCESS-STATE-MACHINE UUID="6f4fe986-daa5-43d2-9485-dbb67d10c534">
-                <SHORT-NAME>Calc</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-              <STATE-DEPENDENT-STARTUP-CONFIGS>
-                <STATE-DEPENDENT-STARTUP-CONFIG>
-                  <EXECUTION-DEPENDENCYS>
-                    <EXECUTION-DEPENDENCY>
-                      <PROCESS-STATE-IREF>
-                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
-                      </PROCESS-STATE-IREF>
-                    </EXECUTION-DEPENDENCY>
-                  </EXECUTION-DEPENDENCYS>
-                  <FUNCTION-GROUP-STATE-IREFS>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                  </FUNCTION-GROUP-STATE-IREFS>
-                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
-                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/Calc</STARTUP-CONFIG-REF>
-                </STATE-DEPENDENT-STARTUP-CONFIG>
-              </STATE-DEPENDENT-STARTUP-CONFIGS>
-            </PROCESS>
-            <PROCESS UUID="ebdace99-6768-4a9d-82d4-0f02abee01f7">
-              <SHORT-NAME>EM</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/EM</EXECUTABLE-REF>
-              <PROCESS-STATE-MACHINE UUID="f29fc26e-6c8e-4c23-876b-ed0a220dee34">
-                <SHORT-NAME>EM</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-            </PROCESS>
-            <PROCESS UUID="9588fd9e-dbb3-4ba7-ad83-c9a7990fdb6d">
-              <SHORT-NAME>SM</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/SM</EXECUTABLE-REF>
-              <FUNCTION-CLUSTER-AFFILIATION>STATE_MANAGEMENT</FUNCTION-CLUSTER-AFFILIATION>
-              <PROCESS-STATE-MACHINE UUID="57f4dd09-a9e2-4162-9f52-10200e4959cf">
-                <SHORT-NAME>SM</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-              <STATE-DEPENDENT-STARTUP-CONFIGS>
-                <STATE-DEPENDENT-STARTUP-CONFIG>
-                  <EXECUTION-DEPENDENCYS>
-                    <EXECUTION-DEPENDENCY>
-                      <PROCESS-STATE-IREF>
-                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
-                      </PROCESS-STATE-IREF>
-                    </EXECUTION-DEPENDENCY>
-                  </EXECUTION-DEPENDENCYS>
-                  <FUNCTION-GROUP-STATE-IREFS>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Restart</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Shutdown</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Verify</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                  </FUNCTION-GROUP-STATE-IREFS>
-                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
-                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/SM</STARTUP-CONFIG-REF>
-                </STATE-DEPENDENT-STARTUP-CONFIG>
-              </STATE-DEPENDENT-STARTUP-CONFIGS>
-            </PROCESS>
-            <PROCESS UUID="f85c5d43-671f-412e-9405-5bed218a2e98">
-              <SHORT-NAME>Sensor</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/Sensor</EXECUTABLE-REF>
-              <PROCESS-STATE-MACHINE UUID="7131312f-37ab-400f-8431-e2918faeaf6d">
-                <SHORT-NAME>Sensor</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-              <STATE-DEPENDENT-STARTUP-CONFIGS>
-                <STATE-DEPENDENT-STARTUP-CONFIG>
-                  <EXECUTION-DEPENDENCYS>
-                    <EXECUTION-DEPENDENCY>
-                      <PROCESS-STATE-IREF>
-                        <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AdaptiveApplication/Process/CM/CM</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                        <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Running</TARGET-MODE-DECLARATION-REF>
-                      </PROCESS-STATE-IREF>
-                    </EXECUTION-DEPENDENCY>
-                  </EXECUTION-DEPENDENCYS>
-                  <FUNCTION-GROUP-STATE-IREFS>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Startup</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                  </FUNCTION-GROUP-STATE-IREFS>
-                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
-                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/Sensor</STARTUP-CONFIG-REF>
-                </STATE-DEPENDENT-STARTUP-CONFIG>
-              </STATE-DEPENDENT-STARTUP-CONFIGS>
-            </PROCESS>
-            <PROCESS UUID="e440eaf6-f1fe-4b7f-ad74-8bd3f3848418">
-              <SHORT-NAME>SimActuator</SHORT-NAME>
-              <EXECUTABLE-REF DEST="EXECUTABLE">/AdaptiveApplication/Executable/SimActuator</EXECUTABLE-REF>
-              <PROCESS-STATE-MACHINE UUID="f9721d98-ef3d-4d15-8858-7878fd51151f">
-                <SHORT-NAME>SimActuator</SHORT-NAME>
-                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/ProcessState</TYPE-TREF>
-              </PROCESS-STATE-MACHINE>
-              <STATE-DEPENDENT-STARTUP-CONFIGS>
-                <STATE-DEPENDENT-STARTUP-CONFIG>
-                  <FUNCTION-GROUP-STATE-IREFS>
-                    <FUNCTION-GROUP-STATE-IREF>
-                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/Platform/FunctionGroup/FunctionGroupSet/DeepRacerFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
-                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/StateMachine/DeepRacerState/Simulation</TARGET-MODE-DECLARATION-REF>
-                    </FUNCTION-GROUP-STATE-IREF>
-                  </FUNCTION-GROUP-STATE-IREFS>
-                  <RESOURCE-GROUP-REF DEST="RESOURCE-GROUP">/Platform/Machine/OsModuleInstantiation/ResourceGroup</RESOURCE-GROUP-REF>
-                  <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/AdaptiveApplication/StartupConfig/StartupConfigSet/SimActuator</STARTUP-CONFIG-REF>
-                </STATE-DEPENDENT-STARTUP-CONFIG>
-              </STATE-DEPENDENT-STARTUP-CONFIGS>
-            </PROCESS>
-          </ELEMENTS>
-        </AR-PACKAGE>
-        <AR-PACKAGE UUID="a1364ad6-c7bf-45c9-b322-3e097bdc2787">
-          <SHORT-NAME>StartupConfig</SHORT-NAME>
-          <ELEMENTS>
-            <STARTUP-CONFIG-SET UUID="6d1bed11-f89e-494b-92c4-4aaf93e87103">
-              <SHORT-NAME>StartupConfigSet</SHORT-NAME>
-              <STARTUP-CONFIGS>
-                <STARTUP-CONFIG UUID="5364eb19-ea78-4947-8274-6dd23d66890e">
+    <AR-PACKAGE UUID="30a2c209-7bb1-4adf-8b66-d79a7f41882a">
+      <SHORT-NAME>Platform</SHORT-NAME>
+      <ELEMENTS>
+        <MACHINE UUID="264d93c3-f8be-4638-81ea-41f838647d48">
+          <SHORT-NAME>Machine</SHORT-NAME>
+          <DEFAULT-APPLICATION-TIMEOUT/>
+          <MACHINE-DESIGN-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/Ecu</MACHINE-DESIGN-REF>
+          <MODULE-INSTANTIATIONS>
+            <LOG-AND-TRACE-INSTANTIATION UUID="c3b90b2a-52c6-4804-ac60-411196c294e3">
+              <SHORT-NAME>LogAndTraceInstantiation</SHORT-NAME>
+              <ADMIN-DATA>
+                <SDGS>
+                  <SDG GID="PARA-DLT-CONF">
+                    <SDG GID="GENERAL-CONFIGURATION">
+                      <SD GID="VERBOSE">ON</SD>
+                      <SD GID="DAEMONIZE">ON</SD>
+                      <SD GID="SEND-SERIAL-HEADER">ON</SD>
+                      <SD GID="SEND-CONTEXT-REGISTRATION">ON</SD>
+                      <SD GID="SEND-MESSAGE-TIME">0</SD>
+                      <SD GID="SHAED-MEMORY-SIZE">100000</SD>
+                      <SD GID="PERSISTENCE-STORAGE-PATH">/tmp</SD>
+                      <SD GID="LOGGING-MODE">LOG-TO-STDOUT</SD>
+                      <SD GID="LOGGING-LEVEL">LOG-INFO</SD>
+                      <SD GID="LOGGING-FILE-NAME">/tmp/dlt.log</SD>
+                      <SD GID="TIME-OUT-ON-SEND">4</SD>
+                      <SD GID="RING-BUFFER-MIN-SIZE">500000</SD>
+                      <SD GID="RING-BUFFER-MAX-SIZE">10000000</SD>
+                      <SD GID="RING-BUFFER-STEP-SIZE">500000</SD>
+                      <SD GID="DAEMON-FIFO-SIZE">65536</SD>
+                      <SD GID="CONTEXT-LOG-LEVEL">DLT-LOG-INFO</SD>
+                      <SD GID="CONTEXT-TRACE-STATUS">DLT-TRACE-STATUS-OFF</SD>
+                      <SD GID="FORCE-CONTEXT-LOG-LEVEL-AND-TRACE-STATUS">OFF</SD>
+                      <SD GID="INJECTION-MODE">ON</SD>
+                    </SDG>
+                    <SDG GID="GATEWAY-CONFIGURATION">
+                      <SD GID="GATEWAY-MODE">OFF</SD>
+                      <SD GID="GATEWAY-CONFIG-FILE">/etc/dlt_gateway.conf</SD>
+                    </SDG>
+                    <SDG GID="PERMISSION-CONFIGURATION">
+                      <SD GID="DAEMON-FIFO-GROUP">/tmp/dlt</SD>
+                    </SDG>
+                    <SDG GID="CONTROL-APPLICATION">
+                      <SD GID="CONTROL-SOCKET-PATH">/tmp/dlt-ctrl.sock</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-TRACE-MEMORY">
+                      <SD GID="OFFLINE-TRACE-DIRECTORY">/tmp</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-SIZE">1000000</SD>
+                      <SD GID="OFFLINE-TRACE-MAX-SIZE">4000000</SD>
+                      <SD GID="OFFLINE-TRACE-FILE-NAME-TIMESTAMP-BASED">TIMESTAMP-BASED</SD>
+                    </SDG>
+                    <SDG GID="LOCAL-CONSOLE-OUTPUT-CONFIGURATION">
+                      <SD GID="PRINT-ASCII">DISABLE</SD>
+                      <SD GID="PRINT-HEX">DISABLE</SD>
+                      <SD GID="PRINT-HEADERS-ONLY">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="CLIENT-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="RS232-DEVICE-NAME">/dev/ttyS0</SD>
+                      <SD GID="RS232-BAUDRATE">115200</SD>
+                      <SD GID="RS232-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="TCP-SERIAL-PORT-CONFIGURATION">
+                      <SD GID="TCP-SYNC-SERIAL-HEADER">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="ECU-SOFTWARE-VERSION-INFO">
+                      <SD GID="SEND-ECU-SOFTWARE-VERSION">DISABLE</SD>
+                      <SD GID="PATH-TO-ECU-SOFTWARE-VERSION"/>
+                    </SDG>
+                    <SDG GID="TIMEZONE-INFO">
+                      <SD GID="SEND-TIMEZONE">DISABLE</SD>
+                    </SDG>
+                    <SDG GID="OFFLINE-LOGSTORAGE">
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-DEVICES">0</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DIR-PATH">/opt</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-TIMESTAMP">DISABLE</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-DELIMITER">_</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-MAX-COUNTER">999</SD>
+                      <SD GID="OFFLINE-LOGSTORAGE-CACHE-SIZE">30000</SD>
+                    </SDG>
+                    <SDG GID="UDP-MULTICAST-CONFIGURATION">
+                      <SD GID="UDP-CONNECTION-SETUP">ENABLE</SD>
+                      <SD GID="UDP-MULTICAST-IP-ADDRESS">255.0.0.37</SD>
+                      <SD GID="UDP-MULTICAST-IP-PORT">3491</SD>
+                    </SDG>
+                    <SDG GID="BINDADDRESS-LIMITATION">
+                      <SD GID="BIND-ADDRESS">0.0.0.0</SD>
+                    </SDG>
+                  </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <DLT-ECU-ID>ECU</DLT-ECU-ID>
+              <DLT-LOG-CHANNELS>
+                <DLT-LOG-CHANNEL UUID="cfd1aefd-76b3-40a8-9a0c-9592a1e51df5">
                   <SHORT-NAME>Actuator</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="d88593d7-4683-45c2-ae53-7864189ccea4">
+                  <APPLICATION-ID>ACTR</APPLICATION-ID>
+                  <CONTEXT-ID>ACTR</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="d216cda3-83d2-4ab7-8e5a-55f0dbd68789">
                   <SHORT-NAME>CM</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="f34deeb8-5ab2-4350-a054-6654b90e674a">
+                  <APPLICATION-ID>CM</APPLICATION-ID>
+                  <CONTEXT-ID>CM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="bd945e34-bb95-4671-941c-bc656887484a">
                   <SHORT-NAME>Calc</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="84673136-a08b-4323-a6e4-d122d3734014">
+                  <APPLICATION-ID>CALC</APPLICATION-ID>
+                  <CONTEXT-ID>CALC</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="cc4e5694-6923-446a-aa1b-3f8f5ab74563">
+                  <SHORT-NAME>EM</SHORT-NAME>
+                  <APPLICATION-ID>EM</APPLICATION-ID>
+                  <CONTEXT-ID>EM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="15bd69af-6e63-4044-ab5f-8111f558b2c0">
                   <SHORT-NAME>SM</SHORT-NAME>
-                  <PROCESS-ARGUMENTS>
-                    <PROCESS-ARGUMENT>
-                      <ARGUMENT>simulation</ARGUMENT>
-                    </PROCESS-ARGUMENT>
-                  </PROCESS-ARGUMENTS>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="4d05aef1-fa55-4986-b818-c411dea2db58">
+                  <APPLICATION-ID>SM</APPLICATION-ID>
+                  <CONTEXT-ID>SM</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>ERROR</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="7efe4fdb-f58f-4d70-9a13-2f7b01e325d0">
                   <SHORT-NAME>Sensor</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="a3304188-3174-4604-a3a7-24f46806b7c3">
+                  <APPLICATION-ID>SENS</APPLICATION-ID>
+                  <CONTEXT-ID>SENS</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+                <DLT-LOG-CHANNEL UUID="826ecc29-8e56-4c09-9862-3d804d3971b5">
                   <SHORT-NAME>SimActuator</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-              </STARTUP-CONFIGS>
-            </STARTUP-CONFIG-SET>
+                  <APPLICATION-ID>SACT</APPLICATION-ID>
+                  <CONTEXT-ID>SACT</CONTEXT-ID>
+                  <LOG-TRACE-DEFAULT-LOG-LEVEL>VERBOSE</LOG-TRACE-DEFAULT-LOG-LEVEL>
+                  <LOG-TRACE-LOG-MODES>
+                    <LOG-TRACE-LOG-MODE>CONSOLE</LOG-TRACE-LOG-MODE>
+                  </LOG-TRACE-LOG-MODES>
+                </DLT-LOG-CHANNEL>
+              </DLT-LOG-CHANNELS>
+            </LOG-AND-TRACE-INSTANTIATION>
+            <OS-MODULE-INSTANTIATION UUID="5e1f0058-986a-4dbf-a0cf-94ff624a540d">
+              <SHORT-NAME>OsModuleInstantiation</SHORT-NAME>
+              <RESOURCE-GROUPS>
+                <RESOURCE-GROUP UUID="6ed37087-87cf-4b2e-8429-33e0053753e2">
+                  <SHORT-NAME>ResourceGroup</SHORT-NAME>
+                </RESOURCE-GROUP>
+              </RESOURCE-GROUPS>
+            </OS-MODULE-INSTANTIATION>
+          </MODULE-INSTANTIATIONS>
+          <PROCESSORS>
+            <PROCESSOR UUID="8c509710-a048-4b17-9a7f-f7c7edc5bb15">
+              <SHORT-NAME>Core</SHORT-NAME>
+              <CORES>
+                <PROCESSOR-CORE UUID="32e44e14-8590-49ca-9ecc-b6ce542c7cbb">
+                  <SHORT-NAME>Core0</SHORT-NAME>
+                  <CORE-ID>0</CORE-ID>
+                </PROCESSOR-CORE>
+              </CORES>
+            </PROCESSOR>
+          </PROCESSORS>
+          <TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>NO-TRUSTED-PLATFORM-SUPPORT</TRUSTED-PLATFORM-EXECUTABLE-LAUNCH-BEHAVIOR>
+        </MACHINE>
+      </ELEMENTS>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="1980df86-27a4-49e7-9252-e8ba56dfabbf">
+          <SHORT-NAME>FunctionGroup</SHORT-NAME>
+          <ELEMENTS>
+            <FUNCTION-GROUP-SET UUID="ebf2abcd-7d89-48ad-8b36-3b4e226035d6">
+              <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+              <FUNCTION-GROUPS>
+                <MODE-DECLARATION-GROUP-PROTOTYPE UUID="47ae7614-b45a-49e8-b459-7ededf6db14a">
+                  <SHORT-NAME>DeepRacerFG</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/DeepRacerState</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+                <MODE-DECLARATION-GROUP-PROTOTYPE UUID="e725cc0b-bb4e-46c2-8b50-bd4b6ee06fcb">
+                  <SHORT-NAME>MachineFG</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/StateMachine/MachineState</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+              </FUNCTION-GROUPS>
+            </FUNCTION-GROUP-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE UUID="ce248262-0756-4852-8368-7baedbcd2228">
+          <SHORT-NAME>ProcessToMachine</SHORT-NAME>
+          <ELEMENTS>
+            <PROCESS-TO-MACHINE-MAPPING-SET UUID="99fc1305-9045-4b76-83a0-196e66fd4c6e">
+              <SHORT-NAME>ProcessToMachineMappingSet</SHORT-NAME>
+              <PROCESS-TO-MACHINE-MAPPINGS>
+                <PROCESS-TO-MACHINE-MAPPING UUID="1ccb6625-ccd0-4d19-ba06-99ec857f05ef">
+                  <SHORT-NAME>ProcessToMachineMapping_Actuator_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Actuator</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="6cf05379-20a3-4697-a2ed-962d835a0474">
+                  <SHORT-NAME>ProcessToMachineMapping_CM_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/CM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="a83dfda4-668c-4357-a7a9-16c9e2aba7fe">
+                  <SHORT-NAME>ProcessToMachineMapping_Calc_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Calc</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="02d3a418-0ccc-4508-9180-060136dcfb35">
+                  <SHORT-NAME>ProcessToMachineMapping_EM_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/EM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="18627088-321f-4983-a1f7-b0def22ee5f8">
+                  <SHORT-NAME>ProcessToMachineMapping_SM_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SM</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="54fb70ed-61df-4195-9a09-253ef2b40376">
+                  <SHORT-NAME>ProcessToMachineMapping_Sensor_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/Sensor</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+                <PROCESS-TO-MACHINE-MAPPING UUID="b50bc4e6-78e6-4529-a9d4-3701b746d910">
+                  <SHORT-NAME>ProcessToMachineMapping_SimActuator_TO_Machine_TO_UnknownModule</SHORT-NAME>
+                  <MACHINE-REF DEST="MACHINE">/Platform/Machine</MACHINE-REF>
+                  <PROCESS-REF DEST="PROCESS">/AdaptiveApplication/Process/SimActuator</PROCESS-REF>
+                </PROCESS-TO-MACHINE-MAPPING>
+              </PROCESS-TO-MACHINE-MAPPINGS>
+            </PROCESS-TO-MACHINE-MAPPING-SET>
           </ELEMENTS>
         </AR-PACKAGE>
       </AR-PACKAGES>
     </AR-PACKAGE>
-    <AR-PACKAGE UUID="2c70cba2-ebb8-40d0-bd31-03c1b366b3cb">
-      <SHORT-NAME>SwComponent</SHORT-NAME>
+    <AR-PACKAGE UUID="176b04b9-f240-4f62-9af8-4660335b0350">
+      <SHORT-NAME>System</SHORT-NAME>
+      <ELEMENTS>
+        <SYSTEM UUID="5a7ea391-3a67-441e-aa72-3c1d06181121">
+          <SHORT-NAME>DeepRacerVehicle</SHORT-NAME>
+          <CATEGORY>MACHINE_DESIGN_EXTRACT</CATEGORY>
+          <FIBEX-ELEMENTS>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="MACHINE-DESIGN">/System/VehicleTopology/Ecu/Ecu</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+            <FIBEX-ELEMENT-REF-CONDITIONAL>
+              <FIBEX-ELEMENT-REF DEST="ETHERNET-CLUSTER">/System/VehicleTopology/Cluster/EthernetCluster</FIBEX-ELEMENT-REF>
+            </FIBEX-ELEMENT-REF-CONDITIONAL>
+          </FIBEX-ELEMENTS>
+          <SYSTEM-VERSION>1.0.0</SYSTEM-VERSION>
+        </SYSTEM>
+      </ELEMENTS>
       <AR-PACKAGES>
-        <AR-PACKAGE UUID="5d132238-2ad1-4647-b105-18cb87411ffa">
-          <SHORT-NAME>AdaptiveApplication</SHORT-NAME>
-          <ELEMENTS>
-            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="6e0c7ae0-daf3-4e71-8ffb-dbbc76f3a488">
-              <SHORT-NAME>Actuator</SHORT-NAME>
-              <PORTS>
-                <R-PORT-PROTOTYPE UUID="86d051a5-b333-4c67-9fb5-cd2b3f299c23">
-                  <SHORT-NAME>ControlData</SHORT-NAME>
-                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</REQUIRED-INTERFACE-TREF>
-                </R-PORT-PROTOTYPE>
-              </PORTS>
-            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
-            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="1ec51311-244c-4a54-8016-792ab9f17d26">
-              <SHORT-NAME>CM</SHORT-NAME>
-            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
-            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="3332f9c7-f5a5-4985-92b0-208067059761">
-              <SHORT-NAME>Calc</SHORT-NAME>
-              <PORTS>
-                <P-PORT-PROTOTYPE UUID="b13a2ba8-e0f0-4890-9b5f-f389764f40a4">
-                  <SHORT-NAME>ControlData</SHORT-NAME>
-                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</PROVIDED-INTERFACE-TREF>
-                </P-PORT-PROTOTYPE>
-                <R-PORT-PROTOTYPE UUID="b0cff45e-c5a8-4e70-b499-fb5eafaedd6e">
-                  <SHORT-NAME>RawData</SHORT-NAME>
-                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvRawData</REQUIRED-INTERFACE-TREF>
-                </R-PORT-PROTOTYPE>
-              </PORTS>
-            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
-            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="df240fb9-d47f-429d-9907-7bef3607c35f">
-              <SHORT-NAME>SM</SHORT-NAME>
-              <PORTS>
-                <P-PORT-PROTOTYPE UUID="87e1aa08-494b-4484-8c78-f6b30523b04e">
-                  <SHORT-NAME>DeepRacerFG</SHORT-NAME>
-                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_DeepRacerFG</PROVIDED-INTERFACE-TREF>
-                </P-PORT-PROTOTYPE>
-                <P-PORT-PROTOTYPE UUID="77cc45d7-84f9-4d5d-8547-87261cf44217">
-                  <SHORT-NAME>MachineFG</SHORT-NAME>
-                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_MachineFG</PROVIDED-INTERFACE-TREF>
-                </P-PORT-PROTOTYPE>
-              </PORTS>
-            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
-            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="7371b5ff-469e-4fde-8a7f-d799e826f7c2">
-              <SHORT-NAME>Sensor</SHORT-NAME>
-              <PORTS>
-                <P-PORT-PROTOTYPE UUID="4ae3e756-ffbd-45c3-bced-df8065433481">
-                  <SHORT-NAME>RawData</SHORT-NAME>
-                  <PROVIDED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvRawData</PROVIDED-INTERFACE-TREF>
-                </P-PORT-PROTOTYPE>
-              </PORTS>
-            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
-            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE UUID="1a7607e5-fd8a-44c0-a285-79a3d5ce1e4e">
-              <SHORT-NAME>SimActuator</SHORT-NAME>
-              <PORTS>
-                <R-PORT-PROTOTYPE UUID="0e92d8ed-b255-4c10-b9c0-ce3a6d56204f">
-                  <SHORT-NAME>ControlData</SHORT-NAME>
-                  <REQUIRED-INTERFACE-TREF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</REQUIRED-INTERFACE-TREF>
-                </R-PORT-PROTOTYPE>
-              </PORTS>
-            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
-          </ELEMENTS>
+        <AR-PACKAGE UUID="d7d58030-aa0b-43ea-8233-7c9fea6529a9">
+          <SHORT-NAME>Service</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="6eb83c45-3cee-4e34-904a-4f62b165f5fe">
+              <SHORT-NAME>Deployment</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SERVICE-INTERFACE-DEPLOYMENT UUID="793ad22a-c6e2-4562-ae35-a3d4b7b27671">
+                  <SHORT-NAME>SvControlData</SHORT-NAME>
+                  <EVENT-DEPLOYMENTS>
+                    <SOMEIP-EVENT-DEPLOYMENT UUID="fa9000f8-6f0f-4ff8-b532-bb323056dcaf">
+                      <SHORT-NAME>CEvent</SHORT-NAME>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/SvControlData/CEvent</EVENT-REF>
+                      <EVENT-ID>1</EVENT-ID>
+                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                    </SOMEIP-EVENT-DEPLOYMENT>
+                  </EVENT-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvControlData</SERVICE-INTERFACE-REF>
+                  <EVENT-GROUPS>
+                    <SOMEIP-EVENT-GROUP UUID="9b3f47a8-bb8c-40fc-9cf1-0f14492b8675">
+                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
+                      <EVENT-GROUP-ID>1</EVENT-GROUP-ID>
+                      <EVENT-REFS>
+                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvControlData/CEvent</EVENT-REF>
+                      </EVENT-REFS>
+                    </SOMEIP-EVENT-GROUP>
+                  </EVENT-GROUPS>
+                  <SERVICE-INTERFACE-ID>82</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-VERSION>
+                    <MAJOR-VERSION>1</MAJOR-VERSION>
+                    <MINOR-VERSION>0</MINOR-VERSION>
+                  </SERVICE-INTERFACE-VERSION>
+                </SOMEIP-SERVICE-INTERFACE-DEPLOYMENT>
+                <SOMEIP-SERVICE-INTERFACE-DEPLOYMENT UUID="16e68678-5103-4711-87b6-61a1a592d21c">
+                  <SHORT-NAME>SvRawData</SHORT-NAME>
+                  <EVENT-DEPLOYMENTS>
+                    <SOMEIP-EVENT-DEPLOYMENT UUID="92a7961b-619e-4b81-9b78-39fcc55a9313">
+                      <SHORT-NAME>REvent</SHORT-NAME>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/SvRawData/REvent</EVENT-REF>
+                      <EVENT-ID>1</EVENT-ID>
+                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                    </SOMEIP-EVENT-DEPLOYMENT>
+                  </EVENT-DEPLOYMENTS>
+                  <FIELD-DEPLOYMENTS>
+                    <SOMEIP-FIELD-DEPLOYMENT UUID="adc7b69a-2188-4a15-8a9b-2472c602abc2">
+                      <SHORT-NAME>RField</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/SvRawData/RField</FIELD-REF>
+                      <GET UUID="0d2228f7-cfa7-4619-a393-6ff0736a1477">
+                        <SHORT-NAME>Get_RField</SHORT-NAME>
+                        <METHOD-ID>2</METHOD-ID>
+                        <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                      </GET>
+                      <NOTIFIER UUID="96c25842-ab27-4a67-8b95-933fb54cb9a5">
+                        <SHORT-NAME>Notification_RField</SHORT-NAME>
+                        <EVENT-ID>2</EVENT-ID>
+                        <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                      </NOTIFIER>
+                      <SET UUID="4747ef26-cea4-43b7-b052-ab80bf30a4db">
+                        <SHORT-NAME>Set_RField</SHORT-NAME>
+                        <METHOD-ID>3</METHOD-ID>
+                        <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                      </SET>
+                    </SOMEIP-FIELD-DEPLOYMENT>
+                  </FIELD-DEPLOYMENTS>
+                  <METHOD-DEPLOYMENTS>
+                    <SOMEIP-METHOD-DEPLOYMENT UUID="5f7c7d18-607f-4bbf-bdec-3d8e3a79a8c5">
+                      <SHORT-NAME>RMethod</SHORT-NAME>
+                      <METHOD-REF DEST="CLIENT-SERVER-OPERATION">/PortInterface/Service/SvRawData/RMethod</METHOD-REF>
+                      <METHOD-ID>1</METHOD-ID>
+                      <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
+                    </SOMEIP-METHOD-DEPLOYMENT>
+                  </METHOD-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/SvRawData</SERVICE-INTERFACE-REF>
+                  <EVENT-GROUPS>
+                    <SOMEIP-EVENT-GROUP UUID="553e406b-798e-4b14-a597-a7f4c159c211">
+                      <SHORT-NAME>Eventgroup_Notification_RField</SHORT-NAME>
+                      <EVENT-GROUP-ID>2</EVENT-GROUP-ID>
+                      <EVENT-REFS>
+                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Notification_RField</EVENT-REF>
+                      </EVENT-REFS>
+                    </SOMEIP-EVENT-GROUP>
+                    <SOMEIP-EVENT-GROUP UUID="17ae3a8e-f5d9-4819-b532-14796a31e511">
+                      <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
+                      <EVENT-GROUP-ID>1</EVENT-GROUP-ID>
+                      <EVENT-REFS>
+                        <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/REvent</EVENT-REF>
+                      </EVENT-REFS>
+                    </SOMEIP-EVENT-GROUP>
+                  </EVENT-GROUPS>
+                  <SERVICE-INTERFACE-ID>81</SERVICE-INTERFACE-ID>
+                  <SERVICE-INTERFACE-VERSION>
+                    <MAJOR-VERSION>1</MAJOR-VERSION>
+                    <MINOR-VERSION>0</MINOR-VERSION>
+                  </SERVICE-INTERFACE-VERSION>
+                </SOMEIP-SERVICE-INTERFACE-DEPLOYMENT>
+                <USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT UUID="66fe6e6e-a7a5-447b-b4b5-f676323f321b">
+                  <SHORT-NAME>TriggerInOut_DeepRacerFG</SHORT-NAME>
+                  <CATEGORY>SERVICE_INTERFACE_DEPLOYMENT_IPC</CATEGORY>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-DEPLOYMENT">
+                        <SD GID="SERVICE-INTERFACE-ID">12</SD>
+                        <SD GID="MAJOR-VERSION">1</SD>
+                        <SD GID="MINOR-VERSION">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <FIELD-DEPLOYMENTS>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="a3817e00-3c8a-4959-8990-14554dd0a1aa">
+                      <SHORT-NAME>Notifier</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_DeepRacerFG/Notifier</FIELD-REF>
+                      <GET UUID="75e8bfb5-2728-4b2b-8921-8c93aa22871e">
+                        <SHORT-NAME>Get_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">1</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </GET>
+                      <NOTIFIER UUID="c72915a9-a9b4-4c1a-b0fc-14103660c83a">
+                        <SHORT-NAME>Notification_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-EVENT-DEPLOYMENT">
+                              <SD GID="EVENT-ID">2</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </NOTIFIER>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="ef83f934-f525-4d76-b522-f29a5da972f6">
+                      <SHORT-NAME>Trigger</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_DeepRacerFG/Trigger</FIELD-REF>
+                      <SET UUID="9592c4b4-8739-4cc0-a5b9-22b370c7e051">
+                        <SHORT-NAME>Set_Trigger</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">3</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </SET>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                  </FIELD-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_DeepRacerFG</SERVICE-INTERFACE-REF>
+                </USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT>
+                <USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT UUID="1ca44805-6255-46c3-9f66-53d6e84320b3">
+                  <SHORT-NAME>TriggerInOut_MachineFG</SHORT-NAME>
+                  <CATEGORY>SERVICE_INTERFACE_DEPLOYMENT_IPC</CATEGORY>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-DEPLOYMENT">
+                        <SD GID="SERVICE-INTERFACE-ID">11</SD>
+                        <SD GID="MAJOR-VERSION">1</SD>
+                        <SD GID="MINOR-VERSION">0</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <FIELD-DEPLOYMENTS>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="8c0d0bde-ae0f-43e1-9d69-ad31fda639f7">
+                      <SHORT-NAME>Notifier</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_MachineFG/Notifier</FIELD-REF>
+                      <GET UUID="532ead0f-0058-4c04-9dd3-ced28c4cf895">
+                        <SHORT-NAME>Get_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">1</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </GET>
+                      <NOTIFIER UUID="ca9011fc-39f6-4f43-b293-4445dd2bd988">
+                        <SHORT-NAME>Notification_Notifier</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-EVENT-DEPLOYMENT">
+                              <SD GID="EVENT-ID">2</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </NOTIFIER>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                    <USER-DEFINED-FIELD-DEPLOYMENT UUID="b1216188-3d0a-431b-96d0-6be5baf68616">
+                      <SHORT-NAME>Trigger</SHORT-NAME>
+                      <FIELD-REF DEST="FIELD">/PortInterface/Service/TriggerInOut_MachineFG/Trigger</FIELD-REF>
+                      <SET UUID="89fd8f0a-9589-4cd9-b59b-df1b44d60e85">
+                        <SHORT-NAME>Set_Trigger</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="IPC-METHOD-DEPLOYMENT">
+                              <SD GID="METHOD-ID">3</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      </SET>
+                    </USER-DEFINED-FIELD-DEPLOYMENT>
+                  </FIELD-DEPLOYMENTS>
+                  <SERVICE-INTERFACE-REF DEST="SERVICE-INTERFACE">/PortInterface/Service/TriggerInOut_MachineFG</SERVICE-INTERFACE-REF>
+                </USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="d5cffada-25c4-48e0-804e-010a4b40a76f">
+              <SHORT-NAME>Endpoint</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="1cf09504-a5a9-45e9-9284-87cbd9e2e539">
+                  <SHORT-NAME>Mapping_Consumer_SvControlData_AAActuator</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AAActuator</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <TCP-PORT>21012</TCP-PORT>
+                  <UDP-PORT>21012</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="507dd233-6043-44af-9424-1f267a8ac277">
+                  <SHORT-NAME>Mapping_Consumer_SvControlData_AASimActuator</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvControlData_AASimActuator</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <TCP-PORT>21013</TCP-PORT>
+                  <UDP-PORT>21013</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="decaac7a-282e-4a19-b5a6-c915fddd95d9">
+                  <SHORT-NAME>Mapping_Consumer_SvRawData_AACalc</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="REQUIRED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Consumer_SvRawData_AACalc</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <TCP-PORT>21011</TCP-PORT>
+                  <UDP-PORT>21011</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="8fe6f29f-6acb-4b2a-8269-0dc9b0e47a85">
+                  <SHORT-NAME>Mapping_Provider_SvControlData_AACalc</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvControlData_AACalc</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <TCP-PORT>21002</TCP-PORT>
+                  <UDP-PORT>21002</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="273211b3-040f-49d9-8785-237cd04628c1">
+                  <SHORT-NAME>Mapping_Provider_SvRawData_AASensor</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-SOMEIP-SERVICE-INSTANCE">/System/Service/Instance/Provider_SvRawData_AASensor</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                  <TCP-PORT>21001</TCP-PORT>
+                  <UDP-PORT>21001</UDP-PORT>
+                </SOMEIP-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="8757ad93-0e74-4443-95ff-a586619d0138">
+                  <SHORT-NAME>Mapping_Provider_TriggerInOut_DeepRacerFG_SM</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="USER-DEFINED-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/IPC</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_DeepRacerFG_SM</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                </USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+                <USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING UUID="5e0b566e-1588-404f-94b8-c5c4119fde3e">
+                  <SHORT-NAME>Mapping_Provider_TriggerInOut_MachineFG_SM</SHORT-NAME>
+                  <COMMUNICATION-CONNECTOR-REF DEST="USER-DEFINED-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/IPC</COMMUNICATION-CONNECTOR-REF>
+                  <SERVICE-INSTANCE-REFS>
+                    <SERVICE-INSTANCE-REF DEST="PROVIDED-USER-DEFINED-SERVICE-INSTANCE">/System/Service/Instance/Provider_TriggerInOut_MachineFG_SM</SERVICE-INSTANCE-REF>
+                  </SERVICE-INSTANCE-REFS>
+                </USER-DEFINED-SERVICE-INSTANCE-TO-MACHINE-MAPPING>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="82741bb5-8168-4f06-9561-54c2743c9c0b">
+              <SHORT-NAME>Instance</SHORT-NAME>
+              <ELEMENTS>
+                <REQUIRED-SOMEIP-SERVICE-INSTANCE UUID="23063676-9736-4f62-ba27-26395010cc8f">
+                  <SHORT-NAME>Consumer_SvControlData_AAActuator</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="PARA-SOMEIP-CONFIGURATION">
+                        <SD GID="CLIENT-ID">2</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvControlData</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <REQUIRED-EVENT-GROUPS>
+                    <SOMEIP-REQUIRED-EVENT-GROUP>
+                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvControlData/Eventgroup_CEvent</EVENT-GROUP-REF>
+                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
+                    </SOMEIP-REQUIRED-EVENT-GROUP>
+                  </REQUIRED-EVENT-GROUPS>
+                  <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
+                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
+                  <SD-CLIENT-CONFIG-REF DEST="SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdClientConfig</SD-CLIENT-CONFIG-REF>
+                  <VERSION-DRIVEN-FIND-BEHAVIOR>EXACT-OR-ANY-MINOR-VERSION</VERSION-DRIVEN-FIND-BEHAVIOR>
+                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                <REQUIRED-SOMEIP-SERVICE-INSTANCE UUID="20078f1a-425e-4774-a176-bdad75c8b71b">
+                  <SHORT-NAME>Consumer_SvControlData_AASimActuator</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="PARA-SOMEIP-CONFIGURATION">
+                        <SD GID="CLIENT-ID">3</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvControlData</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <REQUIRED-EVENT-GROUPS>
+                    <SOMEIP-REQUIRED-EVENT-GROUP>
+                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvControlData/Eventgroup_CEvent</EVENT-GROUP-REF>
+                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
+                    </SOMEIP-REQUIRED-EVENT-GROUP>
+                  </REQUIRED-EVENT-GROUPS>
+                  <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
+                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
+                  <SD-CLIENT-CONFIG-REF DEST="SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdClientConfig</SD-CLIENT-CONFIG-REF>
+                  <VERSION-DRIVEN-FIND-BEHAVIOR>EXACT-OR-ANY-MINOR-VERSION</VERSION-DRIVEN-FIND-BEHAVIOR>
+                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                <REQUIRED-SOMEIP-SERVICE-INSTANCE UUID="d55de778-b411-465e-8482-74a217bb4220">
+                  <SHORT-NAME>Consumer_SvRawData_AACalc</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="PARA-SOMEIP-CONFIGURATION">
+                        <SD GID="CLIENT-ID">1</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvRawData</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <METHOD-REQUEST-PROPSS>
+                    <SOMEIP-METHOD-PROPS>
+                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Get_RField</METHOD-REF>
+                    </SOMEIP-METHOD-PROPS>
+                    <SOMEIP-METHOD-PROPS>
+                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Set_RField</METHOD-REF>
+                    </SOMEIP-METHOD-PROPS>
+                    <SOMEIP-METHOD-PROPS>
+                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RMethod</METHOD-REF>
+                    </SOMEIP-METHOD-PROPS>
+                  </METHOD-REQUEST-PROPSS>
+                  <REQUIRED-EVENT-GROUPS>
+                    <SOMEIP-REQUIRED-EVENT-GROUP>
+                      <SHORT-NAME>Eventgroup_Notification_RField</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_Notification_RField</EVENT-GROUP-REF>
+                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
+                    </SOMEIP-REQUIRED-EVENT-GROUP>
+                    <SOMEIP-REQUIRED-EVENT-GROUP>
+                      <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_REvent</EVENT-GROUP-REF>
+                      <SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF DEST="SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG">/System/Service/TimingConfig/SdEventgroupConfig</SD-CLIENT-EVENT-GROUP-TIMING-CONFIG-REF>
+                    </SOMEIP-REQUIRED-EVENT-GROUP>
+                  </REQUIRED-EVENT-GROUPS>
+                  <REQUIRED-MINOR-VERSION>ANY</REQUIRED-MINOR-VERSION>
+                  <REQUIRED-SERVICE-INSTANCE-ID>1</REQUIRED-SERVICE-INSTANCE-ID>
+                  <SD-CLIENT-CONFIG-REF DEST="SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdClientConfig</SD-CLIENT-CONFIG-REF>
+                  <VERSION-DRIVEN-FIND-BEHAVIOR>EXACT-OR-ANY-MINOR-VERSION</VERSION-DRIVEN-FIND-BEHAVIOR>
+                </REQUIRED-SOMEIP-SERVICE-INSTANCE>
+                <PROVIDED-SOMEIP-SERVICE-INSTANCE UUID="ae10c3f7-ca5e-4c3c-a91d-066285c9dbf4">
+                  <SHORT-NAME>Provider_SvControlData_AACalc</SHORT-NAME>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvControlData</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <EVENT-PROPSS>
+                    <SOMEIP-EVENT-PROPS>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvControlData/CEvent</EVENT-REF>
+                    </SOMEIP-EVENT-PROPS>
+                  </EVENT-PROPSS>
+                  <PROVIDED-EVENT-GROUPS>
+                    <SOMEIP-PROVIDED-EVENT-GROUP UUID="3cf677fd-9ac6-4202-bb95-56bfefb1e89d">
+                      <SHORT-NAME>Eventgroup_CEvent</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvControlData/Eventgroup_CEvent</EVENT-GROUP-REF>
+                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
+                    </SOMEIP-PROVIDED-EVENT-GROUP>
+                  </PROVIDED-EVENT-GROUPS>
+                  <SD-SERVER-CONFIG-REF DEST="SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdServerConfig</SD-SERVER-CONFIG-REF>
+                  <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
+                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
+                <PROVIDED-SOMEIP-SERVICE-INSTANCE UUID="219af1e1-69f2-47a7-9f1f-18ce0ef42ab8">
+                  <SHORT-NAME>Provider_SvRawData_AASensor</SHORT-NAME>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="SOMEIP-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/SvRawData</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                  <EVENT-PROPSS>
+                    <SOMEIP-EVENT-PROPS>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/REvent</EVENT-REF>
+                    </SOMEIP-EVENT-PROPS>
+                    <SOMEIP-EVENT-PROPS>
+                      <EVENT-REF DEST="SOMEIP-EVENT-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Notification_RField</EVENT-REF>
+                    </SOMEIP-EVENT-PROPS>
+                  </EVENT-PROPSS>
+                  <METHOD-RESPONSE-PROPSS>
+                    <SOMEIP-METHOD-PROPS>
+                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Get_RField</METHOD-REF>
+                    </SOMEIP-METHOD-PROPS>
+                    <SOMEIP-METHOD-PROPS>
+                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RField/Set_RField</METHOD-REF>
+                    </SOMEIP-METHOD-PROPS>
+                    <SOMEIP-METHOD-PROPS>
+                      <METHOD-REF DEST="SOMEIP-METHOD-DEPLOYMENT">/System/Service/Deployment/SvRawData/RMethod</METHOD-REF>
+                    </SOMEIP-METHOD-PROPS>
+                  </METHOD-RESPONSE-PROPSS>
+                  <PROVIDED-EVENT-GROUPS>
+                    <SOMEIP-PROVIDED-EVENT-GROUP UUID="7091e31e-a87f-46e1-bfa1-b1a249d95b6c">
+                      <SHORT-NAME>Eventgroup_Notification_RField</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_Notification_RField</EVENT-GROUP-REF>
+                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
+                    </SOMEIP-PROVIDED-EVENT-GROUP>
+                    <SOMEIP-PROVIDED-EVENT-GROUP UUID="acf8bae6-834c-447b-9db6-cfcf39a65552">
+                      <SHORT-NAME>Eventgroup_REvent</SHORT-NAME>
+                      <EVENT-GROUP-REF DEST="SOMEIP-EVENT-GROUP">/System/Service/Deployment/SvRawData/Eventgroup_REvent</EVENT-GROUP-REF>
+                      <MULTICAST-THRESHOLD>0</MULTICAST-THRESHOLD>
+                    </SOMEIP-PROVIDED-EVENT-GROUP>
+                  </PROVIDED-EVENT-GROUPS>
+                  <SD-SERVER-CONFIG-REF DEST="SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG">/System/Service/TimingConfig/SdServerConfig</SD-SERVER-CONFIG-REF>
+                  <SERVICE-INSTANCE-ID>1</SERVICE-INSTANCE-ID>
+                </PROVIDED-SOMEIP-SERVICE-INSTANCE>
+                <PROVIDED-USER-DEFINED-SERVICE-INSTANCE UUID="c2e95e9a-065e-46ca-a92c-d74202b99954">
+                  <SHORT-NAME>Provider_TriggerInOut_DeepRacerFG_SM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-INSTANCE">
+                        <SD GID="SERVICE-INSTANCE-ID">1</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/TriggerInOut_DeepRacerFG</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                </PROVIDED-USER-DEFINED-SERVICE-INSTANCE>
+                <PROVIDED-USER-DEFINED-SERVICE-INSTANCE UUID="70917d0d-1a85-4ada-8c33-f800d129ed7e">
+                  <SHORT-NAME>Provider_TriggerInOut_MachineFG_SM</SHORT-NAME>
+                  <ADMIN-DATA>
+                    <SDGS>
+                      <SDG GID="IPC-SERVICE-INSTANCE">
+                        <SD GID="SERVICE-INSTANCE-ID">1</SD>
+                      </SDG>
+                    </SDGS>
+                  </ADMIN-DATA>
+                  <SERVICE-INTERFACE-DEPLOYMENT-REF DEST="USER-DEFINED-SERVICE-INTERFACE-DEPLOYMENT">/System/Service/Deployment/TriggerInOut_MachineFG</SERVICE-INTERFACE-DEPLOYMENT-REF>
+                </PROVIDED-USER-DEFINED-SERVICE-INSTANCE>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="1e7e91dd-d6b4-41d3-b440-e113a86f5ddb">
+              <SHORT-NAME>TimingConfig</SHORT-NAME>
+              <ELEMENTS>
+                <SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG UUID="e12f6b31-b177-42bf-8c87-9cab7fc86c92">
+                  <SHORT-NAME>SdClientConfig</SHORT-NAME>
+                  <INITIAL-FIND-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.2</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>4</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-FIND-BEHAVIOR>
+                  <SERVICE-FIND-TIME-TO-LIVE>16777215</SERVICE-FIND-TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-SERVICE-INSTANCE-CONFIG>
+                <SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG UUID="5da236c1-a62b-4af4-a97b-f8722ca4783c">
+                  <SHORT-NAME>SdEventgroupConfig</SHORT-NAME>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <TIME-TO-LIVE>16777215</TIME-TO-LIVE>
+                </SOMEIP-SD-CLIENT-EVENT-GROUP-TIMING-CONFIG>
+                <SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG UUID="a5b36bb6-ae53-4ef4-82c4-7d96a3cb3fb0">
+                  <SHORT-NAME>SdServerConfig</SHORT-NAME>
+                  <INITIAL-OFFER-BEHAVIOR>
+                    <INITIAL-DELAY-MAX-VALUE>0.2</INITIAL-DELAY-MAX-VALUE>
+                    <INITIAL-DELAY-MIN-VALUE>0.1</INITIAL-DELAY-MIN-VALUE>
+                    <INITIAL-REPETITIONS-BASE-DELAY>0.1</INITIAL-REPETITIONS-BASE-DELAY>
+                    <INITIAL-REPETITIONS-MAX>3</INITIAL-REPETITIONS-MAX>
+                  </INITIAL-OFFER-BEHAVIOR>
+                  <OFFER-CYCLIC-DELAY>0.5</OFFER-CYCLIC-DELAY>
+                  <REQUEST-RESPONSE-DELAY>
+                    <MAX-VALUE>0.0</MAX-VALUE>
+                    <MIN-VALUE>0.0</MIN-VALUE>
+                  </REQUEST-RESPONSE-DELAY>
+                  <SERVICE-OFFER-TIME-TO-LIVE>16777215</SERVICE-OFFER-TIME-TO-LIVE>
+                </SOMEIP-SD-SERVER-SERVICE-INSTANCE-CONFIG>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
         </AR-PACKAGE>
-        <AR-PACKAGE UUID="2524cc04-fffd-43a2-804a-6f1ac4d18c59">
-          <SHORT-NAME>Composition</SHORT-NAME>
-          <ELEMENTS>
-            <COMPOSITION-SW-COMPONENT-TYPE UUID="5421556b-643e-4eda-89c3-70d2fbd467dc">
-              <SHORT-NAME>CM</SHORT-NAME>
-            </COMPOSITION-SW-COMPONENT-TYPE>
-          </ELEMENTS>
+        <AR-PACKAGE UUID="dbe309ac-5abc-4f97-bd89-8bb8334db208">
+          <SHORT-NAME>VehicleTopology</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE UUID="6b63d197-f5f4-4bc7-9a8d-d8be7e3cc612">
+              <SHORT-NAME>Cluster</SHORT-NAME>
+              <ELEMENTS>
+                <ETHERNET-CLUSTER UUID="45e357aa-a41f-47a9-b1ff-975dd0955913">
+                  <SHORT-NAME>EthernetCluster</SHORT-NAME>
+                  <ETHERNET-CLUSTER-VARIANTS>
+                    <ETHERNET-CLUSTER-CONDITIONAL>
+                      <PHYSICAL-CHANNELS>
+                        <ETHERNET-PHYSICAL-CHANNEL UUID="722ff756-7c26-441c-a41e-ac102933bb18">
+                          <SHORT-NAME>PhysicalChannel</SHORT-NAME>
+                          <CATEGORY>WIRED</CATEGORY>
+                          <COMM-CONNECTORS>
+                            <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                              <COMMUNICATION-CONNECTOR-REF DEST="ETHERNET-COMMUNICATION-CONNECTOR">/System/VehicleTopology/Ecu/Ecu/ens5</COMMUNICATION-CONNECTOR-REF>
+                            </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          </COMM-CONNECTORS>
+                          <NETWORK-ENDPOINTS>
+                            <NETWORK-ENDPOINT UUID="43abfd51-d2eb-4780-8c34-c40722969ca2">
+                              <SHORT-NAME>EcuEndpoint</SHORT-NAME>
+                              <NETWORK-ENDPOINT-ADDRESSES>
+                                <IPV-4-CONFIGURATION>
+                                  <IPV-4-ADDRESS>172.31.16.137</IPV-4-ADDRESS>
+                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                                </IPV-4-CONFIGURATION>
+                              </NETWORK-ENDPOINT-ADDRESSES>
+                            </NETWORK-ENDPOINT>
+                            <NETWORK-ENDPOINT UUID="b597dabd-d9cd-4d1c-a9e0-52444f9d890a">
+                              <SHORT-NAME>SdEndpoint</SHORT-NAME>
+                              <NETWORK-ENDPOINT-ADDRESSES>
+                                <IPV-4-CONFIGURATION>
+                                  <IPV-4-ADDRESS>224.0.0.1</IPV-4-ADDRESS>
+                                  <IPV-4-ADDRESS-SOURCE>FIXED</IPV-4-ADDRESS-SOURCE>
+                                </IPV-4-CONFIGURATION>
+                              </NETWORK-ENDPOINT-ADDRESSES>
+                            </NETWORK-ENDPOINT>
+                          </NETWORK-ENDPOINTS>
+                        </ETHERNET-PHYSICAL-CHANNEL>
+                      </PHYSICAL-CHANNELS>
+                    </ETHERNET-CLUSTER-CONDITIONAL>
+                  </ETHERNET-CLUSTER-VARIANTS>
+                </ETHERNET-CLUSTER>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE UUID="11fb4d03-15c2-4b51-969a-c434e68116f6">
+              <SHORT-NAME>Ecu</SHORT-NAME>
+              <ELEMENTS>
+                <MACHINE-DESIGN UUID="138a71a2-4451-423b-ac38-58758142e822">
+                  <SHORT-NAME>Ecu</SHORT-NAME>
+                  <COMMUNICATION-CONNECTORS>
+                    <USER-DEFINED-COMMUNICATION-CONNECTOR UUID="e9ec4cbd-a7f0-4f15-ace9-6ab9e31ffa0b">
+                      <SHORT-NAME>IPC</SHORT-NAME>
+                    </USER-DEFINED-COMMUNICATION-CONNECTOR>
+                    <ETHERNET-COMMUNICATION-CONNECTOR UUID="1a7e5bbb-f29c-4398-9f9e-a057280462b2">
+                      <SHORT-NAME>ens5</SHORT-NAME>
+                      <UNICAST-NETWORK-ENDPOINT-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster/PhysicalChannel/EcuEndpoint</UNICAST-NETWORK-ENDPOINT-REF>
+                    </ETHERNET-COMMUNICATION-CONNECTOR>
+                  </COMMUNICATION-CONNECTORS>
+                  <SERVICE-DISCOVER-CONFIGS>
+                    <SOMEIP-SERVICE-DISCOVERY>
+                      <MULTICAST-SD-IP-ADDRESS-REF DEST="NETWORK-ENDPOINT">/System/VehicleTopology/Cluster/EthernetCluster/PhysicalChannel/SdEndpoint</MULTICAST-SD-IP-ADDRESS-REF>
+                      <SOMEIP-SERVICE-DISCOVERY-PORT>30490</SOMEIP-SERVICE-DISCOVERY-PORT>
+                    </SOMEIP-SERVICE-DISCOVERY>
+                  </SERVICE-DISCOVER-CONFIGS>
+                </MACHINE-DESIGN>
+              </ELEMENTS>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
         </AR-PACKAGE>
       </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="e8dc6b78-5f6a-4b66-ac5b-f9735aacd692">
+      <SHORT-NAME>StateMachine</SHORT-NAME>
+      <ELEMENTS>
+        <MODE-DECLARATION-GROUP UUID="ea5e78b3-ec5d-4936-a8ed-6c141a6febfb">
+          <SHORT-NAME>DeepRacerState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/DeepRacerState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="81874f89-7374-40b7-85b0-59aab9dee9dd">
+              <SHORT-NAME>Device</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="1aff4a68-a8e9-4ff7-8d78-efb0f6b349ba">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="b8f698b5-fadb-44e4-a4b5-9fd727712bb5">
+              <SHORT-NAME>Simulation</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="c3fea1d1-6999-479e-95db-cc04a16bb99d">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="f8a2f3a8-72db-4653-a0c5-615785c4b6df">
+          <SHORT-NAME>MachineState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/MachineState/Off</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="1f9aeef3-16da-4626-983d-00b72a9a0643">
+              <SHORT-NAME>Off</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="37ca9fb4-e830-4d62-8dd2-ff71543885fa">
+              <SHORT-NAME>Restart</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="2c7ad0d7-aafc-4d47-873b-02740782275c">
+              <SHORT-NAME>Shutdown</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="463f6a9c-f001-456f-aaf9-7a4ed4d8b63c">
+              <SHORT-NAME>Startup</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="bf58d6a3-5f00-4e88-9401-9ae95cb13824">
+              <SHORT-NAME>Verify</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+        <MODE-DECLARATION-GROUP UUID="83cbe417-6777-4444-b5d5-54c8700df01b">
+          <SHORT-NAME>ProcessState</SHORT-NAME>
+          <INITIAL-MODE-REF DEST="MODE-DECLARATION">/StateMachine/ProcessState/Idle</INITIAL-MODE-REF>
+          <MODE-DECLARATIONS>
+            <MODE-DECLARATION UUID="9fd63a28-1276-4630-8012-b0be77b17bb4">
+              <SHORT-NAME>Idle</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="b6a70bb3-df82-4458-baad-7394adcdf37b">
+              <SHORT-NAME>Running</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="cf187040-dd0c-4f17-9f0d-df07ed3facee">
+              <SHORT-NAME>Starting</SHORT-NAME>
+            </MODE-DECLARATION>
+            <MODE-DECLARATION UUID="0d4b5f05-c8d6-461d-b0dc-b51a34391266">
+              <SHORT-NAME>Terminated</SHORT-NAME>
+            </MODE-DECLARATION>
+          </MODE-DECLARATIONS>
+        </MODE-DECLARATION-GROUP>
+      </ELEMENTS>
     </AR-PACKAGE>
   </AR-PACKAGES>
 </AUTOSAR>
