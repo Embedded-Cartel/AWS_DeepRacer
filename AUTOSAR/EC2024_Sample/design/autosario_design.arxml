@@ -824,7 +824,7 @@
               <EVENTS>
                 <VARIABLE-DATA-PROTOTYPE UUID="7b28158c-7901-48a0-97ef-484c0497ec4f">
                   <SHORT-NAME>REvent</SHORT-NAME>
-                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/LidarDataForUser</TYPE-TREF>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/VectorLidar</TYPE-TREF>
                 </VARIABLE-DATA-PROTOTYPE>
               </EVENTS>
               <FIELDS>
@@ -1866,6 +1866,30 @@
               </TYPE-REFERENCE>
             </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
           </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="00861d9c-6e41-4dcb-9a09-572c9a6258ae">
+          <SHORT-NAME>VectorLidar</SHORT-NAME>
+          <CATEGORY>VECTOR</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/LidarDataForUser</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
         </STD-CPP-IMPLEMENTATION-DATA-TYPE>
       </ELEMENTS>
     </AR-PACKAGE>

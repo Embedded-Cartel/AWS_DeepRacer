@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : svrawdata_skeleton.h
 /// SERVICE INTERFACE NAME            : SvRawData
-/// GENERATED DATE                    : 2024-10-31 14:51:57
+/// GENERATED DATE                    : 2024-10-31 15:08:42
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   
@@ -44,7 +44,7 @@ class REvent
 public:
     /// @brief Type alias for type of event data
     /// @uptrace{SWS_CM_00162, SWS_CM_90437}
-    using SampleType = deepracer::type::LidarDataForUser;
+    using SampleType = deepracer::type::VectorLidar;
     /// @brief Constructor
     explicit REvent(para::com::SkeletonInterface* interface) : mInterface(interface)
     {

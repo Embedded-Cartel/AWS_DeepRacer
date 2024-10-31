@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : triggerinout_deepracerfg_common.h
 /// SERVICE INTERFACE NAME            : TriggerInOut_DeepRacerFG
-/// GENERATED DATE                    : 2024-10-31 14:51:57
+/// GENERATED DATE                    : 2024-10-31 15:08:42
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   

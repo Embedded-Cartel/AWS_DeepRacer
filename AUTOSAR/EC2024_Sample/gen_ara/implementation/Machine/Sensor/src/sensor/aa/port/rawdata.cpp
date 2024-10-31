@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-31 14:51:58
+/// GENERATED DATE                    : 2024-10-31 15:08:42
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sensor/aa/port/rawdata.h"
  
@@ -110,7 +110,7 @@ namespace port
 RawData::RawData()
     : m_logger(ara::log::CreateLogger("SENS", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
-    , m_REventData{0U, 0.0, 0.0, 0U}
+    , m_REventData{{0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}}
 {
 }
  
