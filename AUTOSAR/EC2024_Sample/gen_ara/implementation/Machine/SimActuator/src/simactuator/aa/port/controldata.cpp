@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : controldata.cpp
 /// SOFTWARE COMPONENT NAME           : ControlData
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:58
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "simactuator/aa/port/controldata.h"
  
@@ -20,8 +20,7 @@ namespace aa
 {
 namespace port
 {
-
-// ControlData RPort Interface에 대한 생성자
+ 
 ControlData::ControlData()
     : m_logger(ara::log::CreateLogger("SACT", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
@@ -32,22 +31,19 @@ ControlData::ControlData()
 ControlData::~ControlData()
 {
 }
-
-// RPort ControlData의 시작 함수.
-// 해당 Port는 RPort이므로 서비스에 대한 FindService를 호출하게 된다.
+ 
 void ControlData::Start()
 {
     m_logger.LogVerbose() << "ControlData::Start";
-
+    
+    // regist callback
     ara::core::InstanceSpecifier specifier{"SimActuator/AA/ControlData"};
-
-    // Find Service에 대한 핸들러 정의
     auto handler = [this](ara::com::ServiceHandleContainer<deepracer::service::controldata::proxy::SvControlDataProxy::HandleType> handles,
                           ara::com::FindServiceHandle findHandle) {
         this->Find(handles, findHandle);
     };
-
-    // Start Find Service 호출
+    
+    // find service
     auto find = deepracer::service::controldata::proxy::SvControlDataProxy::StartFindService(handler, specifier);
     if (find.HasValue())
     {
@@ -61,34 +57,31 @@ void ControlData::Start()
     // run port
     m_running = true;
 }
-
-// Port의 종료 처리 함수
+ 
 void ControlData::Terminate()
 {
     m_logger.LogVerbose() << "ControlData::Terminate";
-
-    // Port 처리를 멈춘다.
+    
+    // stop port
     m_running = false;
-
-    // Service Proxy를 Clear하는 처리
+    
+    // clear service proxy
     if (m_interface)
     {
-        // CEvent에 대한 Stop Subscribe 호출
+        // stop subscribe
         StopSubscribeCEvent();
-
-        // Proxy를 통해 Stop Find Service 호출
+        
+        // stop find service
         m_interface->StopFindService(*m_findHandle);
         m_found = false;
         
         m_logger.LogVerbose() << "ControlData::Terminate::StopFindService";
     }
 }
-
-// Find Service에 대한 핸들러 함수
+ 
 void ControlData::Find(ara::com::ServiceHandleContainer<deepracer::service::controldata::proxy::SvControlDataProxy::HandleType> handles, ara::com::FindServiceHandle findHandle)
 {
-    // 찾고자 하는 핸들 체크
-    // 만약 핸들이 없다면 해당 함수는 return 된다.
+    // check finding handles
     if (handles.empty())
     {
         m_logger.LogVerbose() << "ControlData::Find::Service Instances not found";
@@ -104,8 +97,8 @@ void ControlData::Find(ara::com::ServiceHandleContainer<deepracer::service::cont
                                      handle.GetServiceHandle().instanceId;
         }
     }
-
-    // Proxy 생성
+    
+    // create proxy
     if (m_interface)
     {
         m_logger.LogVerbose() << "ControlData::Find::Proxy is already running";
@@ -119,22 +112,19 @@ void ControlData::Find(ara::com::ServiceHandleContainer<deepracer::service::cont
         m_interface = std::make_shared<deepracer::service::controldata::proxy::SvControlDataProxy>(handles[0]);
         m_findHandle = std::make_shared<ara::com::FindServiceHandle>(findHandle);
         m_found = true;
-
-        // CEvent에 대한 Subscribe 요청
+        
+        // subscribe events
         SubscribeCEvent();
     }
 }
-
-// CEvent에 대한 Subscribe 요청
+ 
 void ControlData::SubscribeCEvent()
 {
     if (m_found)
     {
         // regist receiver handler
         // if you want to enable it, please uncomment below code
-        //
-        // CEvent에 대한 Receiver Handler 등록 함수
-        // 만약 CEvent를 받을떄마다 핸들러를 통한 즉각적인 처리를 원한다면 아래 함수를 uncomment하여 핸들러를 등록하면 된다.
+        // 
         // RegistReceiverCEvent();
         
         // request subscribe
@@ -149,8 +139,7 @@ void ControlData::SubscribeCEvent()
         }
     }
 }
-
-// CEvent에 대한 Unsubscribe 처리 함수
+ 
 void ControlData::StopSubscribeCEvent()
 {
     if (m_found)
@@ -160,20 +149,17 @@ void ControlData::StopSubscribeCEvent()
         m_logger.LogVerbose() << "ControlData::StopSubscribeCEvent::Unsubscribed";
     }
 }
-
-// CEvent에 대한 수신 처리에 대한 핸들러 등록 함수
-// 이 함수를 통해 핸들러 등록을 한다면, ReceiveEventCEventTriggered() 함수가 CEvent 수신 시점에 호출되게 된다.
-// 필요시 사용
+ 
 void ControlData::RegistReceiverCEvent()
 {
     if (m_found)
     {
-        // 콜백 정의
+        // set callback
         auto receiver = [this]() -> void {
             return ReceiveEventCEventTriggered();
         };
-
-        // CEvent 수신 핸들러 등록
+        
+        // regist callback
         auto callback = m_interface->CEvent.SetReceiveHandler(receiver);
         if (callback.HasValue())
         {
@@ -185,8 +171,7 @@ void ControlData::RegistReceiverCEvent()
         }
     }
 }
-
-// CEvent에 대한 수신을 트리거 형태로 처리하는 함수.
+ 
 void ControlData::ReceiveEventCEventTriggered()
 {
     if (m_found)
@@ -208,8 +193,7 @@ void ControlData::ReceiveEventCEventTriggered()
         }
     }
 }
-
-// CEvent에 대한 수신을 폴링형태로 지속적으로 처리하는 함수.
+ 
 void ControlData::ReceiveEventCEventCyclic()
 {
     while (m_running)
@@ -235,25 +219,11 @@ void ControlData::ReceiveEventCEventCyclic()
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
-
-// 수신된 CEvent에 대한 데이터를 실질적으로 처리하는 함수.
+ 
 void ControlData::ReadDataCEvent(ara::com::SamplePtr<deepracer::service::controldata::proxy::events::CEvent::SampleType const> samplePtr)
 {
     auto data = *samplePtr.Get();
-
-    // CEvent 핸들러가 등록되어 있을시 해당 핸들러는 값과 함께 호출한다.
-    if (m_receiveEventCEventHandler != nullptr)
-    {
-        m_receiveEventCEventHandler(data);
-    }
-}
-
-// 개발자 추가 함수
-// CEvent 수신에 대한 핸들러 등록 함수.
-void ControlData::SetReceiveEventCEventHandler(
-    std::function<void(const deepracer::service::controldata::proxy::events::CEvent::SampleType&)> handler)
-{
-    m_receiveEventCEventHandler = handler;
+    // put your logic
 }
  
 } /// namespace port

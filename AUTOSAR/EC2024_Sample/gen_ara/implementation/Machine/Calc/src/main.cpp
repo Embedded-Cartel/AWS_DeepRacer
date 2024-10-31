@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : main.cpp
 /// EXECUTABLE NAME                   : Calc
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,14 +23,11 @@
 #include <csignal>
  
 calc::aa::Calc* g_swcCalc{nullptr};
-
-// Signal 처리 함수
+ 
 static void SignalHandler(std::int32_t signal)
 {
-    // SIGTERM 혹은 SIGINT 시그널을 받았을때의 종료 처리 수행
     if (signal == SIGTERM || signal == SIGINT)
     {
-        // Software Component의 Terminate() 함수를 호출하여 종료 처리
         g_swcCalc->Terminate();
     }
 }
@@ -39,9 +36,8 @@ int main(int argc, char *argv[], char* envp[])
 {
     bool proceed{true};
     bool araInitialized{true};
-
-    // AUTOSAR Adaptive Application 에 대한 초기화
-    // 모든 Adaptive Application (AA)는 처음에 ara::core::Initialize()를 호출하여 초기화를 진행해야 한다.
+    
+    // initialize AUTOSAR adaptive application
     auto appInit = ara::core::Initialize();
     if (!appInit.HasValue())
     {
@@ -52,21 +48,21 @@ int main(int argc, char *argv[], char* envp[])
     if (araInitialized)
     {
         ara::log::Logger& appLogger{ara::log::CreateLogger("CALC", "Calc's main function")};
-
-        // Signal Handler 등록
+        
+        // regist signals
         std::signal(SIGTERM, SignalHandler);
         std::signal(SIGINT, SignalHandler);
-
-        // Software Component 객체 선언 및 포인터 할당
+        
+        // declaration of software components
         calc::aa::Calc swcCalc;
         g_swcCalc = &swcCalc;
-
-        // Software Component에 대한 초기화 함수 호출
+        
+        // initialize software component
         proceed = swcCalc.Initialize();
         
         if (proceed)
         {
-            // AA에 대한 초기화 처리가 완료되었다면 현재 AA가 Running 상태가 되었다는 것을 EM에 보고해야 한다.
+            // report execution state
             ara::exec::ExecutionClient executionClient;
             auto exec = executionClient.ReportExecutionState(ara::exec::ExecutionState::kRunning);
             if (exec.HasValue())
@@ -78,16 +74,15 @@ int main(int argc, char *argv[], char* envp[])
                 appLogger.LogError() << "Unable to report execution state";
                 araInitialized = false;
             }
-            // Software Component의 시작함수 호출
+            // start software component
             swcCalc.Start();
         }
         else
         {
             appLogger.LogError() << "Unable to start application";
         }
-
-        // AUTOSAR Adaptive Application의 Deinitialize() 호출
-        // 모든 AA들은 종료 전 ara::core::Deinitialize()를 호출해주어야 한다.
+        
+        // de-initialize AUTOSAR adaptive application
         auto appDeinit = ara::core::Deinitialize();
         if (!appDeinit.HasValue())
         {

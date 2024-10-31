@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : controldata.h
 /// SOFTWARE COMPONENT NAME           : ControlData
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_ACTUATOR_AA_CONTROLDATA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_ACTUATOR_AA_CONTROLDATA_H
@@ -60,9 +60,8 @@ public:
      
     /// @brief Read event data, CEvent
     void ReadDataCEvent(ara::com::SamplePtr<deepracer::service::controldata::proxy::events::CEvent::SampleType const> samplePtr);
-
-    /// @brief Set receive event data handler, CEvent
-    void SetReceiveEventCEventHandler(std::function<void(const deepracer::service::controldata::proxy::events::CEvent::SampleType&)> handler);
+    
+    
     
 private:
     /// @brief Callback for find service
@@ -91,9 +90,6 @@ private:
     
     /// @brief Find service handle
     std::shared_ptr<ara::com::FindServiceHandle> m_findHandle;
-
-    /// @brief Receive event handler
-    std::function<void(const deepracer::service::controldata::proxy::events::CEvent::SampleType&)> m_receiveEventCEventHandler;
 };
  
 } /// namespace port

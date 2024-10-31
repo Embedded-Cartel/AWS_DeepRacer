@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : impl_type_arithmetic.h
 /// IMPLEMENTATION DATA TYPE NAME     : Arithmetic
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   

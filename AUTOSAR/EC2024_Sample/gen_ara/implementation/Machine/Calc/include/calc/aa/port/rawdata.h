@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.h
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_CALC_AA_RAWDATA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_CALC_AA_RAWDATA_H
@@ -84,22 +84,7 @@ public:
     
     /// @brief Request with Response method using by software component, RMethod
     void RequestRMethod(const double& a, const deepracer::type::Arithmetic& arithmetic, const double& b);
-
-    void SetReceiveEventREventHandler(
-        std::function<void(const deepracer::service::rawdata::proxy::events::REvent::SampleType&)> handler);
-
-    void SetReceiveNotifyRFieldHandler(
-        std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> handler);
-
-    void SetReceiveSetFieldRFieldHandler(
-        std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> handler);
-
-    void SetReceiveGetFieldRFieldHandler(
-        std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> handler);
-
-    void SetReceiveMethodRMethodHandler(
-        std::function<void(const deepracer::service::rawdata::proxy::methods::RMethod::Output&)> handler);
-
+    
 private:
     /// @brief Callback for find service
     void Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata::proxy::SvRawDataProxy::HandleType> handles,
@@ -129,17 +114,6 @@ private:
     
     /// @brief Find service handle
     std::shared_ptr<ara::com::FindServiceHandle> m_findHandle;
-
-
-    std::function<void(const deepracer::service::rawdata::proxy::events::REvent::SampleType&)> m_receiveEventREventHandler;
-
-    std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> m_receiveNotifyFieldRFieldHandler;
-
-    std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> m_receiveSetFieldRFieldHandler;
-
-    std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> m_receiveGetFieldRFieldHandler;
-
-    std::function<void(const deepracer::service::rawdata::proxy::methods::RMethod::Output&)> m_receiveMethodRMethodHandler;
 };
  
 } /// namespace port

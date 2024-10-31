@@ -824,7 +824,7 @@
               <EVENTS>
                 <VARIABLE-DATA-PROTOTYPE UUID="7b28158c-7901-48a0-97ef-484c0497ec4f">
                   <SHORT-NAME>REvent</SHORT-NAME>
-                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-TREF>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/LidarDataForUser</TYPE-TREF>
                 </VARIABLE-DATA-PROTOTYPE>
               </EVENTS>
               <FIELDS>
@@ -1817,6 +1817,56 @@
             </MODE-DECLARATION>
           </MODE-DECLARATIONS>
         </MODE-DECLARATION-GROUP>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE UUID="e045d2b3-6bcc-4cf2-8479-25cb8e8a2fff">
+      <SHORT-NAME>UnsetARElements</SHORT-NAME>
+      <ELEMENTS>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="60f87324-3f65-4fc8-aa34-6d3b99ad9caa">
+          <SHORT-NAME>LidarDataForUser</SHORT-NAME>
+          <CATEGORY>STRUCTURE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <SUB-ELEMENTS>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="77acd1ed-4229-407c-8a98-f9d5e91e0fab">
+              <SHORT-NAME>sync</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="5b3e7a7b-fd14-4bf8-8590-a9a9048acfa3">
+              <SHORT-NAME>theta</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/double</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="d821d8ce-cb56-4d61-b214-f0a02ad8f029">
+              <SHORT-NAME>dist</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/double</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="535698c7-e922-49a1-81d8-2d9abb2e2586">
+              <SHORT-NAME>quality</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+          </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
       </ELEMENTS>
     </AR-PACKAGE>
   </AR-PACKAGES>

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : triggerinout_machinefg_proxy.h
 /// SERVICE INTERFACE NAME            : TriggerInOut_MachineFG
-/// GENERATED DATE                    : 2024-08-14 09:44:01
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   

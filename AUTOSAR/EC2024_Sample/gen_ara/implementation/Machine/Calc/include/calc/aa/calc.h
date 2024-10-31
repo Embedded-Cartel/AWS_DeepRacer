@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : calc.h
 /// SOFTWARE COMPONENT NAME           : Calc
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_CALC_AA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_CALC_AA_H
@@ -48,31 +48,8 @@ public:
 private:
     /// @brief Run software component
     void Run();
-
-    /// @brief Task Receive REvent Cyclic
-    void TaskReceiveREventCyclic();
-
-    /// @brief Task Receive Notify RField Cyclic
-    void TaskReceiveNotifyRFieldCyclic();
-
-    /// @brief Task Request RMethod And RField
-    void TaskRequestRMethodAndRField();
-
-    void OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample);
-
-    void OnReceiveNotifyRField(const deepracer::service::rawdata::proxy::fields::RField::FieldType& field);
-
-    void OnReceiveSetRField(const deepracer::service::rawdata::proxy::fields::RField::FieldType& field);
-
-    void OnReceiveGetRField(const deepracer::service::rawdata::proxy::fields::RField::FieldType& field);
-
-    void OnReceiveRMethod(const deepracer::service::rawdata::proxy::methods::RMethod::Output& output);
-
+ 
 private:
-
-    /// @brief Is Running software component
-    bool m_running;
-
     /// @brief Pool of port
     ::para::swc::PortPool m_workers;
     
@@ -84,9 +61,6 @@ private:
     
     /// @brief Instance of Port {Calc.RawData}
     std::shared_ptr<calc::aa::port::RawData> m_RawData;
-
-    /// @brief Received REvent Data from Sensor AA
-    deepracer::service::rawdata::proxy::events::REvent::SampleType m_sensorData;
 };
  
 } /// namespace aa

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : sm.h
 /// SOFTWARE COMPONENT NAME           : SM
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_SM_PARA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_SM_PARA_H
@@ -37,7 +37,7 @@ public:
     ~SM();
     
     /// @brief Initialize software component
-    bool Initialize(int argc, char *argv[]);
+    bool Initialize();
     
     /// @brief Start software component
     void Start();
@@ -48,13 +48,7 @@ public:
 private:
     /// @brief Run software component
     void Run();
-
-    /// @brief Task software component
-    void TaskChangeDeepRacerFGState();
-
-    /// @brief Parse program argument to state type member
-    void ParseArgumentToState(int argc, char *argv[]);
-
+ 
 private:
     /// @brief Pool of port
     ::para::swc::PortPool m_workers;
@@ -67,9 +61,6 @@ private:
     
     /// @brief Instance of Port {SM.MachineFG}
     std::shared_ptr<sm::para::port::MachineFG> m_MachineFG;
-
-    /// @brief Starting state field type
-    ara::sm::deepracerfg::skeleton::fields::Trigger::FieldType m_stateType;
 };
  
 } /// namespace para

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : deepracerfg.cpp
 /// SOFTWARE COMPONENT NAME           : DeepRacerFG
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sm/para/port/deepracerfg.h"
  
@@ -22,31 +22,28 @@ namespace deepracerfg
 {
 namespace skeleton
 {
-
-// TriggeInOut_DeepRacerFG Service Interface에 대한 Skeleton Impl 클래스 생성자
+ 
 TriggerInOut_DeepRacerFGSkeletonImpl::TriggerInOut_DeepRacerFGSkeletonImpl(ara::core::InstanceSpecifier instanceSpec, ara::com::MethodCallProcessingMode mode)
     : TriggerInOut_DeepRacerFGSkeleton(instanceSpec, mode)
     , m_logger(ara::log::CreateLogger("SM", "PORT", ara::log::LogLevel::kVerbose))
     , m_DeepRacerFGState{ara::sm::DeepRacerStateType::kOff}
 {
-    // StateClient 객체 생성
+    // create state client
     m_stateClient = std::make_unique<ara::exec::StateClient>(m_undefinedStateCallback);
-     
-    // Notifier Field에 대한 get 핸들러 등록
+    
+    // regist get handler, Notifier
     auto notifier_get_handler = [this]() {
         return GetNotifier();
     };
     Notifier.RegisterGetHandler(notifier_get_handler);
-
-    // Trigger Field에 대한 set 핸들러 등록
+    
+    // regist set handler, Trigger
     auto trigger_set_handler = [this](const fields::Trigger::FieldType& value) {
         return SetTrigger(value);
     };
     Trigger.RegisterSetHandler(trigger_set_handler);
 }
-
-// DeepRacerFG State에 대한 Getter 처리 함수
-// SM에서의 Notifier 필드 및 Trigger 필드는 본 클래스 내의 m_DeepRacerFGState 하나를 공유한다.
+ 
 ara::core::Future<fields::Notifier::FieldType> TriggerInOut_DeepRacerFGSkeletonImpl::GetNotifier()
 {
     m_logger.LogVerbose() << "DeepRacerFG::GetNotifier::Requested";
@@ -56,8 +53,7 @@ ara::core::Future<fields::Notifier::FieldType> TriggerInOut_DeepRacerFGSkeletonI
     promise.set_value(m_DeepRacerFGState);
     return promise.get_future();
 }
-
-// DeepRacerFG에 대한 Notify 처리 함수
+ 
 void TriggerInOut_DeepRacerFGSkeletonImpl::NotifyDeepRacerFG()
 {
     auto notify = Notifier.Update(m_DeepRacerFGState);
@@ -70,16 +66,12 @@ void TriggerInOut_DeepRacerFGSkeletonImpl::NotifyDeepRacerFG()
         m_logger.LogError() << "DeepRacerFG::NotifyNotifier::Update::" << notify.Error().Message();
     }
 }
-
-// DeepRacerFG 필드 값에 대한 변경 함수
+ 
 void TriggerInOut_DeepRacerFGSkeletonImpl::UpdateDeepRacerFG(const fields::Notifier::FieldType& value)
 {
     m_DeepRacerFGState = value;
 }
-
-// SetTrigger 함수
-// 기본적으로 Consumer (Proxy)에 의해 해당 함수가 호출될 수 있다.
-// 단, 본 교육 예시에서는 이 함수를 직접 호출하여 FunctionGroup State를 변경 처리 한다.
+ 
 ara::core::Future<fields::Trigger::FieldType> TriggerInOut_DeepRacerFGSkeletonImpl::SetTrigger(const fields::Trigger::FieldType& value)
 {
     m_logger.LogVerbose() << "DeepRacerFG::SetTrigger::Requested";
@@ -92,13 +84,9 @@ ara::core::Future<fields::Trigger::FieldType> TriggerInOut_DeepRacerFGSkeletonIm
     promise.set_value(m_DeepRacerFGState);
     return promise.get_future();
 }
-
-// 본 Machine의 DeepRacerFG State를 실제적으로 변경하는 함수
-// 매개변수는 Trigger 필드의 FieldType으로 이것은 DeepRacerStateType을 의미한다.
+ 
 void TriggerInOut_DeepRacerFGSkeletonImpl::RequestTransitFunctionGroupState(const fields::Trigger::FieldType& value)
 {
-    // 매개변수 Trigger FieldType (DeepRacerStateType) 값에 따라 functionGroupIdentifier를 정의한다.
-    // 이 functionGroupIdentifier는 EM/manifest/function_group/DeepRacerFG.json에 정의되어 있다.
     ara::core::StringView functionGroupIdentifier{};
     switch (value)
     {
@@ -123,20 +111,17 @@ void TriggerInOut_DeepRacerFGSkeletonImpl::RequestTransitFunctionGroupState(cons
             break;
         }
     }
-
-    // Function Group에 대한 initialize
+    // initialize function group
     auto preFunctionGroup = ara::exec::FunctionGroup::Preconstruct("DeepRacerFG");
     ara::exec::FunctionGroup::CtorToken tokenFunctionGroup(preFunctionGroup.ValueOrThrow());
     ara::exec::FunctionGroup functionGroup(std::move(tokenFunctionGroup));
-
-    // Function Group State에 대한 initialize
+    
+    // initialize function group state
     auto preFunctionGroupState = ara::exec::FunctionGroupState::Preconstruct(functionGroup, functionGroupIdentifier);
     ara::exec::FunctionGroupState::CtorToken tokenFunctionGroupState(preFunctionGroupState.ValueOrThrow());
     ara::exec::FunctionGroupState functionGroupState(std::move(tokenFunctionGroupState));
-
-    // EM 측에 Function Group State에 대한 변경을 요청한다.
-    // 이 처리는 SM 측에서 하는 것을 원칙으로 하며, EM 쪽에서 처리가 완료시 Machine의 State가 변경된다.
-    // 이 처리에 따라 functionGroupStateDependency가 설정된 AA들 (Actuator, SimActuator)의 실행여부가 결정된다.
+    
+    // request set state to EM
     auto request = m_stateClient->SetState(functionGroupState);
     request.wait();
     auto response = request.GetResult();
@@ -177,18 +162,16 @@ DeepRacerFG::DeepRacerFG()
 DeepRacerFG::~DeepRacerFG()
 {
 }
-
-// PPort DeepRacerFG의 시작 함수.
-// 해당 Port는 PPort이므로 서비스에 대한 OfferService를 호출하게 된다.
+ 
 void DeepRacerFG::Start()
 {
     m_logger.LogVerbose() << "DeepRacerFG::Start";
-
-    // Skeleton 생성
+    
+    // construct skeleton
     ara::core::InstanceSpecifier specifier{"SM/PARA/DeepRacerFG"};
     m_interface = std::make_shared<ara::sm::deepracerfg::skeleton::TriggerInOut_DeepRacerFGSkeletonImpl>(specifier);
-
-    // Skeleton을 통해 Offer Service 호출
+    
+    // offer service
     auto offer = m_interface->OfferService();
     if (offer.HasValue())
     {
@@ -201,29 +184,25 @@ void DeepRacerFG::Start()
         m_logger.LogError() << "DeepRacerFG::Start::OfferService::" << offer.Error().Message();
     }
 }
-
-// Port의 종료 처리 함수
+ 
 void DeepRacerFG::Terminate()
 {
     m_logger.LogVerbose() << "DeepRacerFG::Terminate";
-
-    // Port 처리를 멈춘다.
+    
+    // stop port
     m_running = false;
-
-    // Skeleton을 통해 Stop Offer Service 호출.
+    
+    // stop offer service
     m_interface->StopOfferService();
     m_logger.LogVerbose() << "DeepRacerFG::Terminate::StopOfferService";
 }
-
-// DeepRacerFG State에 대한 데이터 변경 함수
-// 단, 이 함수가 실제 FunctionGroup State를 변경하지는 않음에 주의
+ 
 void DeepRacerFG::WriteValueDeepRacerFG(const ara::sm::deepracerfg::skeleton::fields::Notifier::FieldType& value)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_interface->UpdateDeepRacerFG(value);
 }
-
-// DeepRacerFG State 데이터를 주기적으로 Notify하는 함수
+ 
 void DeepRacerFG::NotifyDeepRacerFGCyclic()
 {
     while (m_running)
@@ -235,32 +214,20 @@ void DeepRacerFG::NotifyDeepRacerFGCyclic()
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
-
-// DeepRacerFG State 데이터를 트리거 형태로 Notify하는 함수.
+ 
 void DeepRacerFG::NotifyDeepRacerFGTriggered()
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_interface->NotifyDeepRacerFG();
 }
-
-// DeepRacerFG State 데이터를 트리거 형태로 Notify하는 함수.
-// Skeleton 내의 DeepRacerFG State 값을 변경 한 후 Notify한다.
-// 단, 이 함수가 실제 FunctionGroup State를 변경하지는 않음에 주의
+ 
 void DeepRacerFG::NotifyDeepRacerFGTriggered(const ara::sm::deepracerfg::skeleton::fields::Notifier::FieldType& value)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_interface->UpdateDeepRacerFG(value);
     m_interface->NotifyDeepRacerFG();
 }
-
-// 사용자 추가 함수.
-// 이 클래스의 객체를 보유한 즉, SM SortwareComponent측에서 직접 DeepRacerFG FunctionGroup State를 변경 처리 하기 위해 호출하는 함수.
-void DeepRacerFG::ChangeDeepRacerFGManual(const ara::sm::deepracerfg::skeleton::fields::Trigger::FieldType& value)
-{
-    std::lock_guard<std::mutex> lock(m_mutex);
-    m_interface->SetTrigger(value);
-}
-
+ 
 } /// namespace port
 } /// namespace para
 } /// namespace sm

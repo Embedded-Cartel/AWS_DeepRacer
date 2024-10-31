@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : actuator.h
 /// SOFTWARE COMPONENT NAME           : Actuator
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_ACTUATOR_AA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_ACTUATOR_AA_H
@@ -47,12 +47,6 @@ public:
 private:
     /// @brief Run software component
     void Run();
-
-    /// @brief Task software component : Receive CEvent Cyclic
-    void TaskReceiveCEventCyclic();
-
-    /// @brief CEvent Receiver
-    void OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample);
  
 private:
     /// @brief Pool of port

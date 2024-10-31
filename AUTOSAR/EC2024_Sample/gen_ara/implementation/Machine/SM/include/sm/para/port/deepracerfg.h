@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : deepracerfg.h
 /// SOFTWARE COMPONENT NAME           : DeepRacerFG
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_PPORT_SM_PARA_DEEPRACERFG_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_PPORT_SM_PARA_DEEPRACERFG_H
@@ -113,10 +113,7 @@ public:
      
     /// @brief Notify field directly with argument, Notifier
     void NotifyDeepRacerFGTriggered(const ara::sm::deepracerfg::skeleton::fields::Notifier::FieldType& value);
-
-    /// @brief Change field manual with argument, Trigger
-    void ChangeDeepRacerFGManual(const ara::sm::deepracerfg::skeleton::fields::Trigger::FieldType& value);
-
+     
 private:
     /// @brief Logger for this port
     ara::log::Logger& m_logger;

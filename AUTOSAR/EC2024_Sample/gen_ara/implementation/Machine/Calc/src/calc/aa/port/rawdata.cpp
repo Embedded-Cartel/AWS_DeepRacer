@@ -10,10 +10,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-08-14 09:44:02
+/// GENERATED DATE                    : 2024-10-31 14:51:57
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <string>
-
 #include "calc/aa/port/rawdata.h"
  
 namespace calc
@@ -22,8 +20,7 @@ namespace aa
 {
 namespace port
 {
-
-// RawData RPort Interface에 대한 생성자
+ 
 RawData::RawData()
     : m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
@@ -34,24 +31,19 @@ RawData::RawData()
 RawData::~RawData()
 {
 }
-
-// RPort RawData의 시작 함수.
-// 해당 Port는 RPort이므로 서비스에 대한 FindService를 호출하게 된다.
+ 
 void RawData::Start()
 {
     m_logger.LogVerbose() << "RawData::Start";
-
+    
+    // regist callback
     ara::core::InstanceSpecifier specifier{"Calc/AA/RawData"};
-
-    // Find Service에 대한 핸들러 정의
-    auto handler = [this](
-        ara::com::ServiceHandleContainer<deepracer::service::rawdata::proxy::SvRawDataProxy::HandleType> handles,
-        ara::com::FindServiceHandle findHandle)
-    {
+    auto handler = [this](ara::com::ServiceHandleContainer<deepracer::service::rawdata::proxy::SvRawDataProxy::HandleType> handles,
+                          ara::com::FindServiceHandle findHandle) {
         this->Find(handles, findHandle);
     };
     
-    // Start Find Service 호출
+    // find service
     auto find = deepracer::service::rawdata::proxy::SvRawDataProxy::StartFindService(handler, specifier);
     if (find.HasValue())
     {
@@ -65,36 +57,32 @@ void RawData::Start()
     // run port
     m_running = true;
 }
-
-// Port의 종료 처리 함수
+ 
 void RawData::Terminate()
 {
     m_logger.LogVerbose() << "RawData::Terminate";
-
-    // Port 처리를 멈춘다.
+    
+    // stop port
     m_running = false;
-
-    // Service Proxy를 Clear하는 처리
+    
+    // clear service proxy
     if (m_interface)
     {
-        // REvent에 대한 Stop Subscribe 호출
+        // stop subscribe
         StopSubscribeREvent();
-        // RField Notify에 대한 Stop Subscribe 호출
         StopSubscribeRField();
         
-        // Proxy를 통해 Stop Find Service 호출
+        // stop find service
         m_interface->StopFindService(*m_findHandle);
         m_found = false;
         
         m_logger.LogVerbose() << "RawData::Terminate::StopFindService";
     }
 }
-
-// Find Service에 대한 핸들러 함수
+ 
 void RawData::Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata::proxy::SvRawDataProxy::HandleType> handles, ara::com::FindServiceHandle findHandle)
 {
-    // 찾고자 하는 핸들 체크
-    // 만약 핸들이 없다면 해당 함수는 return 된다.
+    // check finding handles
     if (handles.empty())
     {
         m_logger.LogVerbose() << "RawData::Find::Service Instances not found";
@@ -111,7 +99,7 @@ void RawData::Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata:
         }
     }
     
-    // Proxy 생성
+    // create proxy
     if (m_interface)
     {
         m_logger.LogVerbose() << "RawData::Find::Proxy is already running";
@@ -126,27 +114,24 @@ void RawData::Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata:
         m_findHandle = std::make_shared<ara::com::FindServiceHandle>(findHandle);
         m_found = true;
         
-        // REvent에 대한 Subscribe 요청
+        // subscribe events
         SubscribeREvent();
-        // RField Notification에 대한 Subscribe 요청
+        // subscribe field notifications
         SubscribeRField();
     }
 }
-
-// REvent에 대한 Subscribe 요청
+ 
 void RawData::SubscribeREvent()
 {
     if (m_found)
     {
         // regist receiver handler
         // if you want to enable it, please uncomment below code
-        //
-        // REvent에 대한 Receiver Handler 등록 함수
-        // 만약 REvent를 받을떄마다 핸들러를 통한 즉각적인 처리를 원한다면 아래 함수를 uncomment하여 핸들러를 등록하면 된다.
+        // 
         // RegistReceiverREvent();
         
         // request subscribe
-        auto subscribe = m_interface->REvent.Subscribe(5);
+        auto subscribe = m_interface->REvent.Subscribe(1);
         if (subscribe.HasValue())
         {
             m_logger.LogVerbose() << "RawData::SubscribeREvent::Subscribed";
@@ -157,31 +142,27 @@ void RawData::SubscribeREvent()
         }
     }
 }
-
-// REvent에 대한 Unsubscribe 처리 함수
+ 
 void RawData::StopSubscribeREvent()
 {
     if (m_found)
     {
-        // Unsubscribe 요청
+        // request stop subscribe
         m_interface->REvent.Unsubscribe();
         m_logger.LogVerbose() << "RawData::StopSubscribeREvent::Unsubscribed";
     }
 }
-
-// REvent에 대한 수신 처리에 대한 핸들러 등록 함수
-// 이 함수를 통해 핸들러 등록을 한다면, ReceiveEventREventTriggered() 함수가 REvent 수신 시점에 호출되게 된다.
-// 필요시 사용
+ 
 void RawData::RegistReceiverREvent()
 {
     if (m_found)
     {
-        // 콜백 정의
+        // set callback
         auto receiver = [this]() -> void {
             return ReceiveEventREventTriggered();
         };
         
-        // REvent 수신 핸들러 등록
+        // regist callback
         auto callback = m_interface->REvent.SetReceiveHandler(receiver);
         if (callback.HasValue())
         {
@@ -193,8 +174,7 @@ void RawData::RegistReceiverREvent()
         }
     }
 }
-
-// REvent에 대한 수신을 트리거 형태로 처리하는 함수.
+ 
 void RawData::ReceiveEventREventTriggered()
 {
     if (m_found)
@@ -216,8 +196,7 @@ void RawData::ReceiveEventREventTriggered()
         }
     }
 }
-
-// REvent에 대한 수신을 폴링형태로 지속적으로 처리하는 함수.
+ 
 void RawData::ReceiveEventREventCyclic()
 {
     while (m_running)
@@ -243,34 +222,23 @@ void RawData::ReceiveEventREventCyclic()
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
-
-// 수신된 REvent에 대한 데이터를 실질적으로 처리하는 함수.
+ 
 void RawData::ReadDataREvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::REvent::SampleType const> samplePtr)
 {
     auto data = *samplePtr.Get();
-
-    m_logger.LogVerbose() << "RawData::ReadDataREvent::" << data;
-
-    // REvent 핸들러가 등록되어 있을시 해당 핸들러는 값과 함께 호출한다.
-    if (m_receiveEventREventHandler != nullptr)
-    {
-        m_receiveEventREventHandler(data);
-    }
+    // put your logic
 }
-
-// RField의 Notify에 대한 Subscribe 요청 함수
+ 
 void RawData::SubscribeRField()
 {
     if (m_found)
     {
         // regist receiver handler
         // if you want to enable it, please uncomment below code
-        //
-        // RField Notify에 대한 Receiver Handler 등록 함수
-        // 만약 RField Notify를 받을떄마다 핸들러를 통한 즉각적인 처리를 원한다면 아래 함수를 uncomment하여 핸들러를 등록하면 된다.
+        // 
         // RegistReceiverRField();
         
-        // Subscribe 요청
+        // request subscribe
         auto subscribe = m_interface->RField.Subscribe(1);
         if (subscribe.HasValue())
         {
@@ -282,31 +250,27 @@ void RawData::SubscribeRField()
         }
     }
 }
-
-// RField Notify에 대한 Unsubscribe 처리 함수
+ 
 void RawData::StopSubscribeRField()
 {
     if (m_found)
     {
-        // Unsubscribe 요청
+        // request stop subscribe
         m_interface->RField.Unsubscribe();
         m_logger.LogVerbose() << "RawData::StopSubscribeRField::Unsubscribed";
     }
 }
-
-// RField Notify에 대한 수신 처리에 대한 핸들러 등록 함수
-// 이 함수를 통해 핸들러 등록을 한다면, ReceiveFieldRFieldTriggered() 함수가 RField Notify 수신 시점에 호출되게 된다.
-// 필요시 사용
+ 
 void RawData::RegistReceiverRField()
 {
     if (m_found)
     {
-        // 콜백 정의
+        // set callback
         auto receiver = [this]() -> void {
             return ReceiveFieldRFieldTriggered();
         };
         
-        // 수신 핸들러 등록
+        // regist callback
         auto callback = m_interface->RField.SetReceiveHandler(receiver);
         if (callback.HasValue())
         {
@@ -318,8 +282,7 @@ void RawData::RegistReceiverRField()
         }
     }
 }
-
-// RField Notify에 대한 수신을 트리거 형태로 처리하는 함수.
+ 
 void RawData::ReceiveFieldRFieldTriggered()
 {
     if (m_found)
@@ -341,8 +304,7 @@ void RawData::ReceiveFieldRFieldTriggered()
         }
     }
 }
-
-// RField Notify에 대한 수신을 폴링형태로 지속적으로 처리하는 함수.
+ 
 void RawData::ReceiveFieldRFieldCyclic()
 {
     while (m_running)
@@ -368,21 +330,13 @@ void RawData::ReceiveFieldRFieldCyclic()
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
-
-// RField Notify에 대한 수신을 폴링형태로 지속적으로 처리하는 함수.
+ 
 void RawData::ReadValueRField(ara::com::SamplePtr<deepracer::service::rawdata::proxy::fields::RField::FieldType const> samplePtr)
 {
     auto value = *samplePtr.Get();
-
-    m_logger.LogVerbose() << "RawData::ReadValueRField::" << value;
-
-    if (m_receiveNotifyFieldRFieldHandler != nullptr)
-    {
-        m_receiveNotifyFieldRFieldHandler(value);
-    }
+    // put your logic
 }
-
-// RField Getter 처리에 대한 Request 및 Result 처리 함수
+ 
 void RawData::GetRField()
 {
     if (m_found)
@@ -392,13 +346,10 @@ void RawData::GetRField()
         auto response = request.GetResult();
         if (response.HasValue())
         {
+            m_logger.LogVerbose() << "RawData::GetRField::Responded";
+            
             auto result = response.Value();
-            m_logger.LogVerbose() << "RawData::GetRField::Responded::" << result;
-
-            if (m_receiveGetFieldRFieldHandler != nullptr)
-            {
-                m_receiveGetFieldRFieldHandler(result);
-            }
+            // put your logic
         }
         else
         {
@@ -406,8 +357,7 @@ void RawData::GetRField()
         }
     }
 }
-
-// RField Setter 처리에 대한 Request 및 Result 처리 함수
+ 
 void RawData::SetRField(const deepracer::service::rawdata::proxy::fields::RField::FieldType& value)
 {
     if (m_found)
@@ -417,13 +367,10 @@ void RawData::SetRField(const deepracer::service::rawdata::proxy::fields::RField
         auto response = request.GetResult();
         if (response.HasValue())
         {
+            m_logger.LogVerbose() << "RawData::SetRField::Responded";
+            
             auto result = response.Value();
-            m_logger.LogVerbose() << "RawData::SetRField::Responded::" << result;
-
-            if (m_receiveSetFieldRFieldHandler != nullptr)
-            {
-                m_receiveSetFieldRFieldHandler(result);
-            }
+            // put your logic
         }
         else
         {
@@ -431,8 +378,7 @@ void RawData::SetRField(const deepracer::service::rawdata::proxy::fields::RField
         }
     }
 }
-
-// RMethod 처리에 대한 Request 및 Result 처리 함수
+ 
 void RawData::RequestRMethod(const double& a, const deepracer::type::Arithmetic& arithmetic, const double& b)
 {
     if (m_found)
@@ -442,14 +388,10 @@ void RawData::RequestRMethod(const double& a, const deepracer::type::Arithmetic&
         auto response = request.GetResult();
         if (response.HasValue())
         {
+            m_logger.LogVerbose() << "RawData::RequestRMethod::Responded";
+            
             auto result = response.Value();
             // put your logic
-            m_logger.LogVerbose() << "RawData::RequestRMethod::Responded::" << result.result;
-
-            if (m_receiveMethodRMethodHandler != nullptr)
-            {
-                m_receiveMethodRMethodHandler(result);
-            }
         }
         else
         {
@@ -457,51 +399,7 @@ void RawData::RequestRMethod(const double& a, const deepracer::type::Arithmetic&
         }
     }
 }
-
-// 개발자 추가 함수
-// REvent 수신에 대한 핸들러 등록 함수.
-void RawData::SetReceiveEventREventHandler(
-    std::function<void(const deepracer::service::rawdata::proxy::events::REvent::SampleType&)> handler)
-{
-    m_receiveEventREventHandler = handler;
-}
-
-// 개발자 추가 함수
-// RField Notify 수신에 대한 핸들러 등록 함수.
-void RawData::SetReceiveNotifyRFieldHandler(
-    std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> handler)
-{
-    m_receiveNotifyFieldRFieldHandler = handler;
-}
-
-// 개발자 추가 함수
-// RField Setter Response에 대한 핸들러 등록 함수.
-void RawData::SetReceiveSetFieldRFieldHandler(
-    std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> handler)
-{
-    m_receiveSetFieldRFieldHandler = handler;
-}
-
-// 개발자 추가 함수
-// RField Getter Response에 대한 핸들러 등록 함수.
-void RawData::SetReceiveGetFieldRFieldHandler(
-    std::function<void(const deepracer::service::rawdata::proxy::fields::RField::FieldType&)> handler)
-{
-    m_receiveGetFieldRFieldHandler = handler;
-}
-
-// 개발자 추가 함수
-// RMethod Response에 대한 핸들러 등록 함수.
-void RawData::SetReceiveMethodRMethodHandler(
-    std::function<void(const deepracer::service::rawdata::proxy::methods::RMethod::Output&)> handler)
-{
-    m_receiveMethodRMethodHandler = handler;
-}
-
-
-
-
-
+ 
 } /// namespace port
 } /// namespace aa
 } /// namespace calc
