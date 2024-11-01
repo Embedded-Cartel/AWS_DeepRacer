@@ -12,16 +12,35 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 |황귀용|팀  원|Adaptive AUTOSAR (Machine Manifest, Execution Manifest), Stereo Depth Map|
 
 ## Directory
-### AUTOSAR
-1. EC2024_PRACTICE_VER1 : PopcornSAR Youtube 강의 연습용
-2. EC2024_SAMPLE : PopcornSAR 제공 (1번 디렉토리와 로그 레벨 제외하고 차이 없음)
-3. bermuda : 본 대회용 프로젝트
-4. bermuda_base : Machine, System만 설계되었음. bermuda 디렉토리에서 공통 설계 내용 백업용
+### AA
+대회용 AA 개발 디렉토리
+
+### AA_Code
+AA 개발 디렉토리 기반 Generated 코드 (gen_ara/implementation/Machine)
+
+### AA_Sample_Code
+PopcornSAR 예제 기반 Generated 코드 (gen_ara/implementation/Machine)
+
+### deepracercode
+DeepRacer 샘플 코드
+Camera, LiDAR, Servo
+
+### model
+AI Model
 
 ### sdk
 a.k.a PARA_SDK
 ARXML 기반 Generate 이후 build 진행 시 실행파일 생성되는 경로 (cd $PARA_SDK)
 
-### deepracercode
-DeepRacer 샘플 코드
-Camera, LiDAR, Servo
+## Script
+### build.sh
+AA 개발 코드 빌드
+
+### build_sample.sh
+PopcornSAR Sample 코드 빌드
+
+### export.sh
+PARA SDK 환경변수 설정
+
+### install_para_sdk
+PARA_SDK 설치
