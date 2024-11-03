@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd AA_Sample 
+cd AA_Sample_Code
 
 if ifconfig | grep -q "172.31.16.137"; then
   echo "EC2"
