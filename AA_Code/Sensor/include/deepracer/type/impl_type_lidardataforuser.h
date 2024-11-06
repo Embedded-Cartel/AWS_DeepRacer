@@ -37,6 +37,14 @@ struct LidarDataForUser
     std::uint32_t quality;
     PARA_STRUCTURE(LidarDataForUser, sync, theta, dist, quality);
 };
+
+struct CameraDataForUser
+{
+    std::vector<u_char> left_camera;
+    std::vector<u_char> right_camera;
+    PARA_STRUCTURE(CameraDataForUser, left_camera, right_camera);
+};
+
 } /// namespace type
 } /// namespace deepracer
 #endif /// PARA_ARA_COM_GEN_CPP_IMPL_TYPE_LIDARDATAFORUSER_H

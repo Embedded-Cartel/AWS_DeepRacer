@@ -30,6 +30,7 @@ namespace deepracer
 namespace type
 {
 using VectorLidar = ara::core::Vector<deepracer::type::LidarDataForUser>;
+using StructCamera = deepracer::type::CameraDataForUser;
 } /// namespace type
 } /// namespace deepracer
 #endif /// PARA_ARA_COM_GEN_CPP_IMPL_TYPE_VECTORLIDAR_H

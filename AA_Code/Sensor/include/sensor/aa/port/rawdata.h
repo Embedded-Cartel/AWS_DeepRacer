@@ -92,6 +92,8 @@ public:
     
     /// @brief Write event data to buffer, REvent
     void WriteDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data);
+    void WriteCameraDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleCameraType& data);
+    void WriteLidarDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data);
      
     /// @brief Send event cyclic from buffer data, REvent
     void SendEventREventCyclic();
@@ -129,6 +131,7 @@ private:
     
     /// @brief Data for event, REvent
     deepracer::service::rawdata::skeleton::events::REvent::SampleType m_REventData;
+    deepracer::service::rawdata::skeleton::events::REvent::SampleCameraType m_CameraData;
 };
  
 } /// namespace port

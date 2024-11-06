@@ -22,23 +22,40 @@ namespace aa
 {
  
 Sensor::Sensor()
-    : m_logger(ara::log::CreateLogger("SENS", "SWC", ara::log::LogLevel::kVerbose))
+    : m_running(false), m_event_flag(false)
+    , m_logger(ara::log::CreateLogger("SENS", "SWC", ara::log::LogLevel::kVerbose))
     , m_workers(2)
 {
 }
  
 Sensor::~Sensor()
 {
+    m_lidar_driver->EndLidar();
+    m_camera_driver->EndCamera();
 }
  
 bool Sensor::Initialize()
 {
+    printf("[Sensor::Initialize] Begin\n");
     m_logger.LogVerbose() << "Sensor::Initialize";
     
     bool init{true};
     
     m_RawData = std::make_shared<sensor::aa::port::RawData>();
+
+    int result = m_lidar_driver->CreateLidar();
+    if(!result) {
+        fprintf(stderr, "[Sensor] Fail to create lidar instance\n");
+        init = false;
+    }
+
+    result = m_camera_driver->CreateCamera();
+    if(!result) {
+        fprintf(stderr, "[Sensor] Fail to create camera instance\n");
+        init = false;
+    }
     
+    printf("[Sensor::Initialize] End\n");
     return init;
 }
  
@@ -47,6 +64,8 @@ void Sensor::Start()
     m_logger.LogVerbose() << "Sensor::Start";
     
     m_RawData->Start();
+    m_lidar_driver->StartLidar();
+    m_camera_driver->StartCamera();
     
     // run software component
     Run();
@@ -56,17 +75,81 @@ void Sensor::Terminate()
 {
     m_logger.LogVerbose() << "Sensor::Terminate";
     
+    m_running = false;
+    m_event_flag = false;
+
     m_RawData->Terminate();
 }
  
 void Sensor::Run()
 {
     m_logger.LogVerbose() << "Sensor::Run";
-    
-    m_workers.Async([this] { m_RawData->SendEventREventCyclic(); });
-    m_workers.Async([this] { m_RawData->NotifyFieldRFieldCyclic(); });
+
+    m_running = true;
+    m_workers.Async([this] { UpdateDatas(); });
+    m_workers.Async([this] { ThrowEventCyclic(); });
+    // m_workers.Async([this] { m_RawData->SendEventREventCyclic(); });
+    // m_workers.Async([this] { m_RawData->NotifyFieldRFieldCyclic(); });
     
     m_workers.Wait();
+}
+
+void Sensor::UpdateDatas() {
+    while (m_running) {
+        bool result_lidar = false;
+        bool result_camera = false;
+        result_lidar = UpdateLidarData();
+        result_camera = UpdateCameraData();
+
+        if (result_lidar & result_camera) {
+            std::lock_guard<std::mutex> lock(m_mutex); // m_event_flag 때문
+            m_event_flag = true;
+        }
+        
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
+void Sensor::ThrowEventCyclic() {
+    while (m_running) {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        if (m_event_flag == true) {
+            // m_lidar_data->SendEventREventTriggered();
+            // m_camera_data->SendEventREventTriggered();
+            printf("ksh_@@@ [Sensor] Throw Event Cycli !!!\n");
+            m_RawData->SendEventREventTriggered();
+            m_event_flag = false;
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(1)); // 1초보다 짧으면 좋을듯
+    }    
+}
+
+
+bool Sensor::UpdateLidarData()
+{
+    bool result = false;
+
+    deepracer::service::rawdata::skeleton::events::REvent::SampleType lidarDatas;
+    result = m_lidar_driver->GetLidarData(&lidarDatas);
+    
+    if (result) {
+        m_RawData->WriteDataREvent(lidarDatas);
+    }
+    
+    return result;
+}
+
+bool Sensor::UpdateCameraData()
+{
+    bool result = false;
+    deepracer::service::rawdata::skeleton::events::REvent::SampleCameraType cameraDatas;
+    result = m_camera_driver->GetCameraData(&cameraDatas);
+    if (result) {
+        // Write Camera data to Calc
+    }
+    
+    return result;
 }
  
 } /// namespace aa

@@ -3,8 +3,8 @@
     "autosar-version" : "R20-11",
     "manifest-type" : "communication-management-manifest",
     "service-protocol" : "someip",
-    "connector" : "wlo1",
-    "unicast-address" : "192.168.20.27",
+    "connector" : "ens5",
+    "unicast-address" : "172.31.16.137",
     "tcp-port" : "21011",
     "udp-port" : "21011",
     "skeletons" : [

@@ -45,6 +45,7 @@ public:
     /// @brief Type alias for type of event data
     /// @uptrace{SWS_CM_00162, SWS_CM_90437}
     using SampleType = deepracer::type::VectorLidar;
+    using SampleCameraType = deepracer::type::StructCamera;
     /// @brief Constructor
     explicit REvent(para::com::SkeletonInterface* interface) : mInterface(interface)
     {

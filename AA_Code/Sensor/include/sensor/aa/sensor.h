@@ -20,7 +20,9 @@
 #include "sensor/aa/port/rawdata.h"
  
 #include "para/swc/port_pool.h"
- 
+
+#include "deepracer/lidar/lidar_driver.h"
+#include "deepracer/camera/camera_driver.h"
 namespace sensor
 {
 namespace aa
@@ -43,12 +45,22 @@ public:
     
     /// @brief Terminate software component
     void Terminate();
+
+    void UpdateDatas();
+    bool UpdateLidarData();
+    bool UpdateCameraData();
+
+    void ThrowEventCyclic();
+
  
 private:
     /// @brief Run software component
     void Run();
  
 private:
+    bool m_running;
+    bool m_event_flag;
+    std::mutex m_mutex;
     /// @brief Pool of port
     ::para::swc::PortPool m_workers;
     
@@ -57,6 +69,11 @@ private:
     
     /// @brief Instance of Port {Sensor.RawData}
     std::shared_ptr<sensor::aa::port::RawData> m_RawData;
+
+    /// @brief Instance of Port {Sensor.RawData}
+    std::shared_ptr<LidarDriver> m_lidar_driver;
+    std::shared_ptr<CameraDriver> m_camera_driver;
+
 };
  
 } /// namespace aa

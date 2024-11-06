@@ -154,10 +154,17 @@ void RawData::Terminate()
  
 void RawData::WriteDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data)
 {
+    printf("ksh_@@@@ [RawData] WriteData\n");
     std::lock_guard<std::mutex> lock(m_mutex);
     m_REventData = data;
 }
- 
+
+void RawData::WriteCameraDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleCameraType& data)
+{
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_CameraData = data;
+}
+
 void RawData::SendEventREventCyclic()
 {
     while (m_running)
