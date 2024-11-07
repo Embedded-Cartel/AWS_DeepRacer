@@ -14,6 +14,11 @@ elif ifconfig | grep -q "192.168.0.10"; then
   find ./EM ./CM -type f -name "*.json" -exec sed -i 's/192.168.20.27/192.168.0.10/g' {} \;
   find ./EM ./CM -type f -name "*.json" -exec sed -i 's/wlo1/mlan0/g' {} \;
 
+elif ifconfig | grep -q "192.168.29.253"; then
+  echo "DeepRacer"
+
+  find ./EM ./CM -type f -name "*.json" -exec sed -i 's/192.168.20.27/192.168.29.253/g' {} \;
+  find ./EM ./CM -type f -name "*.json" -exec sed -i 's/wlo1/mlan0/g' {} \;
 
 else
   echo "IP not found"
