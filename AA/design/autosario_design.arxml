@@ -484,7 +484,7 @@
                   <SHORT-NAME>SM</SHORT-NAME>
                   <PROCESS-ARGUMENTS>
                     <PROCESS-ARGUMENT>
-                      <ARGUMENT>simulation</ARGUMENT>
+                      <ARGUMENT>device</ARGUMENT>
                     </PROCESS-ARGUMENT>
                   </PROCESS-ARGUMENTS>
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
