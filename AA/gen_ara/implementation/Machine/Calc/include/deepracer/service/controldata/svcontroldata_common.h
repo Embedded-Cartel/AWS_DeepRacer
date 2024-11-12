@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : svcontroldata_common.h
 /// SERVICE INTERFACE NAME            : SvControlData
-/// GENERATED DATE                    : 2024-10-31 15:08:41
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   

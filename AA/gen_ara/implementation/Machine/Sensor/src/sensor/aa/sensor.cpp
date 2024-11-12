@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : sensor.cpp
 /// SOFTWARE COMPONENT NAME           : Sensor
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ namespace aa
  
 Sensor::Sensor()
     : m_logger(ara::log::CreateLogger("SENS", "SWC", ara::log::LogLevel::kVerbose))
-    , m_workers(2)
+    , m_workers(3)
 {
 }
  
@@ -63,7 +63,8 @@ void Sensor::Run()
 {
     m_logger.LogVerbose() << "Sensor::Run";
     
-    m_workers.Async([this] { m_RawData->SendEventREventCyclic(); });
+    m_workers.Async([this] { m_RawData->SendEventRLidarEventCyclic(); });
+    m_workers.Async([this] { m_RawData->SendEventRCameraEventCyclic(); });
     m_workers.Async([this] { m_RawData->NotifyFieldRFieldCyclic(); });
     
     m_workers.Wait();

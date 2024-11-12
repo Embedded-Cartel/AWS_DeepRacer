@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : calc.cpp
 /// SOFTWARE COMPONENT NAME           : Calc
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ namespace aa
  
 Calc::Calc()
     : m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
-    , m_workers(3)
+    , m_workers(4)
 {
 }
  
@@ -67,7 +67,8 @@ void Calc::Run()
     m_logger.LogVerbose() << "Calc::Run";
     
     m_workers.Async([this] { m_ControlData->SendEventCEventCyclic(); });
-    m_workers.Async([this] { m_RawData->ReceiveEventREventCyclic(); });
+    m_workers.Async([this] { m_RawData->ReceiveEventRLidarEventCyclic(); });
+    m_workers.Async([this] { m_RawData->ReceiveEventRCameraEventCyclic(); });
     m_workers.Async([this] { m_RawData->ReceiveFieldRFieldCyclic(); });
     
     m_workers.Wait();
