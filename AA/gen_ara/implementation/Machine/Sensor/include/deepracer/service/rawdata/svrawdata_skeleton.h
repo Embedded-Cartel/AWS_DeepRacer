@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : svrawdata_skeleton.h
 /// SERVICE INTERFACE NAME            : SvRawData
-/// GENERATED DATE                    : 2024-11-12 15:16:54
+/// GENERATED DATE                    : 2024-11-12 15:45:40
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   
@@ -39,28 +39,28 @@ class SvRawDataSkeleton;
 namespace events
 {
 /// @uptrace{SWS_CM_00003}
-class RLidarEvent
+class REvent
 {
 public:
     /// @brief Type alias for type of event data
     /// @uptrace{SWS_CM_00162, SWS_CM_90437}
-    using SampleType = deepracer::type::VectorLidar;
+    using SampleType = deepracer::type::SensorDatas;
     /// @brief Constructor
-    explicit RLidarEvent(para::com::SkeletonInterface* interface) : mInterface(interface)
+    explicit REvent(para::com::SkeletonInterface* interface) : mInterface(interface)
     {
     }
     /// @brief Destructor
-    virtual ~RLidarEvent() = default;
+    virtual ~REvent() = default;
     /// @brief Delete copy constructor
-    RLidarEvent(const RLidarEvent& other) = delete;
+    REvent(const REvent& other) = delete;
     /// @brief Delete copy assignment
-    RLidarEvent& operator=(const RLidarEvent& other) = delete;
+    REvent& operator=(const REvent& other) = delete;
     /// @brief Move constructor
-    RLidarEvent(RLidarEvent&& other) noexcept : mInterface(other.mInterface)
+    REvent(REvent&& other) noexcept : mInterface(other.mInterface)
     {
     }
     /// @brief Move assignment
-    RLidarEvent& operator=(RLidarEvent&& other) noexcept
+    REvent& operator=(REvent&& other) noexcept
     {
         mInterface = other.mInterface;
         return *this;
@@ -83,54 +83,7 @@ public:
     
 private:
     para::com::SkeletonInterface* mInterface;
-    const std::string kCallSign = {"RLidarEvent"};
-};
-/// @uptrace{SWS_CM_00003}
-class RCameraEvent
-{
-public:
-    /// @brief Type alias for type of event data
-    /// @uptrace{SWS_CM_00162, SWS_CM_90437}
-    using SampleType = deepracer::type::StructCamera;
-    /// @brief Constructor
-    explicit RCameraEvent(para::com::SkeletonInterface* interface) : mInterface(interface)
-    {
-    }
-    /// @brief Destructor
-    virtual ~RCameraEvent() = default;
-    /// @brief Delete copy constructor
-    RCameraEvent(const RCameraEvent& other) = delete;
-    /// @brief Delete copy assignment
-    RCameraEvent& operator=(const RCameraEvent& other) = delete;
-    /// @brief Move constructor
-    RCameraEvent(RCameraEvent&& other) noexcept : mInterface(other.mInterface)
-    {
-    }
-    /// @brief Move assignment
-    RCameraEvent& operator=(RCameraEvent&& other) noexcept
-    {
-        mInterface = other.mInterface;
-        return *this;
-    }
-    /// @brief Send event with data to subscribing service consumers
-    /// @uptrace{SWS_CM_90437}
-    ara::core::Result<void> Send(const SampleType& data)
-    {
-        para::serializer::Serializer serializer{};
-        serializer.write(data);
-        auto payload = serializer.ensure();
-        return mInterface->SendEvent(kCallSign, payload);
-    }
-    /// @brief Returns unique pointer about SampleType
-    /// @uptrace{SWS_CM_90438}
-    ara::core::Result<ara::com::SampleAllocateePtr<SampleType>> Allocate()
-    {
-        return std::make_unique<SampleType>();
-    }
-    
-private:
-    para::com::SkeletonInterface* mInterface;
-    const std::string kCallSign = {"RCameraEvent"};
+    const std::string kCallSign = {"REvent"};
 };
 } /// namespace events
 /// @uptrace{SWS_CM_01031}
@@ -281,8 +234,7 @@ public:
     /// @uptrace{SWS_CM_00002, SWS_CM_00152}
     SvRawDataSkeleton(ara::core::InstanceSpecifier instanceSpec, ara::com::MethodCallProcessingMode mode = ara::com::MethodCallProcessingMode::kEvent)
         : mInterface(std::make_unique<para::com::SkeletonInterface>(instanceSpec, mode))
-        , RLidarEvent(mInterface.get())
-        , RCameraEvent(mInterface.get())
+        , REvent(mInterface.get())
         , RField(mInterface.get())
     {
         mInterface->SetMethodCallHandler(kRMethodCallSign, [this](const std::vector<std::uint8_t>& data, const para::com::MethodToken token) {
@@ -304,8 +256,7 @@ public:
     /// @uptrace{SWS_CM_00135}
     SvRawDataSkeleton(SvRawDataSkeleton&& other) noexcept
         : mInterface(std::move(other.mInterface))
-        , RLidarEvent(std::move(other.RLidarEvent))
-        , RCameraEvent(std::move(other.RCameraEvent))
+        , REvent(std::move(other.REvent))
         , RField(std::move(other.RField))
     {
         mInterface->SetMethodCallHandler(kRMethodCallSign, [this](const std::vector<std::uint8_t>& data, const para::com::MethodToken token) {
@@ -321,8 +272,7 @@ public:
     SvRawDataSkeleton& operator=(SvRawDataSkeleton&& other) noexcept
     {
         mInterface = std::move(other.mInterface);
-        RLidarEvent = std::move(other.RLidarEvent);
-        RCameraEvent = std::move(other.RCameraEvent);
+        REvent = std::move(other.REvent);
         RField = std::move(other.RField);
         mInterface->SetMethodCallHandler(kRMethodCallSign, [this](const std::vector<std::uint8_t>& data, const para::com::MethodToken token) {
             HandleRMethod(data, token);
@@ -373,10 +323,8 @@ private:
     std::unique_ptr<para::com::SkeletonInterface> mInterface;
     
 public:
-    /// @brief Event, RLidarEvent
-    events::RLidarEvent RLidarEvent;
-    /// @brief Event, RCameraEvent
-    events::RCameraEvent RCameraEvent;
+    /// @brief Event, REvent
+    events::REvent REvent;
     /// @brief Field, RField
     fields::RField RField;
     /// @brief Method, RMethod
