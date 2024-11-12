@@ -13,7 +13,7 @@
     "client-id" : "2",
     "events" : [
         {
-            "name" : "RLidarEvent",
+            "name" : "REvent",
             "event-id" : "1",
             "transport" : "udp",
             "max-segment-len" : "0",

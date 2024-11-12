@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.h
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-11-12 15:16:54
+/// GENERATED DATE                    : 2024-11-12 15:45:40
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_PPORT_SENSOR_AA_RAWDATA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_PPORT_SENSOR_AA_RAWDATA_H
@@ -90,30 +90,17 @@ public:
     /// @brief Terminate port
     void Terminate();
     
-    /// @brief Write event data to buffer, RLidarEvent
-    void WriteDataRLidarEvent(const deepracer::service::rawdata::skeleton::events::RLidarEvent::SampleType& data);
+    /// @brief Write event data to buffer, REvent
+    void WriteDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data);
      
-    /// @brief Send event cyclic from buffer data, RLidarEvent
-    void SendEventRLidarEventCyclic();
+    /// @brief Send event cyclic from buffer data, REvent
+    void SendEventREventCyclic();
      
-    /// @brief Send event directly from buffer data, RLidarEvent
-    void SendEventRLidarEventTriggered();
+    /// @brief Send event directly from buffer data, REvent
+    void SendEventREventTriggered();
      
-    /// @brief Send event directly with argument, RLidarEvent
-    void SendEventRLidarEventTriggered(const deepracer::service::rawdata::skeleton::events::RLidarEvent::SampleType& data);
-     
-    
-    /// @brief Write event data to buffer, RCameraEvent
-    void WriteDataRCameraEvent(const deepracer::service::rawdata::skeleton::events::RCameraEvent::SampleType& data);
-     
-    /// @brief Send event cyclic from buffer data, RCameraEvent
-    void SendEventRCameraEventCyclic();
-     
-    /// @brief Send event directly from buffer data, RCameraEvent
-    void SendEventRCameraEventTriggered();
-     
-    /// @brief Send event directly with argument, RCameraEvent
-    void SendEventRCameraEventTriggered(const deepracer::service::rawdata::skeleton::events::RCameraEvent::SampleType& data);
+    /// @brief Send event directly with argument, REvent
+    void SendEventREventTriggered(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data);
      
     /// @brief Write field value to buffer, RField
     void WriteValueRField(const deepracer::service::rawdata::skeleton::fields::RField::FieldType& value);
@@ -140,11 +127,8 @@ private:
     /// @brief AUTOSAR Port Interface
     std::shared_ptr<deepracer::service::rawdata::skeleton::SvRawDataSkeletonImpl> m_interface;
     
-    /// @brief Data for event, RLidarEvent
-    deepracer::service::rawdata::skeleton::events::RLidarEvent::SampleType m_RLidarEventData;
-    
-    /// @brief Data for event, RCameraEvent
-    deepracer::service::rawdata::skeleton::events::RCameraEvent::SampleType m_RCameraEventData;
+    /// @brief Data for event, REvent
+    deepracer::service::rawdata::skeleton::events::REvent::SampleType m_REventData;
 };
  
 } /// namespace port
