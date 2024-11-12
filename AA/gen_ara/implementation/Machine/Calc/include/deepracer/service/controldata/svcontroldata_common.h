@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : svcontroldata_common.h
 /// SERVICE INTERFACE NAME            : SvControlData
-/// GENERATED DATE                    : 2024-11-12 15:10:44
+/// GENERATED DATE                    : 2024-11-12 15:16:54
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   
@@ -30,6 +30,7 @@
 /// INCLUSION OF CPP IMPLEMENTATION DATA TYPE HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @uptrace{SWS_CM_10372}
+#include "deepracer/type/impl_type_calcdatatoactuator.h"
 /// @uptrace{SWS_CM_01005}
 namespace deepracer
 {
