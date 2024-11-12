@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : impl_type_sensordatas.h
 /// IMPLEMENTATION DATA TYPE NAME     : SensorDatas
-/// GENERATED DATE                    : 2024-11-12 15:47:37
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   
@@ -22,9 +22,10 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @uptrace{SWS_CM_00402}
-#include <cstdint>
 #include <ara/core/structure.h>
-#include "deepracer/type/impl_type_lidardataforuser.h"
+#include "deepracer/type/impl_type_left_camera.h"
+#include "deepracer/type/impl_type_lidars.h"
+#include "deepracer/type/impl_type_right_camera.h"
 /// @uptrace{SWS_CM_10375}
 namespace deepracer
 {
@@ -32,9 +33,9 @@ namespace type
 {
 struct SensorDatas
 {
-    deepracer::type::LidarDataForUser lidars;
-    std::uint8_t left_camera;
-    std::uint8_t right_camera;
+    deepracer::type::lidars lidars;
+    deepracer::type::left_camera left_camera;
+    deepracer::type::right_camera right_camera;
     PARA_STRUCTURE(SensorDatas, lidars, left_camera, right_camera);
 };
 } /// namespace type

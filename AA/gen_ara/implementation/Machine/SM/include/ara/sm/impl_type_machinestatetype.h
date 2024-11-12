@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : impl_type_machinestatetype.h
 /// IMPLEMENTATION DATA TYPE NAME     : MachineStateType
-/// GENERATED DATE                    : 2024-11-12 15:47:37
+/// GENERATED DATE                    : 2024-11-12 15:52:59
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   
