@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : controldata.cpp
 /// SOFTWARE COMPONENT NAME           : ControlData
-/// GENERATED DATE                    : 2024-11-12 15:10:44
+/// GENERATED DATE                    : 2024-11-12 15:16:54
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/controldata.h"
  
@@ -44,7 +44,7 @@ namespace port
 ControlData::ControlData()
     : m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
-    , m_CEventData{0U}
+    , m_CEventData{0.0f, 0.0f}
 {
 }
  

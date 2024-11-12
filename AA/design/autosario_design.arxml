@@ -801,7 +801,7 @@
               <EVENTS>
                 <VARIABLE-DATA-PROTOTYPE UUID="d7da460f-c8c3-4d30-b381-fd1f6c74cdb8">
                   <SHORT-NAME>CEvent</SHORT-NAME>
-                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-TREF>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/CalcDataToActuator</TYPE-TREF>
                 </VARIABLE-DATA-PROTOTYPE>
               </EVENTS>
             </SERVICE-INTERFACE>
@@ -1826,6 +1826,39 @@
     <AR-PACKAGE UUID="e045d2b3-6bcc-4cf2-8479-25cb8e8a2fff">
       <SHORT-NAME>UnsetARElements</SHORT-NAME>
       <ELEMENTS>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="75013fe9-67d3-40b2-975f-bd3804b37f25">
+          <SHORT-NAME>CalcDataToActuator</SHORT-NAME>
+          <CATEGORY>STRUCTURE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <SUB-ELEMENTS>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="732798ff-4ae9-4cee-b7da-ff16ee9e5336">
+              <SHORT-NAME>cur_speed</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/float</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="0c340762-8747-496e-af4b-a70f2eb910d8">
+              <SHORT-NAME>cur_angle</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/float</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+          </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
         <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="aca4df87-69cb-4583-82a2-c6a68cf99360">
           <SHORT-NAME>CameraDataForUser</SHORT-NAME>
           <CATEGORY>STRUCTURE</CATEGORY>
