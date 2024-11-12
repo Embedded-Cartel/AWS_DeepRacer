@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : sensor.h
 /// SOFTWARE COMPONENT NAME           : Sensor
-/// GENERATED DATE                    : 2024-11-12 15:45:40
+/// GENERATED DATE                    : 2024-11-12 15:47:38
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_SENSOR_AA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_SENSOR_AA_H
