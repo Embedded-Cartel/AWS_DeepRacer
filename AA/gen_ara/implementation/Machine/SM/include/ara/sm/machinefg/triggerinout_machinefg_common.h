@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : triggerinout_machinefg_common.h
 /// SERVICE INTERFACE NAME            : TriggerInOut_MachineFG
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   

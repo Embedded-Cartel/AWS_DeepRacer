@@ -822,8 +822,12 @@
                 </SYMBOL-PROPS>
               </NAMESPACES>
               <EVENTS>
+                <VARIABLE-DATA-PROTOTYPE UUID="82055e58-b27d-4c0e-8fe5-986f6e6ae2aa">
+                  <SHORT-NAME>RCameraEvent</SHORT-NAME>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/StructCamera</TYPE-TREF>
+                </VARIABLE-DATA-PROTOTYPE>
                 <VARIABLE-DATA-PROTOTYPE UUID="7b28158c-7901-48a0-97ef-484c0497ec4f">
-                  <SHORT-NAME>REvent</SHORT-NAME>
+                  <SHORT-NAME>RLidarEvent</SHORT-NAME>
                   <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/VectorLidar</TYPE-TREF>
                 </VARIABLE-DATA-PROTOTYPE>
               </EVENTS>
@@ -1241,7 +1245,7 @@
                   <EVENT-DEPLOYMENTS>
                     <SOMEIP-EVENT-DEPLOYMENT UUID="3208f06e-484d-4236-9d48-66c4540e9664">
                       <SHORT-NAME>REvent</SHORT-NAME>
-                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/SvRawData/REvent</EVENT-REF>
+                      <EVENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterface/Service/SvRawData/RLidarEvent</EVENT-REF>
                       <EVENT-ID>1</EVENT-ID>
                       <TRANSPORT-PROTOCOL>UDP</TRANSPORT-PROTOCOL>
                     </SOMEIP-EVENT-DEPLOYMENT>
@@ -1910,8 +1914,12 @@
           </SW-DATA-DEF-PROPS>
           <NAMESPACES>
             <SYMBOL-PROPS>
-              <SHORT-NAME>deepracer:type</SHORT-NAME>
-              <SYMBOL>deepracer:type</SYMBOL>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
             </SYMBOL-PROPS>
           </NAMESPACES>
           <TEMPLATE-ARGUMENTS>

@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/rawdata.h"
  
@@ -69,7 +69,8 @@ void RawData::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeREvent();
+        StopSubscribeRLidarEvent();
+        StopSubscribeRCameraEvent();
         StopSubscribeRField();
         
         // stop find service
@@ -115,107 +116,108 @@ void RawData::Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata:
         m_found = true;
         
         // subscribe events
-        SubscribeREvent();
+        SubscribeRLidarEvent();
+        SubscribeRCameraEvent();
         // subscribe field notifications
         SubscribeRField();
     }
 }
  
-void RawData::SubscribeREvent()
+void RawData::SubscribeRLidarEvent()
 {
     if (m_found)
     {
         // regist receiver handler
         // if you want to enable it, please uncomment below code
         // 
-        // RegistReceiverREvent();
+        // RegistReceiverRLidarEvent();
         
         // request subscribe
-        auto subscribe = m_interface->REvent.Subscribe(1);
+        auto subscribe = m_interface->RLidarEvent.Subscribe(1);
         if (subscribe.HasValue())
         {
-            m_logger.LogVerbose() << "RawData::SubscribeREvent::Subscribed";
+            m_logger.LogVerbose() << "RawData::SubscribeRLidarEvent::Subscribed";
         }
         else
         {
-            m_logger.LogError() << "RawData::SubscribeREvent::" << subscribe.Error().Message();
+            m_logger.LogError() << "RawData::SubscribeRLidarEvent::" << subscribe.Error().Message();
         }
     }
 }
  
-void RawData::StopSubscribeREvent()
+void RawData::StopSubscribeRLidarEvent()
 {
     if (m_found)
     {
         // request stop subscribe
-        m_interface->REvent.Unsubscribe();
-        m_logger.LogVerbose() << "RawData::StopSubscribeREvent::Unsubscribed";
+        m_interface->RLidarEvent.Unsubscribe();
+        m_logger.LogVerbose() << "RawData::StopSubscribeRLidarEvent::Unsubscribed";
     }
 }
  
-void RawData::RegistReceiverREvent()
+void RawData::RegistReceiverRLidarEvent()
 {
     if (m_found)
     {
         // set callback
         auto receiver = [this]() -> void {
-            return ReceiveEventREventTriggered();
+            return ReceiveEventRLidarEventTriggered();
         };
         
         // regist callback
-        auto callback = m_interface->REvent.SetReceiveHandler(receiver);
+        auto callback = m_interface->RLidarEvent.SetReceiveHandler(receiver);
         if (callback.HasValue())
         {
-            m_logger.LogVerbose() << "RawData::RegistReceiverREvent::SetReceiveHandler";
+            m_logger.LogVerbose() << "RawData::RegistReceiverRLidarEvent::SetReceiveHandler";
         }
         else
         {
-            m_logger.LogError() << "RawData::RegistReceiverREvent::SetReceiveHandler::" << callback.Error().Message();
+            m_logger.LogError() << "RawData::RegistReceiverRLidarEvent::SetReceiveHandler::" << callback.Error().Message();
         }
     }
 }
  
-void RawData::ReceiveEventREventTriggered()
+void RawData::ReceiveEventRLidarEventTriggered()
 {
     if (m_found)
     {
         std::lock_guard<std::mutex> lock(m_mutex);
-        if (m_interface->REvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
+        if (m_interface->RLidarEvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
         {
-            auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->REvent.GetNewSamples([&](auto samplePtr) {
-                RawData::ReadDataREvent(std::move(samplePtr));
+            auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->RLidarEvent.GetNewSamples([&](auto samplePtr) {
+                RawData::ReadDataRLidarEvent(std::move(samplePtr));
             }));
             if (recv->HasValue())
             {
-                m_logger.LogVerbose() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Value();
+                m_logger.LogVerbose() << "RawData::ReceiveEventRLidarEvent::GetNewSamples::" << recv->Value();
             }
             else
             {
-                m_logger.LogError() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Error().Message();
+                m_logger.LogError() << "RawData::ReceiveEventRLidarEvent::GetNewSamples::" << recv->Error().Message();
             }
         }
     }
 }
  
-void RawData::ReceiveEventREventCyclic()
+void RawData::ReceiveEventRLidarEventCyclic()
 {
     while (m_running)
     {
         std::lock_guard<std::mutex> lock(m_mutex);
         if (m_found)
         {
-            if (m_interface->REvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
+            if (m_interface->RLidarEvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
             {
-                auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->REvent.GetNewSamples([&](auto samplePtr) {
-                    RawData::ReadDataREvent(std::move(samplePtr));
+                auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->RLidarEvent.GetNewSamples([&](auto samplePtr) {
+                    RawData::ReadDataRLidarEvent(std::move(samplePtr));
                 }));
                 if (recv->HasValue())
                 {
-                    m_logger.LogVerbose() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Value();
+                    m_logger.LogVerbose() << "RawData::ReceiveEventRLidarEvent::GetNewSamples::" << recv->Value();
                 }
                 else
                 {
-                    m_logger.LogError() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Error().Message();
+                    m_logger.LogError() << "RawData::ReceiveEventRLidarEvent::GetNewSamples::" << recv->Error().Message();
                 }
             }
         }
@@ -223,7 +225,115 @@ void RawData::ReceiveEventREventCyclic()
     }
 }
  
-void RawData::ReadDataREvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::REvent::SampleType const> samplePtr)
+void RawData::ReadDataRLidarEvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::RLidarEvent::SampleType const> samplePtr)
+{
+    auto data = *samplePtr.Get();
+    // put your logic
+}
+ 
+void RawData::SubscribeRCameraEvent()
+{
+    if (m_found)
+    {
+        // regist receiver handler
+        // if you want to enable it, please uncomment below code
+        // 
+        // RegistReceiverRCameraEvent();
+        
+        // request subscribe
+        auto subscribe = m_interface->RCameraEvent.Subscribe(1);
+        if (subscribe.HasValue())
+        {
+            m_logger.LogVerbose() << "RawData::SubscribeRCameraEvent::Subscribed";
+        }
+        else
+        {
+            m_logger.LogError() << "RawData::SubscribeRCameraEvent::" << subscribe.Error().Message();
+        }
+    }
+}
+ 
+void RawData::StopSubscribeRCameraEvent()
+{
+    if (m_found)
+    {
+        // request stop subscribe
+        m_interface->RCameraEvent.Unsubscribe();
+        m_logger.LogVerbose() << "RawData::StopSubscribeRCameraEvent::Unsubscribed";
+    }
+}
+ 
+void RawData::RegistReceiverRCameraEvent()
+{
+    if (m_found)
+    {
+        // set callback
+        auto receiver = [this]() -> void {
+            return ReceiveEventRCameraEventTriggered();
+        };
+        
+        // regist callback
+        auto callback = m_interface->RCameraEvent.SetReceiveHandler(receiver);
+        if (callback.HasValue())
+        {
+            m_logger.LogVerbose() << "RawData::RegistReceiverRCameraEvent::SetReceiveHandler";
+        }
+        else
+        {
+            m_logger.LogError() << "RawData::RegistReceiverRCameraEvent::SetReceiveHandler::" << callback.Error().Message();
+        }
+    }
+}
+ 
+void RawData::ReceiveEventRCameraEventTriggered()
+{
+    if (m_found)
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        if (m_interface->RCameraEvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
+        {
+            auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->RCameraEvent.GetNewSamples([&](auto samplePtr) {
+                RawData::ReadDataRCameraEvent(std::move(samplePtr));
+            }));
+            if (recv->HasValue())
+            {
+                m_logger.LogVerbose() << "RawData::ReceiveEventRCameraEvent::GetNewSamples::" << recv->Value();
+            }
+            else
+            {
+                m_logger.LogError() << "RawData::ReceiveEventRCameraEvent::GetNewSamples::" << recv->Error().Message();
+            }
+        }
+    }
+}
+ 
+void RawData::ReceiveEventRCameraEventCyclic()
+{
+    while (m_running)
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        if (m_found)
+        {
+            if (m_interface->RCameraEvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
+            {
+                auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->RCameraEvent.GetNewSamples([&](auto samplePtr) {
+                    RawData::ReadDataRCameraEvent(std::move(samplePtr));
+                }));
+                if (recv->HasValue())
+                {
+                    m_logger.LogVerbose() << "RawData::ReceiveEventRCameraEvent::GetNewSamples::" << recv->Value();
+                }
+                else
+                {
+                    m_logger.LogError() << "RawData::ReceiveEventRCameraEvent::GetNewSamples::" << recv->Error().Message();
+                }
+            }
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+ 
+void RawData::ReadDataRCameraEvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::RCameraEvent::SampleType const> samplePtr)
 {
     auto data = *samplePtr.Get();
     // put your logic

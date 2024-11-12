@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.h
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_CALC_AA_RAWDATA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_CALC_AA_RAWDATA_H
@@ -46,20 +46,35 @@ public:
     /// @brief Terminate port
     void Terminate();
     
-    /// @brief Subscribe event, REvent
-    void SubscribeREvent();
+    /// @brief Subscribe event, RLidarEvent
+    void SubscribeRLidarEvent();
      
-    /// @brief Stop event subscription, REvent
-    void StopSubscribeREvent();
+    /// @brief Stop event subscription, RLidarEvent
+    void StopSubscribeRLidarEvent();
      
-    /// @brief Event receive handler, REvent
-    void ReceiveEventREventTriggered();
+    /// @brief Event receive handler, RLidarEvent
+    void ReceiveEventRLidarEventTriggered();
      
-    /// @brief Event receive handler, REvent
-    void ReceiveEventREventCyclic();
+    /// @brief Event receive handler, RLidarEvent
+    void ReceiveEventRLidarEventCyclic();
      
-    /// @brief Read event data, REvent
-    void ReadDataREvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::REvent::SampleType const> samplePtr);
+    /// @brief Read event data, RLidarEvent
+    void ReadDataRLidarEvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::RLidarEvent::SampleType const> samplePtr);
+    
+    /// @brief Subscribe event, RCameraEvent
+    void SubscribeRCameraEvent();
+     
+    /// @brief Stop event subscription, RCameraEvent
+    void StopSubscribeRCameraEvent();
+     
+    /// @brief Event receive handler, RCameraEvent
+    void ReceiveEventRCameraEventTriggered();
+     
+    /// @brief Event receive handler, RCameraEvent
+    void ReceiveEventRCameraEventCyclic();
+     
+    /// @brief Read event data, RCameraEvent
+    void ReadDataRCameraEvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::RCameraEvent::SampleType const> samplePtr);
     
     /// @brief Subscribe field notification, RField
     void SubscribeRField();
@@ -90,8 +105,11 @@ private:
     void Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata::proxy::SvRawDataProxy::HandleType> handles,
               ara::com::FindServiceHandle findHandle);
     
-    /// @brief Callback for event receiver, REvent
-    void RegistReceiverREvent();
+    /// @brief Callback for event receiver, RLidarEvent
+    void RegistReceiverRLidarEvent();
+    
+    /// @brief Callback for event receiver, RCameraEvent
+    void RegistReceiverRCameraEvent();
     
     /// @brief Callback for field notification receiver, RField
     void RegistReceiverRField();

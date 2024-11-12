@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:10:44
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sensor/aa/port/rawdata.h"
  
@@ -110,7 +110,8 @@ namespace port
 RawData::RawData()
     : m_logger(ara::log::CreateLogger("SENS", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
-    , m_REventData{{0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}}
+    , m_RLidarEventData{{0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}}
+    , m_RCameraEventData{{0U, 0U}, {0U, 0U}, {0U, 0U}}
 {
 }
  
@@ -152,58 +153,113 @@ void RawData::Terminate()
     m_logger.LogVerbose() << "RawData::Terminate::StopOfferService";
 }
  
-void RawData::WriteDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data)
+void RawData::WriteDataRLidarEvent(const deepracer::service::rawdata::skeleton::events::RLidarEvent::SampleType& data)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
-    m_REventData = data;
+    m_RLidarEventData = data;
 }
  
-void RawData::SendEventREventCyclic()
+void RawData::SendEventRLidarEventCyclic()
 {
     while (m_running)
     {
         {
             std::lock_guard<std::mutex> lock(m_mutex);
-            auto send = m_interface->REvent.Send(m_REventData);
+            auto send = m_interface->RLidarEvent.Send(m_RLidarEventData);
             if (send.HasValue())
             {
-                m_logger.LogVerbose() << "RawData::SendEventREventCyclic::Send";
+                m_logger.LogVerbose() << "RawData::SendEventRLidarEventCyclic::Send";
             }
             else
             {
-                m_logger.LogError() << "RawData::SendEventREventCyclic::Send::" << send.Error().Message();
+                m_logger.LogError() << "RawData::SendEventRLidarEventCyclic::Send::" << send.Error().Message();
             }
         }
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
  
-void RawData::SendEventREventTriggered()
+void RawData::SendEventRLidarEventTriggered()
 {
     std::lock_guard<std::mutex> lock(m_mutex);
-    auto send = m_interface->REvent.Send(m_REventData);
+    auto send = m_interface->RLidarEvent.Send(m_RLidarEventData);
     if (send.HasValue())
     {
-        m_logger.LogVerbose() << "RawData::SendEventREventTriggered::Send";
+        m_logger.LogVerbose() << "RawData::SendEventRLidarEventTriggered::Send";
     }
     else
     {
-        m_logger.LogError() << "RawData::SendEventREventTriggered::Send::" << send.Error().Message();
+        m_logger.LogError() << "RawData::SendEventRLidarEventTriggered::Send::" << send.Error().Message();
     }
 }
  
-void RawData::SendEventREventTriggered(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data)
+void RawData::SendEventRLidarEventTriggered(const deepracer::service::rawdata::skeleton::events::RLidarEvent::SampleType& data)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
-    m_REventData = data;
-    auto send = m_interface->REvent.Send(m_REventData);
+    m_RLidarEventData = data;
+    auto send = m_interface->RLidarEvent.Send(m_RLidarEventData);
     if (send.HasValue())
     {
-        m_logger.LogVerbose() << "RawData::SendEventREventTriggered::Send";
+        m_logger.LogVerbose() << "RawData::SendEventRLidarEventTriggered::Send";
     }
     else
     {
-        m_logger.LogError() << "RawData::SendEventREventTriggered::Send::" << send.Error().Message();
+        m_logger.LogError() << "RawData::SendEventRLidarEventTriggered::Send::" << send.Error().Message();
+    }
+}
+ 
+void RawData::WriteDataRCameraEvent(const deepracer::service::rawdata::skeleton::events::RCameraEvent::SampleType& data)
+{
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_RCameraEventData = data;
+}
+ 
+void RawData::SendEventRCameraEventCyclic()
+{
+    while (m_running)
+    {
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            auto send = m_interface->RCameraEvent.Send(m_RCameraEventData);
+            if (send.HasValue())
+            {
+                m_logger.LogVerbose() << "RawData::SendEventRCameraEventCyclic::Send";
+            }
+            else
+            {
+                m_logger.LogError() << "RawData::SendEventRCameraEventCyclic::Send::" << send.Error().Message();
+            }
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+ 
+void RawData::SendEventRCameraEventTriggered()
+{
+    std::lock_guard<std::mutex> lock(m_mutex);
+    auto send = m_interface->RCameraEvent.Send(m_RCameraEventData);
+    if (send.HasValue())
+    {
+        m_logger.LogVerbose() << "RawData::SendEventRCameraEventTriggered::Send";
+    }
+    else
+    {
+        m_logger.LogError() << "RawData::SendEventRCameraEventTriggered::Send::" << send.Error().Message();
+    }
+}
+ 
+void RawData::SendEventRCameraEventTriggered(const deepracer::service::rawdata::skeleton::events::RCameraEvent::SampleType& data)
+{
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_RCameraEventData = data;
+    auto send = m_interface->RCameraEvent.Send(m_RCameraEventData);
+    if (send.HasValue())
+    {
+        m_logger.LogVerbose() << "RawData::SendEventRCameraEventTriggered::Send";
+    }
+    else
+    {
+        m_logger.LogError() << "RawData::SendEventRCameraEventTriggered::Send::" << send.Error().Message();
     }
 }
  
