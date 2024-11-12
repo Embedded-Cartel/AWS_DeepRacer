@@ -223,9 +223,19 @@ void ControlData::ReceiveEventCEventCyclic()
 void ControlData::ReadDataCEvent(ara::com::SamplePtr<deepracer::service::controldata::proxy::events::CEvent::SampleType const> samplePtr)
 {
     auto data = *samplePtr.Get();
-    // put your logic
+
+    if (m_receiveEventCEventHandler != nullptr)
+    {
+        m_receiveEventCEventHandler(data);
+    }
 }
- 
+
+void ControlData::SetReceiveEventCEventHandler(
+    std::function<void(const deepracer::service::controldata::proxy::events::CEvent::SampleType&)> handler)
+{
+    m_receiveEventCEventHandler = handler;
+}
+
 } /// namespace port
 } /// namespace aa
 } /// namespace actuator
