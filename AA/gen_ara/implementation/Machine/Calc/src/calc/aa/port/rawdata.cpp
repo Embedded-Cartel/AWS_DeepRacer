@@ -14,6 +14,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/rawdata.h"
  
+#define DEBUG_SH 0
+
 namespace calc
 {
 namespace aa
@@ -201,6 +203,7 @@ void RawData::ReceiveEventREventCyclic()
 {
     while (m_running)
     {
+        // m_logger.LogInfo() << "----------------ReceiveEventREventCyclic----------------";
         std::lock_guard<std::mutex> lock(m_mutex);
         if (m_found)
         {
@@ -212,23 +215,18 @@ void RawData::ReceiveEventREventCyclic()
                 if (recv->HasValue())
                 {
                     m_logger.LogVerbose() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Value();
-                    m_logger.LogVerbose() << "----------------Sensor Data 받음----------------";
                 }
                 else
                 {
                     m_logger.LogError() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Error().Message();
+                    // m_logger.LogInfo() << "----------------Sensor Data 없음----------------";
                 }
             }
         }
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
- 
-void RawData::ReadDataREvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::REvent::SampleType const> samplePtr)
-{
-    auto data = *samplePtr.Get();
-    // put your logic
-}
+
  
 void RawData::SubscribeRField()
 {
@@ -400,7 +398,30 @@ void RawData::RequestRMethod(const double& a, const deepracer::type::Arithmetic&
         }
     }
 }
- 
+
+void RawData::SetReceiveEventREventHandler(
+    std::function<void(const deepracer::service::rawdata::proxy::events::REvent::SampleType&)> handler)
+{
+    m_receiveEventREventHandler = handler;
+}
+
+// 수신된 REvent에 대한 데이터를 실질적으로 처리하는 함수.
+void RawData::ReadDataREvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::REvent::SampleType const> samplePtr)
+{
+    auto data = *samplePtr.Get();
+    #if DEBUG_SH
+    printf("ksh_@@@ ReadData\n");
+    #endif
+    // m_logger.LogInfo() << "RawData::ReadDataREvent::!!!!!!!!!!";
+    // m_logger.LogInfo() << "RawData::ReadDataREvent::!!!!!!!!!!" << data;
+
+    // REvent 핸들러가 등록되어 있을시 해당 핸들러는 값과 함께 호출한다.
+    if (m_receiveEventREventHandler != nullptr)
+    {
+        m_receiveEventREventHandler(data);
+    }
+}
+
 } /// namespace port
 } /// namespace aa
 } /// namespace calc
