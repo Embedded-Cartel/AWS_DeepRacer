@@ -112,20 +112,6 @@ void ControlData::SendEventCEventCyclic()
     }
 }
  
-void ControlData::SendEventCEventTriggered()
-{
-    std::lock_guard<std::mutex> lock(m_mutex);
-    auto send = m_interface->CEvent.Send(m_CEventData);
-    if (send.HasValue())
-    {
-        m_logger.LogVerbose() << "ControlData::SendEventCEventTriggered::Send";
-    }
-    else
-    {
-        m_logger.LogError() << "ControlData::SendEventCEventTriggered::Send::" << send.Error().Message();
-    }
-}
- 
 void ControlData::SendEventCEventTriggered(const deepracer::service::controldata::skeleton::events::CEvent::SampleType& data)
 {
     std::lock_guard<std::mutex> lock(m_mutex);

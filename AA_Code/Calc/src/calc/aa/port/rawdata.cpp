@@ -13,6 +13,7 @@
 /// GENERATED DATE                    : 2024-10-31 15:08:42
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/rawdata.h"
+#include "calc/aa/port/controldata.h"
  
 namespace calc
 {
@@ -21,10 +22,11 @@ namespace aa
 namespace port
 {
  
-RawData::RawData()
-    : m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
-    , m_running{false}
-    , m_found{false}
+RawData::RawData(std::shared_ptr<ControlData> controlData, ara::log::Logger& logger)
+    : m_ControlData(controlData)  // ControlData init
+    , m_logger(logger)            // logger init
+    , m_running(false)
+    , m_found(false)
 {
 }
  
@@ -182,16 +184,26 @@ void RawData::ReceiveEventREventTriggered()
         std::lock_guard<std::mutex> lock(m_mutex);
         if (m_interface->REvent.GetSubscriptionState() == ara::com::SubscriptionState::kSubscribed)
         {
-            auto recv = std::make_unique<ara::core::Result<size_t>>(m_interface->REvent.GetNewSamples([&](auto samplePtr) {
-                RawData::ReadDataREvent(std::move(samplePtr));
-            }));
-            if (recv->HasValue())
+            // FUCK THAT SHIT Compile Warning
+            int ret = system("g++ calc/integration/test.cpp -o calc/integration/test -I/usr/include/python3.8 -lpython3.8");
+            (void)ret;
+
+            ret = system("./calc/integration/test");
+            (void)ret;
+
+            // predict data -> control data...(@TODO : example....simple test case)
+            deepracer::service::controldata::skeleton::events::CEvent::SampleType control_data;
+            control_data=1.0;  //@TODO : Must Change to real value
+
+            // send data to ControlData port
+            if (m_ControlData)
             {
-                m_logger.LogVerbose() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Value();
+                m_ControlData->WriteDataCEvent(control_data);
+                m_ControlData->SendEventCEventTriggered(control_data);
             }
             else
             {
-                m_logger.LogError() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Error().Message();
+                m_logger.LogError() << "RawData::ReceiveEventREventTriggered::ControlData instance is null";
             }
         }
     }

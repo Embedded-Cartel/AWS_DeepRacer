@@ -18,6 +18,7 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "deepracer/service/rawdata/svrawdata_proxy.h"
+#include "calc/aa/port/controldata.h"
  
 #include "ara/log/logger.h"
  
@@ -35,7 +36,8 @@ class RawData
 {
 public:
     /// @brief Constructor
-    RawData();
+    //RawData();
+    RawData(std::shared_ptr<ControlData> controlData, ara::log::Logger& logger);
     
     /// @brief Destructor
     ~RawData();
@@ -110,7 +112,10 @@ private:
     std::mutex m_mutex; 
     
     /// @brief AUTOSAR Port Interface
-    std::shared_ptr<deepracer::service::rawdata::proxy::SvRawDataProxy> m_interface;
+    //@1try! std::shared_ptr<deepracer::service::rawdata::proxy::SvRawDataProxy> m_interface;
+    //@2try! std::shared_ptr<ControlData> m_ControlData;
+    std::shared_ptr<deepracer::service::rawdata::proxy::SvRawDataProxy> m_interface; // 추가
+    std::shared_ptr<ControlData> m_ControlData;
     
     /// @brief Find service handle
     std::shared_ptr<ara::com::FindServiceHandle> m_findHandle;

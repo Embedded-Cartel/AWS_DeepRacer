@@ -21,6 +21,9 @@
 #include "calc/aa/calc.h"
  
 #include <csignal>
+// #include <iostream>
+#include <stdio.h>
+
  
 calc::aa::Calc* g_swcCalc{nullptr};
  
@@ -31,13 +34,18 @@ static void SignalHandler(std::int32_t signal)
         g_swcCalc->Terminate();
     }
 }
- 
+
+void runModel();
+
 int main(int argc, char *argv[], char* envp[])
 {
     bool proceed{true};
     bool araInitialized{true};
     
     // initialize AUTOSAR adaptive application
+
+    void runModel();
+
     auto appInit = ara::core::Initialize();
     if (!appInit.HasValue())
     {
@@ -58,24 +66,32 @@ int main(int argc, char *argv[], char* envp[])
         g_swcCalc = &swcCalc;
         
         // initialize software component
+        printf("initialize software component \n");
         proceed = swcCalc.Initialize();
         
         if (proceed)
         {
             // report execution state
+            printf("start prcoess\n");
+            runModel();
             ara::exec::ExecutionClient executionClient;
             auto exec = executionClient.ReportExecutionState(ara::exec::ExecutionState::kRunning);
             if (exec.HasValue())
             {
+                std::cout<<"hello"<<std::endl;
                 appLogger.LogVerbose() << "Running adaptive application";
             }
             else
             {
+                std::cout<<"fuck"<<proceed<<std::endl;
                 appLogger.LogError() << "Unable to report execution state";
                 araInitialized = false;
             }
             // start software component
             swcCalc.Start();
+            // std::cout<<"dddd"<<std::endl;
+            printf("fuckckckckckck\n");
+            // just test
         }
         else
         {
@@ -92,4 +108,3 @@ int main(int argc, char *argv[], char* envp[])
     
     return (araInitialized && proceed) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
- 

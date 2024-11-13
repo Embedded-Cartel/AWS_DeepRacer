@@ -15,6 +15,7 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/calc.h"
+#include <Python.h>
  
 namespace calc
 {
@@ -25,22 +26,31 @@ Calc::Calc()
     : m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
     , m_workers(3)
 {
+    Py_Initialize(); //python interpreter init....
 }
  
 Calc::~Calc()
 {
+    Py_Finalize(); //python interpreter exit...
 }
  
 bool Calc::Initialize()
 {
     m_logger.LogVerbose() << "Calc::Initialize";
-    
+    /*
     bool init{true};
     
     m_ControlData = std::make_shared<calc::aa::port::ControlData>();
     m_RawData = std::make_shared<calc::aa::port::RawData>();
     
     return init;
+    */
+    m_ControlData = std::make_shared<calc::aa::port::ControlData>();
+    //m_RawData = std::make_shared<calc::aa::port::RawData>(m_ControlData);  // ControlData instance send
+    m_RawData = std::make_shared<calc::aa::port::RawData>(m_ControlData, m_logger);
+
+
+    return true;
 }
  
 void Calc::Start()
