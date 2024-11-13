@@ -50,6 +50,8 @@ private:
     void Run();
  
 private:
+    void TaskReceiveREventCyclic();
+    void OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample);
     /// @brief Pool of port
     ::para::swc::PortPool m_workers;
     

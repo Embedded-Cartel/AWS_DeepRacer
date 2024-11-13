@@ -16,6 +16,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/calc.h"
  
+#define DEBUG_SH 0
 namespace calc
 {
 namespace aa
@@ -23,7 +24,7 @@ namespace aa
  
 Calc::Calc()
     : m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
-    , m_workers(3)
+    , m_workers(2)
 {
 }
  
@@ -51,6 +52,7 @@ void Calc::Start()
     m_RawData->Start();
     
     // run software component
+    //m_logger.LogInfo() << "----------------Calc Start----------------";
     Run();
 }
  
@@ -67,11 +69,41 @@ void Calc::Run()
     m_logger.LogVerbose() << "Calc::Run";
     
     m_workers.Async([this] { m_ControlData->SendEventCEventCyclic(); });
-    m_workers.Async([this] { m_RawData->ReceiveEventREventCyclic(); });
-    m_workers.Async([this] { m_RawData->ReceiveFieldRFieldCyclic(); });
+    // m_workers.Async([this] { m_RawData->ReceiveEventREventCyclic(); });
+    // m_workers.Async([this] { m_RawData->ReceiveFieldRFieldCyclic(); });
+    m_workers.Async([this] { TaskReceiveREventCyclic(); });
+    
     
     m_workers.Wait();
 }
  
+void Calc::TaskReceiveREventCyclic()
+{
+    m_RawData->SetReceiveEventREventHandler([this](const auto& sample)
+    {
+        OnReceiveREvent(sample);
+    });
+    m_RawData->ReceiveEventREventCyclic();
+}
+
+void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample)
+{
+    #if DEBUG_SH
+    printf("ksh_@@@ [Calc] OnReceiveEvent [%lf]\n", sample.lidars.front().theta);
+    #endif
+    // 랜덤 디바이스의 설정.
+    // Actuator 혹은 SimActuator쪽으로 CEvent 전송시 값을 계산하기 위한 Value
+    // std::random_device randomDevice;
+    // std::default_random_engine randomEngine {randomDevice() };
+    // std::uniform_int_distribution<std::uint32_t> uint32Gen {0, 10};
+
+    // uint32_t randomValue = uint32Gen(randomEngine);
+    // m_sensorData = sample + randomValue;
+    // // ControlData 서비스의 CEvent로 전송해야 할 값을 변경한다. 이 함수는 전송 타겟 값을 변경할 뿐 실제 전송은 다른 부분에서 진행된다.
+    // m_ControlData->WriteDataCEvent(m_sensorData);
+    // m_logger.LogInfo() << "Calc::OnReceiveREvent:" << sample << " RandomValue:" << randomValue;
+}
+
+
 } /// namespace aa
 } /// namespace calc
