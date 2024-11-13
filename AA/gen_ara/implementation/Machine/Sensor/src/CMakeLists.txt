@@ -3,12 +3,17 @@
 # Copyright(c) 2024 by PopcornSAR Co.,Ltd. All rights reserved.
 # ============================================================================
  
+add_subdirectory(sensor/deepracer/camera)
+
 add_executable(${PARA_APP_NAME})
  
 # ============================================================================
 # This setting is required for binary targets.
 # Please modify the section below to suit your configuration.
 # ============================================================================
+
+#find_package(OpenCV REQUIRED) 
+
 Para_Target(${PARA_APP_NAME}
             PARA_LIBS_PRIVATE core log exec com
             PARA_GEN_DIR ${PARA_APP_GEN_DIR}
@@ -17,15 +22,43 @@ Para_Target(${PARA_APP_NAME}
 # ============================================================================
 target_include_directories(${PARA_APP_NAME}
                            PRIVATE
-                           ${CMAKE_CURRENT_SOURCE_DIR}/include)
+                           ${CMAKE_CURRENT_SOURCE_DIR}/include
+                           /usr/include/opencv4
+                           )
+
+include_directories(
+                    ${PARA_SDK}/include
+                    ${PARA_SDK}/include/lidar
+                    #			   ${PARA_SDK}/include/camera
+                    ${PARA_SDK}/include/para/swc
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include
+                    ${PARA_APP_GEN_DIR}/src/deepracer/camera/include
+                    /usr/include/opencv4
+                    )
 # ============================================================================
 target_link_libraries(${PARA_APP_NAME}
                       PRIVATE
-                      pthread)
+                      pthread
+                      camera)
+
+target_link_libraries(${PARA_APP_NAME}
+                        PUBLIC
+                        ${PARA_SDK}/lib/libsl_lidar_sdk.a
+                        #		      ${OpenCV_LIBS}
+                        ${PARA_SDK}/lib/libcamera.a
+                    )
+          
+target_link_directories(${PARA_APP_NAME} 
+                        PRIVATE
+                            ${PARA_APP_GEN_DIR}/lib
+                            ${CMAKE_CURRENT_SOURCE_DIR}/sensor/deepracer/
+                        )
+
 # ============================================================================
 target_sources(${PARA_APP_NAME}
                PRIVATE
                sensor/aa/port/rawdata.cpp
                sensor/aa/sensor.cpp
+               sensor/deepracer/lidar/lidar_driver.cpp
                main.cpp
 )
