@@ -5,11 +5,11 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 
 |이름|직책|담당|
 |---|---|----------------------|
-|염 훈|팀  장|Adaptive AUTOSAR (Application Design, Service Instance Manifest)|
-|강시형|팀  원|LiDAR (2D Live Map, Make Data Map), Camera Pipeline Stream|
-|박재완|응  원|Deep Reinforcement Learning, Image Preprocessing|
-|오규상|팀  원|Linear Regressing, Image Classification (SimAM)|
-|황귀용|팀  원|Adaptive AUTOSAR (Machine Manifest, Execution Manifest), Stereo Depth Map|
+|염  훈|팀  장|ARXML Design, SOME/IP|
+|강시형|팀  원|Image Preprocessing, AA(Sensor)|
+|박재완|응  원|RL|
+|오규상|팀  원|CI/CD, RL, AA(Calc)|
+|황귀용|팀  원|AA(Actuator)|
 
 ## Directory
 ### AA
