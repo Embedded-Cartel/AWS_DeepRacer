@@ -22,6 +22,8 @@ elif ifconfig | grep -q "192.168.29.253"; then
 
 else
   echo "IP not found"
+  find ./EM ./CM -type f -name "*.json" -exec sed -i 's/192.168.20.27/127.0.0.1/g' {} \;
+  find ./EM ./CM -type f -name "*.json" -exec sed -i 's/wlo1/lo/g' {} \;
 fi
 
 cmake -B build -D CMAKE_INSTALL_PREFIX=$PARA_SDK
