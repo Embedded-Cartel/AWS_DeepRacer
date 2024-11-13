@@ -212,6 +212,7 @@ void RawData::ReceiveEventREventCyclic()
                 if (recv->HasValue())
                 {
                     m_logger.LogVerbose() << "RawData::ReceiveEventREvent::GetNewSamples::" << recv->Value();
+                    m_logger.LogVerbose() << "----------------Sensor Data 받음----------------";
                 }
                 else
                 {
