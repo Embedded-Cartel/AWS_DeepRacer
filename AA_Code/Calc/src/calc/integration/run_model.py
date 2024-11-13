@@ -50,7 +50,7 @@ def predict(lidar_data, camera_data):
     return result.flatten().tolist()
 
 if __name__ == "__main__":
-    initialize_model("/home/ubuntu/workspace-tensor/model.pb")
+    initialize_model("/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration/model.pb")#workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration/model.pb
 
     # Random input data...... (EXAMPLE -> @TODO : Change here)
     lidar_data = np.random.rand(8)

@@ -3,8 +3,11 @@
 # Copyright(c) 2024 by PopcornSAR Co.,Ltd. All rights reserved.
 # ============================================================================
  
+# Python3 개발 패키지 찾기
+find_package(Python3 3.10 REQUIRED COMPONENTS Development)
+
 add_executable(${PARA_APP_NAME})
- 
+
 # ============================================================================
 # This setting is required for binary targets.
 # Please modify the section below to suit your configuration.
@@ -15,18 +18,25 @@ Para_Target(${PARA_APP_NAME}
             OUTPUT_NAME ${PARA_APP_NAME}
 )
 # ============================================================================
+# Python 헤더 파일 경로 포함
 target_include_directories(${PARA_APP_NAME}
                            PRIVATE
-                           ${CMAKE_CURRENT_SOURCE_DIR}/include)
+                           ${CMAKE_CURRENT_SOURCE_DIR}/include
+                           ${Python3_INCLUDE_DIRS})  # 변경: Python3_INCLUDE_DIRS 사용
 # ============================================================================
+# Python 라이브러리 링크
 target_link_libraries(${PARA_APP_NAME}
                       PRIVATE
-                      pthread)
+                      pthread
+                      ${Python3_LIBRARIES})  # 변경: Python3_LIBRARIES 사용
 # ============================================================================
 target_sources(${PARA_APP_NAME}
                PRIVATE
                calc/aa/port/controldata.cpp
                calc/aa/port/rawdata.cpp
                calc/aa/calc.cpp
+               calc/integration/test.cpp
                main.cpp
 )
+
+#install(TARGETS ${PARA_APP_NAME} DESTINATION bin)

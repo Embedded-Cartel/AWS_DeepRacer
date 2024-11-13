@@ -11,13 +11,15 @@ void runModel(){
     PyRun_SimpleString("import sys");
     PyRun_SimpleString("import os");
     PyRun_SimpleString("os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'");
-    PyRun_SimpleString("sys.path.append('.')");
+    // PyRun_SimpleString("sys.path.append('.')");
+    PyRun_SimpleString("sys.path.append('/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration')");
+
 
     PyObject *pName, *pModule, *pFuncInit, *pFuncPredict;
 
     // Setting module name (Example : run_model.py -> ("run_model")
     std::cout << "load_python" << std::endl;
-    pName = PyUnicode_DecodeFSDefault("/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration/run_model.py");
+    pName = PyUnicode_DecodeFSDefault("run_model");
 
     //Get module
     pModule = PyImport_Import(pName);
@@ -31,7 +33,8 @@ void runModel(){
 
         if (pFuncInit && PyCallable_Check(pFuncInit) && pFuncPredict && PyCallable_Check(pFuncPredict)) {
             // Init model
-            PyObject* pModelPath = PyUnicode_FromString("model.pb"); /* MODEL PATH */
+            // PyObject* pModelPath = PyUnicode_FromString("model.pb"); /* MODEL PATH */
+            PyObject* pModelPath = PyUnicode_FromString("/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration/model.pb");
             PyObject* pInitArgs = PyTuple_Pack(1, pModelPath);
             PyObject* pInitResult = PyObject_CallObject(pFuncInit, pInitArgs);
             Py_DECREF(pModelPath);

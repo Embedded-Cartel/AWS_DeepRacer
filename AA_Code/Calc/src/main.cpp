@@ -90,8 +90,7 @@ int main(int argc, char *argv[], char* envp[])
             // start software component
             swcCalc.Start();
             // std::cout<<"dddd"<<std::endl;
-            printf("fuckckckckckck\n");
-            // just test
+            
         }
         else
         {
