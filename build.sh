@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd AA_Code 
+cd AA/gen_ara/implementation/Machine 
 
   find ./EM ./CM -type f -name "*.json" -exec sed -i 's/192.168.20.27/127.0.0.1/g' {} \;
   find ./EM ./CM -type f -name "*.json" -exec sed -i 's/192.168.29.253/127.0.0.1/g' {} \;
