@@ -21,9 +21,8 @@
  
 #include "para/swc/port_pool.h"
 
-#include "deepracer/lidar/lidar_driver.h"
-// #include "deepracer/camera/camera_driver.h"
-#include "deepracer/camera/camera_driver.h"
+#include "lidar_driver.h"
+#include "camera_driver.h"
 namespace sensor
 {
 namespace aa
