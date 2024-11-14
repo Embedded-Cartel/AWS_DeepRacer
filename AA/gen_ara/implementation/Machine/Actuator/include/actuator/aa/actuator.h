@@ -54,6 +54,10 @@ private:
 
     /// @brief CEvent Receiver
     void OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample);
+
+    void ServoCalibration();
+
+    void MotorCalibration();
  
 private:
     /// @brief Pool of port
