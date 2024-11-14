@@ -29,6 +29,7 @@ Actuator::Actuator()
  
 Actuator::~Actuator()
 {
+    m_servo_driver.servoSubscriber(0, 0);
 }
  
 bool Actuator::Initialize()
@@ -38,7 +39,10 @@ bool Actuator::Initialize()
     bool init{true};
     
     m_ControlData = std::make_shared<actuator::aa::port::ControlData>();
-    
+
+    ServoCalibration();
+    MotorCalibration();
+
     return init;
 }
  
@@ -79,9 +83,33 @@ void Actuator::TaskReceiveCEventCyclic()
 
 void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample)
 {
-    m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample;
+    m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample.cur_speed << ", " << sample.cur_angle;
 
     m_servo_driver.servoSubscriber(sample.cur_speed, sample.cur_angle);
+}
+
+void Actuator::ServoCalibration()
+{
+    int cal_type = 0;
+    int servo_min;
+    int servo_mid;
+    int servo_max;
+    int servo_polarity;
+
+    m_servo_driver.getCalibrationValue(cal_type, &servo_min, &servo_mid, &servo_max, &servo_polarity);
+    m_servo_driver.setCalibrationValue(cal_type, servo_min - 10, servo_mid - 10, servo_max - 10, servo_polarity == 1 ? -1 : 1);
+}
+
+void Actuator::MotorCalibration()
+{
+    int cal_type = 1;
+    int motor_min;
+    int motor_mid;
+    int motor_max;
+    int motor_polarity;
+
+    m_servo_driver.getCalibrationValue(cal_type, &motor_min, &motor_mid, &motor_max, &motor_polarity);
+    m_servo_driver.setCalibrationValue(cal_type, motor_min - 10, motor_mid - 10, motor_max - 10, motor_polarity == 1 ? -1 : 1);
 }
  
 } /// namespace aa
