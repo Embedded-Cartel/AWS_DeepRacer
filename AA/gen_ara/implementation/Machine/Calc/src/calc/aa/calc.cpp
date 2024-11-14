@@ -16,15 +16,16 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/calc.h"
  
-#define DEBUG_SH 0
+#define DEBUG_SH 1
 namespace calc
 {
 namespace aa
 {
  
 Calc::Calc()
-    : m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
-    , m_workers(2)
+    : m_running(false)
+    , m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
+    , m_workers(3)
 {
 }
  
@@ -37,7 +38,7 @@ bool Calc::Initialize()
     m_logger.LogVerbose() << "Calc::Initialize";
     
     bool init{true};
-    
+
     m_ControlData = std::make_shared<calc::aa::port::ControlData>();
     m_RawData = std::make_shared<calc::aa::port::RawData>();
     
@@ -50,7 +51,7 @@ void Calc::Start()
     
     m_ControlData->Start();
     m_RawData->Start();
-    
+    m_running = true;
     // run software component
     //m_logger.LogInfo() << "----------------Calc Start----------------";
     Run();
@@ -59,19 +60,21 @@ void Calc::Start()
 void Calc::Terminate()
 {
     m_logger.LogVerbose() << "Calc::Terminate";
-    
+    m_running = false;
     m_ControlData->Terminate();
     m_RawData->Terminate();
 }
  
 void Calc::Run()
 {
+    m_running = true;
     m_logger.LogVerbose() << "Calc::Run";
     
     m_workers.Async([this] { m_ControlData->SendEventCEventCyclic(); });
     // m_workers.Async([this] { m_RawData->ReceiveEventREventCyclic(); });
     // m_workers.Async([this] { m_RawData->ReceiveFieldRFieldCyclic(); });
     m_workers.Async([this] { TaskReceiveREventCyclic(); });
+    m_workers.Async([this] { TestRunModel(); });
     
     
     m_workers.Wait();
@@ -91,19 +94,119 @@ void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REv
     #if DEBUG_SH
     printf("ksh_@@@ [Calc] OnReceiveEvent [%lf]\n", sample.lidars.front().theta);
     #endif
-    // 랜덤 디바이스의 설정.
-    // Actuator 혹은 SimActuator쪽으로 CEvent 전송시 값을 계산하기 위한 Value
-    // std::random_device randomDevice;
-    // std::default_random_engine randomEngine {randomDevice() };
-    // std::uniform_int_distribution<std::uint32_t> uint32Gen {0, 10};
 
-    // uint32_t randomValue = uint32Gen(randomEngine);
-    // m_sensorData = sample + randomValue;
-    // // ControlData 서비스의 CEvent로 전송해야 할 값을 변경한다. 이 함수는 전송 타겟 값을 변경할 뿐 실제 전송은 다른 부분에서 진행된다.
-    // m_ControlData->WriteDataCEvent(m_sensorData);
-    // m_logger.LogInfo() << "Calc::OnReceiveREvent:" << sample << " RandomValue:" << randomValue;
+    deepracer::type::lidars processed_lidars; // 0~ 360 8000개? 
+    
+    bool result = true;
+    float start_degree = 150.0;
+    float end_degree = 150.0;
+    result = GetFrontLidarData(start_degree, end_degree, sample.lidars, &processed_lidars); // 150 ~ 210
+    if (!result) {
+        printf("ksh_@@@ SelecLidarRange Fail\n");
+    }
+
+    result = InterpolateLidarData(&processed_lidars); // 0인애들 보정해주고
+    if (!result) {
+        printf("ksh_@@@ InterpolateLidarData Fail\n");
+    }
+    
+
+    // 1. runModel() 실행되게
+    // 2. return runModel( input,);
+
+    // (float, float) = runModel(char*, char*);
+
+
+    
+
+
+    // result = Get8PointsForAI() // 8개
+
+
+    // [(steer , velocity)] = runModel(GetPoition, )
+
+    // if (!result) {
+    //     printf("ksh_@@@ InterpolateLidarData Fail\n");
+    // }
+
+}
+
+bool Calc::GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar) {
+    // printf ("ksh_@@@@@@ before select\n");
+    // printf ("ksh_@@@@@@ ------------------\n");
+    // for (int pos = 0; pos < before_lidar.size() ; ++pos) {
+    //  printf("%s theta: %03.2f Dist: %08.2f Q: %d \n", 
+    //             (before_lidar[pos].sync) ?"S ":"  ", 
+    //             before_lidar[pos].theta,
+    //             before_lidar[pos].dist,
+    //             before_lidar[pos].quality);
+    // }
+    // printf ("ksh_@@@@@@ ------------------\n");
+    
+    for (auto& itr : before_lidar) {
+        if ( (itr.theta >= start_degree) && (itr.theta <= end_degree) ) {
+            after_lidar->push_back(itr);
+        }
+    }
+
+    // printf ("ksh_@@@@@@ after select\n");
+    // printf ("ksh_@@@@@@ ------------------\n");
+    // for (int pos = 0; pos < after_lidar->size() ; ++pos) {
+    //  printf("%s theta: %03.2f Dist: %08.2f Q: %d \n", 
+    //             (after_lidar->at(pos).sync) ?"S ":"  ", 
+    //             after_lidar->at(pos).theta,
+    //             after_lidar->at(pos).dist,
+    //             after_lidar->at(pos).quality);
+    // }
+    // printf ("ksh_@@@@@@ ------------------\n");
+
+    return true;
+}
+
+bool Calc::InterpolateLidarData(deepracer::type::lidars* lidar_datas) {
+    for (size_t i = 1; i < lidar_datas->size() - 1; ++i) {
+        if (lidar_datas->at(i).dist == 0) {
+            size_t prev = i - 1;
+            size_t next = i + 1;
+            while (next < lidar_datas->size() && (lidar_datas->at(next).dist == 0 )) {
+                ++next;
+            }
+            if (next < lidar_datas->size()) {
+                lidar_datas->at(i).dist = (lidar_datas->at(prev).dist + lidar_datas->at(next).dist) / 2;
+            } else {
+                lidar_datas->at(i).dist = lidar_datas->at(prev).dist; // Handle edge case if no valid next value
+            }
+        }
+    }
+
+
+    // printf ("ksh_@@@@@@ after Interpolat\n");
+    // printf ("ksh_@@@@@@ ------------------\n");
+    // for (int pos = 0; pos < lidar_datas->size() ; ++pos) {
+    //  printf("%s theta: %03.2f Dist: %08.2f Q: %d \n", 
+    //             (lidar_datas->at(pos).sync) ?"S ":"  ", 
+    //             lidar_datas->at(pos).theta,
+    //             lidar_datas->at(pos).dist,
+    //             lidar_datas->at(pos).quality);
+    // }
+    // printf ("ksh_@@@@@@ ------------------\n");
+    return true;
+}
+
+void Calc::TestRunModel() {
+    while (m_running) {
+        printf("ksh_@@@ TestRunModel\n");
+        
+        // char* temp_lidar = {0,1,0,10,10,1};
+
+        // (float, float) = runModel(char*, char*);
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));        
+    }
 }
 
 
 } /// namespace aa
 } /// namespace calc
+
+

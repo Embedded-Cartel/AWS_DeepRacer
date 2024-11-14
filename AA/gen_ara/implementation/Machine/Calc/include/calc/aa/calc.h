@@ -52,7 +52,12 @@ private:
 private:
     void TaskReceiveREventCyclic();
     void OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample);
+    bool GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar);
+    bool InterpolateLidarData(deepracer::type::lidars* lidar_datas);
+    void TestRunModel();
     /// @brief Pool of port
+    
+    bool m_running;
     ::para::swc::PortPool m_workers;
     
     /// @brief Logger for software component
