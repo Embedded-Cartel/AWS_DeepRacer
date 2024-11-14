@@ -67,6 +67,22 @@ void Actuator::Run()
     
     m_workers.Wait();
 }
+
+void Actuator::TaskReceiveCEventCyclic()
+{
+    m_ControlData->SetReceiveEventCEventHandler([this](const auto& sample)
+    {
+        OnReceiveCEvent(sample);
+    });
+    m_ControlData->ReceiveEventCEventCyclic();
+}
+
+void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample)
+{
+    m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample;
+
+    m_servo_driver.servoSubscriber(sample.cur_speed, sample.cur_angle);
+}
  
 } /// namespace aa
 } /// namespace actuator

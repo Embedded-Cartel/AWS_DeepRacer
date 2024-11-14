@@ -27,5 +27,9 @@ target_sources(${PARA_APP_NAME}
                PRIVATE
                actuator/aa/port/controldata.cpp
                actuator/aa/actuator.cpp
+               actuator/deepracer/pwm.cpp
+    	       actuator/deepracer/servo_driver.cpp
+    	       actuator/deepracer/jsoncpp.cpp
+    	       actuator/deepracer/utility.cpp
                main.cpp
 )

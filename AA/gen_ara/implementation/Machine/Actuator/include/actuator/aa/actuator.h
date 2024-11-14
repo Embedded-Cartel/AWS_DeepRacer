@@ -18,6 +18,7 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/port/controldata.h"
+#include "deepracer/servo/servo_driver.h"
  
 #include "para/swc/port_pool.h"
  
@@ -47,6 +48,12 @@ public:
 private:
     /// @brief Run software component
     void Run();
+
+    /// @brief Task software component : Receive CEvent Cyclic
+    void TaskReceiveCEventCyclic();
+
+    /// @brief CEvent Receiver
+    void OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample);
  
 private:
     /// @brief Pool of port
@@ -57,6 +64,8 @@ private:
     
     /// @brief Instance of Port {Actuator.ControlData}
     std::shared_ptr<actuator::aa::port::ControlData> m_ControlData;
+
+    PWM::ServoDriver m_servo_driver;
 };
  
 } /// namespace aa
