@@ -54,10 +54,14 @@ private:
     void OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample);
     bool GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar);
     bool InterpolateLidarData(deepracer::type::lidars* lidar_datas);
-    void TestRunModel();
+    std::vector<float> Extract8PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas);
+    void UpdateSteeringData(std::pair<float, float> steerDatas);
+    void ThrowEventCyclic();
     /// @brief Pool of port
     
     bool m_running;
+    bool m_event_flag;
+    std::mutex m_mutex;
     ::para::swc::PortPool m_workers;
     
     /// @brief Logger for software component

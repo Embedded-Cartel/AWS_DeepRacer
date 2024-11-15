@@ -118,10 +118,12 @@ void ControlData::SendEventCEventTriggered()
     auto send = m_interface->CEvent.Send(m_CEventData);
     if (send.HasValue())
     {
+        printf("ksh_@@@ [Calc TO Actuator] Send Success\n");
         m_logger.LogVerbose() << "ControlData::SendEventCEventTriggered::Send";
     }
     else
     {
+        printf("ksh_@@@ [Calc TO Actuator] Send Fail\n");
         m_logger.LogError() << "ControlData::SendEventCEventTriggered::Send::" << send.Error().Message();
     }
 }
