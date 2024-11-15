@@ -8,6 +8,7 @@ camera_input_tensor = None
 output_tensor = None
 
 def initialize_model(model_path):
+    print("fuck python init start")
     global sess, lidar_input_tensor, camera_input_tensor, output_tensor
     if sess is None:  # 세션이 이미 초기화되어 있지 않은 경우에만 초기화
         lidar_input_tensor_name = "main_level/agent/main/online/network_0/SECTOR_LIDAR/SECTOR_LIDAR:0"
@@ -26,6 +27,8 @@ def initialize_model(model_path):
         lidar_input_tensor = graph.get_tensor_by_name(lidar_input_tensor_name)
         camera_input_tensor = graph.get_tensor_by_name(camera_input_tensor_name)
         output_tensor = graph.get_tensor_by_name(output_tensor_name)
+        print("-"*50)
+        print("init end")
 
 def predict(lidar_data, camera_data):
     global sess, lidar_input_tensor, camera_input_tensor, output_tensor

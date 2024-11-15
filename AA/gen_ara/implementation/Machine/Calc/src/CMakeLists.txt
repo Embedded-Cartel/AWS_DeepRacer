@@ -4,7 +4,7 @@
 # ============================================================================
  
 # Python3 개발 패키지 찾기
-find_package(Python3 3.10 REQUIRED COMPONENTS Development)
+find_package(Python3 3.8 REQUIRED COMPONENTS Development)
 
 add_executable(${PARA_APP_NAME})
  
