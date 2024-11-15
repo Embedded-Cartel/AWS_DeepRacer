@@ -7,7 +7,8 @@ void initializeModelOnce() {
     printf("init model\n");
     Py_Initialize();
     PyRun_SimpleString("import sys");
-    PyRun_SimpleString("sys.path.append('/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration')");
+    // PyRun_SimpleString("sys.path.append('/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration')");
+    PyRun_SimpleString("sys.path.append('/home/deepracer/AWS_DeepRacer/AA/gen_ara/implementation/Machine/Calc/src/calc/integration')");
     printf("load python\n");
     PyObject *pName = PyUnicode_DecodeFSDefault("run_model");
     PyObject *pModule = PyImport_Import(pName);
@@ -16,7 +17,7 @@ void initializeModelOnce() {
     if (pModule != nullptr) {
         PyObject *pFuncInit = PyObject_GetAttrString(pModule, "initialize_model");
         if (pFuncInit && PyCallable_Check(pFuncInit)) {
-            PyObject *pModelPath = PyUnicode_FromString("/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration/model.pb");
+            PyObject *pModelPath = PyUnicode_FromString("/home/deepracer/AWS_DeepRacer/AA/gen_ara/implementation/Machine/Calc/src/calc/integration/model.pb");
             PyObject *pInitArgs = PyTuple_Pack(1, pModelPath);
             PyObject *pInitResult = PyObject_CallObject(pFuncInit, pInitArgs);
             Py_DECREF(pModelPath);
