@@ -453,7 +453,7 @@
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
                   <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
                   <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="f6d1ed64-daca-4955-9d97-ed91a61e40b7">
@@ -469,15 +469,7 @@
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
                   <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
                   <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="8917d9a6-3f33-4d20-953c-287390173a6e">
-                  <SHORT-NAME>DefaultStartUp</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="acf9f65f-4ab9-464d-a135-ab81a6a707f4">
@@ -498,7 +490,7 @@
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
                   <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
                   <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="07ee7144-7ae1-4d70-b39b-6850942c7c0c">
