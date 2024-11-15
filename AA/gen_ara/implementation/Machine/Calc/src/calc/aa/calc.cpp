@@ -15,17 +15,24 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/calc.h"
+#include <vector>
+#include <utility> // std::pair 사용을 위해 추가
+#include <random> // random test
+
+
+std::pair<float, float> runModel(const std::vector<float>& lidar_data, const std::vector<float>& camera_data);
+void initializeModelOnce();
  
-#define DEBUG_SH 1
+#define DEBUG_SH 0
 namespace calc
 {
 namespace aa
 {
  
 Calc::Calc()
-    : m_running(false)
+    : m_running(false), m_event_flag(false)
     , m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
-    , m_workers(3)
+    , m_workers(2)
 {
 }
  
@@ -63,6 +70,7 @@ void Calc::Terminate()
     m_running = false;
     m_ControlData->Terminate();
     m_RawData->Terminate();
+    m_event_flag = false;
 }
  
 void Calc::Run()
@@ -70,18 +78,16 @@ void Calc::Run()
     m_running = true;
     m_logger.LogVerbose() << "Calc::Run";
     
-    m_workers.Async([this] { m_ControlData->SendEventCEventCyclic(); });
-    // m_workers.Async([this] { m_RawData->ReceiveEventREventCyclic(); });
-    // m_workers.Async([this] { m_RawData->ReceiveFieldRFieldCyclic(); });
+    m_workers.Async([this] { ThrowEventCyclic(); });
     m_workers.Async([this] { TaskReceiveREventCyclic(); });
-    m_workers.Async([this] { TestRunModel(); });
-    
-    
+      
     m_workers.Wait();
 }
  
 void Calc::TaskReceiveREventCyclic()
 {
+    // init model;
+    initializeModelOnce();
     m_RawData->SetReceiveEventREventHandler([this](const auto& sample)
     {
         OnReceiveREvent(sample);
@@ -99,7 +105,7 @@ void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REv
     
     bool result = true;
     float start_degree = 150.0;
-    float end_degree = 150.0;
+    float end_degree = 210.0;
     result = GetFrontLidarData(start_degree, end_degree, sample.lidars, &processed_lidars); // 150 ~ 210
     if (!result) {
         printf("ksh_@@@ SelecLidarRange Fail\n");
@@ -110,25 +116,26 @@ void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REv
         printf("ksh_@@@ InterpolateLidarData Fail\n");
     }
     
+    std::vector<float> result_lidar;
+    result_lidar = Extract8PointsForAI(start_degree, end_degree, &processed_lidars);
 
-    // 1. runModel() 실행되게
-    // 2. return runModel( input,);
+    std::vector<float> result_camera(120 * 160 * 2);
 
-    // (float, float) = runModel(char*, char*);
-
-
+    std::random_device rd;
+    std::mt19937 gen(rd()); // Standard mersenne_twister_engine
+    std::uniform_real_distribution<> dis(0.0, 1.0); // Range between 0.0 and 1.0
     
+    // Fill camera_data with random values
+    for (auto& val : result_camera) {
+        val = dis(gen);
+    }
 
 
-    // result = Get8PointsForAI() // 8개
+    std::pair<float, float> prediction = runModel(result_lidar, result_camera);
 
+    printf("fuck Prediction Result: %f, %f\n", prediction.first, prediction.second);
 
-    // [(steer , velocity)] = runModel(GetPoition, )
-
-    // if (!result) {
-    //     printf("ksh_@@@ InterpolateLidarData Fail\n");
-    // }
-
+    UpdateSteeringData(prediction);
 }
 
 bool Calc::GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar) {
@@ -193,18 +200,75 @@ bool Calc::InterpolateLidarData(deepracer::type::lidars* lidar_datas) {
     return true;
 }
 
-void Calc::TestRunModel() {
-    while (m_running) {
-        printf("ksh_@@@ TestRunModel\n");
+std::vector<float> Calc::Extract8PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas) {
+    std::vector<float> result;
+
+    // 중간 지점과 각도를 계산
+    float mid_degree = (start_degree + end_degree) / 2.0f;
+    float interval = (end_degree - start_degree) / 8.0f;
+
+    // 각 구간의 평균 거리값을 계산
+    for (int i = 0; i < 8; ++i) {
+        float lower_bound = start_degree + i * interval;
+        float upper_bound = start_degree + (i + 1) * interval;
+
+        std::vector<float> distances;
         
-        // char* temp_lidar = {0,1,0,10,10,1};
+        for (auto& itr : *lidar_datas) {
+            if ( (itr.theta >= lower_bound) && (itr.theta < upper_bound) ) {
+                distances.push_back(itr.dist);
+            }
+        }
 
-        // (float, float) = runModel(char*, char*);
-
-        std::this_thread::sleep_for(std::chrono::seconds(1));        
+        if (!distances.empty()) {
+            float sum = std::accumulate(distances.begin(), distances.end(), 0.0f);
+            float avg = sum / distances.size();
+            result.push_back(avg);
+        } else {
+            result.push_back(0.0f); // 해당 구간에 데이터가 없을 경우 기본값 0.0을 사용
+        }
     }
+
+
+    // printf("ksh_@@@ result lidar ");
+    // for (auto itr : result) {
+    //     printf(",[%.2f]", itr);
+    // }
+    // printf("    END\n");
+
+    return result;
 }
 
+void Calc::UpdateSteeringData(std::pair<float, float> steerDatas)
+{
+    deepracer::service::controldata::skeleton::events::CEvent::SampleType controlData;
+    controlData.cur_angle = steerDatas.first;
+    controlData.cur_speed = steerDatas.second;
+
+    m_ControlData->WriteDataCEvent(controlData);
+    
+    // Update RField
+    std::lock_guard<std::mutex> lock(m_mutex); // m_event_flag 때문
+    m_event_flag = true;
+}
+
+
+
+void Calc::ThrowEventCyclic() {
+    while (m_running) {
+	    // printf("ksh_@@@ [Calc] Start ThrowEventCyclic\n");
+        //std::lock_guard<std::mutex> lock(m_mutex);
+        if (m_event_flag == true) {
+            std::lock_guard<std::mutex> lock(m_mutex);;
+            printf("ksh_@@@ [Calc]ThrowEvent !!!\n");
+            m_ControlData->SendEventCEventTriggered();
+            m_event_flag = false;
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(1)); // 1초보다 짧으면 좋을듯
+	    // printf("ksh_@@@ [Calc] End ThrowEventCyclic Loop\n");
+    }
+}
 
 } /// namespace aa
 } /// namespace calc
