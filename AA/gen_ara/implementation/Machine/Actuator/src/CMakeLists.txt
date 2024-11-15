@@ -29,6 +29,7 @@ target_sources(${PARA_APP_NAME}
                actuator/aa/actuator.cpp
                actuator/deepracer/pwm.cpp
     	       actuator/deepracer/servo_driver.cpp
+    	       actuator/deepracer/led_driver.cpp
     	       actuator/deepracer/jsoncpp.cpp
     	       actuator/deepracer/utility.cpp
                main.cpp

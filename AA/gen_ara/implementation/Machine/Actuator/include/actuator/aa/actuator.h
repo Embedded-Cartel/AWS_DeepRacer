@@ -19,6 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/port/controldata.h"
 #include "deepracer/servo/servo_driver.h"
+#include "deepracer/servo/led_driver.h"
  
 #include "para/swc/port_pool.h"
  
@@ -58,6 +59,12 @@ private:
     void ServoCalibration();
 
     void MotorCalibration();
+
+    float AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
+		    float in_min, float in_max, float out_min, float out_max);
+
+    float SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample,
+		    float in_min, float in_max, float out_min, float out_max);
  
 private:
     /// @brief Pool of port
@@ -69,7 +76,8 @@ private:
     /// @brief Instance of Port {Actuator.ControlData}
     std::shared_ptr<actuator::aa::port::ControlData> m_ControlData;
 
-    PWM::ServoDriver m_servo_driver;
+    std::shared_ptr<PWM::ServoDriver> m_servo_driver;
+    std::shared_ptr<PWM::LedDriver> m_led_driver;
 };
  
 } /// namespace aa
