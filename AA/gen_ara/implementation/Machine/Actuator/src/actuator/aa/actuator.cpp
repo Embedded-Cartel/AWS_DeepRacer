@@ -67,7 +67,7 @@ void Actuator::Run()
 {
     m_logger.LogVerbose() << "Actuator::Run";
     
-    m_workers.Async([this] { m_ControlData->ReceiveEventCEventCyclic(); });
+    m_workers.Async([this] { TaskReceiveCEventCyclic(); });
     
     m_workers.Wait();
 }
