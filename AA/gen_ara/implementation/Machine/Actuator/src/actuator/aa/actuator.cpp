@@ -20,7 +20,6 @@ namespace actuator
 {
 namespace aa
 {
- 
 Actuator::Actuator()
     : m_logger(ara::log::CreateLogger("ACTR", "SWC", ara::log::LogLevel::kVerbose))
     , m_workers(1)
@@ -29,7 +28,7 @@ Actuator::Actuator()
  
 Actuator::~Actuator()
 {
-    m_servo_driver.servoSubscriber(0, 0);
+    m_servo_driver->servoSubscriber(0, 0);
 }
  
 bool Actuator::Initialize()
@@ -39,6 +38,9 @@ bool Actuator::Initialize()
     bool init{true};
     
     m_ControlData = std::make_shared<actuator::aa::port::ControlData>();
+
+    m_servo_driver = std::make_shared<PWM::ServoDriver>();
+    m_led_driver = std::make_shared<PWM::LedDriver>();
 
     ServoCalibration();
     MotorCalibration();
@@ -83,9 +85,17 @@ void Actuator::TaskReceiveCEventCyclic()
 
 void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample)
 {
+    float speed, angle;
+
     m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample.cur_speed << ", " << sample.cur_angle;
 
-    m_servo_driver.servoSubscriber(sample.cur_speed, sample.cur_angle);
+    printf("#################### speed : %.8f ####################\n", sample.cur_speed);
+    printf("#################### angle : %.8f ####################\n", sample.cur_angle);
+
+    speed = SpeedMapping(sample, 0, 3.5, -1.0, 1.0);
+    angle = AngleMapping(sample, -40, 40, -1.0, 1.0);
+
+    m_servo_driver->servoSubscriber(speed, angle);
 }
 
 void Actuator::ServoCalibration()
@@ -96,8 +106,8 @@ void Actuator::ServoCalibration()
     int servo_max;
     int servo_polarity;
 
-    m_servo_driver.getCalibrationValue(cal_type, &servo_min, &servo_mid, &servo_max, &servo_polarity);
-    m_servo_driver.setCalibrationValue(cal_type, servo_min - 10, servo_mid - 10, servo_max - 10, servo_polarity == 1 ? -1 : 1);
+    m_servo_driver->getCalibrationValue(cal_type, &servo_min, &servo_mid, &servo_max, &servo_polarity);
+    m_servo_driver->setCalibrationValue(cal_type, servo_min, servo_mid, servo_max, servo_polarity);
 }
 
 void Actuator::MotorCalibration()
@@ -108,8 +118,30 @@ void Actuator::MotorCalibration()
     int motor_max;
     int motor_polarity;
 
-    m_servo_driver.getCalibrationValue(cal_type, &motor_min, &motor_mid, &motor_max, &motor_polarity);
-    m_servo_driver.setCalibrationValue(cal_type, motor_min - 10, motor_mid - 10, motor_max - 10, motor_polarity == 1 ? -1 : 1);
+    m_servo_driver->getCalibrationValue(cal_type, &motor_min, &motor_mid, &motor_max, &motor_polarity);
+    m_servo_driver->setCalibrationValue(cal_type, motor_min, motor_mid, motor_max, motor_polarity);
+}
+
+float Actuator::AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
+		float in_min, float in_max, float out_min, float out_max)
+{
+    if(sample.cur_angle < in_min || sample.cur_angle > in_max) {
+         m_logger.LogError() << "Actuaotr::AngleMapping:" << sample.cur_angle;
+	 return 0;
+    }
+
+    return ((sample.cur_angle - in_min) * (out_max - out_min)) / ((in_max - in_min) + out_min);
+}
+
+float Actuator::SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
+		float in_min, float in_max, float out_min, float out_max)
+{
+    if(sample.cur_speed < in_min || sample.cur_speed > in_max) {
+         m_logger.LogError() << "Actuaotr::SpeedMapping:" << sample.cur_speed;
+	 return 0;
+    }
+
+    return ((sample.cur_speed - in_min) * (out_max - out_min)) / ((in_max - in_min) + out_min);
 }
  
 } /// namespace aa
