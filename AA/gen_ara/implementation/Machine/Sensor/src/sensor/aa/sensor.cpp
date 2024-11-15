@@ -43,18 +43,18 @@ bool Sensor::Initialize()
     
     m_RawData = std::make_shared<sensor::aa::port::RawData>();
     m_lidar_driver = std::make_shared<LidarDriver>("/dev/ttyUSB0", 115200);
-//    m_camera_driver = std::make_shared<CameraDriver>(0, 2);
+    m_camera_driver = std::make_shared<CameraDriver>(0, 2);
     int result = m_lidar_driver->CreateLidar();
     if(!result) {
         printf("[Sensor] Fail to create lidar instance\n");
         init = false;
     }
 
-//    result = m_camera_driver->CreateCamera();
-//    if(!result) {
-//        fprintf(stderr, "[Sensor] Fail to create camera instance\n");
-//        init = false;
-//    }
+     result = m_camera_driver->CreateCamera();
+     if(!result) {
+         fprintf(stderr, "[Sensor] Fail to create camera instance\n");
+         init = false;
+    }
     printf("[Sensor::Initialize] End\n");
 
     return init;
@@ -66,7 +66,7 @@ void Sensor::Start()
     
     m_RawData->Start();
     m_lidar_driver->StartLidar();
-//    m_camera_driver->StartCamera();
+    // m_camera_driver->StartCamera();
     
     // run software component
     Run();
@@ -100,11 +100,16 @@ void Sensor::UpdateDatas() {
         #endif
         bool result_lidar = false;
         bool result_camera = true;
-        result_lidar = UpdateLidarData();
-//        result_camera = UpdateCameraData();
+
+        deepracer::service::rawdata::skeleton::events::REvent::SampleType sensor_datas;
+        result_lidar = UpdateLidarData(&sensor_datas);
+        result_camera = UpdateCameraData(&sensor_datas);
+
+        printf("ksh_@@@ [sensor] result_lidar[%d] result_camera[%d]\n", result_lidar, result_camera);
 
         if (result_lidar & result_camera) {
             std::lock_guard<std::mutex> lock(m_mutex); // m_event_flag 때문
+            m_RawData->WriteDataREvent(sensor_datas);
             m_event_flag = true;
         }
 
@@ -137,28 +142,32 @@ void Sensor::ThrowEventCyclic() {
 }
 
 
-bool Sensor::UpdateLidarData()
+bool Sensor::UpdateLidarData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas)
 {
     bool result = false;
 
-    deepracer::service::rawdata::skeleton::events::REvent::SampleType lidarDatas;
-    result = m_lidar_driver->GetLidarData(&lidarDatas);
+    result = m_lidar_driver->GetLidarData(sensor_datas);
 
-    if (result) {
-        m_RawData->WriteDataREvent(lidarDatas);
-    }
+    // deepracer::service::rawdata::skeleton::events::REvent::SampleType lidarDatas;
+    // result = m_lidar_driver->GetLidarData(&lidarDatas);
+
+    // if (result) {
+    //     m_RawData->WriteDataREvent(lidarDatas);
+    // }
 
     return result;
 }
 
-bool Sensor::UpdateCameraData()
+bool Sensor::UpdateCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas)
 {
     bool result = false;
-    deepracer::service::rawdata::skeleton::events::REvent::SampleType cameraDatas;
-    result = m_camera_driver->GetCameraData(&cameraDatas);
-    if (result) {
-        // Write Camera data to Calc
-    }
+    // deepracer::service::rawdata::skeleton::events::REvent::SampleType cameraDatas;
+    // result = m_camera_driver->GetCameraData(&cameraDatas);
+
+    result = m_camera_driver->GetCameraData(sensor_datas);
+    // if (result) {
+    //     Write Camera data to Calc
+    // }
 
     return result;
 } 

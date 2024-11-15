@@ -36,8 +36,8 @@ private:
     std::vector<u_char> ConvertFrameToVector(const Mat& frame);
     
 
-    VideoCapture m_left_camera;
-    VideoCapture m_right_camera;
+    VideoCapture* m_left_camera;
+    VideoCapture* m_right_camera;
     int m_left_ch;
     int m_right_ch;
 };

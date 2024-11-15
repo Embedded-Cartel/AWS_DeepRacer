@@ -47,8 +47,8 @@ public:
     void Terminate();
 
     void UpdateDatas();
-    bool UpdateLidarData();
-    bool UpdateCameraData();
+    bool UpdateLidarData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas);
+    bool UpdateCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas);
 
     void ThrowEventCyclic();
  
