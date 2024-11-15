@@ -89,11 +89,11 @@ void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::eve
 
     m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample.cur_speed << ", " << sample.cur_angle;
 
-    printf("#################### speed : %.8f ####################\n", sample.cur_speed);
     printf("#################### angle : %.8f ####################\n", sample.cur_angle);
+    printf("#################### speed : %.8f ####################\n", sample.cur_speed);
 
-    speed = SpeedMapping(sample, 0, 3.5, -1.0, 1.0);
     angle = AngleMapping(sample, -40, 40, -1.0, 1.0);
+    speed = SpeedMapping(sample, 0, 3.5, -1.0, 1.0);
 
     m_servo_driver->servoSubscriber(speed, angle);
 }
