@@ -3,6 +3,9 @@
 # Copyright(c) 2024 by PopcornSAR Co.,Ltd. All rights reserved.
 # ============================================================================
  
+# Python3 개발 패키지 찾기
+find_package(Python3 3.8 REQUIRED COMPONENTS Development)
+
 add_executable(${PARA_APP_NAME})
  
 # ============================================================================
@@ -17,16 +20,19 @@ Para_Target(${PARA_APP_NAME}
 # ============================================================================
 target_include_directories(${PARA_APP_NAME}
                            PRIVATE
-                           ${CMAKE_CURRENT_SOURCE_DIR}/include)
+                           ${CMAKE_CURRENT_SOURCE_DIR}/include
+                           ${Python3_INCLUDE_DIRS})  # 변경: Python3_INCLUDE_DIRS 사용
 # ============================================================================
 target_link_libraries(${PARA_APP_NAME}
                       PRIVATE
-                      pthread)
+                      pthread
+                      ${Python3_LIBRARIES})  # 변경: Python3_LIBRARIES 사용
 # ============================================================================
 target_sources(${PARA_APP_NAME}
                PRIVATE
                calc/aa/port/controldata.cpp
                calc/aa/port/rawdata.cpp
                calc/aa/calc.cpp
+               calc/integration/test.cpp
                main.cpp
 )

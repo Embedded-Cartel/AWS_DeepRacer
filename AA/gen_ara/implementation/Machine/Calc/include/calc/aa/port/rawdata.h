@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.h
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_CALC_AA_RAWDATA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_RPORT_CALC_AA_RAWDATA_H
@@ -85,6 +85,9 @@ public:
     /// @brief Request with Response method using by software component, RMethod
     void RequestRMethod(const double& a, const deepracer::type::Arithmetic& arithmetic, const double& b);
     
+    void SetReceiveEventREventHandler(
+        std::function<void(const deepracer::service::rawdata::proxy::events::REvent::SampleType&)> handler);
+    
 private:
     /// @brief Callback for find service
     void Find(ara::com::ServiceHandleContainer<deepracer::service::rawdata::proxy::SvRawDataProxy::HandleType> handles,
@@ -114,6 +117,8 @@ private:
     
     /// @brief Find service handle
     std::shared_ptr<ara::com::FindServiceHandle> m_findHandle;
+
+    std::function<void(const deepracer::service::rawdata::proxy::events::REvent::SampleType&)> m_receiveEventREventHandler;
 };
  
 } /// namespace port

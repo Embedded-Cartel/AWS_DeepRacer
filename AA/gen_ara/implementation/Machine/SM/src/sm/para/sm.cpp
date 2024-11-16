@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : sm.cpp
 /// SOFTWARE COMPONENT NAME           : SM
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-08-14 09:44:02
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,56 +20,82 @@ namespace sm
 {
 namespace para
 {
- 
+
 SM::SM()
     : m_logger(ara::log::CreateLogger("SM", "SWC", ara::log::LogLevel::kVerbose))
-    , m_workers(2)
+    , m_workers(3)
 {
 }
  
 SM::~SM()
 {
 }
- 
-bool SM::Initialize()
+
+bool SM::Initialize(int argc, char *argv[])
 {
-    m_logger.LogVerbose() << "SM::Initialize";
+    m_logger.LogInfo() << "SM::Initialize";
     
     bool init{true};
-    
+
     m_DeepRacerFG = std::make_shared<sm::para::port::DeepRacerFG>();
     m_MachineFG = std::make_shared<sm::para::port::MachineFG>();
-    
+
+    ParseArgumentToState(argc, argv);
+
     return init;
 }
- 
+
 void SM::Start()
 {
-    m_logger.LogVerbose() << "SM::Start";
-    
+    m_logger.LogInfo() << "SM::Start";
+
     m_DeepRacerFG->Start();
     m_MachineFG->Start();
     
-    // run software component
     Run();
 }
- 
+
 void SM::Terminate()
 {
-    m_logger.LogVerbose() << "SM::Terminate";
-    
+    m_logger.LogInfo() << "SM::Terminate";
+
     m_DeepRacerFG->Terminate();
     m_MachineFG->Terminate();
 }
- 
+
 void SM::Run()
 {
-    m_logger.LogVerbose() << "SM::Run";
-    
+    m_logger.LogInfo() << "SM::Run";
+
+    m_workers.Async([this] { TaskChangeDeepRacerFGState(); });
     m_workers.Async([this] { m_DeepRacerFG->NotifyDeepRacerFGCyclic(); });
     m_workers.Async([this] { m_MachineFG->NotifyMachineFGCyclic(); });
-    
+
     m_workers.Wait();
+}
+
+void SM::TaskChangeDeepRacerFGState()
+{
+    if (m_stateType == ara::sm::DeepRacerStateType::kDevice || m_stateType == ara::sm::DeepRacerStateType::kSimulation)
+    {
+        m_DeepRacerFG->ChangeDeepRacerFGManual(m_stateType);
+    }
+}
+
+void SM::ParseArgumentToState(int argc, char *argv[])
+{
+    if (argc >= 2)
+    {
+        std::string argument {argv[1]};
+        std::transform(argument.begin(), argument.end(), argument.begin(), ::tolower);
+
+        if (argument == "simulation") {
+            m_stateType = ara::sm::DeepRacerStateType::kSimulation;
+        }
+        else if (argument == "device") {
+            m_stateType = ara::sm::DeepRacerStateType::kDevice;
+        }
+    }
 }
  
 } /// namespace para
