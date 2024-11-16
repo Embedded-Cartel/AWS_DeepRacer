@@ -15,6 +15,7 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/actuator.h"
+#include <cmath>
  
 namespace actuator
 {
@@ -42,8 +43,8 @@ bool Actuator::Initialize()
     m_servo_driver = std::make_shared<PWM::ServoDriver>();
     m_led_driver = std::make_shared<PWM::LedDriver>();
 
-    ServoCalibration();
-    MotorCalibration();
+//    ServoCalibration();
+//    MotorCalibration();
 
     return init;
 }
@@ -88,12 +89,15 @@ void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::eve
     float speed, angle;
 
     m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample.cur_speed << ", " << sample.cur_angle;
+    printf("#################### Sample angle : %.8f ####################\n", sample.cur_angle);
+    printf("#################### Sample speed : %.8f ####################\n", sample.cur_speed);
 
-    printf("#################### angle : %.8f ####################\n", sample.cur_angle);
-    printf("#################### speed : %.8f ####################\n", sample.cur_speed);
+    angle = sample.cur_angle;
+    // angle = AngleMapping(sample, -40, 40, -1.0, 1.0);
+    speed = SpeedMapping(sample, 0, 1.0, 0.64, 0.65);
 
-    angle = AngleMapping(sample, -40, 40, -1.0, 1.0);
-    speed = SpeedMapping(sample, 0, 3.5, -1.0, 1.0);
+    printf("#################### mapping angle : %.8f ####################\n", angle);
+    printf("#################### mapping speed : %.8f ####################\n", speed);
 
     m_servo_driver->servoSubscriber(speed, angle);
 }
@@ -122,6 +126,7 @@ void Actuator::MotorCalibration()
     m_servo_driver->setCalibrationValue(cal_type, motor_min, motor_mid, motor_max, motor_polarity);
 }
 
+/*
 float Actuator::AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
 		float in_min, float in_max, float out_min, float out_max)
 {
@@ -130,18 +135,22 @@ float Actuator::AngleMapping(const deepracer::service::controldata::proxy::event
 	 return 0;
     }
 
-    return ((sample.cur_angle - in_min) * (out_max - out_min)) / ((in_max - in_min) + out_min);
+    return (((sample.cur_angle - in_min) * (out_max - out_min)) / (in_max - in_min)) + out_min;
 }
+*/
 
 float Actuator::SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
 		float in_min, float in_max, float out_min, float out_max)
 {
+    if(fabs(sample.cur_angle) >= 0.7) {
+         return out_min;
+    } 
     if(sample.cur_speed < in_min || sample.cur_speed > in_max) {
          m_logger.LogError() << "Actuaotr::SpeedMapping:" << sample.cur_speed;
-	 return 0;
+	 return out_max;
     }
 
-    return ((sample.cur_speed - in_min) * (out_max - out_min)) / ((in_max - in_min) + out_min);
+    return (((sample.cur_speed - in_min) * (out_max - out_min)) / (in_max - in_min)) + out_min;
 }
  
 } /// namespace aa
