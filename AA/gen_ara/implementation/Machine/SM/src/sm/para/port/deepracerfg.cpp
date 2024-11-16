@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : deepracerfg.cpp
 /// SOFTWARE COMPONENT NAME           : DeepRacerFG
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-08-14 09:44:02
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sm/para/port/deepracerfg.h"
  
@@ -22,28 +22,25 @@ namespace deepracerfg
 {
 namespace skeleton
 {
- 
+
 TriggerInOut_DeepRacerFGSkeletonImpl::TriggerInOut_DeepRacerFGSkeletonImpl(ara::core::InstanceSpecifier instanceSpec, ara::com::MethodCallProcessingMode mode)
     : TriggerInOut_DeepRacerFGSkeleton(instanceSpec, mode)
     , m_logger(ara::log::CreateLogger("SM", "PORT", ara::log::LogLevel::kVerbose))
     , m_DeepRacerFGState{ara::sm::DeepRacerStateType::kOff}
 {
-    // create state client
     m_stateClient = std::make_unique<ara::exec::StateClient>(m_undefinedStateCallback);
-    
-    // regist get handler, Notifier
+     
     auto notifier_get_handler = [this]() {
         return GetNotifier();
     };
     Notifier.RegisterGetHandler(notifier_get_handler);
-    
-    // regist set handler, Trigger
+
     auto trigger_set_handler = [this](const fields::Trigger::FieldType& value) {
         return SetTrigger(value);
     };
     Trigger.RegisterSetHandler(trigger_set_handler);
 }
- 
+
 ara::core::Future<fields::Notifier::FieldType> TriggerInOut_DeepRacerFGSkeletonImpl::GetNotifier()
 {
     m_logger.LogVerbose() << "DeepRacerFG::GetNotifier::Requested";
@@ -53,7 +50,7 @@ ara::core::Future<fields::Notifier::FieldType> TriggerInOut_DeepRacerFGSkeletonI
     promise.set_value(m_DeepRacerFGState);
     return promise.get_future();
 }
- 
+
 void TriggerInOut_DeepRacerFGSkeletonImpl::NotifyDeepRacerFG()
 {
     auto notify = Notifier.Update(m_DeepRacerFGState);
@@ -66,12 +63,12 @@ void TriggerInOut_DeepRacerFGSkeletonImpl::NotifyDeepRacerFG()
         m_logger.LogError() << "DeepRacerFG::NotifyNotifier::Update::" << notify.Error().Message();
     }
 }
- 
+
 void TriggerInOut_DeepRacerFGSkeletonImpl::UpdateDeepRacerFG(const fields::Notifier::FieldType& value)
 {
     m_DeepRacerFGState = value;
 }
- 
+
 ara::core::Future<fields::Trigger::FieldType> TriggerInOut_DeepRacerFGSkeletonImpl::SetTrigger(const fields::Trigger::FieldType& value)
 {
     m_logger.LogVerbose() << "DeepRacerFG::SetTrigger::Requested";
@@ -84,7 +81,7 @@ ara::core::Future<fields::Trigger::FieldType> TriggerInOut_DeepRacerFGSkeletonIm
     promise.set_value(m_DeepRacerFGState);
     return promise.get_future();
 }
- 
+
 void TriggerInOut_DeepRacerFGSkeletonImpl::RequestTransitFunctionGroupState(const fields::Trigger::FieldType& value)
 {
     ara::core::StringView functionGroupIdentifier{};
@@ -111,17 +108,15 @@ void TriggerInOut_DeepRacerFGSkeletonImpl::RequestTransitFunctionGroupState(cons
             break;
         }
     }
-    // initialize function group
+
     auto preFunctionGroup = ara::exec::FunctionGroup::Preconstruct("DeepRacerFG");
     ara::exec::FunctionGroup::CtorToken tokenFunctionGroup(preFunctionGroup.ValueOrThrow());
     ara::exec::FunctionGroup functionGroup(std::move(tokenFunctionGroup));
-    
-    // initialize function group state
+
     auto preFunctionGroupState = ara::exec::FunctionGroupState::Preconstruct(functionGroup, functionGroupIdentifier);
     ara::exec::FunctionGroupState::CtorToken tokenFunctionGroupState(preFunctionGroupState.ValueOrThrow());
     ara::exec::FunctionGroupState functionGroupState(std::move(tokenFunctionGroupState));
-    
-    // request set state to EM
+
     auto request = m_stateClient->SetState(functionGroupState);
     request.wait();
     auto response = request.GetResult();
@@ -162,16 +157,14 @@ DeepRacerFG::DeepRacerFG()
 DeepRacerFG::~DeepRacerFG()
 {
 }
- 
+
 void DeepRacerFG::Start()
 {
     m_logger.LogVerbose() << "DeepRacerFG::Start";
-    
-    // construct skeleton
+
     ara::core::InstanceSpecifier specifier{"SM/PARA/DeepRacerFG"};
     m_interface = std::make_shared<ara::sm::deepracerfg::skeleton::TriggerInOut_DeepRacerFGSkeletonImpl>(specifier);
-    
-    // offer service
+
     auto offer = m_interface->OfferService();
     if (offer.HasValue())
     {
@@ -184,25 +177,23 @@ void DeepRacerFG::Start()
         m_logger.LogError() << "DeepRacerFG::Start::OfferService::" << offer.Error().Message();
     }
 }
- 
+
 void DeepRacerFG::Terminate()
 {
     m_logger.LogVerbose() << "DeepRacerFG::Terminate";
-    
-    // stop port
+
     m_running = false;
-    
-    // stop offer service
+
     m_interface->StopOfferService();
     m_logger.LogVerbose() << "DeepRacerFG::Terminate::StopOfferService";
 }
- 
+
 void DeepRacerFG::WriteValueDeepRacerFG(const ara::sm::deepracerfg::skeleton::fields::Notifier::FieldType& value)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_interface->UpdateDeepRacerFG(value);
 }
- 
+
 void DeepRacerFG::NotifyDeepRacerFGCyclic()
 {
     while (m_running)
@@ -214,20 +205,26 @@ void DeepRacerFG::NotifyDeepRacerFGCyclic()
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 }
- 
+
 void DeepRacerFG::NotifyDeepRacerFGTriggered()
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_interface->NotifyDeepRacerFG();
 }
- 
+
 void DeepRacerFG::NotifyDeepRacerFGTriggered(const ara::sm::deepracerfg::skeleton::fields::Notifier::FieldType& value)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_interface->UpdateDeepRacerFG(value);
     m_interface->NotifyDeepRacerFG();
 }
- 
+
+void DeepRacerFG::ChangeDeepRacerFGManual(const ara::sm::deepracerfg::skeleton::fields::Trigger::FieldType& value)
+{
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_interface->SetTrigger(value);
+}
+
 } /// namespace port
 } /// namespace para
 } /// namespace sm

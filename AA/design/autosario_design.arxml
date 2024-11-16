@@ -453,7 +453,7 @@
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
                   <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
                   <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="f6d1ed64-daca-4955-9d97-ed91a61e40b7">
@@ -469,22 +469,14 @@
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
                   <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
                   <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
-                  </TIMEOUT>
-                </STARTUP-CONFIG>
-                <STARTUP-CONFIG UUID="8917d9a6-3f33-4d20-953c-287390173a6e">
-                  <SHORT-NAME>DefaultStartUp</SHORT-NAME>
-                  <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
-                  <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
-                  <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="acf9f65f-4ab9-464d-a135-ab81a6a707f4">
                   <SHORT-NAME>SM</SHORT-NAME>
                   <PROCESS-ARGUMENTS>
                     <PROCESS-ARGUMENT>
-                      <ARGUMENT>simulation</ARGUMENT>
+                      <ARGUMENT>device</ARGUMENT>
                     </PROCESS-ARGUMENT>
                   </PROCESS-ARGUMENTS>
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
@@ -498,7 +490,7 @@
                   <SCHEDULING-POLICY>SCHED_OTHER</SCHEDULING-POLICY>
                   <SCHEDULING-PRIORITY>0</SCHEDULING-PRIORITY>
                   <TIMEOUT>
-                    <ENTER-TIMEOUT-VALUE>0.0</ENTER-TIMEOUT-VALUE>
+                    <ENTER-TIMEOUT-VALUE>10.0</ENTER-TIMEOUT-VALUE>
                   </TIMEOUT>
                 </STARTUP-CONFIG>
                 <STARTUP-CONFIG UUID="07ee7144-7ae1-4d70-b39b-6850942c7c0c">
@@ -801,7 +793,7 @@
               <EVENTS>
                 <VARIABLE-DATA-PROTOTYPE UUID="d7da460f-c8c3-4d30-b381-fd1f6c74cdb8">
                   <SHORT-NAME>CEvent</SHORT-NAME>
-                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint32_t</TYPE-TREF>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/CalcDataToActuator</TYPE-TREF>
                 </VARIABLE-DATA-PROTOTYPE>
               </EVENTS>
             </SERVICE-INTERFACE>
@@ -822,9 +814,9 @@
                 </SYMBOL-PROPS>
               </NAMESPACES>
               <EVENTS>
-                <VARIABLE-DATA-PROTOTYPE UUID="7b28158c-7901-48a0-97ef-484c0497ec4f">
+                <VARIABLE-DATA-PROTOTYPE UUID="82055e58-b27d-4c0e-8fe5-986f6e6ae2aa">
                   <SHORT-NAME>REvent</SHORT-NAME>
-                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/VectorLidar</TYPE-TREF>
+                  <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/SensorDatas</TYPE-TREF>
                 </VARIABLE-DATA-PROTOTYPE>
               </EVENTS>
               <FIELDS>
@@ -1822,6 +1814,39 @@
     <AR-PACKAGE UUID="e045d2b3-6bcc-4cf2-8479-25cb8e8a2fff">
       <SHORT-NAME>UnsetARElements</SHORT-NAME>
       <ELEMENTS>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="75013fe9-67d3-40b2-975f-bd3804b37f25">
+          <SHORT-NAME>CalcDataToActuator</SHORT-NAME>
+          <CATEGORY>STRUCTURE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <SUB-ELEMENTS>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="732798ff-4ae9-4cee-b7da-ff16ee9e5336">
+              <SHORT-NAME>cur_speed</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/float</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="0c340762-8747-496e-af4b-a70f2eb910d8">
+              <SHORT-NAME>cur_angle</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/float</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+          </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
         <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="60f87324-3f65-4fc8-aa34-6d3b99ad9caa">
           <SHORT-NAME>LidarDataForUser</SHORT-NAME>
           <CATEGORY>STRUCTURE</CATEGORY>
@@ -1867,8 +1892,71 @@
             </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
           </SUB-ELEMENTS>
         </STD-CPP-IMPLEMENTATION-DATA-TYPE>
-        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="00861d9c-6e41-4dcb-9a09-572c9a6258ae">
-          <SHORT-NAME>VectorLidar</SHORT-NAME>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="aca4df87-69cb-4583-82a2-c6a68cf99360">
+          <SHORT-NAME>SensorDatas</SHORT-NAME>
+          <CATEGORY>STRUCTURE</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <SUB-ELEMENTS>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="a6a3fcdc-2753-4fb4-ba66-6a32a64ccd4c">
+              <SHORT-NAME>lidars</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/lidars</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="f2095442-adb1-4def-b062-c6c1f487ae80">
+              <SHORT-NAME>left_camera</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/left_camera</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+            <CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT UUID="5b2a64e6-881c-4dc4-9777-17a74e14298d">
+              <SHORT-NAME>right_camera</SHORT-NAME>
+              <TYPE-REFERENCE>
+                <TYPE-REFERENCE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/right_camera</TYPE-REFERENCE-REF>
+              </TYPE-REFERENCE>
+            </CPP-IMPLEMENTATION-DATA-TYPE-ELEMENT>
+          </SUB-ELEMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="48621104-f76d-43a4-87a6-c4773f5be576">
+          <SHORT-NAME>left_camera</SHORT-NAME>
+          <CATEGORY>VECTOR</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="f3d814ea-4129-4d8c-bcb1-ead073f1c9b0">
+          <SHORT-NAME>lidars</SHORT-NAME>
           <CATEGORY>VECTOR</CATEGORY>
           <SW-DATA-DEF-PROPS>
             <SW-DATA-DEF-PROPS-VARIANTS>
@@ -1888,6 +1976,30 @@
           <TEMPLATE-ARGUMENTS>
             <CPP-TEMPLATE-ARGUMENT>
               <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/UnsetARElements/LidarDataForUser</TEMPLATE-TYPE-REF>
+            </CPP-TEMPLATE-ARGUMENT>
+          </TEMPLATE-ARGUMENTS>
+        </STD-CPP-IMPLEMENTATION-DATA-TYPE>
+        <STD-CPP-IMPLEMENTATION-DATA-TYPE UUID="c22a9ec7-bf66-471c-9a0b-e93b12b8789f">
+          <SHORT-NAME>right_camera</SHORT-NAME>
+          <CATEGORY>VECTOR</CATEGORY>
+          <SW-DATA-DEF-PROPS>
+            <SW-DATA-DEF-PROPS-VARIANTS>
+              <SW-DATA-DEF-PROPS-CONDITIONAL/>
+            </SW-DATA-DEF-PROPS-VARIANTS>
+          </SW-DATA-DEF-PROPS>
+          <NAMESPACES>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>deepracer</SHORT-NAME>
+              <SYMBOL>deepracer</SYMBOL>
+            </SYMBOL-PROPS>
+            <SYMBOL-PROPS>
+              <SHORT-NAME>type</SHORT-NAME>
+              <SYMBOL>type</SYMBOL>
+            </SYMBOL-PROPS>
+          </NAMESPACES>
+          <TEMPLATE-ARGUMENTS>
+            <CPP-TEMPLATE-ARGUMENT>
+              <TEMPLATE-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/DataType/Implementation/CPP/uint8_t</TEMPLATE-TYPE-REF>
             </CPP-TEMPLATE-ARGUMENT>
           </TEMPLATE-ARGUMENTS>
         </STD-CPP-IMPLEMENTATION-DATA-TYPE>

@@ -10,10 +10,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : rawdata.cpp
 /// SOFTWARE COMPONENT NAME           : RawData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "sensor/aa/port/rawdata.h"
  
+#define DEBUG_SH 0
 namespace deepracer
 {
 namespace service
@@ -110,7 +111,7 @@ namespace port
 RawData::RawData()
     : m_logger(ara::log::CreateLogger("SENS", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
-    , m_REventData{{0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}}
+    , m_REventData{{{0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}, {0U, 0.0, 0.0, 0U}}, {0U, 0U, 0U}, {0U, 0U, 0U}}
 {
 }
  
@@ -154,8 +155,14 @@ void RawData::Terminate()
  
 void RawData::WriteDataREvent(const deepracer::service::rawdata::skeleton::events::REvent::SampleType& data)
 {
+    #if DEBUG_SH
+    printf("ksh_@@@@ [RawData] WriteData Start\n");
+    #endif
     std::lock_guard<std::mutex> lock(m_mutex);
     m_REventData = data;
+    #if DEBUG_SH
+    printf("ksh_@@@@ [RawData] WriteData End\n");
+    #endif
 }
  
 void RawData::SendEventREventCyclic()
@@ -184,6 +191,9 @@ void RawData::SendEventREventTriggered()
     auto send = m_interface->REvent.Send(m_REventData);
     if (send.HasValue())
     {
+        #if DEBUG_SH
+        printf("ksh_@@@ [RawData] SendSuccess[%lf]\n", m_REventData.lidars.front().theta);
+        #endif
         m_logger.LogVerbose() << "RawData::SendEventREventTriggered::Send";
     }
     else

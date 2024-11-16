@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : svrawdata_common.h
 /// SERVICE INTERFACE NAME            : SvRawData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:52:59
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///                                                                                                        
 /// CAUTION!! AUTOMATICALLY GENERATED FILE - DO NOT EDIT                                                   
@@ -31,7 +31,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// @uptrace{SWS_CM_10372}
 #include "deepracer/type/impl_type_arithmetic.h"
-#include "deepracer/type/impl_type_vectorlidar.h"
+#include "deepracer/type/impl_type_sensordatas.h"
 /// @uptrace{SWS_CM_01005}
 namespace deepracer
 {

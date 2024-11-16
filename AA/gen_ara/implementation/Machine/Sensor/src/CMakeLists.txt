@@ -3,12 +3,18 @@
 # Copyright(c) 2024 by PopcornSAR Co.,Ltd. All rights reserved.
 # ============================================================================
  
+add_subdirectory(sensor/deepracer/camera)
+add_subdirectory(sensor/deepracer/lidar)
+
 add_executable(${PARA_APP_NAME})
  
 # ============================================================================
 # This setting is required for binary targets.
 # Please modify the section below to suit your configuration.
 # ============================================================================
+
+#find_package(OpenCV REQUIRED) 
+
 Para_Target(${PARA_APP_NAME}
             PARA_LIBS_PRIVATE core log exec com
             PARA_GEN_DIR ${PARA_APP_GEN_DIR}
@@ -17,11 +23,23 @@ Para_Target(${PARA_APP_NAME}
 # ============================================================================
 target_include_directories(${PARA_APP_NAME}
                            PRIVATE
-                           ${CMAKE_CURRENT_SOURCE_DIR}/include)
+                           ${CMAKE_CURRENT_SOURCE_DIR}/include
+                           ${CMAKE_CURRENT_SOURCE_DIR}/sensor/deepracer/lidar/include
+                           ${CMAKE_CURRENT_SOURCE_DIR}/sensor/deepracer/camera/include
+                           )
+
+include_directories(
+                    ${PARA_SDK}/include
+                    ${PARA_SDK}/include/para/swc
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 # ============================================================================
 target_link_libraries(${PARA_APP_NAME}
                       PRIVATE
-                      pthread)
+                      pthread
+                      camera
+		      lidar)
+
 # ============================================================================
 target_sources(${PARA_APP_NAME}
                PRIVATE

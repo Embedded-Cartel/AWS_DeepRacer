@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : main.cpp
 /// EXECUTABLE NAME                   : SM
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-08-14 09:44:02
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@
 #include <csignal>
  
 sm::para::SM* g_swcSM{nullptr};
- 
+
 static void SignalHandler(std::int32_t signal)
 {
     if (signal == SIGTERM || signal == SIGINT)
@@ -36,8 +36,7 @@ int main(int argc, char *argv[], char* envp[])
 {
     bool proceed{true};
     bool araInitialized{true};
-    
-    // initialize AUTOSAR adaptive application
+
     auto appInit = ara::core::Initialize();
     if (!appInit.HasValue())
     {
@@ -48,21 +47,17 @@ int main(int argc, char *argv[], char* envp[])
     if (araInitialized)
     {
         ara::log::Logger& appLogger{ara::log::CreateLogger("SM", "SM's main function")};
-        
-        // regist signals
+
         std::signal(SIGTERM, SignalHandler);
         std::signal(SIGINT, SignalHandler);
-        
-        // declaration of software components
+
         sm::para::SM swcSM;
         g_swcSM = &swcSM;
-        
-        // initialize software component
-        proceed = swcSM.Initialize();
+
+        proceed = swcSM.Initialize(argc, argv);
         
         if (proceed)
         {
-            // report execution state
             ara::exec::ExecutionClient executionClient;
             auto exec = executionClient.ReportExecutionState(ara::exec::ExecutionState::kRunning);
             if (exec.HasValue())
@@ -74,15 +69,13 @@ int main(int argc, char *argv[], char* envp[])
                 appLogger.LogError() << "Unable to report execution state";
                 araInitialized = false;
             }
-            // start software component
             swcSM.Start();
         }
         else
         {
             appLogger.LogError() << "Unable to start application";
         }
-        
-        // de-initialize AUTOSAR adaptive application
+
         auto appDeinit = ara::core::Deinitialize();
         if (!appDeinit.HasValue())
         {

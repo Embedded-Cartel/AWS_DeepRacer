@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : controldata.cpp
 /// SOFTWARE COMPONENT NAME           : ControlData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/port/controldata.h"
  
@@ -216,14 +216,24 @@ void ControlData::ReceiveEventCEventCyclic()
                 }
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }
  
 void ControlData::ReadDataCEvent(ara::com::SamplePtr<deepracer::service::controldata::proxy::events::CEvent::SampleType const> samplePtr)
 {
     auto data = *samplePtr.Get();
-    // put your logic
+
+    if (m_receiveEventCEventHandler != nullptr)
+    {
+        m_receiveEventCEventHandler(data);
+    }
+}
+
+void ControlData::SetReceiveEventCEventHandler(
+    std::function<void(const deepracer::service::controldata::proxy::events::CEvent::SampleType&)> handler)
+{
+    m_receiveEventCEventHandler = handler;
 }
  
 } /// namespace port

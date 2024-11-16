@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : calc.h
 /// SOFTWARE COMPONENT NAME           : Calc
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_CALC_AA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_CALC_AA_H
@@ -50,7 +50,24 @@ private:
     void Run();
  
 private:
+    void TaskReceiveREventCyclic();
+    void OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample);
+    bool GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar);
+    bool InterpolateLidarData(deepracer::type::lidars* lidar_datas);
+    #if 0
+    std::vector<float> Extract8PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas);
+    #else
+    std::vector<float> Extract4PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas);
+    #endif
+    void UpdateSteeringData(std::pair<float, float> steerDatas);
+    std::pair <float, float> ConvertValueFromPredictToServo(std::pair<float, float> predictions);
+    float GetMaxSpeed(float degree);
+    void ThrowEventCyclic();
     /// @brief Pool of port
+    
+    bool m_running;
+    bool m_event_flag;
+    std::mutex m_mutex;
     ::para::swc::PortPool m_workers;
     
     /// @brief Logger for software component

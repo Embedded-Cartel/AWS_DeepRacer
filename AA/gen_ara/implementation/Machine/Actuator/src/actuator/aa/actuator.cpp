@@ -10,17 +10,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : actuator.cpp
 /// SOFTWARE COMPONENT NAME           : Actuator
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/actuator.h"
+#include <cmath>
  
 namespace actuator
 {
 namespace aa
 {
- 
 Actuator::Actuator()
     : m_logger(ara::log::CreateLogger("ACTR", "SWC", ara::log::LogLevel::kVerbose))
     , m_workers(1)
@@ -29,6 +29,7 @@ Actuator::Actuator()
  
 Actuator::~Actuator()
 {
+    m_servo_driver->servoSubscriber(0, 0);
 }
  
 bool Actuator::Initialize()
@@ -38,7 +39,13 @@ bool Actuator::Initialize()
     bool init{true};
     
     m_ControlData = std::make_shared<actuator::aa::port::ControlData>();
-    
+
+    m_servo_driver = std::make_shared<PWM::ServoDriver>();
+    m_led_driver = std::make_shared<PWM::LedDriver>();
+
+//    ServoCalibration();
+//    MotorCalibration();
+
     return init;
 }
  
@@ -63,9 +70,87 @@ void Actuator::Run()
 {
     m_logger.LogVerbose() << "Actuator::Run";
     
-    m_workers.Async([this] { m_ControlData->ReceiveEventCEventCyclic(); });
+    m_workers.Async([this] { TaskReceiveCEventCyclic(); });
     
     m_workers.Wait();
+}
+
+void Actuator::TaskReceiveCEventCyclic()
+{
+    m_ControlData->SetReceiveEventCEventHandler([this](const auto& sample)
+    {
+        OnReceiveCEvent(sample);
+    });
+    m_ControlData->ReceiveEventCEventCyclic();
+}
+
+void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample)
+{
+    float speed, angle;
+
+    m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample.cur_speed << ", " << sample.cur_angle;
+    printf("#################### Sample angle : %.8f ####################\n", sample.cur_angle);
+    printf("#################### Sample speed : %.8f ####################\n", sample.cur_speed);
+
+    angle = sample.cur_angle;
+    // angle = AngleMapping(sample, -40, 40, -1.0, 1.0);
+    speed = SpeedMapping(sample, 0, 1.0, 0.64, 0.65);
+
+    printf("#################### mapping angle : %.8f ####################\n", angle);
+    printf("#################### mapping speed : %.8f ####################\n", speed);
+
+    m_servo_driver->servoSubscriber(speed, angle);
+}
+
+void Actuator::ServoCalibration()
+{
+    int cal_type = 0;
+    int servo_min;
+    int servo_mid;
+    int servo_max;
+    int servo_polarity;
+
+    m_servo_driver->getCalibrationValue(cal_type, &servo_min, &servo_mid, &servo_max, &servo_polarity);
+    m_servo_driver->setCalibrationValue(cal_type, servo_min, servo_mid, servo_max, servo_polarity);
+}
+
+void Actuator::MotorCalibration()
+{
+    int cal_type = 1;
+    int motor_min;
+    int motor_mid;
+    int motor_max;
+    int motor_polarity;
+
+    m_servo_driver->getCalibrationValue(cal_type, &motor_min, &motor_mid, &motor_max, &motor_polarity);
+    m_servo_driver->setCalibrationValue(cal_type, motor_min, motor_mid, motor_max, motor_polarity);
+}
+
+/*
+float Actuator::AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
+		float in_min, float in_max, float out_min, float out_max)
+{
+    if(sample.cur_angle < in_min || sample.cur_angle > in_max) {
+         m_logger.LogError() << "Actuaotr::AngleMapping:" << sample.cur_angle;
+	 return 0;
+    }
+
+    return (((sample.cur_angle - in_min) * (out_max - out_min)) / (in_max - in_min)) + out_min;
+}
+*/
+
+float Actuator::SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
+		float in_min, float in_max, float out_min, float out_max)
+{
+    if(fabs(sample.cur_angle) >= 0.7) {
+         return out_min;
+    } 
+    if(sample.cur_speed < in_min || sample.cur_speed > in_max) {
+         m_logger.LogError() << "Actuaotr::SpeedMapping:" << sample.cur_speed;
+	 return out_max;
+    }
+
+    return (((sample.cur_speed - in_min) * (out_max - out_min)) / (in_max - in_min)) + out_min;
 }
  
 } /// namespace aa

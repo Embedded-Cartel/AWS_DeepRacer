@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : sensor.h
 /// SOFTWARE COMPONENT NAME           : Sensor
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_SENSOR_AA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_SENSOR_AA_H
@@ -20,7 +20,9 @@
 #include "sensor/aa/port/rawdata.h"
  
 #include "para/swc/port_pool.h"
- 
+
+#include "lidar_driver.h"
+#include "camera_driver.h"
 namespace sensor
 {
 namespace aa
@@ -43,12 +45,21 @@ public:
     
     /// @brief Terminate software component
     void Terminate();
+
+    void UpdateDatas();
+    bool UpdateLidarData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas);
+    bool UpdateCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas);
+
+    void ThrowEventCyclic();
  
 private:
     /// @brief Run software component
     void Run();
  
 private:
+    bool m_running;
+    bool m_event_flag;
+    std::mutex m_mutex;
     /// @brief Pool of port
     ::para::swc::PortPool m_workers;
     
@@ -57,6 +68,10 @@ private:
     
     /// @brief Instance of Port {Sensor.RawData}
     std::shared_ptr<sensor::aa::port::RawData> m_RawData;
+
+    /// @brief Instance of Port {Sensor.RawData}
+    std::shared_ptr<LidarDriver> m_lidar_driver;
+    std::shared_ptr<CameraDriver> m_camera_driver;
 };
  
 } /// namespace aa

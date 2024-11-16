@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : controldata.cpp
 /// SOFTWARE COMPONENT NAME           : ControlData
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/controldata.h"
  
@@ -44,7 +44,7 @@ namespace port
 ControlData::ControlData()
     : m_logger(ara::log::CreateLogger("CALC", "PORT", ara::log::LogLevel::kVerbose))
     , m_running{false}
-    , m_CEventData{0U}
+    , m_CEventData{0.0f, 0.0f}
 {
 }
  
@@ -118,10 +118,12 @@ void ControlData::SendEventCEventTriggered()
     auto send = m_interface->CEvent.Send(m_CEventData);
     if (send.HasValue())
     {
+        printf("ksh_@@@ [Calc TO Actuator] Send Success\n");
         m_logger.LogVerbose() << "ControlData::SendEventCEventTriggered::Send";
     }
     else
     {
+        printf("ksh_@@@ [Calc TO Actuator] Send Fail\n");
         m_logger.LogError() << "ControlData::SendEventCEventTriggered::Send::" << send.Error().Message();
     }
 }

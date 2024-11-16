@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// GENERATED FILE NAME               : actuator.h
 /// SOFTWARE COMPONENT NAME           : Actuator
-/// GENERATED DATE                    : 2024-10-31 15:08:42
+/// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef PARA_AA_GEN_SOFTWARE_COMPONENT_ACTUATOR_AA_H
 #define PARA_AA_GEN_SOFTWARE_COMPONENT_ACTUATOR_AA_H
@@ -18,6 +18,8 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/port/controldata.h"
+#include "deepracer/servo/servo_driver.h"
+#include "deepracer/servo/led_driver.h"
  
 #include "para/swc/port_pool.h"
  
@@ -47,6 +49,22 @@ public:
 private:
     /// @brief Run software component
     void Run();
+
+    /// @brief Task software component : Receive CEvent Cyclic
+    void TaskReceiveCEventCyclic();
+
+    /// @brief CEvent Receiver
+    void OnReceiveCEvent(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample);
+
+    void ServoCalibration();
+
+    void MotorCalibration();
+
+    float AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
+		    float in_min, float in_max, float out_min, float out_max);
+
+    float SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample,
+		    float in_min, float in_max, float out_min, float out_max);
  
 private:
     /// @brief Pool of port
@@ -57,6 +75,9 @@ private:
     
     /// @brief Instance of Port {Actuator.ControlData}
     std::shared_ptr<actuator::aa::port::ControlData> m_ControlData;
+
+    std::shared_ptr<PWM::ServoDriver> m_servo_driver;
+    std::shared_ptr<PWM::LedDriver> m_led_driver;
 };
  
 } /// namespace aa
