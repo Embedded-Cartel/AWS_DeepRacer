@@ -17,19 +17,32 @@
 #include "calc/aa/calc.h"
 #include <vector>
 #include <cmath>
-#include <utility> // std::pair 사용을 위해 추가
-#include <random> // random test
+#include <utility>
+#include <random>
 
+#define DEBUG 1
+
+#if DEBUG
+    #define DEBUG_LOG(x) x
+#else
+    #define DEBUG_LOG(x)
+#endif
 
 std::pair<float, float> runModel(const std::vector<float>& lidar_data, const std::vector<float>& camera_data);
 void initializeModelOnce();
  
 #define DEBUG_SH 0
+
 namespace calc
 {
 namespace aa
 {
  
+/**
+ * Calc::Calc() - Constructor for Calc class.
+ *
+ * Initializes the Calc class, setting up the logger and worker thread pool.
+ */
 Calc::Calc()
     : m_running(false), m_event_flag(false)
     , m_logger(ara::log::CreateLogger("CALC", "SWC", ara::log::LogLevel::kVerbose))
@@ -37,10 +50,24 @@ Calc::Calc()
 {
 }
  
+ /**
+ * Calc::~Calc() - Destructor for Calc class.
+ *
+ * Ensures that the Calc instance is properly cleaned up.
+ */
 Calc::~Calc()
 {
 }
- 
+
+/**
+ * Calc::Initialize() - Initializes the Calc component.
+ *
+ * Initializes the ControlData and RawData instances and prepares the component.
+ *
+ * Context: Process context. 
+ * Return: 
+ * * true if initialization is successful.
+ */
 bool Calc::Initialize()
 {
     m_logger.LogVerbose() << "Calc::Initialize";
@@ -62,7 +89,7 @@ void Calc::Start()
     m_RawData->Start();
     m_running = true;
     // run software component
-    //m_logger.LogInfo() << "----------------Calc Start----------------";
+    DEBUG_LOG(m_logger.LogInfo() << "----------------Calc Start----------------";)
     Run();
     printf("ksh_@@@ [Calc][Start] End\n");
 }
@@ -99,13 +126,21 @@ void Calc::TaskReceiveREventCyclic()
     m_RawData->ReceiveEventREventCyclic();
 }
 
+/**
+ * Calc::OnReceiveREvent() - Handles received REvents.
+ * @sample: The received sample containing lidar and camera data.
+ *
+ * Processes the received lidar data by extracting, interpolating, and 
+ * preparing it for model inference. The model’s output is converted 
+ * to control commands and sent to the actuator.
+ *
+ * Context: Called within event handling context.
+ */
 void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample)
 {
-    #if 1
-    // printf("ksh_@@@ [Calc] OnReceiveEvent [%lf]\n", sample.lidars.front().theta);
-    #endif
+    DEBUG_LOG(printf("ksh_@@@ [Calc] OnReceiveEvent [%lf]\n", sample.lidars.front().theta);)
 
-    deepracer::type::lidars processed_lidars; // 0~ 360 8000개? 
+    deepracer::type::lidars processed_lidars; // 0~ 360 8000? 
     
     bool result = true;
     float start_degree = 0.0;
@@ -115,7 +150,7 @@ void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REv
         printf("ksh_@@@ SelecLidarRange Fail\n");
     }
 
-    result = InterpolateLidarData(&processed_lidars); // 0인애들 보정해주고
+    result = InterpolateLidarData(&processed_lidars); // Calibrate 0 value
     if (!result) {
         printf("ksh_@@@ InterpolateLidarData Fail\n");
     }
@@ -176,6 +211,18 @@ void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REv
     UpdateSteeringData(processed_ai);
 }
 
+/**
+ * Calc::GetFrontLidarData() - Filters lidar data within a specific angle range.
+ * @start_degree: The starting angle in degrees.
+ * @end_degree: The ending angle in degrees.
+ * @before_lidar: The input lidar data to be filtered.
+ * @after_lidar: The output lidar data after filtering.
+ *
+ * Filters lidar data based on the specified start and end angles, storing 
+ * the results in @after_lidar.
+ *
+ * Return: true if filtering is successful.
+ */
 bool Calc::GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar) {
     // printf ("ksh_@@@@@@ before select\n");
     // printf ("ksh_@@@@@@ ------------------\n");
@@ -208,6 +255,15 @@ bool Calc::GetFrontLidarData(float start_degree, float end_degree, const deeprac
     return true;
 }
 
+/**
+ * Calc::InterpolateLidarData() - Interpolates missing lidar distance data.
+ * @lidar_datas: Pointer to the lidar data to be interpolated.
+ *
+ * Interpolates missing distance values in lidar data by averaging the
+ * neighboring valid values. Helps to fill in zero values in the data.
+ *
+ * Return: true if interpolation is successful.
+ */
 bool Calc::InterpolateLidarData(deepracer::type::lidars* lidar_datas) {
     for (size_t i = 1; i < lidar_datas->size() - 1; ++i) {
         if (lidar_datas->at(i).dist == 0) {
@@ -292,6 +348,17 @@ std::vector<float> Calc::Extract8PointsForAI(float start_degree, float end_degre
     return result;
 }
 
+/**
+ * Calc::Extract4PointsForAI() - Extracts 4 representative lidar points for AI input.
+ * @start_degree: The starting degree for the range to extract points.
+ * @end_degree: The ending degree for the range to extract points.
+ * @lidar_datas: Pointer to the lidar data to process.
+ *
+ * Extracts representative lidar points by averaging within defined
+ * segments between the specified start and end angles.
+ *
+ * Return: Vector of 4 float values representing lidar distance data.
+ */
 #else
 std::vector<float> Calc::Extract4PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas) {
     std::vector<float> result;

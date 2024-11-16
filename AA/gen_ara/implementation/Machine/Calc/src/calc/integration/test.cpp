@@ -1,13 +1,21 @@
 #include <Python.h>
 #include <iostream>
 #include <vector>
-#include <utility> // std::pair 사용을 위해 추가
+#include <utility> // Add for use "std::pair"
 
+/**
+ * initializeModelOnce() - Initialize the reinforcement learning model once.
+ *
+ * This function sets up the Python environment and imports the specified Python module
+ * to initialize the reinforcement learning model for inference. It ensures that the 
+ * Python interpreter is initialized and the model is loaded into memory.
+ *
+ * Context: Process context. Must be called only once to avoid redundant model loading.
+ */
 void initializeModelOnce() {
     printf("init model\n");
-    Py_Initialize();
+    Py_Initialize(); // Initialize Python interpreter
     PyRun_SimpleString("import sys");
-    // PyRun_SimpleString("sys.path.append('/home/ubuntu/workspace-tensor/AWS_DeepRacer/AA_Code/Calc/src/calc/integration')");
     PyRun_SimpleString("sys.path.append('/home/deepracer/AWS_DeepRacer/AA/gen_ara/implementation/Machine/Calc/src/calc/integration')");
     printf("load python\n");
     PyObject *pName = PyUnicode_DecodeFSDefault("run_model");
@@ -33,6 +41,21 @@ void initializeModelOnce() {
     }
 }
 
+/**
+ * runModel() - Perform inference using lidar and camera data.
+ * @lidar_data: Vector of floats containing processed lidar input data.
+ * @camera_data: Vector of floats containing processed camera input data.
+ *
+ * This function loads the `run_model` Python module and invokes the `predict`
+ * function, passing the lidar and camera data as arguments. The model output
+ * consists of speed and steering angle predictions, represented as a pair of floats.
+ *
+ * Context: Process context. Assumes the Python environment is initialized.
+ * Return:
+ * * `std::pair<float, float>`:
+ *   * `first` - Predicted speed from model.
+ *   * `second` - Predicted steering angle from model.
+ */
 std::pair<float, float> runModel(const std::vector<float>& lidar_data, const std::vector<float>& camera_data) {
     PyObject *pName = PyUnicode_DecodeFSDefault("run_model");
     PyObject *pModule = PyImport_Import(pName);
