@@ -12,6 +12,11 @@ namespace PWM {
     /// @param value Value to write in the file given by path.
   	void writePWM(const char *path, int value) {
         int fd, len;
+        /**
+         * If fd open does not work correctly in deepracer, please change the permissions of the directory
+         * at the specified location to the 777 by using 'chmod' cmd.
+         * : /sys/class/pwm/pwmchip{chaneel}
+         */
         fd = open(path, O_WRONLY);
         if (fd < 0) {
             return;
