@@ -3,7 +3,6 @@
 
 #include <sys/stat.h>
 #include "deepracer/servo/pwm.h"
-#include "deepracer/servo/bios_version.h"
 #include "deepracer/servo/utility.h"
 #include <unordered_map>
 

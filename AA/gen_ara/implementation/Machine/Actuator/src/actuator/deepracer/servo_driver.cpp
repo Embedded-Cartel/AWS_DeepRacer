@@ -203,20 +203,10 @@ namespace PWM {
             return 1;
         }
 
-        // std::string biosVersion;
-        // std::ifstream bioFile(BIOS_PATH);
-
-        // if(bioFile.is_open()) {
-        //     std::getline (bioFile, biosVersion);
-        //     bioFile.close();
-        // }
-
-        //if (BiosVersion(biosVersion) >= BiosVersion(BIOS_CUT_OFF)) {
-            if (!calJsonValue[HEADER_KEY].isMember(VERSION_KEY)) {
-                writeCalJSON(calibrationMap, filePath);
-                return 1;
-            }
-        //}
+        if (!calJsonValue[HEADER_KEY].isMember(VERSION_KEY)) {
+            writeCalJSON(calibrationMap, filePath);
+            return 1;
+        }
 
         auto populateMap = [&](auto &map, const auto &servoType) {
             for (auto &servoMap : map) {
