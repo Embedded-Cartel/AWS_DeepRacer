@@ -15,16 +15,6 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 ### AA
 대회용 AA 개발 디렉토리
 
-### AA_Code
-AA 개발 디렉토리 기반 Generated 코드 (gen_ara/implementation/Machine)
-
-### AA_Sample_Code
-PopcornSAR 예제 기반 Generated 코드 (gen_ara/implementation/Machine)
-
-### deepracercode
-DeepRacer 샘플 코드
-Camera, LiDAR, Servo
-
 ### model
 AI Model
 
@@ -36,11 +26,9 @@ ARXML 기반 Generate 이후 build 진행 시 실행파일 생성되는 경로 (
 ### build.sh
 AA 개발 코드 빌드
 
-### build_sample.sh
-PopcornSAR Sample 코드 빌드
-
 ### export.sh
-PARA SDK 환경변수 설정
+PARA SDK 환경변수 설정(soure export.sh)
 
 ### install_para_sdk
 PARA_SDK 설치
+LiDAR SDK 설치
