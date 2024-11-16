@@ -15,8 +15,14 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 ### AA
 대회용 AA 개발 디렉토리
 
-### model
-AI Model
+### Inference-workspace
+- 강화학습 관련 code 및 구현한 tool
+- 본선 사용 강화학습 모델 및 test용 모델backup
+
+    carfile.tar.gz : 모델 파일 <br/>
+    carfile-model  : carfile.tar.gz 파일 압축 해제 한 전체 meta-data 및 model.pb 파일 <br/>
+    Bucket 경로 : s3://deepracer-bermuda/rl-deepracer-sagemaker-2//carfile.tar.gz
+
 
 ### sdk
 a.k.a PARA_SDK
