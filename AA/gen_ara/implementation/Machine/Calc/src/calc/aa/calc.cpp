@@ -16,6 +16,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/calc.h"
 #include <vector>
+#include <cmath>
 #include <utility> // std::pair 사용을 위해 추가
 #include <random> // random test
 
@@ -54,6 +55,7 @@ bool Calc::Initialize()
  
 void Calc::Start()
 {
+    printf("ksh_@@@ [Calc][Start] Begin\n");
     m_logger.LogVerbose() << "Calc::Start";
     
     m_ControlData->Start();
@@ -62,6 +64,7 @@ void Calc::Start()
     // run software component
     //m_logger.LogInfo() << "----------------Calc Start----------------";
     Run();
+    printf("ksh_@@@ [Calc][Start] End\n");
 }
  
 void Calc::Terminate()
@@ -75,12 +78,13 @@ void Calc::Terminate()
  
 void Calc::Run()
 {
+    printf("ksh_@@@ [Calc][Run] Start\n");
     m_running = true;
     m_logger.LogVerbose() << "Calc::Run";
     
     m_workers.Async([this] { ThrowEventCyclic(); });
     m_workers.Async([this] { TaskReceiveREventCyclic(); });
-      
+
     m_workers.Wait();
 }
  
@@ -97,15 +101,15 @@ void Calc::TaskReceiveREventCyclic()
 
 void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample)
 {
-    #if DEBUG_SH
-    printf("ksh_@@@ [Calc] OnReceiveEvent [%lf]\n", sample.lidars.front().theta);
+    #if 1
+    // printf("ksh_@@@ [Calc] OnReceiveEvent [%lf]\n", sample.lidars.front().theta);
     #endif
 
     deepracer::type::lidars processed_lidars; // 0~ 360 8000개? 
     
     bool result = true;
-    float start_degree = 150.0;
-    float end_degree = 210.0;
+    float start_degree = 0.0;
+    float end_degree = 360.0;
     result = GetFrontLidarData(start_degree, end_degree, sample.lidars, &processed_lidars); // 150 ~ 210
     if (!result) {
         printf("ksh_@@@ SelecLidarRange Fail\n");
@@ -116,26 +120,60 @@ void Calc::OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REv
         printf("ksh_@@@ InterpolateLidarData Fail\n");
     }
     
-    std::vector<float> result_lidar;
-    result_lidar = Extract8PointsForAI(start_degree, end_degree, &processed_lidars);
+    std::vector<float> result_lidar_left;
+    std::vector<float> result_lidar_right;
+    
+    result_lidar_left = Extract4PointsForAI(0, 150, &processed_lidars);
+    result_lidar_right = Extract4PointsForAI(210, 360, &processed_lidars);
+
+    if (result_lidar_left.size() != 4 || result_lidar_right.size() != 4) {
+         printf("ksh_@@@ Error: Unexpected vector size\n"); 
+    }
+
+
+    std::reverse(result_lidar_left.begin(), result_lidar_left.end());
+    std::reverse(result_lidar_right.begin(), result_lidar_right.end());
+    // std::vector<float> result_lidar ;
+    // for (int idx = 0; idx < 8; idx ++) {
+    //     if (idx < 4) {
+    //         result_lidar.push_back(result_lidar_left.at(3-idx));
+    //     } else {
+    //         result_lidar.push_back(result_lidar_right.at(7-idx));
+    //     }
+    // }
+    
+    // Extract8PointsForAI (0,360, &processed_lidars);
+
+    // std::vector<float> result_lidar = Extract8PointsForAI (0,360, &processed_lidars);
+    std::vector<float> result_lidar(result_lidar_left.size() + result_lidar_right.size());
+    // printf("ksh_@@@ before after result lidar ");
+    // for (auto itr : result_lidar) {
+    //     printf(",[%.2f]", itr);
+    // }
+    // printf("    END\n");
+
+    // // std::copy를 사용하여 ddd의 값을 temp로 복사합니다.
+    // std::copy(result_lidar_left.begin(), result_lidar_left.end(), result_lidar.begin());
+
+    // // std::copy를 사용하여 ddd2의 값을 temp의 끝 부분에 복사합니다.
+    // std::copy(result_lidar_right.begin(), result_lidar_right.end(), result_lidar.begin() + result_lidar_left.size());
+
+    // printf("ksh_@@@ [Calc] 5\n");
 
     std::vector<float> result_camera(120 * 160 * 2);
 
-    std::random_device rd;
-    std::mt19937 gen(rd()); // Standard mersenne_twister_engine
-    std::uniform_real_distribution<> dis(0.0, 1.0); // Range between 0.0 and 1.0
-    
-    // Fill camera_data with random values
-    for (auto& val : result_camera) {
-        val = dis(gen);
+    for (int i = 0 ; i < 19200 ; i ++) {
+        result_camera[i] = sample.left_camera[i];
+        result_camera[i + 19200] = sample.right_camera[i];
     }
-
 
     std::pair<float, float> prediction = runModel(result_lidar, result_camera);
 
     printf("fuck Prediction Result: %f, %f\n", prediction.first, prediction.second);
 
-    UpdateSteeringData(prediction);
+    std::pair<float, float> processed_ai = ConvertValueFromPredictToServo(prediction);
+
+    UpdateSteeringData(processed_ai);
 }
 
 bool Calc::GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar) {
@@ -184,7 +222,7 @@ bool Calc::InterpolateLidarData(deepracer::type::lidars* lidar_datas) {
                 lidar_datas->at(i).dist = lidar_datas->at(prev).dist; // Handle edge case if no valid next value
             }
         }
-    }
+    }   
 
 
     // printf ("ksh_@@@@@@ after Interpolat\n");
@@ -200,6 +238,10 @@ bool Calc::InterpolateLidarData(deepracer::type::lidars* lidar_datas) {
     return true;
 }
 
+
+
+
+#if 0
 std::vector<float> Calc::Extract8PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas) {
     std::vector<float> result;
 
@@ -223,14 +265,25 @@ std::vector<float> Calc::Extract8PointsForAI(float start_degree, float end_degre
         if (!distances.empty()) {
             float sum = std::accumulate(distances.begin(), distances.end(), 0.0f);
             float avg = sum / distances.size();
+            avg = (avg > 2000.0) ? 2000.0 : avg;
             result.push_back(avg);
         } else {
             result.push_back(0.0f); // 해당 구간에 데이터가 없을 경우 기본값 0.0을 사용
         }
     }
 
+    // printf("ksh_@@@ before result lidar ");
+    // for (auto itr : result) {
+    //     printf(",[%.2f]", itr);
+    // }
+    // printf("    END\n");
+    
+    for (int idx = 0 ; idx < 8 ; idx ++) {
+        // result[idx] = (result[idx] <= 835.294 ) ? 1.0 : 0.0;
+        result[idx] = (result[idx] <= 120.0 ) ? 1.0 : 0.0;
+    }
 
-    // printf("ksh_@@@ result lidar ");
+    // printf("ksh_@@@ before after result lidar ");
     // for (auto itr : result) {
     //     printf(",[%.2f]", itr);
     // }
@@ -239,20 +292,139 @@ std::vector<float> Calc::Extract8PointsForAI(float start_degree, float end_degre
     return result;
 }
 
+#else
+std::vector<float> Calc::Extract4PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas) {
+    std::vector<float> result;
+
+    // 중간 지점과 각도를 계산
+    float mid_degree = (start_degree + end_degree) / 2.0f;
+    float interval = (end_degree - start_degree) / 4.0f;
+
+    // 각 구간의 평균 거리값을 계산
+    for (int i = 0; i < 4; ++i) {
+        float lower_bound = start_degree + i * interval;
+        float upper_bound = start_degree + (i + 1) * interval;
+
+        std::vector<float> distances;
+        
+        for (auto& itr : *lidar_datas) {
+            if ( (itr.theta >= lower_bound) && (itr.theta < upper_bound) ) {
+                distances.push_back(itr.dist);
+            }
+        }
+
+        if (!distances.empty()) {
+            float sum = std::accumulate(distances.begin(), distances.end(), 0.0f);
+            float avg = sum / distances.size();
+            avg = (avg > 2000.0) ? 2000.0 : avg;
+            result.push_back(avg);
+        } else {
+            result.push_back(0.0f); // 해당 구간에 데이터가 없을 경우 기본값 0.0을 사용
+        }
+    }
+
+    // printf("ksh_@@@ before result lidar ");
+    // for (auto itr : result) {
+    //     printf(",[%.2f]", itr);
+    // }
+    // printf("    END\n");
+    
+    for (int idx = 0 ; idx < 4 ; idx ++) {
+        // result[idx] = (result[idx] <= 835.294 ) ? 1.0 : 0.0;
+        result[idx] = (result[idx] <= 1200.0 ) ? 1.0 : 0.0;
+    }
+
+    // printf("ksh_@@@ before after result lidar ");
+    // for (auto itr : result) {
+    //     printf(",[%.2f]", itr);
+    // }
+    // printf("    END\n");
+
+    return result;
+}
+#endif
+
 void Calc::UpdateSteeringData(std::pair<float, float> steerDatas)
 {
     deepracer::service::controldata::skeleton::events::CEvent::SampleType controlData;
     controlData.cur_angle = steerDatas.first;
     controlData.cur_speed = steerDatas.second;
-
+    // printf("ksh_@@@ [Calc] Write Data start [%.2f][%.2f]\n",  controlData.cur_angle, controlData.cur_speed);
     m_ControlData->WriteDataCEvent(controlData);
+    // printf("ksh_@@@ [Calc] Write Data end\n");
     
     // Update RField
     std::lock_guard<std::mutex> lock(m_mutex); // m_event_flag 때문
     m_event_flag = true;
 }
 
+std::pair<float, float> Calc::ConvertValueFromPredictToServo(std::pair<float, float> predictions) {
+    std::pair<float, float> processed_ai;
+    //Step1 . Convert Degree data (0.0 ~ 1.0 => -40 ~ 40);
+    // float angle = (predictions.first - 0.5) * 30; // -1.0 ~ 1.0
+    float angle = (predictions.first - 0.5); // -1.0 ~ 1.0
+    angle = (fabs(angle) < 0.04) ? 0 : angle * 30;
+    angle = (angle > 1.0) ? (1.0) : (angle < -1.0) ? -1.0 : angle;
+    // float angle = (predictions.first) * (2) - 0.5; // -1.0 ~ 1.0
 
+    //Step2. Convert Speed data (0.0 ~ 1.0 => )
+    float degree = (predictions.first) * 40;
+    float speed = predictions.second * GetMaxSpeed(degree) * 1.5;
+    speed = (speed > 1.0) ? 1.0 : speed;
+
+    processed_ai.first = angle;
+    processed_ai.second = speed;
+
+    return processed_ai;
+}
+
+float Calc::GetMaxSpeed(float degree) {
+    float max_speed = 0.0;
+    int deg = static_cast<int>(round(degree / 5)) * 5;  // 5단위로 변경
+    
+    switch (deg) {
+        case 40 :
+        case -40 :
+            max_speed = 0.5;
+            break;
+        case 35 :
+        case -35 :
+            max_speed = 0.7;
+            break;
+        case 30 :
+        case -30 :
+            max_speed = 0.9;
+            break;
+        case 25 :
+        case -25 :
+            max_speed = 1.2;
+            break;
+        case 20 :
+        case -20 :
+            max_speed = 1.5;
+            break;
+        case 15 :
+        case -15:
+            max_speed = 2.0;
+            break;
+        case 10 :
+        case -10:
+            max_speed = 2.5;
+            break;
+        case 5 :
+        case -5:
+            max_speed = 3.0;
+            break;
+        case 0 :
+            max_speed = 3.5;
+            break;
+        default:
+            break;
+    }
+    printf("ksh_@@@ max_speed[%.2f]\n", max_speed);
+
+    return max_speed;
+}
 
 void Calc::ThrowEventCyclic() {
     while (m_running) {
@@ -260,17 +432,18 @@ void Calc::ThrowEventCyclic() {
         //std::lock_guard<std::mutex> lock(m_mutex);
         if (m_event_flag == true) {
             std::lock_guard<std::mutex> lock(m_mutex);;
-            printf("ksh_@@@ [Calc]ThrowEvent !!!\n");
+            // printf("ksh_@@@ [Calc]ThrowEvent !!!\n");
             m_ControlData->SendEventCEventTriggered();
             m_event_flag = false;
         }
 
-        std::this_thread::sleep_for(std::chrono::seconds(1)); // 1초보다 짧으면 좋을듯
+        std::this_thread::sleep_for(std::chrono::milliseconds(10)); // 1초보다 짧으면 좋을듯
 	    // printf("ksh_@@@ [Calc] End ThrowEventCyclic Loop\n");
     }
 }
 
 } /// namespace aa
 } /// namespace calc
+
 
 

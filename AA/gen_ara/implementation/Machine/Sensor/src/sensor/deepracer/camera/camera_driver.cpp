@@ -21,8 +21,8 @@ bool CameraDriver::CreateCamera() {
     printf("[CreateCamera] Begin l_ch=[%d] r_ch=[%d]\n", m_left_ch, m_right_ch);
 //     printf("OpenCV: %s", cv::getBuildInformation().c_str());
 
-    m_left_camera = new VideoCapture(0);
-    m_right_camera = new VideoCapture(2);
+    m_left_camera = new VideoCapture(2);
+    m_right_camera = new VideoCapture(0);
 
     if (!m_left_camera->isOpened()) {
         std::cerr << "카메라1을 열 수 없습니다." << std::endl;
@@ -65,7 +65,7 @@ bool CameraDriver::EndCamera() {
 }
 
 bool CameraDriver::GetCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* cameraDatas) {
-    printf("[GetCameraData] Begin\n");
+    // printf("[GetCameraData] Begin\n");
 
     Mat leftFrame, rightFrame;
 
@@ -96,7 +96,7 @@ bool CameraDriver::GetCameraData(deepracer::service::rawdata::skeleton::events::
         printf("Fail to Convert Camera data to Vector\n");
         return false;
     }
-    printf("[GetCameraData] End\n");
+    // printf("[GetCameraData] End\n");
     return true;
 }
 

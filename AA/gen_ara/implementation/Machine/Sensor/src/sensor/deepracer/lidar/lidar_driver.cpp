@@ -103,7 +103,7 @@ bool LidarDriver::EndLidar() {
 }
 
 bool LidarDriver::GetLidarData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* lidarDatas) {
-    printf("[GetLidarData] Begin\n");
+    // printf("[GetLidarData] Begin\n");
     bool result = true;
     sl_lidar_response_measurement_node_hq_t nodes[8192];
     size_t   count = sizeof(nodes)/sizeof(sl_lidar_response_measurement_node_hq_t);
@@ -129,6 +129,6 @@ bool LidarDriver::GetLidarData(deepracer::service::rawdata::skeleton::events::RE
         result = false;
     }
 
-    printf("[GetLidarData] End\n");
+    // printf("[GetLidarData] End\n");
     return result;
 }

@@ -105,7 +105,7 @@ void Sensor::UpdateDatas() {
         result_lidar = UpdateLidarData(&sensor_datas);
         result_camera = UpdateCameraData(&sensor_datas);
 
-        printf("ksh_@@@ [sensor] result_lidar[%d] result_camera[%d]\n", result_lidar, result_camera);
+        // printf("ksh_@@@ [sensor] result_lidar[%d] result_camera[%d]\n", result_lidar, result_camera);
 
         if (result_lidar & result_camera) {
             std::lock_guard<std::mutex> lock(m_mutex); // m_event_flag 때문
@@ -113,7 +113,7 @@ void Sensor::UpdateDatas() {
             m_event_flag = true;
         }
 
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         #if DEBUG_SH
 	    printf("ksh_@@@ End UpdateDatas Loop\n");
         #endif
@@ -134,7 +134,7 @@ void Sensor::ThrowEventCyclic() {
             m_event_flag = false;
         }
 
-        std::this_thread::sleep_for(std::chrono::seconds(1)); // 1초보다 짧으면 좋을듯
+        std::this_thread::sleep_for(std::chrono::milliseconds(200)); // 1초보다 짧으면 좋을듯
         #if DEBUG_SH
 	    printf("ksh_@@@ End ThrowEventCyclic Loop\n");
         #endif
