@@ -15,18 +15,14 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 ### AA
 대회용 AA 개발 디렉토리
 
-### AA_Code
-AA 개발 디렉토리 기반 Generated 코드 (gen_ara/implementation/Machine)
+### Inference-workspace
+- 강화학습 관련 code 및 구현한 tool
+- 본선 사용 강화학습 모델 및 test용 모델backup
 
-### AA_Sample_Code
-PopcornSAR 예제 기반 Generated 코드 (gen_ara/implementation/Machine)
+    carfile.tar.gz : 모델 파일 <br/>
+    carfile-model  : carfile.tar.gz 파일 압축 해제 한 전체 meta-data 및 model.pb 파일 <br/>
+    Bucket 경로 : s3://deepracer-bermuda/rl-deepracer-sagemaker-2//carfile.tar.gz
 
-### deepracercode
-DeepRacer 샘플 코드
-Camera, LiDAR, Servo
-
-### model
-AI Model
 
 ### sdk
 a.k.a PARA_SDK
@@ -36,11 +32,9 @@ ARXML 기반 Generate 이후 build 진행 시 실행파일 생성되는 경로 (
 ### build.sh
 AA 개발 코드 빌드
 
-### build_sample.sh
-PopcornSAR Sample 코드 빌드
-
 ### export.sh
-PARA SDK 환경변수 설정
+PARA SDK 환경변수 설정(soure export.sh)
 
 ### install_para_sdk
 PARA_SDK 설치
+LiDAR SDK 설치
