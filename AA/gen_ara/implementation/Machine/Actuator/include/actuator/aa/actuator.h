@@ -60,9 +60,6 @@ private:
 
     void MotorCalibration();
 
-    float AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
-		    float in_min, float in_max, float out_min, float out_max);
-
     float SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample,
 		    float in_min, float in_max, float out_min, float out_max);
  
@@ -76,6 +73,9 @@ private:
     /// @brief Instance of Port {Actuator.ControlData}
     std::shared_ptr<actuator::aa::port::ControlData> m_ControlData;
 
+    /*
+     * These are shared pointers to PWM Servo & LED instances for controlling them
+     */
     std::shared_ptr<PWM::ServoDriver> m_servo_driver;
     std::shared_ptr<PWM::LedDriver> m_led_driver;
 };

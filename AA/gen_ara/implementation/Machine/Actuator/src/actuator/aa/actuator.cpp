@@ -15,7 +15,15 @@
 /// INCLUSION HEADER FILES
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "actuator/aa/actuator.h"
-#include <cmath>
+#include <cmath> // Add for use 'fasb'
+
+#define DEBUG 1
+
+#ifdef DEBUG
+    #define DEBUG_LOG(x) x
+#else
+    #define DEBUG_LOG(x)
+#endif
  
 namespace actuator
 {
@@ -43,8 +51,8 @@ bool Actuator::Initialize()
     m_servo_driver = std::make_shared<PWM::ServoDriver>();
     m_led_driver = std::make_shared<PWM::LedDriver>();
 
-//    ServoCalibration();
-//    MotorCalibration();
+    ServoCalibration(); // Set Servo Calibration
+    MotorCalibration(); // Set Motor Calibration
 
     return init;
 }
@@ -89,15 +97,14 @@ void Actuator::OnReceiveCEvent(const deepracer::service::controldata::proxy::eve
     float speed, angle;
 
     m_logger.LogInfo() << "Actuator::OnReceiveCEvent:" << sample.cur_speed << ", " << sample.cur_angle;
-    printf("#################### Sample angle : %.8f ####################\n", sample.cur_angle);
-    printf("#################### Sample speed : %.8f ####################\n", sample.cur_speed);
+    DEBUG_LOG(printf("#################### Sample angle : %.8f ####################\n", sample.cur_angle));
+    DEBUG_LOG(printf("#################### Sample speed : %.8f ####################\n", sample.cur_speed));
 
     angle = sample.cur_angle;
-    // angle = AngleMapping(sample, -40, 40, -1.0, 1.0);
-    speed = SpeedMapping(sample, 0, 1.0, 0.64, 0.65);
+    speed = SpeedMapping(sample, 0, 1.0, 0.64, 0.72);
 
-    printf("#################### mapping angle : %.8f ####################\n", angle);
-    printf("#################### mapping speed : %.8f ####################\n", speed);
+    DEBUG_LOG(printf("#################### mapping angle : %.8f ####################\n", angle));
+    DEBUG_LOG(printf("#################### mapping speed : %.8f ####################\n", speed));
 
     m_servo_driver->servoSubscriber(speed, angle);
 }
@@ -126,28 +133,36 @@ void Actuator::MotorCalibration()
     m_servo_driver->setCalibrationValue(cal_type, motor_min, motor_mid, motor_max, motor_polarity);
 }
 
-/*
-float Actuator::AngleMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
-		float in_min, float in_max, float out_min, float out_max)
-{
-    if(sample.cur_angle < in_min || sample.cur_angle > in_max) {
-         m_logger.LogError() << "Actuaotr::AngleMapping:" << sample.cur_angle;
-	 return 0;
-    }
-
-    return (((sample.cur_angle - in_min) * (out_max - out_min)) / (in_max - in_min)) + out_min;
-}
-*/
-
+/**
+ * Actuator::SpeedMapping - Maps the input speed to a scaled output speed
+ * @sample: The sample data containing the current angle and speed
+ * @in_min: The minimum input speed for scaling
+ * @in_max: The maximum input speed for scaling
+ * @out_min: The minimum output speed for scaling
+ * @out_max: The maximum output speed for scaling
+ *
+ * This function scales the input speed to a corresponding output speed
+ * based on the specified input and output ranges.
+ * 
+ * Return:
+ *  The scaled output speed based on the input speed and range, 
+ *  or the specified bounds (out_min/out_max) in edge cases.
+ */
 float Actuator::SpeedMapping(const deepracer::service::controldata::proxy::events::CEvent::SampleType& sample, 
 		float in_min, float in_max, float out_min, float out_max)
 {
-    if(fabs(sample.cur_angle) >= 0.7) {
-         return out_min;
-    } 
+    /*
+     * If the absolute value of cur_angle is 0.65 or greater, 
+     * it returns the minimum speed at which the vehicle can move autonomously 
+     * without stopping to ensure smooth curve driving
+     */
+    if(fabs(sample.cur_angle) >= 0.65) {
+        return out_min;
+    }
+
     if(sample.cur_speed < in_min || sample.cur_speed > in_max) {
-         m_logger.LogError() << "Actuaotr::SpeedMapping:" << sample.cur_speed;
-	 return out_max;
+        m_logger.LogError() << "Actuaotr::SpeedMapping:" << sample.cur_speed;
+	    return out_max;
     }
 
     return (((sample.cur_speed - in_min) * (out_max - out_min)) / (in_max - in_min)) + out_min;
