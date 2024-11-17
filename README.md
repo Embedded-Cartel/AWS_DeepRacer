@@ -6,7 +6,7 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 |이름|직책|담당|
 |---|---|----------------------|
 |염  훈|팀  장|ARXML Design, SOME/IP|
-|강시형|팀  원|Image Preprocessing, AA(Sensor)|
+|강시형|팀  원|Image Preprocessing, AA(Sensor, Calc)|
 |박재완|팀  원|RL, AA(Calc)|
 |오규상|팀  원|CI/CD, RL, AA(Calc)|
 |황귀용|팀  원|AA(Actuator)|
