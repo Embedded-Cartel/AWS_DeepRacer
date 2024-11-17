@@ -11,6 +11,10 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 |오규상|팀  원|CI/CD, RL, AA(Calc)|
 |황귀용|팀  원|AA(Actuator)|
 
+## Description
+![image](https://github.com/user-attachments/assets/beb88edb-560d-414a-ae94-7c4a9c7cdbb4)
+![image](https://github.com/user-attachments/assets/a72c8f51-1c67-4e18-9203-2622b1284f1b)
+
 ## Directory
 ### AA
 대회용 AA 개발 디렉토리
