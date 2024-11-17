@@ -1,0 +1,17 @@
+{
+  "batch_size": 128,
+  "beta_entropy": 0.01,
+  "discount_factor": 0.985,
+  "e_greedy_value": 0.1,
+  "epsilon_steps": 15000,
+  "exploration_type": "categorical",
+  "loss_type": "huber",
+  "lr": 0.0003,
+  "num_episodes_between_training": 35,
+  "num_epochs": 100,
+  "stack_size": 1,
+  "term_cond_avg_score": 350.0,
+  "term_cond_max_episodes": 1000,
+  "sac_alpha": 0.2,
+  "kl_divergence_constraint":0.015
+}
