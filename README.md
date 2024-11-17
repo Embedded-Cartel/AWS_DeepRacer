@@ -23,9 +23,9 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 - 본선 최종 사용모델 
     carfile.tar.gz : 모델 파일 _ for AWS local Web <br/>
     workspace : model.pb : AA_model_load <br/>
-          ┗ reward_function.py - 강화학습 보상 함수
-          ┗ model_metadata.json - action space 설정값
-          ┗ hyperparameters.json - 강화학습 hyperparameter 설정값
+          ┗ reward_function.py - 강화학습 보상 함수 <br/>
+          ┗ model_metadata.json - action space 설정값 <br/>
+          ┗ hyperparameters.json - 강화학습 hyperparameter 설정값 <br/>
     Bucket 경로 : s3://deepracer-bermuda/rl-deepracer-sagemaker-2//carfile.tar.gz <br/>
 
 
