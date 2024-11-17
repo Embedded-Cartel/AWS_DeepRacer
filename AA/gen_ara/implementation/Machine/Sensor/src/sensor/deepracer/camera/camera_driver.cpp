@@ -65,7 +65,7 @@ bool CameraDriver::EndCamera() {
 }
 
 bool CameraDriver::GetCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* cameraDatas) {
-    // printf("[GetCameraData] Begin\n");
+    printf("[GetCameraData] Begin\n");
 
     Mat leftFrame, rightFrame;
 
@@ -90,13 +90,12 @@ bool CameraDriver::GetCameraData(deepracer::service::rawdata::skeleton::events::
     std::vector<u_char> right_datas = ConvertFrameToVector(rightFrame);
     cameraDatas->left_camera = left_datas;
     cameraDatas->right_camera = right_datas;
-    // printf("ksh_@@@@@@@@@@@@@@@@ write Image left_size[%d] right_size[%d]\n", left_datas.size(), right_datas.size());
 
     if (left_datas.size() != TOTOAL_FIXEL || right_datas.size() != TOTOAL_FIXEL) {
         printf("Fail to Convert Camera data to Vector\n");
         return false;
     }
-    // printf("[GetCameraData] End\n");
+    printf("[GetCameraData] End\n");
     return true;
 }
 

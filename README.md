@@ -12,7 +12,7 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 |황귀용|팀  원|AA(Actuator)|
 
 ## Description
-![image](https://github.com/user-attachments/assets/beb88edb-560d-414a-ae94-7c4a9c7cdbb4)
+![image](https://github.com/user-attachments/assets/667b7d7c-4560-4590-aa79-6953bf646133)
 ![image](https://github.com/user-attachments/assets/a72c8f51-1c67-4e18-9203-2622b1284f1b)
 
 ## Directory
@@ -22,7 +22,7 @@ Embedded SW Contest 2024 - Autonomous Driving Racing
 ### Inference-workspace
 - 강화학습 관련 code 및 구현한 tool history
 
-## model
+### model
 - 강화학습 보상학습 최종 코드 포함
 - 본선 최종 사용모델 
     carfile.tar.gz : 모델 파일 _ for AWS local Web <br/>

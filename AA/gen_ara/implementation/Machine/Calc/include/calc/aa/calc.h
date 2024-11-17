@@ -54,11 +54,9 @@ private:
     void OnReceiveREvent(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample);
     bool GetFrontLidarData(float start_degree, float end_degree, const deepracer::type::lidars before_lidar, deepracer::type::lidars* after_lidar);
     bool InterpolateLidarData(deepracer::type::lidars* lidar_datas);
-    #if 0
-    std::vector<float> Extract8PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas);
-    #else
+    bool PreProcessLidarData(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample, std::vector<float>* processed_data);
+    bool PreProcessCameraData(const deepracer::service::rawdata::proxy::events::REvent::SampleType& sample, std::vector<float>* processed_data);
     std::vector<float> Extract4PointsForAI(float start_degree, float end_degree, deepracer::type::lidars* lidar_datas);
-    #endif
     void UpdateSteeringData(std::pair<float, float> steerDatas);
     std::pair <float, float> ConvertValueFromPredictToServo(std::pair<float, float> predictions);
     float GetMaxSpeed(float degree);
