@@ -35,6 +35,9 @@ AA 개발 코드 빌드
 ### export.sh
 PARA SDK 환경변수 설정(soure export.sh)
 
-### install_para_sdk
+### install_para_sdk.sh
 PARA_SDK 설치
 LiDAR SDK 설치
+
+### ps.sh
+실행 중인 AA Process 확인
