@@ -87,17 +87,12 @@ void Sensor::Run()
     m_running = true;
     m_workers.Async([this] { UpdateDatas(); });
     m_workers.Async([this] { ThrowEventCyclic(); });
-    // m_workers.Async([this] { m_RawData->SendEventREventCyclic(); });
-    // m_workers.Async([this] { m_RawData->NotifyFieldRFieldCyclic(); });
     
     m_workers.Wait();
 }
 
 void Sensor::UpdateDatas() {
     while (m_running) {
-        #if DEBUG_SH
-	    printf("ksh_@@@ Start UpdateDatas\n");
-        #endif
         bool result_lidar = false;
         bool result_camera = true;
 
@@ -105,71 +100,38 @@ void Sensor::UpdateDatas() {
         result_lidar = UpdateLidarData(&sensor_datas);
         result_camera = UpdateCameraData(&sensor_datas);
 
-        // printf("ksh_@@@ [sensor] result_lidar[%d] result_camera[%d]\n", result_lidar, result_camera);
-
         if (result_lidar & result_camera) {
-            std::lock_guard<std::mutex> lock(m_mutex); // m_event_flag 때문
+            std::lock_guard<std::mutex> lock(m_mutex);
             m_RawData->WriteDataREvent(sensor_datas);
             m_event_flag = true;
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        #if DEBUG_SH
-	    printf("ksh_@@@ End UpdateDatas Loop\n");
-        #endif
     }
 }
 
 void Sensor::ThrowEventCyclic() {
     while (m_running) {
-        #if DEBUG_SH
-	    printf("ksh_@@@ Start ThrowEventCyclic\n");
-        #endif
         //std::lock_guard<std::mutex> lock(m_mutex);
         if (m_event_flag == true) {
         std::lock_guard<std::mutex> lock(m_mutex);
-            // m_lidar_data->SendEventREventTriggered();
-            // m_camera_data->SendEventREventTriggered();
             m_RawData->SendEventREventTriggered();
             m_event_flag = false;
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(200)); // 1초보다 짧으면 좋을듯
-        #if DEBUG_SH
-	    printf("ksh_@@@ End ThrowEventCyclic Loop\n");
-        #endif
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 }
 
 
 bool Sensor::UpdateLidarData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas)
 {
-    bool result = false;
-
-    result = m_lidar_driver->GetLidarData(sensor_datas);
-
-    // deepracer::service::rawdata::skeleton::events::REvent::SampleType lidarDatas;
-    // result = m_lidar_driver->GetLidarData(&lidarDatas);
-
-    // if (result) {
-    //     m_RawData->WriteDataREvent(lidarDatas);
-    // }
-
-    return result;
+    return m_lidar_driver->GetLidarData(sensor_datas);;
 }
 
 bool Sensor::UpdateCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* sensor_datas)
 {
-    bool result = false;
-    // deepracer::service::rawdata::skeleton::events::REvent::SampleType cameraDatas;
-    // result = m_camera_driver->GetCameraData(&cameraDatas);
-
-    result = m_camera_driver->GetCameraData(sensor_datas);
-    // if (result) {
-    //     Write Camera data to Calc
-    // }
-
-    return result;
+    return m_camera_driver->GetCameraData(sensor_datas);;
 } 
 
 } /// namespace aa

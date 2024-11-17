@@ -7,11 +7,6 @@
 
 using namespace sl;
 
-
-void LOG(const char* str) {
-    std::cout << "ksh_@@@ [ " << __FILE__ << "][line:" << __LINE__ << "]" << str << std::endl;
-}
-
 static inline void delay(sl_word_size_t ms){
     while (ms>=1000){
         usleep(1000*1000);

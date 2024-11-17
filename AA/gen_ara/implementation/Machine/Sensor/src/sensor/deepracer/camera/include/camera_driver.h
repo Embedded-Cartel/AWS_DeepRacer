@@ -31,11 +31,9 @@ public:
     bool EndCamera();
     bool GetCameraData(deepracer::service::rawdata::skeleton::events::REvent::SampleType* cameraDatas);
 
-
 private:
     std::vector<u_char> ConvertFrameToVector(const Mat& frame);
     
-
     VideoCapture* m_left_camera;
     VideoCapture* m_right_camera;
     int m_left_ch;

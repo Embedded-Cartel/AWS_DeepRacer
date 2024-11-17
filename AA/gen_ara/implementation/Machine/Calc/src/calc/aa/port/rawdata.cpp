@@ -13,8 +13,6 @@
 /// GENERATED DATE                    : 2024-11-12 15:53:00
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "calc/aa/port/rawdata.h"
- 
-#define DEBUG_SH 0
 
 namespace calc
 {
@@ -409,9 +407,7 @@ void RawData::SetReceiveEventREventHandler(
 void RawData::ReadDataREvent(ara::com::SamplePtr<deepracer::service::rawdata::proxy::events::REvent::SampleType const> samplePtr)
 {
     auto data = *samplePtr.Get();
-    #if DEBUG_SH
-    printf("ksh_@@@ ReadData\n");
-    #endif
+
     // m_logger.LogInfo() << "RawData::ReadDataREvent::!!!!!!!!!!";
     // m_logger.LogInfo() << "RawData::ReadDataREvent::!!!!!!!!!!" << data;
 
